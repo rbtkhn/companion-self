@@ -1,0 +1,27 @@
+# EVIDENCE — Activity and Artifact Log (Template)
+
+**Template only. No real data.** Copy this structure when creating a new user directory in an instance repo. Evidence links every SELF/SKILLS claim to artifacts or approved sources.
+
+Governed by the instance's EVIDENCE template. Tiers: e.g. OBSERVED, ATTESTED, VERIFIED, CERTIFIED. Reading list, writing log, creation log, activity log per instance schema.
+
+---
+
+## Activity Log
+
+(Placeholder: ACT-XXXX entries — source, date, tier, link to SELF/SKILLS.)
+
+---
+
+## Reading List
+
+(Placeholder: content consumed — READ evidence.)
+
+---
+
+## Writing / Creation Log
+
+(Placeholder: WRITE/BUILD artifacts — references only; files in artifacts/.)
+
+---
+
+*Do not use this file as a live Record. Copy to `users/<new_id>/EVIDENCE.md` in an instance and replace placeholders with real data.*
