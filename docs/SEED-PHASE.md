@@ -1,6 +1,6 @@
 # Seed Phase
 
-**Companion-self template · Definition of seed phase**
+**Companion-Self template · Definition of seed phase**
 
 ---
 
@@ -42,4 +42,4 @@ This template defines *what* seed phase is and *that* it is the only creation pa
 
 ---
 
-*Companion-self template · Seed phase definition*
+*Companion-Self template · Seed phase definition*

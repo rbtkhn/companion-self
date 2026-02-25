@@ -1,0 +1,14 @@
+---
+description: Do not write to or modify grace-mar from this workspace unless the user explicitly overrides
+alwaysApply: true
+---
+
+# Workspace boundary — no grace-mar writes
+
+This is the **companion-self (template)** workspace. The grace-mar repo, when present, is **read-only reference**.
+
+- **Do not** write to, edit, or modify any file under the grace-mar folder from this workspace.
+- **Do** read grace-mar when needed to generalize, compare paths, or extract content for the template.
+- **Override:** Only if the user explicitly asks you to change something in grace-mar (e.g. "edit grace-mar's MERGING-FROM-COMPANION-SELF" or "update that file in grace-mar") may you write to grace-mar from this workspace.
+
+Default: no grace-mar modifications. Explicit user request = override.

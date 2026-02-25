@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "companion-self"
+    },
+    {
+      "path": "../grace-mar",
+      "name": "grace-mar (read-only)"
+    }
+  ],
+  "settings": {
+    "files.readonlyInclude": {
+      "grace-mar/**": true
+    }
+  }
+}

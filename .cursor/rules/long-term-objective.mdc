@@ -1,0 +1,14 @@
+---
+description: Align with companion-self long-term objective; prevent intention drift
+alwaysApply: true
+---
+
+# Long-term objective — alignment rule
+
+Companion-Self has **three permanent long-term objectives** of equal importance. All work in this repo should align with them.
+
+1. **Democratize Alpha-style education** — Comparable outcomes (mastery, 2-hour academic coverage, life skills, portable identity) at a fraction of the cost, without a physical school or in-room guides; Record as spine.
+2. **Companion sovereignty (human-approval gate)** — All modification of skill and self containers is gated by the companion or explicitly delegated human; agent may stage, may not merge; no silent writes.
+3. **Knowledge boundary** — The Record contains only what the companion has provided and approved; no LLM inference into the Record.
+
+**Purpose:** Prevent intention drift; optimize alignment. When proposing or making changes: check that the change advances or does not dilute these objectives; if it would drift away from any of them, flag it or argue against it. Reference **docs/LONG-TERM-OBJECTIVE.md** for the full statement and use.

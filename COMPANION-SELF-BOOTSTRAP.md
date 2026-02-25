@@ -6,7 +6,7 @@
 
 ## 1) What This Repo Is
 
-**Companion-self** = the **template** repo. **Grace-Mar** = the **instance** repo (first and currently only instance).
+**Companion-Self** = the **template** repo. **Grace-Mar** = the **instance** repo (first and currently only instance).
 
 - **Template:** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance:** One live companion self (Record, bot, pipeline). Created from the template when a **new user completes seed phase**.
@@ -82,19 +82,32 @@ When companion-self (template) is updated, grace-mar (instance) can pull those c
 
 ---
 
-## 7) First-Run in New Workspace (Agent Instructions)
+## 7) Workspace Boundary (Template vs Instance)
+
+**Principle:** Use the workspace to reinforce template vs instance sovereignty. Edits happen in the right repo only.
+
+- **Template workspace (this repo):** When working on companion-self, use a workspace that includes grace-mar as **read-only reference** (e.g. open `companion-self-and-grace-mar.code-workspace`). You can read grace-mar to generalize, compare paths, or extract content—but **do not write to or modify the grace-mar repo from this workspace**. All grace-mar changes (Record, bot, config, and merging upgrades from template) happen in a **separate grace-mar workspace**. **From this point forward, this workspace does not write/modify grace-mar unless the user explicitly requests an override.**
+- **Instance workspace (grace-mar):** When working on the instance, open the grace-mar repo as the primary (writable) workspace. Pull or reference companion-self when performing template upgrades; do the merge and validation in the grace-mar workspace so the template remains reference-only there.
+
+This keeps different sovereigns and lifecycles from colliding: template work here, instance work there.
+
+---
+
+## 8) First-Run in New Workspace (Agent Instructions)
 
 When the user opens the **companion-self** repo in a new Cursor workspace and invokes you with this bootstrap:
 
 1. **Confirm context:** This repo is the companion-self **template**. The user may have copied this bootstrap from the grace-mar repo. There is no Record here; no `users/grace-mar/`.
-2. **Create the minimum:** README (template vs instance; new user + seed phase; link to grace-mar). One or more concept/protocol/seed docs under `docs/` (or a single CONCEPT.md). Generalize from grace-mar's concepts; remove instance-specific references.
-3. **Optional:** Add `users/_template/` with minimal SELF/SKILLS/EVIDENCE/PENDING-REVIEW/MEMORY templates (structure only). Add a short HOW-INSTANCES-CONSUME-UPGRADES or merge section.
-4. **Do not** copy the full grace-mar codebase or Record. Only what defines the template: concept, protocol, seed, and optional scaffold.
-5. **Propose before implementing:** Per user preference, show a short proposal (scope, files to create) before writing; implement after approval.
+2. **Respect workspace boundary (§7):** If grace-mar is in this workspace, treat it as read-only. Do not modify grace-mar; only read it for reference.
+3. **Use the developer plan:** Open [docs/COMPANION-SELF-DEVELOPER-PLAN.md](docs/COMPANION-SELF-DEVELOPER-PLAN.md) and follow the phases (A–F). Use the grace-mar source links in the plan for content and merge process.
+4. **Create the minimum:** README (template vs instance; new user + seed phase; link to grace-mar). One or more concept/protocol/seed docs under `docs/` (or a single CONCEPT.md). Generalize from grace-mar's concepts; remove instance-specific references.
+5. **Optional:** Add `users/_template/` with minimal SELF/SKILLS/EVIDENCE/PENDING-REVIEW/MEMORY templates (structure only). Add a short HOW-INSTANCES-CONSUME-UPGRADES or merge section.
+6. **Do not** copy the full grace-mar codebase or Record. Only what defines the template: concept, protocol, seed, and optional scaffold.
+7. **Propose before implementing:** Per user preference, show a short proposal (scope, files to create) before writing; implement after approval.
 
 ---
 
-## 8) Reference: Where to Find Source Material (Grace-Mar)
+## 9) Reference: Where to Find Source Material (Grace-Mar)
 
 If you need to extract or generalize content for companion-self, the canonical sources are in the **grace-mar** repo:
 

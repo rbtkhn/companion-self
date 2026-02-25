@@ -1,6 +1,6 @@
 # Identity Fork Protocol — Short Form
 
-**Companion-self template · Protocol summary**
+**Companion-Self template · Protocol summary**
 
 *Full specification: see the reference implementation's [IDENTITY-FORK-PROTOCOL](https://github.com/rbtkhn/grace-mar/blob/main/docs/IDENTITY-FORK-PROTOCOL.md).*
 
@@ -37,10 +37,10 @@ Every claim in the Record must reference evidence (e.g. activity id, provenance)
 | Module | Contains | Purpose |
 |--------|----------|---------|
 | **SELF** | Identity, personality, preferences, values, narrative, post-seed growth (IX-A, IX-B, IX-C) | Who they ARE |
-| **SKILLS** | READ, WRITE, BUILD capability containers | What they CAN DO |
+| **SKILLS** | READ, WRITE, BUILD (self-skill-read, self-skill-write, self-skill-build) | What they CAN DO; education is structured around these three. |
 | **EVIDENCE** | Activity log, writing log, creation log | Raw artifacts; immutable once captured |
 
-Post-seed growth: **IX-A** (knowledge), **IX-B** (curiosity), **IX-C** (personality).
+Post-seed growth: **IX-A** (self-knowledge), **IX-B** (self-curiosity), **IX-C** (self-personality). Self-skill-read (READ) activity is **filtered and distilled** into these three; the pipeline suggests merges, the companion gates.
 
 ---
 
@@ -50,4 +50,4 @@ The Record may contain only what the companion has explicitly provided. No LLM i
 
 ---
 
-*Companion-self template · Protocol summary*
+*Companion-Self template · Protocol summary*

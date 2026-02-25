@@ -1,6 +1,12 @@
 # What Is a Companion Self?
 
-**Companion-self template · Concept**
+**Companion-Self template · Concept**
+
+---
+
+## Long-term objectives (permanent system rules)
+
+Companion-Self has **three** long-term objectives of equal importance: (1) **Democratize Alpha-style education** — comparable outcomes at a fraction of the cost, without a school or in-room guides, via Record as spine. (2) **Companion sovereignty** — all modification of skill and self containers is human-approval gated; agent may stage, may not merge. (3) **Knowledge boundary** — the Record contains only what the companion has provided and approved; no LLM inference in. These are permanent system rules to prevent intention drift and optimize alignment. Full statement and use: [LONG-TERM-OBJECTIVE](LONG-TERM-OBJECTIVE.md).
 
 ---
 
@@ -35,7 +41,31 @@ The Record records; the Voice speaks the Record. The Record does not command; th
 
 ---
 
-## 4. Knowledge Boundary
+## 4. Education structure
+
+Companion-Self education is **structured** around three skill containers:
+
+| Structure | Schema tag | Meaning |
+|-----------|------------|---------|
+| **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. |
+| **self-skill-write** | WRITE | Expression and voice: what the companion produces (journal, stories, explanations). Evidence of WRITE is evidence of understanding and voice. |
+| **self-skill-build** | BUILD | Making and doing: what the companion plans, builds, and ships (projects, creations). Evidence links to SKILLS.BUILD and life skills. |
+
+In schema, APIs, and export we use the tags **READ**, **WRITE**, **BUILD**; the canonical names for the **education structure** are **self-skill-read**, **self-skill-write**, **self-skill-build**. All screen-based learning and evidence capture are organized under these three.
+
+**Self-skill-read → self-knowledge, self-curiosity, self-personality.** Activity in **self-skill-read** (READ) is **filtered and distilled** into three dimensions of the Record (SELF):
+
+| Distillation target | Schema | Meaning |
+|--------------------|--------|---------|
+| **self-knowledge** | IX-A | What the companion has learned and knows (topics, facts, understanding). |
+| **self-curiosity** | IX-B | What they are curious about, interests, questions. |
+| **self-personality** | IX-C | Voice, preferences, values, narrative—how they see themselves and express. |
+
+The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; the companion gates what actually enters. So READ feeds **who they are** (SELF) as well as **what they can do** (SKILLS.READ, evidence).
+
+---
+
+## 5. Knowledge Boundary
 
 The Record contains only what the companion has explicitly provided and approved.
 
@@ -47,17 +77,19 @@ This boundary is both an architectural invariant and a regulatory advantage (e.g
 
 ---
 
-## 5. Key Invariants
+## 6. Key Invariants
 
 1. **Divergence by design** — Fork and real person may drift apart; that is correct.
 2. **Merge, not add** — Content enters the Record by merging through a gate; the companion approves every merge.
 3. **Agent may stage; it may not merge** — Only the companion (or an explicitly delegated human) may merge into the Record.
 4. **Identity beyond productivity** — The Record records who someone is, not what they produce.
 5. **Augmentation, not automation** — The system augments human judgment; it does not replace it. Human-in-the-loop is mandatory.
+6. **Two-hour screen-time target** — All screen-based learning is designed to occur within **2 hours per day**, aligned with models (e.g. Alpha School) that squeeze full mandatory education into a 2-hour block. This is both a design constraint and an **equivalent metric** for comparison (2 hours = full academic coverage). See [TWO-HOUR-SCREENTIME-TARGET](TWO-HOUR-SCREENTIME-TARGET.md).
+7. **No human guide assumed** — Companion-Self must achieve its recursive self-learning objectives **without assuming the help of a human guide**. Guide-like support (motivation, “did you read the explanation?”, learning-how-to-learn) is designed into the **system** (Voice, pipeline prompts, session copy, edge suggestions) so the companion can succeed with zero or minimal adult involvement. An operator/parent may augment but is not required for the design to work.
 
 ---
 
-## 6. Where Things Live (Template View)
+## 7. Where Things Live (Template View)
 
 | Component | In an instance |
 |-----------|----------------|
@@ -70,4 +102,10 @@ This template defines concept, protocol, and seed phase. Bot code and Record dat
 
 ---
 
-*Companion-self template · No instance-specific content*
+## 8. Recursive self-learning
+
+The Record can **improve itself over time**: each pipeline cycle refines the Record, and the updated Record shapes the next cycle (what gets detected, what the Voice says, what activities might be proposed at the edge). For objectives that guide this—inspired by learning science and AI-powered education models—see [RECURSIVE-SELF-LEARNING-OBJECTIVES](RECURSIVE-SELF-LEARNING-OBJECTIVES.md).
+
+---
+
+*Companion-Self template · No instance-specific content*

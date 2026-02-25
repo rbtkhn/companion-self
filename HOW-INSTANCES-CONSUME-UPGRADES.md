@@ -1,8 +1,10 @@
 # How Instances Consume Upgrades from This Template
 
-**Companion-self template**
+**Companion-Self template**
 
 When companion-self (this repo) is updated, an instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)) can pull those changes **without overwriting its Record**.
+
+**Workspace boundary:** When working on the template, use a workspace where grace-mar is read-only (e.g. `companion-self-and-grace-mar.code-workspace`). Do not modify the instance from this workspace; all instance changes and template merges happen in the instance's own workspace. See [COMPANION-SELF-BOOTSTRAP](COMPANION-SELF-BOOTSTRAP.md) §7.
 
 ---
 
@@ -50,4 +52,4 @@ A small sync script could list these paths and diff/merge them into the instance
 
 ---
 
-*Companion-self template · Upgrade consumption*
+*Companion-Self template · Upgrade consumption*
