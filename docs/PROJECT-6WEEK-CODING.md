@@ -27,7 +27,9 @@ companion-self/
 │   ├── _template/           # existing
 │   └── demo/                # demo user for student interface
 │       ├── SELF.md
-│       ├── SKILLS.md
+│       ├── self-skill-read.md
+│       ├── self-skill-write.md
+│       ├── self-skill-work.md
 │       ├── EVIDENCE.md
 │       ├── PENDING-REVIEW.json   # staged candidates (machine-readable)
 │       └── MEMORY.md        # optional
@@ -64,9 +66,9 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 1.1 | Define **Record schema** in code: SELF (IX-A, IX-B, IX-C), SKILLS (READ, WRITE, BUILD with optional level/edge), EVIDENCE (list of activities with id, type, summary, date, skill tag). | `app/schema/record.js` (or .py) with types and validation. |
+| 1.1 | Define **Record schema** in code: SELF (IX-A, IX-B, IX-C), self-skill-read / self-skill-write / self-skill-work (READ, WRITE, WORK with optional level/edge), EVIDENCE (list of activities with id, type, summary, date, skill tag). | `app/schema/record.js` (or .py) with types and validation. |
 | 1.2 | Define **PENDING-REVIEW** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Schema in code; `users/demo/PENDING-REVIEW.json` format. |
-| 1.3 | Create **users/demo/** with SELF.md, SKILLS.md, EVIDENCE.md, MEMORY.md from `users/_template/`; add PENDING-REVIEW.json (empty array). Populate demo SELF with minimal seed (e.g. one IX-A, one IX-B, one IX-C line). | Demo user runnable; parsable by app. |
+| 1.3 | Create **users/demo/** with SELF.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, EVIDENCE.md, MEMORY.md from `users/_template/`; add PENDING-REVIEW.json (empty array). Populate demo SELF with minimal seed (e.g. one IX-A, one IX-B, one IX-C line). | Demo user runnable; parsable by app. |
 | 1.4 | Implement **load** and **save** for demo user: read markdown into structured objects (or simplified key sections); write back on merge. Use simple markdown parsing (e.g. section headers + lists) or keep minimal and append-only where possible. | `app/schema/record.js` (or pipeline/io.js) load/save. |
 | 1.5 | Document schema in `docs/SCHEMA-RECORD-API.md` (minimal: field list, PENDING-REVIEW shape). | Doc for future extensions. |
 
@@ -84,7 +86,7 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ | WRITE | BUILD). Create candidate: id (uuid or timestamp), raw_text, skill_tag, mind_category inferred from keyword or default to "curiosity", suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to PENDING-REVIEW.json. | POST endpoint; PENDING-REVIEW grows. |
+| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ | WRITE | WORK). Create candidate: id (uuid or timestamp), raw_text, skill_tag, mind_category inferred from keyword or default to "curiosity", suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to PENDING-REVIEW.json. | POST endpoint; PENDING-REVIEW grows. |
 | 2.2 | **API:** GET `/api/pending-review` returns list of pending candidates. | Used by review UI. |
 | 2.3 | Optional: **CLI** `node scripts/stage-activity.js "We read a book about volcanoes"` for testing. | Script. |
 | 2.4 | Ensure **idempotent** and **append-only** for stage; no overwrite of existing candidates. | Safe staging. |
@@ -103,8 +105,8 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 3.1 | **Dashboard** (e.g. `/` or `/dashboard`): Load demo Record; show summary: Knowledge (IX-A count or lines), Curiosity (IX-B), Personality (IX-C), Skills (READ/WRITE/BUILD with simple edge or last activity). Show count of pending review items; link to review. | index.html + app.js; GET /api/record or /api/summary. |
-| 3.2 | **"We did X" page** (e.g. `/activity`): Single textarea + optional skill dropdown (READ/WRITE/BUILD) + Submit. On submit, POST to /api/activity; show success; optional redirect to dashboard or review. | activity.html + form handler. |
+| 3.1 | **Dashboard** (e.g. `/` or `/dashboard`): Load demo Record; show summary: Knowledge (IX-A count or lines), Curiosity (IX-B), Personality (IX-C), Skills (READ/WRITE/WORK with simple edge or last activity). Show count of pending review items; link to review. | index.html + app.js; GET /api/record or /api/summary. |
+| 3.2 | **"We did X" page** (e.g. `/activity`): Single textarea + optional skill dropdown (READ/WRITE/WORK) + Submit. On submit, POST to /api/activity; show success; optional redirect to dashboard or review. | activity.html + form handler. |
 | 3.3 | **API:** GET `/api/record` or `/api/summary` returns Record summary (and optionally full Record) for demo user. | Backend. |
 | 3.4 | Simple **navigation**: Dashboard | We did X | Review queue | Export. No auth; single-user demo. | Nav in all pages. |
 | 3.5 | **Static assets** served from `app/public/`; server serves HTML and API. | Express static + routes. |
@@ -125,7 +127,7 @@ companion-self/
 |---|------|-------------|
 | 4.1 | **Review page** (e.g. `/review`): GET pending candidates; display each with raw_text, skill_tag, suggested section; [Approve] [Reject] buttons. | review.html + app.js. |
 | 4.2 | **API:** POST `/api/review` body `{ candidate_id, action: "approve" | "reject" }`. Reject: remove from PENDING-REVIEW (or set status rejected). Approve: call merge logic; then remove from queue. | Backend. |
-| 4.3 | **Merge logic:** For approved candidate, (1) append to EVIDENCE.md as new activity (id, date, summary, skill_tag); (2) append one line to appropriate SELF section (IX-A, IX-B, or IX-C) from suggested_ix_section; (3) optionally append to SKILLS (e.g. READ/WRITE/BUILD) as one evidence link. Keep merge simple: append only; no dedup for 6 weeks. | `app/pipeline/merge.js`. |
+| 4.3 | **Merge logic:** For approved candidate, (1) append to EVIDENCE.md as new activity (id, date, summary, skill_tag); (2) append one line to appropriate SELF section (IX-A, IX-B, or IX-C) from suggested_ix_section; (3) optionally append to the appropriate self-skill-* file (READ/WRITE/WORK) as one evidence link. Keep merge simple: append only; no dedup for 6 weeks. | `app/pipeline/merge.js`. |
 | 4.4 | **Idempotency:** One approve = one merge; candidate removed so cannot approve twice. | Safe merge. |
 | 4.5 | Optional: **Merge receipt** append to a log file (e.g. `users/demo/merge-receipts.jsonl`) for proof architecture. | Receipt. |
 
@@ -143,9 +145,9 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 5.1 | **Edge derivation:** From SKILLS + EVIDENCE, compute simple edge: e.g. last topic per READ/WRITE/BUILD, or "next" suggestion (e.g. "Add another READ" / "Try a BUILD project"). No LLM; rule-based. Expose as GET `/api/edge` or part of `/api/record`. | Backend + schema. |
-| 5.2 | **Dashboard:** Show edge or "What’s next" (e.g. "READ: keep reading at your level" / "WRITE: try a short story" / "BUILD: one small project"). | UI. |
-| 5.3 | **Export:** Build `curriculum_profile` object: IX-A (topics), IX-B (curiosity), IX-C (snippets), READ/WRITE/BUILD edge, evidence count, export date. | `app/export/curriculum-profile.js`. |
+| 5.1 | **Edge derivation:** From self-skill-read, self-skill-write, self-skill-work + EVIDENCE, compute simple edge: e.g. last topic per READ/WRITE/WORK, or "next" suggestion (e.g. "Add another READ" / "Try a WORK project"). No LLM; rule-based. Expose as GET `/api/edge` or part of `/api/record`. | Backend + schema. |
+| 5.2 | **Dashboard:** Show edge or "What’s next" (e.g. "READ: keep reading at your level" / "WRITE: try a short story" / "WORK: one small project"). | UI. |
+| 5.3 | **Export:** Build `curriculum_profile` object: IX-A (topics), IX-B (curiosity), IX-C (snippets), READ/WRITE/WORK edge, evidence count, export date. | `app/export/curriculum-profile.js`. |
 | 5.4 | **API:** GET `/api/export` or `/api/curriculum-profile` returns JSON. Include optional `screen_time_target_minutes: 120` in export so curriculum/tutor can align to the 2-hour block. Optional: GET `/api/export/download` returns file download. | Backend. |
 | 5.5 | **Export page** (e.g. `/export`): Button "Download curriculum profile"; downloads JSON (or markdown summary) so student can hand to tutor or curriculum. | export.html. |
 | 5.6 | **2-hour target in UX:** On dashboard or activity page, show short line: "Designed for up to 2 hours of screen-based learning per day" (or link to TWO-HOUR-SCREENTIME-TARGET). Optional: simple "Today's block" or session placeholder (e.g. "0 / 120 min") for future expansion. | UI copy; optional session metric. |
@@ -221,7 +223,7 @@ The **student** (or operator) can:
 3. **Submit** "we did X" and have it staged.
 4. **Review** pending items and approve or reject.
 5. **See** their Record update after approve (EVIDENCE + SELF).
-6. **See** "what’s next" / edge (READ, WRITE, BUILD).
+6. **See** "what’s next" / edge (READ, WRITE, WORK).
 7. **Download** curriculum profile (JSON) to give to a tutor or curriculum.
 
 All implemented **in companion-self**, deliverable as the **product/service interface** given to the student.

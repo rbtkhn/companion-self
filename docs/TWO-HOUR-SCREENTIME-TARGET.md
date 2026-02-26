@@ -35,7 +35,7 @@ From the Alpha leadership (McKenzie Price, Joe Lamont) description, the **2 hour
 
 Companion-Self targets the **same 2-hour window** for all screen-time learning:
 
-- **Design constraint:** Structure the product and ritual so that curriculum, tutor use, Record capture, and any screen-based learning (READ, WRITE, and screen-linked BUILD) are **designed to fit within 2 hours per day**. The Record and pipeline support this: capture and review can be part of the block or immediately after; export feeds curriculum/tutor that operates inside the block.
+- **Design constraint:** Structure the product and ritual so that curriculum, tutor use, Record capture, and any screen-based learning (READ, WRITE, and screen-linked WORK) are **designed to fit within 2 hours per day**. The Record and pipeline support this: capture and review can be part of the block or immediately after; export feeds curriculum/tutor that operates inside the block.
 - **Equivalent metric:** When comparing companion-self (or an instance) to Alpha, **2 hours of screen time per day** is the common denominator. Outcomes (mastery, evidence, motivation) can be compared **per 2-hour block** or **per day** so that “2 hours = full academic coverage” is the shared frame.
 - **Time back:** Anything that reduces required screen time below 2 hours (e.g. more efficient capture, faster review) preserves “time back” for the companion; 2 hours is the **ceiling** for mandatory screen-based learning, not a minimum to fill.
 
@@ -48,9 +48,9 @@ For the **equivalent metric**, screen time includes:
 - Time in curriculum/tutor apps (Khan, IXL, AI tutor, etc.) that feed the Record.
 - Time in the companion-self student interface (dashboard, “we did X,” review queue, export).
 - Time in Voice/chat that is part of the learning or capture flow.
-- Any other screen-based activity that is explicitly part of the **learning block** (READ/WRITE/screen BUILD).
+- Any other screen-based activity that is explicitly part of the **learning block** (READ/WRITE/screen WORK).
 
-Excluded from the 2-hour **learning** metric: non-learning screen use (e.g. entertainment), and optional off-screen activity (life skills, BUILD that isn’t on screen). Instances may define precise boundaries (e.g. “session type: learning” vs “session type: other”).
+Excluded from the 2-hour **learning** metric: non-learning screen use (e.g. entertainment), and optional off-screen activity (life skills, WORK that isn’t on screen). Instances may define precise boundaries (e.g. “session type: learning” vs “session type: other”).
 
 ---
 

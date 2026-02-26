@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": 1,
+  "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
+  "canonicalAsOf": "2025-02-25",
+  "paths": [
+    { "path": "docs/CONCEPT.md", "description": "Concept: Record, Voice, education structure, knowledge boundary, invariants, long-term objectives.", "optional": false },
+    { "path": "docs/IDENTITY-FORK-PROTOCOL.md", "description": "Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, EVIDENCE), evidence linking.", "optional": false },
+    { "path": "docs/SEED-PHASE.md", "description": "Definition of seed phase; what creates initial Record.", "optional": false },
+    { "path": "docs/LONG-TERM-OBJECTIVE.md", "description": "Permanent system rules (democratize Alpha-style education; sovereignty; knowledge boundary).", "optional": false },
+    { "path": "docs/TWO-HOUR-SCREENTIME-TARGET.md", "description": "2-hour design constraint and equivalent metric; what counts as screen time.", "optional": false },
+    { "path": "users/_template/SELF.md", "description": "SELF schema/structure scaffold for new users only.", "optional": false },
+    { "path": "users/_template/self-skill-read.md", "description": "READ (self-skill-read) scaffold.", "optional": false },
+    { "path": "users/_template/self-skill-write.md", "description": "WRITE (self-skill-write) scaffold.", "optional": false },
+    { "path": "users/_template/self-skill-work.md", "description": "WORK (self-skill-work) scaffold.", "optional": false },
+    { "path": "users/_template/EVIDENCE.md", "description": "EVIDENCE schema/structure scaffold.", "optional": false },
+    { "path": "users/_template/PENDING-REVIEW.md", "description": "Staging scaffold.", "optional": false },
+    { "path": "users/_template/MEMORY.md", "description": "Ephemeral context scaffold.", "optional": true },
+    { "path": "users/_template/LIBRARY.md", "description": "Curated lookup sources scaffold (bounded lookup extension).", "optional": true }
+  ]
+}

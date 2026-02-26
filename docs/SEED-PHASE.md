@@ -13,7 +13,7 @@ The **seed phase** is the initial capture that creates the baseline of a new com
 ## What Seed Phase Produces
 
 - **Initial SELF** — Identity, preferences, narrative baseline (e.g. favorites, basic story).
-- **Initial SKILLS** — Structure only; skills grow through activity after seed.
+- **Initial self-skill-read, self-skill-write, self-skill-work** — Structure only; skills grow through activity after seed.
 - **Initial EVIDENCE** — Any artifacts or attestations used during seeding (e.g. survey responses).
 
 Seed phase establishes *who they are* at the start. Everything else is inferred or captured through the gated pipeline after seed.
@@ -28,11 +28,15 @@ Seed phase establishes *who they are* at the start. Everything else is inferred 
 
 ---
 
-## After Seed
+## Fork Lifecycle
 
-- **Interact** — Each session adds possible signals; pipeline stages candidates; companion approves what merges.
-- **Divergence** — The fork and the real person grow independently; the Record accumulates knowledge and evidence through the gate only.
-- **Snapshot** — Instance can preserve states (e.g. git tags) for "who they were at this point in time."
+The full lifecycle is: **SEED → INTERACT → DIVERGE → MERGE → SNAPSHOT**.
+
+- **SEED** — Initial capture (this phase); baseline Record only.
+- **INTERACT** — Sessions add signals; pipeline stages candidates.
+- **DIVERGE** — Fork and real person grow independently; Record grows only through the gate.
+- **MERGE** — Companion approves; changes integrate into SELF, EVIDENCE, skills.
+- **SNAPSHOT** — Instance preserves states (e.g. git tags) for "who they were at this point in time."
 
 ---
 

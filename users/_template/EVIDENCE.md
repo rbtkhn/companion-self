@@ -1,6 +1,6 @@
 # EVIDENCE — Activity and Artifact Log (Template)
 
-**Template only. No real data.** Copy this structure when creating a new user directory in an instance repo. Evidence links every SELF/SKILLS claim to artifacts or approved sources.
+**Template only. No real data.** Copy this structure when creating a new user directory in an instance repo. Evidence links every SELF/self-skill-* claim to artifacts or approved sources.
 
 Governed by the instance's EVIDENCE template. Tiers: e.g. OBSERVED, ATTESTED, VERIFIED, CERTIFIED. Reading list, writing log, creation log, activity log per instance schema.
 
@@ -8,7 +8,7 @@ Governed by the instance's EVIDENCE template. Tiers: e.g. OBSERVED, ATTESTED, VE
 
 ## Activity Log
 
-(Placeholder: ACT-XXXX entries — source, date, tier, link to SELF/SKILLS.)
+(Placeholder: ACT-XXXX entries — source, date, tier, link to SELF/self-skill-*.)
 
 ---
 
@@ -20,7 +20,7 @@ Governed by the instance's EVIDENCE template. Tiers: e.g. OBSERVED, ATTESTED, VE
 
 ## Writing / Creation Log
 
-(Placeholder: WRITE/BUILD artifacts — references only; files in artifacts/.)
+(Placeholder: WRITE/WORK artifacts — references only; files in artifacts/.)
 
 ---
 

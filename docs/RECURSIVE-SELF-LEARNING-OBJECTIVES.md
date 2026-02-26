@@ -18,9 +18,9 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 ## 2. Activity at the edge (zone of proximal development)
 
-**Objective:** Propose and capture activity at the **container edge**—the boundary of current capability—so the companion is challenged but not overwhelmed. Too easy → no growth; too hard → disengagement. The Record (e.g. SKILLS, IX-A/IX-B) defines the edge; activities and evidence at the edge extend it.
+**Objective:** Propose and capture activity at the **container edge**—the boundary of current capability—so the companion is challenged but not overwhelmed. Too easy → no growth; too hard → disengagement. The Record (e.g. self-skill-read, self-skill-write, self-skill-work, IX-A/IX-B) defines the edge; activities and evidence at the edge extend it.
 
-**Inspiration:** “80–85% accuracy… not too easy, not too hard.” “Zone of proximal development.” “Every game designer will tell you if you drop below 66, the kids disengage.” Companion-Self: the edge is derived from SELF + SKILLS + EVIDENCE; the pipeline (and any curriculum or tutor integration) can use it to suggest what to do next, without the system merging on its own.
+**Inspiration:** “80–85% accuracy… not too easy, not too hard.” “Zone of proximal development.” “Every game designer will tell you if you drop below 66, the kids disengage.” Companion-Self: the edge is derived from SELF + self-skill-read/write/build + EVIDENCE; the pipeline (and any curriculum or tutor integration) can use it to suggest what to do next, without the system merging on its own.
 
 ---
 
@@ -50,7 +50,7 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 ## 6. Learning how to learn
 
-**Objective:** Support **learning-how-to-learn** (process, resources, feedback) as much as content. The **pipeline and Voice** (not a human in the room) provide guide-like coaching: “Did you check your resources? Read the explanation?” Evidence and structure in the Record reflect both *what* was learned and *how* it was learned (e.g. READ/WRITE/BUILD dimensions, artifact type).
+**Objective:** Support **learning-how-to-learn** (process, resources, feedback) as much as content. The **pipeline and Voice** (not a human in the room) provide guide-like coaching: “Did you check your resources? Read the explanation?” Evidence and structure in the Record reflect both *what* was learned and *how* it was learned (e.g. READ/WRITE/WORK dimensions, artifact type).
 
 **Inspiration:** Guides “helping kids develop that skill of learning how to learn… connect you with experts.” “Learning science… chemistry of the mind… how many reps to store long-term memory.” Companion-Self: the same support is **built into the system**—Voice, pipeline prompts, and session copy—so the companion can improve without a human guide. The human remains the primary learner; the system is the coach.
 
@@ -77,7 +77,7 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 | Objective | Companion-Self translation |
 |-----------|----------------------------|
 | Closed loop | Record improves each cycle; Record shapes next cycle (recursive learning). |
-| Activity at edge | Propose/capture at container edge; SKILLS + IX drive edge. |
+| Activity at edge | Propose/capture at container edge; self-skill-* + IX drive edge. |
 | Mastery-based | Evidence-linked; gate; no merge without approval. |
 | Knowledge + interest | IX-A, IX-B, SELF as identity layer; knowledge boundary. |
 | Motivation & ownership | Companion as gate; progress visible; “time back” via structure. |

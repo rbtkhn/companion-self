@@ -33,9 +33,9 @@
 
 ---
 
-## 4. Tying insights to skill-read, skill-write, and skill-build
+## 4. Tying insights to skill-read, skill-write, and skill-work
 
-The Record’s three capability containers — **READ**, **WRITE**, **BUILD** (self-skill-read, self-skill-write, self-skill-build) — map cleanly to Alpha’s model and to business/product narrative. Use these ties in white paper, sales, and integration storytelling.
+The Record’s three capability containers — **READ**, **WRITE**, **WORK** (self-skill-read, self-skill-write, self-skill-work) — map cleanly to Alpha’s model and to business/product narrative. Use these ties in white paper, sales, and integration storytelling.
 
 ### Skill-read (intake, comprehension, what they consume)
 
@@ -55,11 +55,11 @@ The Record’s three capability containers — **READ**, **WRITE**, **BUILD** (s
 
 | Alpha / Moonshots #233 | Companion-Self / Record tie |
 |------------------------|-----------------------------|
-| Alpha Write, journal, stories, explanations; “linguistic fingerprint.” | **WRITE** = what the companion produces: journal, stories, explanations, messages. Evidence: writing log, samples; SKILLS.WRITE = vocabulary, complexity, style, voice. |
+| Alpha Write, journal, stories, explanations; “linguistic fingerprint.” | **WRITE** = what the companion produces: journal, stories, explanations, messages. Evidence: writing log, samples; self-skill-write = vocabulary, complexity, style, voice. |
 | “You’re not going to see a guide showing a kid how to carry the one… they’re helping kids develop learning how to learn: Did you read the explanation?” | **WRITE** is also the *output* of learning: explain back, teach Grace-Mar (e.g. “Explain what you learned”). Evidence of WRITE = evidence of understanding. |
 | “Fill kids with ideas” vs “chat steals that away.” | **WRITE** in the Record = *their* ideas and words, not the model’s. Record is the place their voice and expression live; Voice speaks it. |
 | Mastery-based: “you don’t move up until you master.” | **WRITE** capability claims (level, dimensions) advance only with approved evidence — no grade inflation; artifact-linked. |
-| “Evidence-grounding = confidence-grounding… you wrote this, you drew this.” | **WRITE** (and BUILD) artifacts are the primary evidence. Business story: “We don’t infer; we record what they actually wrote and made.” |
+| “Evidence-grounding = confidence-grounding… you wrote this, you drew this.” | **WRITE** (and WORK) artifacts are the primary evidence. Business story: “We don’t infer; we record what they actually wrote and made.” |
 
 **Business/white paper line:** “Skill-write is the **expression and voice** layer. We record what they write and say — in their words — so the Record is their documented voice, not a platform’s summary.”
 
@@ -69,11 +69,11 @@ The Record’s three capability containers — **READ**, **WRITE**, **BUILD** (s
 
 | Alpha / Moonshots #233 | Companion-Self / Record tie |
 |------------------------|-----------------------------|
-| Afternoon = **life skills workshops**: entrepreneurship, rock band, food trucks, Broadway, sailing, “four years working on a passion project.” | **BUILD** = what they make, plan, and execute. Evidence: creation log, projects, artifacts; SKILLS.BUILD = planning, execution, originality, collaboration. |
-| “Creators and contributors, not consumers.” | **BUILD** (and WRITE) = creation; READ = consumption. Record shows the balance: what they take in (READ) vs what they make (WRITE, BUILD). |
-| “Fifth graders running food trucks and Airbnbs”; “senior putting on a Broadway musical… source singers off TikTok, music rights, fill a venue.” | **BUILD** evidence is real projects with real outcomes — not simulated. Export can surface “what they’ve built” for admissions, portfolios, tutors. |
-| “Guides connect kids with experts… learn how to become an expert in that field.” | **BUILD** growth often depends on mentorship and resources. Record can reference “who helped, what was built”; integration story = “Record + expert network.” |
-| “Grit,” “Rubik’s cube as proxy for grit.” | **BUILD** dimensions (persistence, execution, flexibility) map to life skills. Business: “We don’t teach grit; we **record** it through BUILD evidence.” |
+| Afternoon = **life skills workshops**: entrepreneurship, rock band, food trucks, Broadway, sailing, “four years working on a passion project.” | **WORK** = what they make, plan, and execute. Evidence: creation log, projects, artifacts; self-skill-work = planning, execution, originality, collaboration. |
+| “Creators and contributors, not consumers.” | **WORK** (and WRITE) = creation; READ = consumption. Record shows the balance: what they take in (READ) vs what they make (WRITE, WORK). |
+| “Fifth graders running food trucks and Airbnbs”; “senior putting on a Broadway musical… source singers off TikTok, music rights, fill a venue.” | **WORK** evidence is real projects with real outcomes — not simulated. Export can surface “what they’ve built” for admissions, portfolios, tutors. |
+| “Guides connect kids with experts… learn how to become an expert in that field.” | **WORK** growth often depends on mentorship and resources. Record can reference “who helped, what was built”; integration story = “Record + expert network.” |
+| “Grit,” “Rubik’s cube as proxy for grit.” | **WORK** dimensions (persistence, execution, flexibility) map to life skills. Business: “We don’t teach grit; we **record** it through WORK evidence.” |
 
 **Business/white paper line:** “Skill-build is the **making and doing** layer. We record what they build, plan, and ship — passion projects, ventures, creations — so the Record is a portfolio of demonstrated capability, not self-report.”
 
@@ -85,7 +85,7 @@ The Record’s three capability containers — **READ**, **WRITE**, **BUILD** (s
 |-------|-----------------|-------------------------------------|
 | **READ** | 2-hour core block, knowledge/interest graph, “fill with ideas,” dual coding | Intake and comprehension at their level; reading/listening edge; interest + knowledge for tutor personalization. |
 | **WRITE** | Alpha Write, journal, explanations, “their voice,” no chat to cheat | Their words and voice in one place; evidence of understanding; portable writing portfolio. |
-| **BUILD** | Afternoon workshops, passion projects, entrepreneurship, “creators not consumers” | What they’ve made and done; life skills as evidence; portfolio for admissions/employers. |
+| **WORK** | Afternoon workshops, passion projects, entrepreneurship, “creators not consumers” | What they’ve made and done; life skills as evidence; portfolio for admissions/employers. |
 
 ---
 

@@ -34,10 +34,10 @@ We use **cognitive fork** only. The fork and the real person grow independently;
 
 ## 3. Record vs. Voice
 
-- **Record** — The documented self (e.g. SELF.md, SKILLS.md, EVIDENCE.md). It is its own entity: it started from a snapshot but has its own trajectory. It does not "mimic" or "replicate" the person.
+- **Record** — The documented self (e.g. SELF.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, EVIDENCE.md). It is its own entity: it started from a snapshot but has its own trajectory. It does not "mimic" or "replicate" the person.
 - **Voice** — Renders the Record in conversation. When the companion queries, the system generates responses constrained by the Record. That rendering is the Voice.
 
-The Record records; the Voice speaks the Record. The Record does not command; the Voice does not speak unbidden.
+The Record records; the Voice speaks the Record. The Record does not command; the Voice does not speak unbidden. The Voice's **linguistic style and level** are primarily shaped by self-skill-write (WRITE): vocabulary, tone, and expression in the Record drive how the Voice sounds when queried.
 
 ---
 
@@ -49,9 +49,9 @@ Companion-Self education is **structured** around three skill containers:
 |-----------|------------|---------|
 | **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. |
 | **self-skill-write** | WRITE | Expression and voice: what the companion produces (journal, stories, explanations). Evidence of WRITE is evidence of understanding and voice. |
-| **self-skill-build** | BUILD | Making and doing: what the companion plans, builds, and ships (projects, creations). Evidence links to SKILLS.BUILD and life skills. |
+| **self-skill-work** | WORK | Making and doing: what the companion plans, builds, and ships (projects, creations). Evidence links to self-skill-work and life skills. |
 
-In schema, APIs, and export we use the tags **READ**, **WRITE**, **BUILD**; the canonical names for the **education structure** are **self-skill-read**, **self-skill-write**, **self-skill-build**. All screen-based learning and evidence capture are organized under these three.
+In schema, APIs, and export we use the tags **READ**, **WRITE**, **WORK**; the canonical names for the **education structure** are **self-skill-read**, **self-skill-write**, **self-skill-work**. All screen-based learning and evidence capture are organized under these three.
 
 **Self-skill-read → self-knowledge, self-curiosity, self-personality.** Activity in **self-skill-read** (READ) is **filtered and distilled** into three dimensions of the Record (SELF):
 
@@ -61,7 +61,7 @@ In schema, APIs, and export we use the tags **READ**, **WRITE**, **BUILD**; the 
 | **self-curiosity** | IX-B | What they are curious about, interests, questions. |
 | **self-personality** | IX-C | Voice, preferences, values, narrative—how they see themselves and express. |
 
-The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; the companion gates what actually enters. So READ feeds **who they are** (SELF) as well as **what they can do** (SKILLS.READ, evidence).
+The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; the companion gates what actually enters. So READ feeds **who they are** (SELF) as well as **what they can do** (self-skill-read, evidence).
 
 ---
 
@@ -71,7 +71,7 @@ The Record contains only what the companion has explicitly provided and approved
 
 - No LLM inference — facts from model training must not enter the Record.
 - Evidence linkage — every claim traces to an artifact or approved source.
-- When queried outside documented knowledge, the system may say "I don't know" and offer to look up.
+- When queried outside documented knowledge, the system may say "I don't know" and offer to look up. Lookup results do **not** auto-merge into the Record; the companion gates what, if anything, is added. An optional **LIBRARY** (curated books, reference works, videos) is a bounded lookup extension: query-first for answers; it does not auto-merge into the Record.
 
 This boundary is both an architectural invariant and a regulatory advantage (e.g. COPPA, GDPR).
 
@@ -93,7 +93,7 @@ This boundary is both an architectural invariant and a regulatory advantage (e.g
 
 | Component | In an instance |
 |-----------|----------------|
-| **Record** | `users/<id>/SELF.md`, SKILLS.md, EVIDENCE.md |
+| **Record** | `users/<id>/SELF.md`, `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`, EVIDENCE.md |
 | **Voice** | Bot or other interface (lives in the instance repo; not in this template) |
 | **Staging** | PENDING-REVIEW.md — candidates before merge |
 | **Ephemeral context** | MEMORY.md (optional; not part of the Record) |

@@ -1,0 +1,6 @@
+{
+  "description": "Record the companion-self commit and date when this instance last merged template upgrades. Copy to instance repo root or docs/ as template-source.json and commit after each merge.",
+  "companionSelfCommit": "abc123def456...",
+  "mergedAt": "2025-02-25T12:00:00Z",
+  "optionalNote": "e.g. 'Synced canonical paths; no new paths.'"
+}

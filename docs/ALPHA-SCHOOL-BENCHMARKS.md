@@ -42,7 +42,7 @@ Alpha School’s stated outcomes and measurement practices, as described in *Moo
 - **Equivalent or comparable metrics** (template/instance may choose):
   - **Mastery / level:** Evidence-linked progress; “100” or “mastery” per topic/level in the Record; export for curriculum/tutor that can target same standards.
   - **Engagement / motivation:** Retention (e.g. week-4, month-3); “love of learning” or “would rather do learning block than X” style survey; evidence count and “time back” as proxies.
-  - **Placement / edge:** Onboarding or seed-phase “where they are”; edge derived from Record (IX-A, IX-B, SKILLS) for personalized next steps.
+  - **Placement / edge:** Onboarding or seed-phase “where they are”; edge derived from Record (IX-A, IX-B, self-skill-*) for personalized next steps.
 - **Roadmap:** See [ROADMAP-3Y-90-10](ROADMAP-3Y-90-10.md) “Outcome metrics” and “Proof architecture”—no need to match Alpha’s SAT; do match “mastery-based, evidence-rich, portable identity.”
 
 ---

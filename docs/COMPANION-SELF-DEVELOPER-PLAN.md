@@ -19,13 +19,13 @@ When working on the template, use a workspace where **companion-self is primary 
 | 1 | **README.md** | Entry point: what this repo is, how instances are created, where to find the first instance. |
 | 2 | **Concept doc(s)** | What is a companion self? (Mind + Record + Voice; cognitive fork; sovereign merge; knowledge boundary.) Generic — no real person, no age. |
 | 3 | **Protocol doc** | Identity Fork Protocol in short form: stage → approve → merge; agent may stage, may not merge; evidence linkage. |
-| 4 | **Seed-phase doc** | Definition of seed phases (surveys, artifacts, what populates initial SELF/SKILLS/EVIDENCE). Rule: "New instance = new user + seed phase" only. |
+| 4 | **Seed-phase doc** | Definition of seed phases (surveys, artifacts, what populates initial SELF, self-skill-*, EVIDENCE). Rule: "New instance = new user + seed phase" only. |
 
 ### Optional (minimum viable)
 
 | # | Deliverable | Purpose |
 |---|-------------|---------|
-| 5 | **users/_template/** | Minimal scaffold: SELF.md, SKILLS.md, EVIDENCE.md, PENDING-REVIEW.md, MEMORY.md (structure only, no real data). Used when creating a new user dir in an instance. |
+| 5 | **users/_template/** | Minimal scaffold: SELF.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, EVIDENCE.md, PENDING-REVIEW.md, MEMORY.md (structure only, no real data). Used when creating a new user dir in an instance. |
 | 6 | **HOW-INSTANCES-CONSUME-UPGRADES.md** | How an instance (e.g. grace-mar) pulls upgrades from this template; link to grace-mar's [MERGING-FROM-COMPANION-SELF](https://github.com/rbtkhn/grace-mar/blob/main/docs/MERGING-FROM-COMPANION-SELF.md). Optionally: list of template paths. |
 
 ### Optional later (not minimal)
@@ -45,8 +45,8 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
 |--------------------|---------------------|---------------|
 | Concept | `docs/CONCEPTUAL-FRAMEWORK.md`, `docs/ARCHITECTURE.md` | Remove "Abby", age ("6-year-old"), grace-mar-specific examples. Keep: Record, Voice, fork, knowledge boundary, dyad. |
 | Protocol | `docs/IDENTITY-FORK-PROTOCOL.md` | Summarize; keep stage → approve → merge, evidence linkage, agent may not merge. |
-| Seed phase | `docs/ARCHITECTURE.md` (Fork Lifecycle, Seeding), `docs/OPERATOR-BRIEF.md` | Describe phases, surveys, artifacts, what creates initial SELF/SKILLS/EVIDENCE. No operator-specific workflow. |
-| users/_template/* | `docs/SELF-TEMPLATE.md`, `docs/SKILLS-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, `docs/MEMORY-TEMPLATE.md` | Render as minimal empty or scaffold files (structure only). |
+| Seed phase | `docs/ARCHITECTURE.md` (Fork Lifecycle, Seeding), `docs/OPERATOR-BRIEF.md` | Describe phases, surveys, artifacts, what creates initial SELF, self-skill-*, EVIDENCE. No operator-specific workflow. |
+| users/_template/* | `docs/SELF-TEMPLATE.md`, `self-skill-* templates`, `docs/EVIDENCE-TEMPLATE.md`, `docs/MEMORY-TEMPLATE.md` | Render as minimal empty or scaffold files (structure only). |
 | HOW-INSTANCES-CONSUME-UPGRADES | grace-mar's `docs/MERGING-FROM-COMPANION-SELF.md` | Invert perspective: "Instances pull from here. Safe paths: … Never overwrite: users/<id>/." Link to grace-mar merge checklist. |
 
 ---
@@ -80,7 +80,7 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
 ### Phase D: Seed phase
 
 - [x] **D1. Seed-phase doc** (e.g. `docs/SEED-PHASE.md` or section in ARCHITECTURE or README)
-  - What seed phases are; what surveys/artifacts; what creates initial SELF, SKILLS, EVIDENCE.
+  - What seed phases are; what surveys/artifacts; what creates initial SELF, self-skill-*, EVIDENCE.
   - Rule: new instance = new user + seed phase only (no copy from another instance).
   - Derive from grace-mar's ARCHITECTURE (Fork Lifecycle, Seeding) and OPERATOR-BRIEF.
   - **Done when:** A new operator knows how an instance is created and what to run.
@@ -88,7 +88,7 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
 ### Phase E: Optional scaffold and upgrade guide
 
 - [x] **E1. users/_template/** (optional)
-  - Create `users/_template/` with minimal SELF.md, SKILLS.md, EVIDENCE.md, PENDING-REVIEW.md, MEMORY.md.
+  - Create `users/_template/` with minimal SELF.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, EVIDENCE.md, PENDING-REVIEW.md, MEMORY.md.
   - Content: structure/headings only (or placeholders). No real data. Use grace-mar's docs/*-TEMPLATE.md as reference.
   - **Done when:** Copying this directory gives a valid empty user scaffold.
 
@@ -107,6 +107,9 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
   - Ensure COMPANION-SELF-BOOTSTRAP.md remains at repo root and §9 (source material) still points to correct grace-mar paths.
   - **Done when:** Next agent or developer can open companion-self, read bootstrap + this plan, and continue.
 
+- [ ] **F3. When adding or renaming canonical template paths**
+  - Update both the table in HOW-INSTANCES-CONSUME-UPGRADES and **`template-manifest.json`** (paths, descriptions, optional flag, and `canonicalAsOf` date). Keeps the audit manifest in sync with the path list.
+
 ---
 
 ## Part 4: Suggested file layout (after implementation)
@@ -116,17 +119,21 @@ companion-self/
 ├── COMPANION-SELF-BOOTSTRAP.md   # Already present
 ├── README.md                     # A1
 ├── HOW-INSTANCES-CONSUME-UPGRADES.md   # E2 optional (at root)
+├── template-manifest.json        # Canonical paths for audit; update when adding/renaming paths (F3)
 ├── companion-self-and-grace-mar.code-workspace   # §7: template + grace-mar (read-only)
 ├── docs/
 │   ├── COMPANION-SELF-DEVELOPER-PLAN.md  # This file
 │   ├── CONCEPT.md                # B1 (or CONCEPTUAL-FRAMEWORK.md)
 │   ├── IDENTITY-FORK-PROTOCOL.md  # C1 (or section in CONCEPT)
 │   ├── SEED-PHASE.md             # D1 (or section elsewhere)
+│   ├── template-source.example.json  # Example for instances: record merge commit + date (auditability)
 │   └── RECURSIVE-SELF-LEARNING-OBJECTIVES.md  # Learning-science-inspired objectives for Record improvement
 └── users/
     └── _template/               # E1 optional
         ├── SELF.md
-        ├── SKILLS.md
+        ├── self-skill-read.md
+        ├── self-skill-write.md
+        ├── self-skill-work.md
         ├── EVIDENCE.md
         ├── PENDING-REVIEW.md
         └── MEMORY.md

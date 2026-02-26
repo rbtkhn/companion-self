@@ -38,10 +38,10 @@
 2. **docs/** (or single doc)
    - **Concept:** What is a companion self? (Mind + Record + Voice; cognitive fork; sovereign merge; knowledge boundary.) One to three pages. Can be extracted/simplified from grace-mar's `docs/CONCEPTUAL-FRAMEWORK.md` and `docs/ARCHITECTURE.md`, generalized (no "Abby", no "6-year-old").
    - **Protocol:** Identity Fork Protocol in short form (stage → approve → merge; agent may stage, may not merge; evidence linkage). Can be summarized from grace-mar's `docs/IDENTITY-FORK-PROTOCOL.md`.
-   - **Seed phase:** Definition of seed phases (what surveys, what artifacts, what creates initial SELF/SKILLS/EVIDENCE). "New instance = new user + seed phase" as the only creation path. Can be derived from grace-mar's ARCHITECTURE (Fork Lifecycle, Seeding) and OPERATOR-BRIEF.
+   - **Seed phase:** Definition of seed phases (what surveys, what artifacts, what creates initial SELF, self-skill-*, EVIDENCE). "New instance = new user + seed phase" as the only creation path. Can be derived from grace-mar's ARCHITECTURE (Fork Lifecycle, Seeding) and OPERATOR-BRIEF.
 
 3. **Optional: users/_template/**
-   - Empty or minimal structure: SELF.md (template only), SKILLS.md (template), EVIDENCE.md (template), PENDING-REVIEW.md (template), MEMORY.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
+   - Empty or minimal structure: SELF.md (template only), self-skill-read.md, self-skill-write.md, self-skill-work.md (templates), EVIDENCE.md (template), PENDING-REVIEW.md (template), MEMORY.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
 
 4. **Optional: HOW-INSTANCES-CONSUME-UPGRADES.md** (or section in README)
    - Describe how an instance (e.g. grace-mar) merges upgrades from this template: compare and update docs (CONCEPTUAL-FRAMEWORK, IDENTITY-FORK-PROTOCOL, SELF-TEMPLATE, seed description, AGENTS governance); never overwrite the instance's `users/<id>/` Record. Optionally: list of template paths safe to copy into instances; or a small sync script idea.
@@ -66,10 +66,10 @@
 
 When companion-self (template) is updated, grace-mar (instance) can pull those changes without overwriting its Record:
 
-- **Safe to sync from template:** Concept docs, protocol docs, SELF/SKILLS/EVIDENCE *templates* (schema/structure), seed-phase definition, template-level governance (pipeline rule, knowledge boundary). Grace-mar keeps its own copies and updates them to match the template.
+- **Safe to sync from template:** Concept docs, protocol docs, SELF / self-skill-read / self-skill-write / self-skill-work / EVIDENCE *templates* (schema/structure), seed-phase definition, template-level governance (pipeline rule, knowledge boundary). Grace-mar keeps its own copies and updates them to match the template.
 - **Never overwrite with template:** `users/grace-mar/` (the Record), instance-specific bot/config, PRP output paths.
 - **Process:** Compare template docs/templates with grace-mar's; merge changes into grace-mar's files; run validation (e.g. governance checker, validate-integrity). No automated overwrite of `users/grace-mar/`.
-- **Optional:** Maintain a list of "template paths" in companion-self (e.g. `docs/CONCEPTUAL-FRAMEWORK.md`, `docs/SELF-TEMPLATE.md`) and document in this repo that instances may copy those paths when upgrading.
+- **Auditability:** Template keeps a machine-readable `template-manifest.json` (canonical paths, `canonicalAsOf`). Instance should record the companion-self commit and merge date when upgrading (e.g. in `docs/MERGING-FROM-COMPANION-SELF.md` or `template-source.json`) so the link is auditable. See HOW-INSTANCES-CONSUME-UPGRADES § Auditability.
 
 ---
 
@@ -101,7 +101,7 @@ When the user opens the **companion-self** repo in a new Cursor workspace and in
 2. **Respect workspace boundary (§7):** If grace-mar is in this workspace, treat it as read-only. Do not modify grace-mar; only read it for reference.
 3. **Use the developer plan:** Open [docs/COMPANION-SELF-DEVELOPER-PLAN.md](docs/COMPANION-SELF-DEVELOPER-PLAN.md) and follow the phases (A–F). Use the grace-mar source links in the plan for content and merge process.
 4. **Create the minimum:** README (template vs instance; new user + seed phase; link to grace-mar). One or more concept/protocol/seed docs under `docs/` (or a single CONCEPT.md). Generalize from grace-mar's concepts; remove instance-specific references.
-5. **Optional:** Add `users/_template/` with minimal SELF/SKILLS/EVIDENCE/PENDING-REVIEW/MEMORY templates (structure only). Add a short HOW-INSTANCES-CONSUME-UPGRADES or merge section.
+5. **Optional:** Add `users/_template/` with minimal SELF, self-skill-read, self-skill-write, self-skill-work, EVIDENCE, PENDING-REVIEW, MEMORY templates (structure only). Add a short HOW-INSTANCES-CONSUME-UPGRADES or merge section.
 6. **Do not** copy the full grace-mar codebase or Record. Only what defines the template: concept, protocol, seed, and optional scaffold.
 7. **Propose before implementing:** Per user preference, show a short proposal (scope, files to create) before writing; implement after approval.
 
@@ -115,7 +115,7 @@ If you need to extract or generalize content for companion-self, the canonical s
 - Protocol: `docs/IDENTITY-FORK-PROTOCOL.md`
 - Governance: `AGENTS.md` (template-level rules: pipeline, knowledge boundary, operating modes)
 - Seed / lifecycle: `docs/ARCHITECTURE.md` (Fork Lifecycle, Seeding), `docs/OPERATOR-BRIEF.md`
-- Schema templates: `docs/SELF-TEMPLATE.md`, `docs/SKILLS-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, `docs/MEMORY-TEMPLATE.md`
+- Schema templates: SELF.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, EVIDENCE.md, MEMORY.md in users/_template/
 - Merge process (instance side): described in §5 above; can be documented in grace-mar as `docs/MERGING-FROM-COMPANION-SELF.md` when needed.
 
 ---
