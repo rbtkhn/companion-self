@@ -34,7 +34,7 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 ## 4. Knowledge and interest as structure
 
-**Objective:** Use the Record’s **knowledge** (e.g. IX-A) and **curiosity/interests** (e.g. IX-B) to personalize what gets proposed, looked up, or reflected back. The Record is the identity layer: what they know, what they care about, how they speak. No LLM inference into the Record; use only what is documented.
+**Objective:** Use the Record’s **knowledge** (e.g. IX-A) and **curiosity/interests** (e.g. IX-B) to personalize what gets proposed, looked up, or reflected back. The Record is the identity layer: what they know, what they care about, how they speak. For **WORK**, self-personality (IX-C) further shapes what is proposed, how work is structured, and how the edge is phrased—see [CONCEPT](concept.md) §4 "How WORK utilizes self-personality (IX-C)." No LLM inference into the Record; use only what is documented.
 
 **Inspiration:** “Knowledge graph… what do they know and not know? Interest graph… Taylor Swift, Genghis Khan.” “Generate a personal lesson… at their zone.” Companion-Self: IX-A, IX-B, SELF drive personalization; the knowledge boundary keeps the Record from being filled by model training data.
 

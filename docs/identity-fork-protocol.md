@@ -26,6 +26,16 @@ Only the companion (or an explicitly delegated human) may merge. Agents and syst
 
 ---
 
+## Process the gate (self-evidence pipeline)
+
+**Command (for system clarity):** *Process the gate* or *Process the self-evidence pipeline*.
+
+**Meaning:** The companion (or delegated human) performs the gate step: open the review queue, then for **each** pending candidate choose **Approve** or **Reject**. Each Approve runs merge for that candidate (write to self-evidence and dimension/skill files); each Reject removes the candidate from the gate. No batch or automatic merge—only the human can merge, one candidate at a time per action.
+
+Use this phrase in operator instructions, agent rules, and docs when referring to "run the gate" or "do the review step."
+
+---
+
 ## Evidence Linking
 
 Every claim in the Record must reference evidence (e.g. activity id, provenance). No claim without traceability to an artifact or approved source.
@@ -40,7 +50,7 @@ Every claim in the Record must reference evidence (e.g. activity id, provenance)
 | **self-knowledge** (IX-A) | What they've learned; topics, facts, understanding. **Source of truth** for IX-A. | `self-knowledge.md` |
 | **self-curiosity** (IX-B) | What they're curious about; interests, questions. **Source of truth** for IX-B. | `self-curiosity.md` |
 | **self-personality** (IX-C) | Voice, preferences, values (observed growth). **Source of truth** for IX-C. | `self-personality.md` |
-| **SKILLS** | READ, WRITE, WORK (self-skill-read, self-skill-write, self-skill-work) | What they CAN DO; education is structured around these three. Template uses **modular files**: `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`. Schema tags in APIs/export remain READ, WRITE, WORK. |
+| **SKILLS** | READ, WRITE, WORK (self-skill-read, self-skill-write, self-skill-work) | What they CAN DO; education is structured around these three. **WORK utilizes self-personality (IX-C)** for what to build, how they work, voice in outputs, resilience/difficulty, ritual ("we did X"), and edge phrasing. Template: `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`. Schema tags in APIs/export: READ, WRITE, WORK. |
 | **self-evidence** | Activity log, writing log, creation log | Raw artifacts; immutable once captured |
 | **self-library** (optional) | Curated lookup sources (books, reference works, videos) | Bounded lookup extension; query-first for answers; does not auto-merge into Record |
 

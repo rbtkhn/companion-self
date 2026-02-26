@@ -45,13 +45,15 @@ The Record records; the Voice speaks the Record. The Record does not command; th
 
 ## 4. Education structure
 
+**Identity and instrument.** The Record (including self-knowledge, self-curiosity, self-personality, and evidence) is the **identity** — the unique personal representation of the companion-self; the knowledge boundary protects it. The three skill containers (READ, WRITE, WORK) are **instruments** — modules the companion-self uses to learn, express, and do, in order to satisfy the user's and companion's needs and intentions. Instruments can use any tools (including heavy AI); only human-gated results from their use update the identity.
+
 Companion-Self education is **structured** around three skill containers:
 
 | Structure | Schema tag | Meaning |
 |-----------|------------|---------|
 | **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. |
 | **self-skill-write** | WRITE | Expression and voice: what the companion produces (journal, stories, explanations). Evidence of WRITE is evidence of understanding and voice. |
-| **self-skill-work** | WORK | Making and doing: what the companion plans, builds, and ships (projects, creations). Evidence links to self-skill-work and life skills. |
+| **self-skill-work** | WORK | Making and doing: what the companion plans, builds, and ships (projects, creations). **Objectives and intentions** for the user/companion are encoded here; evidence links to self-skill-work and life skills. |
 
 In schema, APIs, and export we use the tags **READ**, **WRITE**, **WORK**; the canonical names for the **education structure** are **self-skill-read**, **self-skill-write**, **self-skill-work**. All screen-based learning and evidence capture are organized under these three.
 
@@ -71,6 +73,17 @@ The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; 
 - **self-skill-write (WRITE)** — Outputs are **shaped by** the three dimensions. What they know (self-knowledge), what they’re curious about (self-curiosity), and how they express (self-personality) inform tone, topics, and voice when they write. WRITE evidence lives in self-evidence and self-skill-write; pipeline may also suggest dimension merges from WRITE (e.g. a reflection that reveals curiosity or personality).
 - **self-skill-work (WORK)** — **Shaped by** the dimensions (what to build next, how to approach it: interests, knowledge, personality) and **feeds into** them when merged. Projects and creations are evidence in self-evidence and self-skill-work; the pipeline can suggest dimension merges from WORK (e.g. knowledge gained by doing, curiosity revealed by project choice, personality in how they plan and ship). So WORK is bidirectional: dimensions shape proposed work; approved WORK activity can add to self-knowledge, self-curiosity, or self-personality.
 
+**How WORK utilizes self-personality (IX-C).** Self-personality (voice, preferences, values, narrative) is the **identity layer** that WORK reads to personalize making and doing. Instances and integrations should use IX-C when implementing WORK flows:
+
+1. **What to build and why** — Values and narrative in self-personality drive which work is proposed (e.g. "help others," "make things beautiful," "I fix things"). Curiosity (IX-B) gives topics; personality gives *why this kind of work* matters to the companion.
+2. **How they work** — Preferences (solo vs. collaborative, fast iteration vs. careful finish, playfulness vs. seriousness) shape how work is structured: chunk size, pacing, amount of structure, and whether suggestions are "ship something small" or "one deep thing."
+3. **Voice in work outputs** — When WORK produces text (descriptions, posts, docs), tone and style should follow self-personality so outputs sound like the companion.
+4. **Resilience and difficulty** — Narrative and values ("I keep trying," "I care about quality") inform how hard or ambitious suggested work is and how setbacks or "next try" are framed.
+5. **Ritual and "we did X"** — How the companion prefers to reflect (brief vs. reflective, private vs. shared) in self-personality can shape how WORK prompts for "we did X" and how progress is summarized back.
+6. **Edge phrasing** — "What's next" for WORK should be phrased in the companion's voice and values so the suggestion feels like *their* next step, not a generic prompt.
+
+This pattern is architectural: WORK is an instrument that uses the identity (including IX-C) to satisfy the user's and companion's intentions. See also the self-skill-work template (§ How WORK uses self-personality).
+
 **APIs and integrations skill-work can connect to:**
 
 - **Instance APIs (inbound):** POST activity with `skill_tag: WORK` to stage “we did X” (project, build, creation); merge writes to self-evidence, self-skill-work, and optionally the dimension files. GET /api/record and GET /api/edge expose WORK edge for “what to build next.” GET /api/export (curriculum_profile) includes WORK edge and evidence so external systems can suggest or adapt to projects.
@@ -86,11 +99,12 @@ So skill-work is capable of connecting to: (1) the instance’s own staging, rec
 
 ## 5. Knowledge Boundary
 
-The Record contains only what the companion has explicitly provided and approved.
+The Record is the **identity** representation; the boundary ensures it stays the companion's. The Record contains only what the companion has explicitly provided and approved.
 
 - No LLM inference — facts from model training must not enter the Record.
 - Evidence linkage — every claim traces to an artifact or approved source.
 - When queried outside documented knowledge, the system may say "I don't know" and offer to look up. Lookup results do **not** auto-merge into the Record; the companion gates what, if anything, is added. An optional **self-library** (curated books, reference works, videos) is a bounded lookup extension: query-first for answers; it does not auto-merge into the Record.
+- **Assessments (e.g. multiple-choice quiz):** The pipeline may stage (1) the quiz as an **evidence activity** (id, date, summary, e.g. "Quiz on topic X, 4/5") and (2) an **optional suggested merge to self-knowledge** (e.g. "Topic X: demonstrated via quiz Q (4/5, &lt;date&gt;)"). Both are candidates at the gate. The companion approves or rejects each. Only on approve is the activity written to self-evidence and, if a knowledge candidate was approved, one line written to self-knowledge with evidence link to the quiz activity. No inference-only update: the system suggests; the companion gates. **Triggers:** The template does not auto-create the second candidate; instances may add triggers (e.g. on activity type = quiz, stage evidence + knowledge candidate). See [Ingestion and sources](ingestion-and-sources.md) § Triggers for suggested merges.
 
 This boundary is both an architectural invariant and a regulatory advantage (e.g. COPPA, GDPR).
 
@@ -120,7 +134,7 @@ Instances should support: (1) **Reversibility** — rollback or undo of Record c
 |-----------|----------------|
 | **Record** | `users/<id>/self.md`, `self-knowledge.md`, `self-curiosity.md`, `self-personality.md`, `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`, self-evidence.md |
 | **Voice** | Bot or other interface (lives in the instance repo; not in this template) |
-| **Staging** | recursive-gate.md — candidates at the gate, before merge |
+| **Staging** | recursive-gate — candidates at the gate, before merge. To process the gate: [Identity Fork Protocol](identity-fork-protocol.md) § Process the gate. |
 | **Ephemeral context** | self-memory.md (optional; not part of the Record) |
 
 This template defines concept, protocol, and seed phase. Bot code and Record data live in instance repos only.

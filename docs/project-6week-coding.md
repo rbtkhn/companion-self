@@ -27,6 +27,9 @@ companion-self/
 │   ├── _template/           # existing
 │   └── demo/                # demo user for student interface
 │       ├── self.md
+│       ├── self-knowledge.md
+│       ├── self-curiosity.md
+│       ├── self-personality.md
 │       ├── self-skill-read.md
 │       ├── self-skill-write.md
 │       ├── self-skill-work.md
@@ -62,34 +65,37 @@ companion-self/
 
 **Goal:** Record and pipeline data structures in code; demo user on disk; load/save.
 
+**Prerequisite:** None.
+
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 1.1 | Define **Record schema** in code: SELF (self.md baseline), IX-A/IX-B/IX-C from self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read / self-skill-write / self-skill-work (READ, WRITE, WORK with optional level/edge), self-evidence (list of activities with id, type, summary, date, skill tag). | `app/schema/record.js` (or .py) with types and validation. |
-| 1.2 | Define **recursive-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Schema in code; `users/demo/recursive-gate.json` format. |
-| 1.3 | Create **users/demo/** with self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md, self-memory.md from `users/_template/`; add recursive-gate.json (empty array). Populate demo with minimal seed (e.g. one line each in self-knowledge, self-curiosity, self-personality). | Demo user runnable; parsable by app. |
-| 1.4 | Implement **load** and **save** for demo user: read markdown into structured objects (or simplified key sections); write back on merge. Use simple markdown parsing (e.g. section headers + lists) or keep minimal and append-only where possible. | `app/schema/record.js` (or pipeline/io.js) load/save. |
-| 1.5 | Document schema in `docs/schema-record-api.md` (minimal: field list, recursive-gate shape). | Doc for future extensions. |
+| 1.1 | Define **Record schema** in code: SELF (self.md), IX-A/IX-B/IX-C (self-knowledge, self-curiosity, self-personality), READ/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
+| 1.2 | Define **recursive-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Same schema module; `users/demo/recursive-gate.json` format. |
+| 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursive-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
+| 1.4 | Implement **load** and **save** for demo: read markdown into structured objects; write back on merge. Append-only where possible; simple section/list parsing. | Load/save in schema or `pipeline/io.js`. |
+| 1.5 | Document in `docs/schema-record-api.md`: field list, recursive-gate shape. (Edge response shape added in Week 5.) | Doc for API contract and extensions. |
 
 ### Success
 
-- Running `node app/schema/record.js` (or equivalent) loads `users/demo/` and returns a Record object. Save updates files.
+- Running load (e.g. `node app/schema/record.js`) loads `users/demo/` and returns a Record object; save updates files.
 
 ---
 
 ## Week 2: Pipeline — stage "we did X"
 
-**Goal:** Student (or operator) submits "we did X"; backend stages a candidate into recursive-gate. No LLM; rule-based or manual tagging.
+**Goal:** Student submits "we did X"; backend stages a candidate into recursive-gate. No LLM; rule-based or manual tagging.
+
+**Prerequisite:** Week 1 (schema, demo user, load/save).
 
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ | WRITE | WORK). Create candidate: id (uuid or timestamp), raw_text, skill_tag, mind_category inferred from keyword or default to "curiosity", suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursive-gate.json. | POST endpoint; recursive-gate grows. |
-| 2.2 | **API:** GET `/api/recursive-gate` returns list of pending candidates. | Used by review UI. |
-| 2.3 | Optional: **CLI** `node scripts/stage-activity.js "We read a book about volcanoes"` for testing. | Script. |
-| 2.4 | Ensure **idempotent** and **append-only** for stage; no overwrite of existing candidates. | Safe staging. |
+| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ, WRITE, or WORK). Create candidate: id, raw_text, skill_tag, mind_category (keyword or "curiosity"), suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursive-gate.json. Idempotent, append-only. | POST endpoint. |
+| 2.2 | **API:** GET `/api/recursive-gate` returns pending candidates. | For review UI. |
+| 2.3 | *Optional:* CLI to stage one activity for testing (e.g. `scripts/stage-activity.js`). | Script. |
 
 ### Success
 
@@ -101,15 +107,16 @@ companion-self/
 
 **Goal:** Student-facing pages: home (Record summary), "we did X" form, link to review queue.
 
+**Prerequisite:** Week 1 (load/save), Week 2 (POST /api/activity, GET /api/recursive-gate).
+
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 3.1 | **Dashboard** (e.g. `/` or `/dashboard`): Load demo Record; show summary: Knowledge (IX-A from self-knowledge.md), Curiosity (IX-B from self-curiosity.md), Personality (IX-C from self-personality.md), Skills (READ/WRITE/WORK with simple edge or last activity). Show count of items at recursive-gate; link to review. | index.html + app.js; GET /api/record or /api/summary. |
-| 3.2 | **"We did X" page** (e.g. `/activity`): Single textarea + optional skill dropdown (READ/WRITE/WORK) + Submit. On submit, POST to /api/activity; show success; optional redirect to dashboard or review. | activity.html + form handler. |
-| 3.3 | **API:** GET `/api/record` or `/api/summary` returns Record summary (and optionally full Record) for demo user. | Backend. |
-| 3.4 | Simple **navigation**: Dashboard | We did X | Review queue | Export. No auth; single-user demo. | Nav in all pages. |
-| 3.5 | **Static assets** served from `app/public/`; server serves HTML and API. | Express static + routes. |
+| 3.1 | **API:** GET `/api/record` returns Record summary for demo user (IX-A/IX-B/IX-C, skills, optional full Record). Consumed by dashboard and later by edge/export. | Backend. |
+| 3.2 | **Dashboard** (e.g. `/` or `/dashboard`): Call GET /api/record; show Knowledge, Curiosity, Personality, Skills; pending count (from GET /api/recursive-gate or include in /api/record); link to review. | index.html + app.js. |
+| 3.3 | **"We did X" page** (e.g. `/activity`): Textarea + skill dropdown (READ/WRITE/WORK) + Submit → POST /api/activity; success state; optional redirect to dashboard or review. | activity.html + form handler. |
+| 3.4 | **Navigation:** Dashboard, We did X, Review, Export on all pages. Static from `app/public/`; server serves HTML + API. | Nav + Express static and routes. |
 
 ### Success
 
@@ -119,17 +126,18 @@ companion-self/
 
 ## Week 4: Review queue and merge
 
-**Goal:** Student (or operator) sees recursive-gate list; approves or rejects each; on approve, merge into Record and self-evidence.
+**Goal:** Student sees recursive-gate list; approves or rejects each; on approve, merge into Record and self-evidence.
+
+**Prerequisite:** Weeks 1–3 (Record load/save, staging APIs, UI with nav).
 
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 4.1 | **Review page** (e.g. `/review`): GET pending candidates; display each with raw_text, skill_tag, suggested section; [Approve] [Reject] buttons. | review.html + app.js. |
-| 4.2 | **API:** POST `/api/review` body `{ candidate_id, action: "approve" | "reject" }`. Reject: remove from recursive-gate (or set status rejected). Approve: call merge logic; then remove from queue. | Backend. |
-| 4.3 | **Merge logic:** For approved candidate, (1) append to self-evidence.md as new activity (id, date, summary, skill_tag); (2) append one line to the appropriate **dimension file** from suggested_ix_section: self-knowledge.md (IX-A), self-curiosity.md (IX-B), or self-personality.md (IX-C); (3) optionally append to the appropriate self-skill-* file (READ/WRITE/WORK) as one evidence link. Keep merge simple: append only; no dedup for 6 weeks. | `app/pipeline/merge.js`. |
-| 4.4 | **Idempotency:** One approve = one merge; candidate removed so cannot approve twice. | Safe merge. |
-| 4.5 | Optional: **Merge receipt** append to a log file (e.g. `users/demo/merge-receipts.jsonl`) for proof architecture. | Receipt. |
+| 4.1 | **Review page** (e.g. `/review`): GET pending candidates; show raw_text, skill_tag, suggested_ix_section; [Approve] [Reject] per candidate. | review.html + app.js. |
+| 4.2 | **API:** POST `/api/review` body `{ candidate_id, action: "approve" or "reject" }`. Reject: remove from gate. Approve: run merge, then remove from queue. One approve = one merge (idempotent). | Backend. |
+| 4.3 | **Merge logic:** For approved candidate: (1) append to self-evidence.md (id, date, summary, skill_tag); (2) append one line to dimension file from suggested_ix_section (self-knowledge, self-curiosity, or self-personality); (3) optionally append to matching self-skill-*. Append-only; no dedup. | `app/pipeline/merge.js`. |
+| 4.4 | *Optional:* Merge receipt log (e.g. `users/demo/merge-receipts.jsonl`) for proof architecture. | Receipt. |
 
 ### Success
 
@@ -141,40 +149,43 @@ companion-self/
 
 **Goal:** Compute and show "edge" (next suggested focus); export curriculum profile for tutor/curriculum.
 
+**API contract (edge / "what's next"):** GET `/api/edge` (or edge in GET `/api/record`) returns suggested next focus per READ, WRITE, WORK. Document response shape in `docs/schema-record-api.md` for UI and export consumers. **WORK and self-personality (IX-C):** When deriving WORK edge or phrasing "what's next," use self-personality (voice, preferences, values, narrative) so suggestions match how the companion works and sound like them. See [CONCEPT](concept.md) §4 "How WORK utilizes self-personality (IX-C)."
+
+**Prerequisite:** Weeks 1–4 (Record, merge; edge derives from current Record).
+
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 5.1 | **Edge derivation:** From self-skill-read, self-skill-write, self-skill-work + self-evidence, compute simple edge: e.g. last topic per READ/WRITE/WORK, or "next" suggestion (e.g. "Add another READ" / "Try a WORK project"). No LLM; rule-based. Expose as GET `/api/edge` or part of `/api/record`. | Backend + schema. |
-| 5.2 | **Dashboard:** Show edge or "What’s next" (e.g. "READ: keep reading at your level" / "WRITE: try a short story" / "WORK: one small project"). | UI. |
-| 5.3 | **Export:** Build `curriculum_profile` object from self-knowledge.md (IX-A topics), self-curiosity.md (IX-B), self-personality.md (IX-C snippets), READ/WRITE/WORK edge, evidence count, export date. | `app/export/curriculum-profile.js`. |
-| 5.4 | **API:** GET `/api/export` or `/api/curriculum-profile` returns JSON. Include optional `screen_time_target_minutes: 120` in export so curriculum/tutor can align to the 2-hour block. Optional: GET `/api/export/download` returns file download. | Backend. |
-| 5.5 | **Export page** (e.g. `/export`): Button "Download curriculum profile"; downloads JSON (or markdown summary) so student can hand to tutor or curriculum. | export.html. |
-| 5.6 | **2-hour target in UX:** On dashboard or activity page, show short line: "Designed for up to 2 hours of screen-based learning per day" (or link to two-hour-screentime-target). Optional: simple "Today's block" or session placeholder (e.g. "0 / 120 min") for future expansion. | UI copy; optional session metric. |
+| 5.1 | **Edge derivation:** From self-skill-* + self-evidence (and for WORK, self-personality / IX-C when available), compute simple edge (e.g. last topic or "next" per READ/WRITE/WORK). Phrase WORK edge in companion voice/values where possible. Rule-based; no LLM. Expose as GET `/api/edge` or in GET `/api/record`. | Backend; add edge shape to schema-record-api.md. |
+| 5.2 | **Dashboard:** Show "What's next" per skill (e.g. READ: keep reading; WRITE: try a short story; WORK: one small project). WORK line may use IX-C for phrasing. Include one line: "Designed for up to 2 hours of screen-based learning per day" (or link to two-hour-screentime-target). | UI. |
+| 5.3 | **Export:** Build `curriculum_profile` from IX-A/IX-B/IX-C, edge, evidence count, export date. GET `/api/export` returns JSON (optional `screen_time_target_minutes: 120`). Optional download response for file. | `app/export/curriculum-profile.js` + backend. |
+| 5.4 | **Export page** (e.g. `/export`): Button "Download curriculum profile" → JSON (or markdown summary) for tutor/curriculum. | export.html. |
 
 ### Success
 
-- Student sees "What’s next" on dashboard; can download a curriculum profile JSON (with optional `screen_time_target_minutes: 120`) that a tutor or Khan/IXL could consume. 2-hour target is visible as design/compare metric.
+- Student sees "What's next" on dashboard (and 2-hour line); can download curriculum profile JSON (optional `screen_time_target_minutes: 120`) for tutor/curriculum.
 
 ---
 
 ## Week 6: Polish, run instructions, handoff
 
-**Goal:** App runs from repo; clear instructions for student/operator; optional seed flow; doc for "student product."
+**Goal:** Clear run instructions; graceful errors and empty states; verify definition of done.
+
+**Prerequisite:** Weeks 1–5 complete.
 
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 6.1 | **Run instructions:** README or `readme-student-app.md`: clone repo, `cd app`, `npm install`, `npm run dev` (or `python app.py`). App runs at e.g. http://localhost:3000. No env vars required for demo. | Doc. |
-| 6.2 | **Optional seed flow:** First-run or `/seed`: short survey (e.g. 3–4 questions: favorite book, favorite thing to make, one thing you’re curious about). Write answers into demo self.md (baseline) and/or self-curiosity.md, self-personality.md as appropriate. | Script or /seed page. |
-| 6.3 | **Error handling:** Graceful message if `users/demo/` missing or malformed; empty state for empty recursive-gate. | UX. |
-| 6.4 | **Link from main README:** "Student interface: see [readme-student-app](readme-student-app.md) and run the app in `app/`." | README. |
-| 6.5 | **Definition of done:** Student can (1) open app, (2) see Record summary, (3) submit "we did X", (4) open review, (5) approve/reject and see Record update, (6) see edge / what’s next, (7) download export. All in companion-self repo. | Checklist. |
+| 6.1 | **Run instructions:** Add `readme-student-app.md` (clone, `cd app`, `npm install`, `npm run dev` or `python app.py`; app at e.g. localhost:3000; no env vars for demo). Link from main README: "Student interface: see readme-student-app.md." | Doc + README link. |
+| 6.2 | **Error handling:** Graceful message if `users/demo/` missing or malformed; empty state for empty recursive-gate. | UX. |
+| 6.3 | *Optional:* Seed flow (e.g. `/seed` or first-run): short survey → write into demo self.md, self-curiosity.md, self-personality.md. | Script or /seed page. |
+| 6.4 | **Definition of done:** Verify student can open app, see Record, submit "we did X", review and approve/reject, see Record update, see edge, download export. See checklist below. | Verification. |
 
 ### Success
 
-- New user clones companion-self, runs app, completes full loop in &lt; 10 minutes. Student receives this as the product interface.
+- New user clones repo, runs app, completes full loop in under 10 minutes.
 
 ---
 
@@ -205,6 +216,7 @@ companion-self/
 
 ## Out of scope for 6 weeks (later)
 
+- **Auto triggers for suggested merges** — Staging is one candidate per POST. Instances may add triggers (e.g. on activity type = quiz or assessment, auto-stage evidence + suggested self-knowledge candidate). Implementable pattern: [Ingestion and sources](ingestion-and-sources.md) § Triggers for suggested merges.
 - LLM analyst (auto-suggest IX-A/IX-B/IX-C from raw text).
 - Voice / chat interface.
 - Auth and multi-user (beyond single demo user).
