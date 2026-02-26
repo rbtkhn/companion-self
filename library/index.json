@@ -1,0 +1,1348 @@
+{
+  "source": "users/_template/self-library.md",
+  "by_pg": {
+    "22381": {
+      "path": "pg/22381.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0004"
+      ],
+      "volume": null,
+      "title": "Greek Myths (Bulfinch, PG 22381)"
+    },
+    "1727": {
+      "path": "pg/1727.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0005",
+        "LIB-0077"
+      ],
+      "volume": null,
+      "title": "The Odyssey (Homer, PG 1727)"
+    },
+    "2388": {
+      "path": "pg/2388.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0006",
+        "LIB-0078"
+      ],
+      "volume": null,
+      "title": "Stories from India (PG 2388)"
+    },
+    "1184": {
+      "path": "pg/1184.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0007"
+      ],
+      "volume": null,
+      "title": "Adventure classics (PG 521, 120, 829)"
+    },
+    "10": {
+      "path": "pg/10.txt",
+      "maturities": [
+        1
+      ],
+      "lib_ids": [
+        "LIB-0008",
+        "LIB-0082",
+        "LIB-0083",
+        "LIB-0084",
+        "LIB-0085",
+        "LIB-0086",
+        "LIB-0087",
+        "LIB-0088"
+      ],
+      "volume": null,
+      "title": "Bible stories (KJV, PG 10)"
+    },
+    "25240": {
+      "path": "pg/25240.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0009",
+        "LIB-0089"
+      ],
+      "volume": null,
+      "title": "Stories from China (PG 25240)"
+    },
+    "3327": {
+      "path": "pg/3327.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0010",
+        "LIB-0064",
+        "LIB-0065",
+        "LIB-0066",
+        "LIB-0067",
+        "LIB-0068",
+        "LIB-0069",
+        "LIB-0070",
+        "LIB-0071",
+        "LIB-0072",
+        "LIB-0073",
+        "LIB-0074",
+        "LIB-0075",
+        "LIB-0076"
+      ],
+      "volume": null,
+      "title": "Myths from around the world (Bulfinch, PG 3327)"
+    },
+    "38733": {
+      "path": "pg/38733.txt",
+      "maturities": [
+        1
+      ],
+      "lib_ids": [
+        "LIB-0011",
+        "LIB-0052",
+        "LIB-0053",
+        "LIB-0054",
+        "LIB-0055",
+        "LIB-0056",
+        "LIB-0057",
+        "LIB-0058",
+        "LIB-0059",
+        "LIB-0060",
+        "LIB-0061",
+        "LIB-0062",
+        "LIB-0063"
+      ],
+      "volume": null,
+      "title": "Ballet stories (PG 38733)"
+    },
+    "17396": {
+      "path": "pg/17396.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0012",
+        "LIB-0090"
+      ],
+      "volume": null,
+      "title": "The Secret Garden (PG 17396)"
+    },
+    "21": {
+      "path": "pg/21.txt",
+      "maturities": [
+        1
+      ],
+      "lib_ids": [
+        "LIB-0013",
+        "LIB-0091",
+        "LIB-0092",
+        "LIB-0093",
+        "LIB-0094",
+        "LIB-0095"
+      ],
+      "volume": null,
+      "title": "Aesop's Fables (PG 21)"
+    },
+    "11582": {
+      "path": "pg/11582.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0014"
+      ],
+      "volume": null,
+      "title": "Greek myths (PG 11582)"
+    },
+    "28497": {
+      "path": "pg/28497.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0015",
+        "LIB-0096",
+        "LIB-0097",
+        "LIB-0098",
+        "LIB-0099",
+        "LIB-0100"
+      ],
+      "volume": null,
+      "title": "Norse myths (Guerber, PG 28497)"
+    },
+    "27200": {
+      "path": "pg/27200.txt",
+      "maturities": [
+        1
+      ],
+      "lib_ids": [
+        "LIB-0016",
+        "LIB-0040",
+        "LIB-0041",
+        "LIB-0042",
+        "LIB-0043",
+        "LIB-0044",
+        "LIB-0045",
+        "LIB-0046",
+        "LIB-0047",
+        "LIB-0048",
+        "LIB-0049",
+        "LIB-0050",
+        "LIB-0051"
+      ],
+      "volume": null,
+      "title": "Andersen's Fairy Tales (PG 27200)"
+    },
+    "610": {
+      "path": "pg/610.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0017",
+        "LIB-0101"
+      ],
+      "volume": null,
+      "title": "King Arthur (Malory, PG 610)"
+    },
+    "100": {
+      "path": "pg/100.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0018",
+        "LIB-0022",
+        "LIB-0102",
+        "LIB-0103",
+        "LIB-0104",
+        "LIB-0105",
+        "LIB-0106",
+        "LIB-0107",
+        "LIB-0108",
+        "LIB-0109",
+        "LIB-0110",
+        "LIB-0111",
+        "LIB-0112",
+        "LIB-0113",
+        "LIB-0114"
+      ],
+      "volume": null,
+      "title": "Stories from Shakespeare (PG 100)"
+    },
+    "2591": {
+      "path": "pg/2591.txt",
+      "maturities": [
+        1
+      ],
+      "lib_ids": [
+        "LIB-0019",
+        "LIB-0025",
+        "LIB-0026",
+        "LIB-0027",
+        "LIB-0028",
+        "LIB-0029",
+        "LIB-0030",
+        "LIB-0031",
+        "LIB-0032",
+        "LIB-0033",
+        "LIB-0034",
+        "LIB-0035",
+        "LIB-0036",
+        "LIB-0037",
+        "LIB-0038",
+        "LIB-0039"
+      ],
+      "volume": null,
+      "title": "Grimm's Fairy Tales (PG 2591)"
+    },
+    "128": {
+      "path": "pg/128.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0021",
+        "LIB-0121",
+        "LIB-0122",
+        "LIB-0123",
+        "LIB-0124",
+        "LIB-0125"
+      ],
+      "volume": null,
+      "title": "Arabian Nights (Lang, PG 128)"
+    },
+    "521": {
+      "path": "pg/521.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0079"
+      ],
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Robinson Crusoe"
+    },
+    "120": {
+      "path": "pg/120.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0080"
+      ],
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Treasure Island"
+    },
+    "829": {
+      "path": "pg/829.txt",
+      "maturities": [
+        2
+      ],
+      "lib_ids": [
+        "LIB-0081"
+      ],
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Gulliver's Travels"
+    },
+    "730": {
+      "path": "pg/730.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0115"
+      ],
+      "volume": "Dickens (PG author 37)",
+      "title": "Oliver Twist"
+    },
+    "766": {
+      "path": "pg/766.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0116"
+      ],
+      "volume": "Dickens (PG author 37)",
+      "title": "David Copperfield"
+    },
+    "1400": {
+      "path": "pg/1400.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0117"
+      ],
+      "volume": "Dickens (PG author 37)",
+      "title": "Great Expectations"
+    },
+    "98": {
+      "path": "pg/98.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0118"
+      ],
+      "volume": "Dickens (PG author 37)",
+      "title": "A Tale of Two Cities"
+    },
+    "1023": {
+      "path": "pg/1023.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0119"
+      ],
+      "volume": "Dickens (PG author 37)",
+      "title": "Bleak House"
+    },
+    "1342": {
+      "path": "pg/1342.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0126"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Pride and Prejudice"
+    },
+    "161": {
+      "path": "pg/161.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0127"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Sense and Sensibility"
+    },
+    "158": {
+      "path": "pg/158.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0128"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Emma"
+    },
+    "141": {
+      "path": "pg/141.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0129"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Mansfield Park"
+    },
+    "121": {
+      "path": "pg/121.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0130"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Northanger Abbey"
+    },
+    "105": {
+      "path": "pg/105.txt",
+      "maturities": [
+        3
+      ],
+      "lib_ids": [
+        "LIB-0131"
+      ],
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Persuasion"
+    }
+  },
+  "by_lib": {
+    "LIB-0004": {
+      "path": "pg/22381.txt",
+      "pg_id": "22381",
+      "maturity": 2,
+      "volume": null,
+      "title": "Greek Myths (Bulfinch, PG 22381)"
+    },
+    "LIB-0005": {
+      "path": "pg/1727.txt",
+      "pg_id": "1727",
+      "maturity": 3,
+      "volume": null,
+      "title": "The Odyssey (Homer, PG 1727)"
+    },
+    "LIB-0006": {
+      "path": "pg/2388.txt",
+      "pg_id": "2388",
+      "maturity": 2,
+      "volume": null,
+      "title": "Stories from India (PG 2388)"
+    },
+    "LIB-0007": {
+      "path": "pg/1184.txt",
+      "pg_id": "1184",
+      "maturity": 2,
+      "volume": null,
+      "title": "Adventure classics (PG 521, 120, 829)"
+    },
+    "LIB-0008": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": null,
+      "title": "Bible stories (KJV, PG 10)"
+    },
+    "LIB-0009": {
+      "path": "pg/25240.txt",
+      "pg_id": "25240",
+      "maturity": 2,
+      "volume": null,
+      "title": "Stories from China (PG 25240)"
+    },
+    "LIB-0010": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": null,
+      "title": "Myths from around the world (Bulfinch, PG 3327)"
+    },
+    "LIB-0011": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": null,
+      "title": "Ballet stories (PG 38733)"
+    },
+    "LIB-0012": {
+      "path": "pg/17396.txt",
+      "pg_id": "17396",
+      "maturity": 2,
+      "volume": null,
+      "title": "The Secret Garden (PG 17396)"
+    },
+    "LIB-0013": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": null,
+      "title": "Aesop's Fables (PG 21)"
+    },
+    "LIB-0014": {
+      "path": "pg/11582.txt",
+      "pg_id": "11582",
+      "maturity": 2,
+      "volume": null,
+      "title": "Greek myths (PG 11582)"
+    },
+    "LIB-0015": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": null,
+      "title": "Norse myths (Guerber, PG 28497)"
+    },
+    "LIB-0016": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": null,
+      "title": "Andersen's Fairy Tales (PG 27200)"
+    },
+    "LIB-0017": {
+      "path": "pg/610.txt",
+      "pg_id": "610",
+      "maturity": 3,
+      "volume": null,
+      "title": "King Arthur (Malory, PG 610)"
+    },
+    "LIB-0018": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": null,
+      "title": "Stories from Shakespeare (PG 100)"
+    },
+    "LIB-0019": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": null,
+      "title": "Grimm's Fairy Tales (PG 2591)"
+    },
+    "LIB-0021": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": null,
+      "title": "Arabian Nights (Lang, PG 128)"
+    },
+    "LIB-0022": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": null,
+      "title": "Shakespeare, Complete Works (PG 100)"
+    },
+    "LIB-0025": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Snow White and Rose Red"
+    },
+    "LIB-0026": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Little Red Riding Hood"
+    },
+    "LIB-0027": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Rapunzel"
+    },
+    "LIB-0028": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Sleeping Beauty"
+    },
+    "LIB-0029": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Frog Prince"
+    },
+    "LIB-0030": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Musicians of Bremen"
+    },
+    "LIB-0031": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Rumpelstiltskin"
+    },
+    "LIB-0032": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Tom Thumb"
+    },
+    "LIB-0033": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Hansel and Gretel"
+    },
+    "LIB-0034": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Twelve Dancing Princesses"
+    },
+    "LIB-0035": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Bear and the Wren"
+    },
+    "LIB-0036": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "King Thrushbeard"
+    },
+    "LIB-0037": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Goose Girl"
+    },
+    "LIB-0038": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "The Elves and the Shoemaker"
+    },
+    "LIB-0039": {
+      "path": "pg/2591.txt",
+      "pg_id": "2591",
+      "maturity": 1,
+      "volume": "Grimm's Fairy Tales (PG 2591)",
+      "title": "Snow White and the Seven Dwarfs"
+    },
+    "LIB-0040": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Princess and the Pea"
+    },
+    "LIB-0041": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Emperor's New Clothes"
+    },
+    "LIB-0042": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "Thumbelina"
+    },
+    "LIB-0043": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Ugly Duckling"
+    },
+    "LIB-0044": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Little Mermaid"
+    },
+    "LIB-0045": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Emperor and the Nightingale"
+    },
+    "LIB-0046": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Flying Trunk"
+    },
+    "LIB-0047": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Brave Tin Soldier"
+    },
+    "LIB-0048": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Wild Swans"
+    },
+    "LIB-0049": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Little Fir Tree"
+    },
+    "LIB-0050": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Tinderbox"
+    },
+    "LIB-0051": {
+      "path": "pg/27200.txt",
+      "pg_id": "27200",
+      "maturity": 1,
+      "volume": "Andersen's Fairy Tales (PG 27200)",
+      "title": "The Snow Queen"
+    },
+    "LIB-0052": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Cinderella"
+    },
+    "LIB-0053": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Swan Lake"
+    },
+    "LIB-0054": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Sleeping Beauty"
+    },
+    "LIB-0055": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Don Quixote"
+    },
+    "LIB-0056": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Copp\u00e9lia"
+    },
+    "LIB-0057": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "The Nutcracker"
+    },
+    "LIB-0058": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "The Firebird"
+    },
+    "LIB-0059": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Giselle"
+    },
+    "LIB-0060": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Ondine"
+    },
+    "LIB-0061": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "La Sylphide"
+    },
+    "LIB-0062": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "La Fille Mal Gard\u00e9e"
+    },
+    "LIB-0063": {
+      "path": "pg/38733.txt",
+      "pg_id": "38733",
+      "maturity": 1,
+      "volume": "Ballet stories (PG 38733)",
+      "title": "Romeo and Juliet"
+    },
+    "LIB-0064": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Prometheus and Pandora"
+    },
+    "LIB-0065": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Apollo and Daphne"
+    },
+    "LIB-0066": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Phaeton"
+    },
+    "LIB-0067": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Midas, Baucis and Philemon"
+    },
+    "LIB-0068": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Proserpine (Persephone)"
+    },
+    "LIB-0069": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Pygmalion and Dryope"
+    },
+    "LIB-0070": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Cupid and Psyche"
+    },
+    "LIB-0071": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Cadmus and the Myrmidons"
+    },
+    "LIB-0072": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Minerva and Arachne, Niobe"
+    },
+    "LIB-0073": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Perseus and Medusa"
+    },
+    "LIB-0074": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "The Golden Fleece and Medea"
+    },
+    "LIB-0075": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Hercules"
+    },
+    "LIB-0076": {
+      "path": "pg/3327.txt",
+      "pg_id": "3327",
+      "maturity": 2,
+      "volume": "Greek myths (Bulfinch, PG 3327)",
+      "title": "Theseus and the Minotaur"
+    },
+    "LIB-0077": {
+      "path": "pg/1727.txt",
+      "pg_id": "1727",
+      "maturity": 3,
+      "volume": "Homer, Odyssey (PG 1727)",
+      "title": "The Odyssey"
+    },
+    "LIB-0078": {
+      "path": "pg/2388.txt",
+      "pg_id": "2388",
+      "maturity": 2,
+      "volume": "Stories from India (PG 2388)",
+      "title": "Stories from India (collection)"
+    },
+    "LIB-0079": {
+      "path": "pg/521.txt",
+      "pg_id": "521",
+      "maturity": 2,
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Robinson Crusoe"
+    },
+    "LIB-0080": {
+      "path": "pg/120.txt",
+      "pg_id": "120",
+      "maturity": 2,
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Treasure Island"
+    },
+    "LIB-0081": {
+      "path": "pg/829.txt",
+      "pg_id": "829",
+      "maturity": 2,
+      "volume": "Adventure classics (PG 521, 120, 829)",
+      "title": "Gulliver's Travels"
+    },
+    "LIB-0082": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "Creation and Eden"
+    },
+    "LIB-0083": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "Noah and the Flood"
+    },
+    "LIB-0084": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "Abraham and Isaac"
+    },
+    "LIB-0085": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "Moses and the Exodus"
+    },
+    "LIB-0086": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "David and Goliath"
+    },
+    "LIB-0087": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "Daniel in the Lions' Den"
+    },
+    "LIB-0088": {
+      "path": "pg/10.txt",
+      "pg_id": "10",
+      "maturity": 1,
+      "volume": "Bible, KJV (PG 10)",
+      "title": "The Nativity"
+    },
+    "LIB-0089": {
+      "path": "pg/25240.txt",
+      "pg_id": "25240",
+      "maturity": 2,
+      "volume": "Stories from China (PG 25240)",
+      "title": "Stories from China (collection)"
+    },
+    "LIB-0090": {
+      "path": "pg/17396.txt",
+      "pg_id": "17396",
+      "maturity": 2,
+      "volume": "The Secret Garden (PG 17396)",
+      "title": "The Secret Garden"
+    },
+    "LIB-0091": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": "Aesop's Fables (PG 21)",
+      "title": "The Lion and the Mouse"
+    },
+    "LIB-0092": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": "Aesop's Fables (PG 21)",
+      "title": "The Hare and the Tortoise"
+    },
+    "LIB-0093": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": "Aesop's Fables (PG 21)",
+      "title": "The Wolf and the Lamb"
+    },
+    "LIB-0094": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": "Aesop's Fables (PG 21)",
+      "title": "The Shepherd's Boy and the Wolf"
+    },
+    "LIB-0095": {
+      "path": "pg/21.txt",
+      "pg_id": "21",
+      "maturity": 1,
+      "volume": "Aesop's Fables (PG 21)",
+      "title": "The Dog and the Shadow"
+    },
+    "LIB-0096": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": "Norse myths (Guerber, PG 28497)",
+      "title": "The Creation (Norse)"
+    },
+    "LIB-0097": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": "Norse myths (Guerber, PG 28497)",
+      "title": "Odin and the Norse Gods"
+    },
+    "LIB-0098": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": "Norse myths (Guerber, PG 28497)",
+      "title": "Thor and Loki"
+    },
+    "LIB-0099": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": "Norse myths (Guerber, PG 28497)",
+      "title": "The Death of Baldur"
+    },
+    "LIB-0100": {
+      "path": "pg/28497.txt",
+      "pg_id": "28497",
+      "maturity": 2,
+      "volume": "Norse myths (Guerber, PG 28497)",
+      "title": "Ragnarok"
+    },
+    "LIB-0101": {
+      "path": "pg/610.txt",
+      "pg_id": "610",
+      "maturity": null,
+      "volume": "Usborne Illustrated Tales of King Arthur",
+      "title": "Tales of King Arthur (collection)"
+    },
+    "LIB-0102": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Hamlet"
+    },
+    "LIB-0103": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Macbeth"
+    },
+    "LIB-0104": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Romeo and Juliet"
+    },
+    "LIB-0105": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "A Midsummer Night's Dream"
+    },
+    "LIB-0106": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "The Tempest"
+    },
+    "LIB-0107": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Othello"
+    },
+    "LIB-0108": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "King Lear"
+    },
+    "LIB-0109": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "The Merchant of Venice"
+    },
+    "LIB-0110": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Twelfth Night"
+    },
+    "LIB-0111": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "As You Like It"
+    },
+    "LIB-0112": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Much Ado About Nothing"
+    },
+    "LIB-0113": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Julius Caesar"
+    },
+    "LIB-0114": {
+      "path": "pg/100.txt",
+      "pg_id": "100",
+      "maturity": 3,
+      "volume": "Shakespeare, Complete Works (PG 100)",
+      "title": "Stories from Shakespeare (all plays)"
+    },
+    "LIB-0115": {
+      "path": "pg/730.txt",
+      "pg_id": "730",
+      "maturity": 3,
+      "volume": "Dickens (PG author 37)",
+      "title": "Oliver Twist"
+    },
+    "LIB-0116": {
+      "path": "pg/766.txt",
+      "pg_id": "766",
+      "maturity": 3,
+      "volume": "Dickens (PG author 37)",
+      "title": "David Copperfield"
+    },
+    "LIB-0117": {
+      "path": "pg/1400.txt",
+      "pg_id": "1400",
+      "maturity": 3,
+      "volume": "Dickens (PG author 37)",
+      "title": "Great Expectations"
+    },
+    "LIB-0118": {
+      "path": "pg/98.txt",
+      "pg_id": "98",
+      "maturity": 3,
+      "volume": "Dickens (PG author 37)",
+      "title": "A Tale of Two Cities"
+    },
+    "LIB-0119": {
+      "path": "pg/1023.txt",
+      "pg_id": "1023",
+      "maturity": 3,
+      "volume": "Dickens (PG author 37)",
+      "title": "Bleak House"
+    },
+    "LIB-0121": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": "Arabian Nights (Lang, PG 128)",
+      "title": "Aladdin and the Wonderful Lamp"
+    },
+    "LIB-0122": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": "Arabian Nights (Lang, PG 128)",
+      "title": "Sindbad the Sailor"
+    },
+    "LIB-0123": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": "Arabian Nights (Lang, PG 128)",
+      "title": "Ali Baba and the Forty Thieves"
+    },
+    "LIB-0124": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": "Arabian Nights (Lang, PG 128)",
+      "title": "The Fisherman and the Jinni"
+    },
+    "LIB-0125": {
+      "path": "pg/128.txt",
+      "pg_id": "128",
+      "maturity": 3,
+      "volume": "Arabian Nights (Lang, PG 128)",
+      "title": "Arabian Nights (full collection)"
+    },
+    "LIB-0126": {
+      "path": "pg/1342.txt",
+      "pg_id": "1342",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Pride and Prejudice"
+    },
+    "LIB-0127": {
+      "path": "pg/161.txt",
+      "pg_id": "161",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Sense and Sensibility"
+    },
+    "LIB-0128": {
+      "path": "pg/158.txt",
+      "pg_id": "158",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Emma"
+    },
+    "LIB-0129": {
+      "path": "pg/141.txt",
+      "pg_id": "141",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Mansfield Park"
+    },
+    "LIB-0130": {
+      "path": "pg/121.txt",
+      "pg_id": "121",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Northanger Abbey"
+    },
+    "LIB-0131": {
+      "path": "pg/105.txt",
+      "pg_id": "105",
+      "maturity": 3,
+      "volume": "Jane Austen (PG author 68)",
+      "title": "Persuasion"
+    }
+  },
+  "by_maturity": {
+    "1": [
+      "pg/10.txt",
+      "pg/21.txt",
+      "pg/2591.txt",
+      "pg/27200.txt",
+      "pg/38733.txt"
+    ],
+    "2": [
+      "pg/11582.txt",
+      "pg/1184.txt",
+      "pg/120.txt",
+      "pg/17396.txt",
+      "pg/22381.txt",
+      "pg/2388.txt",
+      "pg/25240.txt",
+      "pg/28497.txt",
+      "pg/3327.txt",
+      "pg/521.txt",
+      "pg/829.txt"
+    ],
+    "3": [
+      "pg/100.txt",
+      "pg/1023.txt",
+      "pg/105.txt",
+      "pg/121.txt",
+      "pg/128.txt",
+      "pg/1342.txt",
+      "pg/1400.txt",
+      "pg/141.txt",
+      "pg/158.txt",
+      "pg/161.txt",
+      "pg/1727.txt",
+      "pg/610.txt",
+      "pg/730.txt",
+      "pg/766.txt",
+      "pg/98.txt"
+    ]
+  }
+}

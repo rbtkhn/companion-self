@@ -1,0 +1,55 @@
+# Seed Phase
+
+**Companion-Self template · Definition of seed phase**
+
+---
+
+## What Is Seed Phase?
+
+The **seed phase** is the initial capture that creates the baseline of a new companion self. A new instance is created **only** when a new user completes seed phase. There is no other creation path: no copying another repo's `users/` and no pre-filled Record.
+
+---
+
+## What Seed Phase Produces
+
+- **Initial SELF** — Identity, preferences, narrative baseline (e.g. favorites, basic story).
+- **Initial self-skill-read, self-skill-write, self-skill-work** — Structure only; skills grow through activity after seed.
+- **Initial self-evidence** — Any artifacts or attestations used during seeding (e.g. survey responses).
+
+Seed phase establishes *who they are* at the start. Everything else is inferred or captured through the gated pipeline after seed.
+
+---
+
+## Typical Seed Artifacts
+
+- **Survey** — Short set of questions (e.g. favorite movies/shows, books/stories, places, games). Duration on the order of 10–15 minutes; operator can help prompt or type if needed.
+- **Consent** — Guardian/operator consent when the companion is a minor; companion may stop at any time; deletion available on request.
+- **Storage** — Responses and any artifacts go into the instance's `users/<id>/` (SELF, self-evidence) in the instance repo. No seed data lives in the template.
+
+---
+
+## Formal birth name and directory
+
+When a user completes seed phase, there is an opportunity to choose a **formal birth name** for the companion self (e.g. "grace-mar"). That name becomes the user id: the Record is then stored under `users/<birth-name>/` (e.g. `users/grace-mar/`), and the self is referred to by that name in the instance (profile, bot, pipeline). The operator or companion chooses the name; the instance creates or renames the user directory from the template scaffold to `users/<birth-name>/` and populates it with the seeded SELF, self-evidence, and skill scaffolds. No separate "rename" step is required beyond choosing the name at this point—the directory and identity are created under that name from the start.
+
+---
+
+## Fork Lifecycle
+
+The full lifecycle is: **SEED → INTERACT → DIVERGE → MERGE → SNAPSHOT**.
+
+- **SEED** — Initial capture (this phase); baseline Record only.
+- **INTERACT** — Sessions add signals; pipeline stages candidates.
+- **DIVERGE** — Fork and real person grow independently; Record grows only through the gate.
+- **MERGE** — Companion approves; changes integrate into self.md (baseline), self-knowledge / self-curiosity / self-personality (IX-A/B/C), self-evidence, skills.
+- **SNAPSHOT** — Instance preserves states (e.g. git tags) for "who they were at this point in time."
+
+---
+
+## Relation to This Repo
+
+This template defines *what* seed phase is and *that* it is the only creation path. The actual surveys, scripts, and operator procedures live in instance repos (e.g. Grace-Mar's operator brief and first-session flow). Instances may copy or adapt the structure from `users/_template/` when creating a new user directory.
+
+---
+
+*Companion-Self template · Seed phase definition*

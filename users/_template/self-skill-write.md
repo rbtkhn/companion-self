@@ -6,4 +6,20 @@ Evidence-linked; vocabulary, complexity, style per instance schema.
 
 ---
 
-(Placeholder: vocabulary, complexity, style, expression, logic — populated from activity.)
+## Channels / outputs
+
+Places or APIs through which WRITE flows (Voice, bot, page, email, social). Instance fills in which are in use and any identifiers (e.g. handle, URL). No real tokens or secrets here—reference only.
+
+- • **Telegram bot** — (e.g. bot handle or placeholder)
+- • **WeChat bot / official channel** — (e.g. channel or placeholder)
+- • **HTML page** — (e.g. profile or app URL)
+- • **Email account** — (e.g. address or placeholder)
+- • **X.com API** — (e.g. account or app reference)
+
+(Add or remove rows per instance; evidence of WRITE may link to these channels.)
+
+---
+
+## Voice / style
+
+(Placeholder: vocabulary, complexity, style, expression — populated from activity and the dimensions.)
