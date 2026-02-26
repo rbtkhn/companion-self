@@ -19,6 +19,8 @@ A **companion self** is a documented, queryable identity that grows from a snaps
 
 **Companion self = Mind + Record + Voice.** The human (Mind) is sovereign. The Record holds the documented self. The Voice renders it when queried.
 
+**Purpose and burden.** Companion-self reduces the burden of carrying "who they are," "what they've done," and "what's next" in your head or across scattered tools. Its purpose is to give you one evidence-linked Record and a clear edge so identity and progress live in one place, not in your head. So caregivers and learners can rely on a single spine and reduce overload and ambiguity.
+
 ---
 
 ## 2. Cognitive Fork, Not Twin
@@ -76,7 +78,9 @@ The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; 
 - **Evidence ingestion (inbound):** Optional webhook or callback for “activity completed” so an external tool (e.g. project app, workshop platform, maker portfolio) can **push** WORK completion into the instance pipeline as a candidate; the companion still gates merge. No direct write to the Record by third parties—stage only.
 - **Life skills / project templates:** Instance or ecosystem can provide WORK templates, workshop-in-a-box prompts, or links to project libraries; these consume the Record (e.g. edge, interests) to propose work. Integration pattern: pull export → suggest project → user does it → capture via “we did X” or callback → pipeline stages → gate.
 
-So skill-work is capable of connecting to: (1) the instance’s own staging, record, edge, and export APIs; (2) any consumer of the export that suggests or adapts projects; (3) any provider that can push WORK completion into the pipeline via a defined ingestion API or webhook; (4) project/workshop tools that use the Record to personalize what to build.
+So skill-work is capable of connecting to: (1) the instance’s own staging, record, edge, and export APIs; (2) any consumer of the export that suggests or adapts projects; (3) any provider that can push WORK completion into the pipeline via a defined ingestion API or webhook; (4) project/workshop tools that use the Record to personalize what to build. **Ingestion from many sources** (calendar exports, task apps, webhooks) is a first-class pattern: see [Ingestion and sources](ingestion-and-sources.md).
+
+**Progress and motivation.** Instance or consumers may derive progress (e.g. streaks, milestones, rewards) from evidence and expose them in UIs or exports; the Record stores the evidence. How progress and recognition are presented is up to the instance.
 
 ---
 
@@ -104,7 +108,13 @@ This boundary is both an architectural invariant and a regulatory advantage (e.g
 
 ---
 
-## 7. Where Things Live (Template View)
+## 7. Trust and portability
+
+Instances should support: (1) **Reversibility** — rollback or undo of Record changes where feasible. (2) **Export** — the companion can export Record and evidence and take their data elsewhere. (3) **Ownership** — the Record is the companion's; no lock-in; export and portability are expected.
+
+---
+
+## 8. Where Things Live (Template View)
 
 | Component | In an instance |
 |-----------|----------------|
@@ -117,7 +127,7 @@ This template defines concept, protocol, and seed phase. Bot code and Record dat
 
 ---
 
-## 8. Recursive self-learning
+## 9. Recursive self-learning
 
 The Record can **improve itself over time**: each pipeline cycle refines the Record, and the updated Record shapes the next cycle (what gets detected, what the Voice says, what activities might be proposed at the edge). For objectives that guide this—inspired by learning science and AI-powered education models—see [RECURSIVE-SELF-LEARNING-OBJECTIVES](recursive-self-learning-objectives.md).
 
