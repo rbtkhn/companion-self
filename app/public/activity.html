@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Companion-Self — We did X</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/">Dashboard</a>
+    <a href="/activity">We did X</a>
+    <a href="/review">Review</a>
+    <a href="/export">Export</a>
+  </nav>
+
+  <main class="main">
+    <h1>We did X</h1>
+    <p>Submit an activity. It will be staged for review.</p>
+
+    <form id="activity-form" class="card">
+      <label for="text">What did you do?</label>
+      <textarea id="text" name="text" rows="4" required placeholder="e.g. We drew a dragon"></textarea>
+
+      <label for="skill_tag">Skill</label>
+      <select id="skill_tag" name="skill_tag">
+        <option value="READ">READ</option>
+        <option value="WRITE">WRITE</option>
+        <option value="WORK">WORK</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <p id="message"></p>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('activity-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = document.getElementById('text').value.trim();
+      const skill_tag = document.getElementById('skill_tag').value;
+      const msg = document.getElementById('message');
+      msg.textContent = '';
+      try {
+        const res = await fetch('/api/activity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, skill_tag }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed');
+        msg.textContent = 'Submitted. Go to review to approve.';
+        msg.className = 'success';
+        document.getElementById('text').value = '';
+        setTimeout(() => { msg.textContent = ''; msg.className = ''; }, 3000);
+      } catch (err) {
+        msg.textContent = err.message;
+        msg.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -19,6 +19,8 @@ The **Record** is the single convergence point. Activity and evidence can come f
 
 So: **many sources → one staging pipeline → gate → one Record.**
 
+**Staging format:** Instances may use `recursion-gate.json` (JSON array of candidates) or `pending-review.md` (YAML/markdown blocks). The gate contract (candidates, approve/reject, merge) is what matters; format is instance choice. See [Instance patterns](instance-patterns.md) § Staging format.
+
 ---
 
 ## Examples
@@ -43,7 +45,7 @@ So: **many sources → one staging pipeline → gate → one Record.**
    - **Candidate 1 (evidence):** id, raw_text (e.g. "Quiz on topic X, 4/5"), skill_tag, suggested_ix_section (can be null or default), created_at, status: "pending". Optional: `evidence_summary`, `source_id`.
    - **Candidate 2 (suggested dimension merge):** id, raw_text = the **suggested line** (e.g. "Topic X: demonstrated via quiz Q (4/5, &lt;date&gt;)"), skill_tag (same as candidate 1 or derived), suggested_ix_section = target dimension (IX-A, IX-B, or IX-C), created_at, status: "pending". Optional: `link_to_evidence_id` = candidate 1's id so merge logic can link the dimension line to the evidence activity.
 3. **Gate** — Companion sees two candidates. They may approve both, approve only evidence, or reject either. Merge logic: approving the evidence candidate writes to self-evidence; approving the dimension candidate writes one line to the appropriate dimension file (self-knowledge, self-curiosity, or self-personality) and, if `link_to_evidence_id` is set, links that line to the evidence entry.
-4. **Schema** — Extend the recursive-gate candidate shape as needed. Minimal extension: allow `link_to_evidence_id` (optional) on a candidate so the second candidate references the first. Merge logic uses it when writing the dimension line (e.g. store evidence id in the line or in a structured evidence link).
+4. **Schema** — Extend the recursion-gate candidate shape as needed. Minimal extension: allow `link_to_evidence_id` (optional) on a candidate so the second candidate references the first. Merge logic uses it when writing the dimension line (e.g. store evidence id in the line or in a structured evidence link).
 
 ### Trigger types and suggested dimension
 

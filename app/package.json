@@ -1,0 +1,13 @@
+{
+  "name": "companion-self-app",
+  "version": "0.1.0",
+  "description": "Student-facing interface for companion-self",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

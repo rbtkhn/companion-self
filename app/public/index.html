@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Companion-Self — Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/">Dashboard</a>
+    <a href="/activity">We did X</a>
+    <a href="/review">Review</a>
+    <a href="/export">Export</a>
+  </nav>
+
+  <main class="main">
+    <h1>Your Record</h1>
+
+    <section class="card">
+      <h2>Knowledge (IX-A)</h2>
+      <ul id="knowledge"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Curiosity (IX-B)</h2>
+      <ul id="curiosity"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Personality (IX-C)</h2>
+      <ul id="personality"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Skills</h2>
+      <div id="skills"></div>
+    </section>
+
+    <section class="card edge">
+      <h2>What's next</h2>
+      <ul id="edge"></ul>
+      <p class="screentime">Designed for up to 2 hours of screen-based learning per day.</p>
+    </section>
+
+    <section class="card pending">
+      <h2>Pending</h2>
+      <p id="pending-count">—</p>
+      <p><a href="/review">Review queue</a></p>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    (async () => {
+      const res = await fetch('/api/record');
+      const record = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        document.getElementById('knowledge').innerHTML = '';
+        document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(record.error || 'Failed to load Record')}</p>`);
+        return;
+      }
+      document.getElementById('knowledge').innerHTML = record.knowledge?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      document.getElementById('curiosity').innerHTML = record.curiosity?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      document.getElementById('personality').innerHTML = record.personality?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      document.getElementById('skills').innerHTML = ['READ','WRITE','WORK'].map(s => 
+        `<p><strong>${s}:</strong> ${(record.skills?.[s]?.length ?? 0) || 0} entries</p>`
+      ).join('');
+      document.getElementById('edge').innerHTML = record.edge ? ['READ','WRITE','WORK'].map(s => 
+        `<li><strong>${s}:</strong> ${escapeHtml(record.edge[s] || '—')}</li>`
+      ).join('') : '';
+      document.getElementById('pending-count').textContent = record.pendingCount ?? 0;
+      if (record.pendingCount > 0) {
+        document.querySelector('.pending p:last-of-type').innerHTML = `<a href="/review">${record.pendingCount} item(s) in review queue</a>`;
+      }
+    })().catch(e => document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(e.message)}</p>`));
+
+    function escapeHtml(s) {
+      const div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

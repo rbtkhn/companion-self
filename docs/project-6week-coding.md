@@ -34,7 +34,7 @@ companion-self/
 │       ├── self-skill-write.md
 │       ├── self-skill-work.md
 │       ├── self-evidence.md
-│       ├── recursive-gate.json   # staged candidates (machine-readable)
+│       ├── recursion-gate.json   # staged candidates (machine-readable)
 │       └── self-memory.md   # optional
 ├── app/                     # NEW: student-facing application
 │   ├── package.json        # or requirements.txt
@@ -72,10 +72,10 @@ companion-self/
 | # | Task | Deliverable |
 |---|------|-------------|
 | 1.1 | Define **Record schema** in code: SELF (self.md), IX-A/IX-B/IX-C (self-knowledge, self-curiosity, self-personality), READ/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
-| 1.2 | Define **recursive-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Same schema module; `users/demo/recursive-gate.json` format. |
-| 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursive-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
+| 1.2 | Define **recursion-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Same schema module; `users/demo/recursion-gate.json` format. |
+| 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursion-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
 | 1.4 | Implement **load** and **save** for demo: read markdown into structured objects; write back on merge. Append-only where possible; simple section/list parsing. | Load/save in schema or `pipeline/io.js`. |
-| 1.5 | Document in `docs/schema-record-api.md`: field list, recursive-gate shape. (Edge response shape added in Week 5.) | Doc for API contract and extensions. |
+| 1.5 | Add and maintain `docs/schema-record-api.md`: ensure it exists with Record field list and recursion-gate shape. Week 5 adds edge response shape. | Doc for API contract and extensions. |
 
 ### Success
 
@@ -85,7 +85,7 @@ companion-self/
 
 ## Week 2: Pipeline — stage "we did X"
 
-**Goal:** Student submits "we did X"; backend stages a candidate into recursive-gate. No LLM; rule-based or manual tagging.
+**Goal:** Student submits "we did X"; backend stages a candidate into recursion-gate. No LLM; rule-based or manual tagging.
 
 **Prerequisite:** Week 1 (schema, demo user, load/save).
 
@@ -93,8 +93,8 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ, WRITE, or WORK). Create candidate: id, raw_text, skill_tag, mind_category (keyword or "curiosity"), suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursive-gate.json. Idempotent, append-only. | POST endpoint. |
-| 2.2 | **API:** GET `/api/recursive-gate` returns pending candidates. | For review UI. |
+| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ, WRITE, or WORK). Create candidate: id, raw_text, skill_tag, mind_category (keyword or "curiosity"), suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursion-gate.json. Idempotent, append-only. | POST endpoint. |
+| 2.2 | **API:** GET `/api/recursion-gate` returns pending candidates. | For review UI. |
 | 2.3 | *Optional:* CLI to stage one activity for testing (e.g. `scripts/stage-activity.js`). | Script. |
 
 ### Success
@@ -107,14 +107,14 @@ companion-self/
 
 **Goal:** Student-facing pages: home (Record summary), "we did X" form, link to review queue.
 
-**Prerequisite:** Week 1 (load/save), Week 2 (POST /api/activity, GET /api/recursive-gate).
+**Prerequisite:** Week 1 (load/save), Week 2 (POST /api/activity, GET /api/recursion-gate).
 
 ### Tasks
 
 | # | Task | Deliverable |
 |---|------|-------------|
 | 3.1 | **API:** GET `/api/record` returns Record summary for demo user (IX-A/IX-B/IX-C, skills, optional full Record). Consumed by dashboard and later by edge/export. | Backend. |
-| 3.2 | **Dashboard** (e.g. `/` or `/dashboard`): Call GET /api/record; show Knowledge, Curiosity, Personality, Skills; pending count (from GET /api/recursive-gate or include in /api/record); link to review. | index.html + app.js. |
+| 3.2 | **Dashboard** (e.g. `/` or `/dashboard`): Call GET /api/record; show Knowledge, Curiosity, Personality, Skills; pending count (from GET /api/recursion-gate or include in /api/record); link to review. | index.html + app.js. |
 | 3.3 | **"We did X" page** (e.g. `/activity`): Textarea + skill dropdown (READ/WRITE/WORK) + Submit → POST /api/activity; success state; optional redirect to dashboard or review. | activity.html + form handler. |
 | 3.4 | **Navigation:** Dashboard, We did X, Review, Export on all pages. Static from `app/public/`; server serves HTML + API. | Nav + Express static and routes. |
 
@@ -126,7 +126,7 @@ companion-self/
 
 ## Week 4: Review queue and merge
 
-**Goal:** Student sees recursive-gate list; approves or rejects each; on approve, merge into Record and self-evidence.
+**Goal:** Student sees recursion-gate list; approves or rejects each; on approve, merge into Record and self-evidence.
 
 **Prerequisite:** Weeks 1–3 (Record load/save, staging APIs, UI with nav).
 
@@ -179,7 +179,7 @@ companion-self/
 | # | Task | Deliverable |
 |---|------|-------------|
 | 6.1 | **Run instructions:** Add `readme-student-app.md` (clone, `cd app`, `npm install`, `npm run dev` or `python app.py`; app at e.g. localhost:3000; no env vars for demo). Link from main README: "Student interface: see readme-student-app.md." | Doc + README link. |
-| 6.2 | **Error handling:** Graceful message if `users/demo/` missing or malformed; empty state for empty recursive-gate. | UX. |
+| 6.2 | **Error handling:** Graceful message if `users/demo/` missing or malformed; empty state for empty recursion-gate. | UX. |
 | 6.3 | *Optional:* Seed flow (e.g. `/seed` or first-run): short survey → write into demo self.md, self-curiosity.md, self-personality.md. | Script or /seed page. |
 | 6.4 | **Definition of done:** Verify student can open app, see Record, submit "we did X", review and approve/reject, see Record update, see edge, download export. See checklist below. | Verification. |
 
@@ -196,7 +196,7 @@ companion-self/
 | **Runtime** | Node 18+ or Python 3.10+ | Single install; no DB. |
 | **Server** | Express (Node) or Flask (Python) | Minimal; serve static + JSON API. |
 | **Front-end** | HTML + vanilla JS | No build step; or minimal Vite if preferred. |
-| **Data** | `users/demo/*.md` + `recursive-gate.json` | Git-friendly; matches template. |
+| **Data** | `users/demo/*.md` + `recursion-gate.json` | Git-friendly; matches template. |
 | **Schema** | JS objects or Python dataclasses; markdown parsed by section | No DB schema; easy to evolve. |
 
 ---

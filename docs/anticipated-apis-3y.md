@@ -105,13 +105,13 @@ This doc anticipates which **non-LLM** APIs are likely to be most useful for com
 
 ## 7. Communication / notifications (operator, companion)
 
-**What:** APIs to send lightweight notifications (e.g. “recursive-gate has 3 items,” “weekly summary”) to operator or guardian. Email, push, or in-app.
+**What:** APIs to send lightweight notifications (e.g. “recursion-gate has 3 items,” “weekly summary”) to operator or guardian. Email, push, or in-app.
 
 **Why useful:** Reduces “did you check the queue?” friction; keeps operator in the loop without requiring them to open the app daily.
 
 **Examples:**
 
-- **Email (SendGrid, Resend, SES)** — Transactional: “You have N items in recursive-gate.” Simple, non-LLM.
+- **Email (SendGrid, Resend, SES)** — Transactional: “You have N items in recursion-gate.” Simple, non-LLM.
 - **Push (FCM, APNs)** — If instance has a mobile or PWA: “Time for your 2-hour block” or “New activity to review.” Optional.
 - **In-app only** — No external API; dashboard shows counts and “last reviewed.” Sufficient for Year 1; add email/push in Year 2 if retention or operator engagement demands it.
 

@@ -7,7 +7,7 @@ A new companion self is created **only when a new user completes seed phase** �
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
 
-**Reference implementation:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) — [grace-mar.com](https://grace-mar.com) (profile, bot, PRP).
+**Reference implementation:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) — [grace-mar.com](https://grace-mar.com) (profile, bot, PRP). See [Instance patterns](docs/instance-patterns.md) for Grace-Mar variations and advanced patterns (analyst, staging format, session brief).
 
 Optional: [companion-self.com](https://companion-self.com) when the concept site exists.
 
@@ -16,6 +16,7 @@ Optional: [companion-self.com](https://companion-self.com) when the concept site
 ## Contents
 
 - **docs/** — **Long-term objective** ([LONG-TERM-OBJECTIVE](docs/long-term-objective.md) — permanent system rule: democratize Alpha-style education, 90% value at 10% cost; prevents intention drift). Concept, protocol, seed phase; education structure (self-skill-read, self-skill-write, self-skill-work); recursive self-learning objectives; business/white-paper insights; 3-year roadmap; 6-week coding project; two-hour screen-time target; Alpha School benchmarks; no human guide assumed.
-- **users/_template/** — Minimal scaffold (self, self-knowledge, self-curiosity, self-personality, self-skill-read, self-skill-write, self-skill-work, self-evidence, recursive-gate, self-memory) for creating a new user directory in an instance repo. No real data.
+- **users/_template/** — Minimal scaffold (self, self-knowledge, self-curiosity, self-personality, self-skill-read, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo. No real data.
 - **how-instances-consume-upgrades.md** — How an instance merges upgrades from this template without overwriting its Record.
+- **readme-student-app.md** — Student interface: how to run the app (clone, `cd app`, `npm install`, `npm start`; app at localhost:3000).
 - **companion-self-and-grace-mar.code-workspace** — Recommended workspace: companion-self (writable) + grace-mar (read-only). Template work here; instance modifications only in a separate grace-mar workspace. See companion-self-bootstrap §7.

@@ -9,6 +9,7 @@
     { "path": "docs/seed-phase.md", "description": "Definition of seed phase; what creates initial Record.", "optional": false },
     { "path": "docs/long-term-objective.md", "description": "Permanent system rules (democratize Alpha-style education; sovereignty; knowledge boundary).", "optional": false },
     { "path": "docs/two-hour-screentime-target.md", "description": "2-hour design constraint and equivalent metric; what counts as screen time.", "optional": false },
+    { "path": "docs/instance-patterns.md", "description": "Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format).", "optional": false },
     { "path": "users/_template/self.md", "description": "SELF schema/structure scaffold for new users only.", "optional": false },
     { "path": "users/_template/self-knowledge.md", "description": "IX-A: what they've learned (self-knowledge) scaffold.", "optional": false },
     { "path": "users/_template/self-curiosity.md", "description": "IX-B: what they're curious about (self-curiosity) scaffold.", "optional": false },
@@ -17,7 +18,7 @@
     { "path": "users/_template/self-skill-write.md", "description": "WRITE (self-skill-write) scaffold.", "optional": false },
     { "path": "users/_template/self-skill-work.md", "description": "WORK (self-skill-work) scaffold.", "optional": false },
     { "path": "users/_template/self-evidence.md", "description": "Evidence schema/structure scaffold.", "optional": false },
-    { "path": "users/_template/recursive-gate.md", "description": "Recursive-gate staging scaffold (candidates at the gate).", "optional": false },
+    { "path": "users/_template/recursion-gate.md", "description": "Recursive-gate staging scaffold (candidates at the gate).", "optional": false },
     { "path": "users/_template/self-memory.md", "description": "Ephemeral context scaffold.", "optional": true },
     { "path": "users/_template/self-library.md", "description": "Curated lookup sources scaffold (bounded lookup extension).", "optional": true }
   ]

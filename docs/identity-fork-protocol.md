@@ -10,7 +10,7 @@
 
 > **The agent may stage. It may not merge.**
 
-- **Stage** — Propose candidates for addition to the Record (e.g. recursive-gate).
+- **Stage** — Propose candidates for addition to the Record (e.g. recursion-gate).
 - **Merge** — Commit changes to SELF, self-evidence, or canonical profile.
 
 Only the companion (or an explicitly delegated human) may merge. Agents and systems may stage. The gate is architectural.
@@ -20,7 +20,7 @@ Only the companion (or an explicitly delegated human) may merge. Agents and syst
 ## Stages
 
 1. **Detect** — Identify profile-relevant signals (knowledge, curiosity, personality).
-2. **Stage** — Write candidates to recursive-gate (or equivalent).
+2. **Stage** — Write candidates to recursion-gate (or equivalent).
 3. **Review** — Companion approves, rejects, or modifies.
 4. **Merge** — Approved changes are integrated into SELF, self-evidence, and related files.
 

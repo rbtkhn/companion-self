@@ -41,7 +41,7 @@
    - **Seed phase:** Definition of seed phases (what surveys, what artifacts, what creates initial SELF, self-skill-*, self-evidence). "New instance = new user + seed phase" as the only creation path. Can be derived from grace-mar's ARCHITECTURE (Fork Lifecycle, Seeding) and OPERATOR-BRIEF.
 
 3. **Optional: users/_template/**
-   - Empty or minimal structure: self.md (template only), self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md (templates), self-evidence.md (template), recursive-gate.md (template), self-memory.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
+   - Empty or minimal structure: self.md (template only), self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md (templates), self-evidence.md (template), recursion-gate.md (template), self-memory.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
 
 4. **Optional: how-instances-consume-upgrades.md** (or section in README)
    - Describe how an instance (e.g. grace-mar) merges upgrades from this template: compare and update docs (CONCEPTUAL-FRAMEWORK, IDENTITY-FORK-PROTOCOL, SELF-TEMPLATE, seed description, AGENTS governance); never overwrite the instance's `users/<id>/` Record. Optionally: list of template paths safe to copy into instances; or a small sync script idea.
@@ -101,7 +101,7 @@ When the user opens the **companion-self** repo in a new Cursor workspace and in
 2. **Respect workspace boundary (§7):** If grace-mar is in this workspace, treat it as read-only. Do not modify grace-mar; only read it for reference.
 3. **Use the developer plan:** Open [docs/companion-self-developer-plan.md](docs/companion-self-developer-plan.md) and follow the phases (A–F). Use the grace-mar source links in the plan for content and merge process.
 4. **Create the minimum:** README (template vs instance; new user + seed phase; link to grace-mar). One or more concept/protocol/seed docs under `docs/` (or a single concept.md). Generalize from grace-mar's concepts; remove instance-specific references.
-5. **Optional:** Add `users/_template/` with minimal SELF, self-skill-read, self-skill-write, self-skill-work, self-evidence, recursive-gate, self-memory templates (structure only). Add a short how-instances-consume-upgrades or merge section.
+5. **Optional:** Add `users/_template/` with minimal SELF, self-skill-read, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory templates (structure only). Add a short how-instances-consume-upgrades or merge section.
 6. **Do not** copy the full grace-mar codebase or Record. Only what defines the template: concept, protocol, seed, and optional scaffold.
 7. **Propose before implementing:** Per user preference, show a short proposal (scope, files to create) before writing; implement after approval.
 
@@ -115,7 +115,7 @@ If you need to extract or generalize content for companion-self, the canonical s
 - Protocol: `docs/identity-fork-protocol.md`
 - Governance: `AGENTS.md` (template-level rules: pipeline, knowledge boundary, operating modes)
 - Seed / lifecycle: `docs/ARCHITECTURE.md` (Fork Lifecycle, Seeding), `docs/OPERATOR-BRIEF.md`
-- Schema templates: self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursive-gate.md, self-memory.md in users/_template/
+- Schema templates: self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md in users/_template/
 - Merge process (instance side): described in §5 above; can be documented in grace-mar as `docs/MERGING-FROM-COMPANION-SELF.md` when needed.
 
 ---

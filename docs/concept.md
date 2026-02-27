@@ -51,7 +51,7 @@ Companion-Self education is **structured** around three skill containers:
 
 | Structure | Schema tag | Meaning |
 |-----------|------------|---------|
-| **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. |
+| **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. *(THINK in Grace-Mar is equivalent: intake and comprehension.)* |
 | **self-skill-write** | WRITE | Expression and voice: what the companion produces (journal, stories, explanations). Evidence of WRITE is evidence of understanding and voice. |
 | **self-skill-work** | WORK | Making and doing: what the companion plans, builds, and ships (projects, creations). **Objectives and intentions** for the user/companion are encoded here; evidence links to self-skill-work and life skills. |
 
@@ -134,7 +134,7 @@ Instances should support: (1) **Reversibility** — rollback or undo of Record c
 |-----------|----------------|
 | **Record** | `users/<id>/self.md`, `self-knowledge.md`, `self-curiosity.md`, `self-personality.md`, `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`, self-evidence.md |
 | **Voice** | Bot or other interface (lives in the instance repo; not in this template) |
-| **Staging** | recursive-gate — candidates at the gate, before merge. To process the gate: [Identity Fork Protocol](identity-fork-protocol.md) § Process the gate. |
+| **Staging** | recursion-gate — candidates at the gate, before merge. To process the gate: [Identity Fork Protocol](identity-fork-protocol.md) § Process the gate. |
 | **Ephemeral context** | self-memory.md (optional; not part of the Record) |
 
 This template defines concept, protocol, and seed phase. Bot code and Record data live in instance repos only.

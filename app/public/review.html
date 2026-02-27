@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Companion-Self — Review</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/">Dashboard</a>
+    <a href="/activity">We did X</a>
+    <a href="/review">Review</a>
+    <a href="/export">Export</a>
+  </nav>
+
+  <main class="main">
+    <h1>Review queue</h1>
+    <p>Approve or reject staged candidates.</p>
+    <div id="candidates"></div>
+    <p id="message"></p>
+  </main>
+
+  <script>
+    function escapeHtml(s) {
+      const div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+
+    async function refresh() {
+      const res = await fetch('/api/recursion-gate');
+      const data = await res.json().catch(() => ({}));
+      const el = document.getElementById('candidates');
+      if (!res.ok) {
+        el.innerHTML = `<p class="error">${escapeHtml(data.error || 'Failed to load review queue')}</p>`;
+        return;
+      }
+      const candidates = Array.isArray(data) ? data : [];
+      if (!candidates.length) {
+        el.innerHTML = '<p class="empty">No pending items.</p>';
+        return;
+      }
+      el.innerHTML = candidates.map(c => `
+        <div class="card candidate" data-id="${escapeHtml(c.id)}">
+          <p><strong>${escapeHtml(c.raw_text)}</strong></p>
+          <p><small>${c.skill_tag} → ${c.suggested_ix_section}</small></p>
+          <div class="actions">
+            <button type="button" class="btn-approve" data-id="${escapeHtml(c.id)}">Approve</button>
+            <button type="button" class="btn-reject" data-id="${escapeHtml(c.id)}">Reject</button>
+          </div>
+        </div>
+      `).join('');
+      el.querySelectorAll('.btn-approve').forEach(b => b.addEventListener('click', () => review(b.dataset.id, 'approve')));
+      el.querySelectorAll('.btn-reject').forEach(b => b.addEventListener('click', () => review(b.dataset.id, 'reject')));
+    }
+
+    async function review(candidateId, action) {
+      const msg = document.getElementById('message');
+      msg.textContent = '';
+      try {
+        const res = await fetch('/api/review', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ candidate_id: candidateId, action }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed');
+        msg.textContent = action === 'approve' ? 'Merged.' : 'Rejected.';
+        msg.className = 'success';
+        await refresh();
+        setTimeout(() => { msg.textContent = ''; msg.className = ''; }, 2000);
+      } catch (err) {
+        msg.textContent = err.message;
+        msg.className = 'error';
+      }
+    }
+
+    refresh().catch(e => document.getElementById('candidates').innerHTML = `<p class="error">${escapeHtml(e.message)}</p>`);
+  </script>
+</body>
+</html>
