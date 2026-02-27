@@ -19,15 +19,37 @@ const app = express();
 const REPO_ROOT = path.resolve(__dirname, "..");
 const PORT = process.env.PORT || 3000;
 
+// Allowed users (template: demo only; instances can add users)
+let ALLOWED_USERS = ["demo"];
+try {
+  const configPath = path.join(__dirname, "config", "allowed-users.json");
+  if (fs.existsSync(configPath)) {
+    ALLOWED_USERS = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+  }
+} catch (_) {
+  // keep default
+}
+
 app.use(express.json());
 
-// Graceful error message for missing/malformed users/demo/
+/** Resolve userId from query or header; validate against allowlist. Returns { userId } or throws. */
+function resolveUserId(req) {
+  const userId = (req.query && req.query.user) || (req.headers && req.headers["x-user-id"]) || "demo";
+  if (!ALLOWED_USERS.includes(userId)) {
+    const err = new Error("User not in allowed list. Template supports demo only; add users to app/config/allowed-users.json for instances.");
+    err.status = 403;
+    throw err;
+  }
+  return userId;
+}
+
+// Graceful error message for missing/malformed user dir
 function friendlyError(err) {
   if (err.message && err.message.includes("not found")) {
-    return "Demo user not found. Run from companion-self repo root and ensure users/demo/ exists. See readme-student-app.md.";
+    return "User directory not found. Run from companion-self repo root and ensure users/<id>/ exists. See readme-student-app.md.";
   }
   if (err.message && /parse|JSON|malformed/i.test(err.message)) {
-    return "Demo data is malformed. Check users/demo/ files. See readme-student-app.md.";
+    return "User data is malformed. Check users/<id>/ files. See readme-student-app.md.";
   }
   return err.message || "Something went wrong.";
 }
@@ -36,13 +58,15 @@ function friendlyError(err) {
 
 /**
  * GET /api/record
- * Returns Record summary for demo user: IX-A/IX-B/IX-C, skills, pending count.
+ * Returns Record summary: IX-A/IX-B/IX-C, skills, pending count.
+ * Optional: ?user=<id> or X-User-Id header (must be in allowed-users.json).
  */
 app.get("/api/record", (req, res) => {
   try {
-    const { record, recursionGate } = load(REPO_ROOT, "demo");
+    const userId = resolveUserId(req);
+    const { record, recursionGate } = load(REPO_ROOT, userId);
     const pending = recursionGate.filter((c) => c.status === "pending");
-    const edge = getEdge();
+    const edge = getEdge(userId);
     res.json({
       knowledge: record.selfKnowledge,
       curiosity: record.selfCuriosity,
@@ -57,7 +81,7 @@ app.get("/api/record", (req, res) => {
       edge,
     });
   } catch (err) {
-    res.status(500).json({ error: friendlyError(err) });
+    res.status(err.status === 403 ? 403 : 500).json({ error: err.message || friendlyError(err) });
   }
 });
 
@@ -67,9 +91,10 @@ app.get("/api/record", (req, res) => {
  */
 app.get("/api/edge", (req, res) => {
   try {
-    res.json(getEdge());
+    const userId = resolveUserId(req);
+    res.json(getEdge(userId));
   } catch (err) {
-    res.status(500).json({ error: friendlyError(err) });
+    res.status(err.status === 403 ? 403 : 500).json({ error: err.message || friendlyError(err) });
   }
 });
 
@@ -79,7 +104,8 @@ app.get("/api/edge", (req, res) => {
  */
 app.get("/api/export", (req, res) => {
   try {
-    const profile = buildCurriculumProfile();
+    const userId = resolveUserId(req);
+    const profile = buildCurriculumProfile(userId);
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Content-Disposition", "attachment; filename=curriculum-profile.json");
     res.json(profile);
@@ -113,11 +139,12 @@ app.post("/api/activity", (req, res) => {
  */
 app.post("/api/review", (req, res) => {
   try {
+    const userId = resolveUserId(req);
     const { candidate_id, action } = req.body || {};
-    const result = reviewCandidate({ candidate_id, action });
+    const result = reviewCandidate({ candidate_id, action }, userId);
     res.json(result);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(err.status === 403 ? 403 : 400).json({ error: err.message });
   }
 });
 
@@ -127,10 +154,11 @@ app.post("/api/review", (req, res) => {
  */
 app.get("/api/recursion-gate", (req, res) => {
   try {
-    const candidates = getPendingCandidates();
+    const userId = resolveUserId(req);
+    const candidates = getPendingCandidates(userId);
     res.json(candidates);
   } catch (err) {
-    res.status(500).json({ error: friendlyError(err) });
+    res.status(err.status === 403 ? 403 : 500).json({ error: err.message || friendlyError(err) });
   }
 });
 
@@ -155,6 +183,7 @@ const demoDir = path.join(REPO_ROOT, "users", "demo");
 if (!fs.existsSync(demoDir)) {
   console.warn("Warning: users/demo/ not found. API will return errors until demo user exists. See readme-student-app.md.");
 }
+// User resolution: ?user=<id> or X-User-Id header; must be in app/config/allowed-users.json (default ["demo"]).
 
 app.listen(PORT, () => {
   console.log(`Companion-Self app at http://localhost:${PORT}`);

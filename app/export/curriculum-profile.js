@@ -10,15 +10,15 @@ const { load } = require("../schema/record");
 const { getEdge } = require("../pipeline/edge");
 
 const REPO_ROOT = path.resolve(__dirname, "../..");
-const DEMO_USER = "demo";
 
 /**
  * Build curriculum profile.
+ * @param {string} [userId] - User id (default "demo")
  * @returns {{ knowledge: string[], curiosity: string[], personality: string[], edge: { THINK: string, WRITE: string, WORK: string }, evidenceCount: number, exportDate: string, screen_time_target_minutes?: number }}
  */
-function buildCurriculumProfile() {
-  const { record } = load(REPO_ROOT, DEMO_USER);
-  const edge = getEdge();
+function buildCurriculumProfile(userId = "demo") {
+  const { record } = load(REPO_ROOT, userId);
+  const edge = getEdge(userId);
 
   return {
     knowledge: record.selfKnowledge || [],

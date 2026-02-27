@@ -10,8 +10,6 @@ const path = require("path");
 const fs = require("fs");
 const { load, mergeCandidate, saveRecursionGate } = require("../schema/record");
 
-const DEMO_USER = "demo";
-
 function getRepoRoot() {
   return path.resolve(__dirname, "../..");
 }
@@ -19,9 +17,10 @@ function getRepoRoot() {
 /**
  * Review one candidate. Approve merges into Record; reject removes from gate.
  * @param {{ candidate_id: string, action: "approve" | "reject" }} input
+ * @param {string} [userId] - User id (default "demo")
  * @returns {{ ok: boolean, merged?: boolean }}
  */
-function reviewCandidate(input) {
+function reviewCandidate(input, userId = "demo") {
   const repoRoot = getRepoRoot();
   const { candidate_id, action } = input;
 
@@ -32,7 +31,7 @@ function reviewCandidate(input) {
     throw new Error("action must be approve or reject");
   }
 
-  const data = load(repoRoot, DEMO_USER);
+  const data = load(repoRoot, userId);
   const candidate = data.recursionGate.find((c) => c.id === candidate_id);
   if (!candidate) {
     throw new Error("candidate not found");
@@ -40,15 +39,15 @@ function reviewCandidate(input) {
 
   if (action === "reject") {
     const next = data.recursionGate.filter((c) => c.id !== candidate_id);
-    saveRecursionGate(repoRoot, DEMO_USER, next);
+    saveRecursionGate(repoRoot, userId, next);
     return { ok: true, merged: false };
   }
 
   // approve
-  mergeCandidate(repoRoot, DEMO_USER, candidate, data);
+  mergeCandidate(repoRoot, userId, candidate, data);
 
   // Optional: merge receipt log (Week 4.4)
-  const receiptPath = path.join(repoRoot, "users", DEMO_USER, "merge-receipts.jsonl");
+  const receiptPath = path.join(repoRoot, "users", userId, "merge-receipts.jsonl");
   const line = JSON.stringify({
     candidate_id: candidate.id,
     raw_text: candidate.raw_text,

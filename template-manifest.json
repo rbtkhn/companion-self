@@ -2,7 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
-  "canonicalAsOf": "2025-02-25",
+  "canonicalAsOf": "2026-02-27",
+  "templateVersion": "0.2.0",
   "paths": [
     { "path": "docs/concept.md", "description": "Concept: Record, Voice, education structure, knowledge boundary, invariants, long-term objectives.", "optional": false },
     { "path": "docs/identity-fork-protocol.md", "description": "Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, self-evidence), evidence linking.", "optional": false },

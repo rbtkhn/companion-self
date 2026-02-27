@@ -8,7 +8,6 @@
 const { load } = require("../schema/record");
 
 const REPO_ROOT = require("path").resolve(__dirname, "../..");
-const DEMO_USER = "demo";
 
 /**
  * Derive edge (what's next) from Record.
@@ -53,10 +52,11 @@ function deriveEdge(data) {
 }
 
 /**
- * Get edge for demo user.
+ * Get edge for a user.
+ * @param {string} [userId] - User id (default "demo")
  */
-function getEdge() {
-  const data = load(REPO_ROOT, DEMO_USER);
+function getEdge(userId = "demo") {
+  const data = load(REPO_ROOT, userId);
   return deriveEdge(data);
 }
 

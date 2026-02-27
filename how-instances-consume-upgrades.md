@@ -74,9 +74,14 @@ A small sync script could list these paths and diff/merge them into the instance
 
 **Template side:** `template-manifest.json` is the single source of truth for canonical paths and the date they were last updated (`canonicalAsOf`). When the path list or key docs change, update the manifest and commit. An auditor can read the manifest and compare to any companion-self commit.
 
+**Template versioning:** The template repo has **`template-version.json`** at repo root (`templateVersion`, `releasedAt`, `gitTag`) and optional **git tags** (e.g. `template-v0.2.0`). Prefer pulling from a tag when upgrading so the instance has a fixed reference. Update `canonicalAsOf` in `template-manifest.json` when cutting a release.
+
+**Template integrity:** Run **`node scripts/validate-template.js`** from the repo root to ensure every path in `template-manifest.json` exists and that no forbidden files (e.g. `.DS_Store`) are tracked. CI runs this on push; instances can run it after pulling to confirm manifest and filesystem match.
+
 **Instance side:** When you merge from companion-self, **record in your repo** the template commit (or tag) and date. For example, in `docs/MERGING-FROM-COMPANION-SELF.md` or a small file such as `template-source.json`:
 
 - `companionSelfCommit`: the full git commit hash (or tag) you merged from
+- `templateVersion`: from template’s `template-version.json` (e.g. 0.2.0)
 - `mergedAt`: date (ISO) or commit hash in the instance repo
 
 An example schema lives in **`docs/template-source.example.json`**; copy to your instance (e.g. repo root or `docs/template-source.json`) and update it after each merge. That gives a verifiable audit trail: "this instance merged from companion-self at this point."

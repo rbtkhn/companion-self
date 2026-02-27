@@ -108,12 +108,13 @@ Instances may override (e.g. per-activity or LLM-suggested section); this is the
 
 **Merge outcome (good):**
 
-1. **Evidence** — One new activity log entry in self-evidence with id, date, summary, skill_tag; id is stable and referenceable.
+1. **Evidence** — One new activity log entry in self-evidence with id, date, summary, skill_tag; id is stable and referenceable (format e.g. ACT-YYYY-MM-DD-&lt;suffix&gt;).
 2. **Dimension (if applicable)** — One new line in the correct dimension file (self-knowledge, self-curiosity, or self-personality) when suggested_ix_section was set; line format matches existing bullets; no duplicate or overwrite of unrelated lines.
-3. **Gate** — Candidate removed from recursion-gate; no other candidates modified.
-4. **Receipt** — One line appended to merge-receipts.jsonl (candidate_id, raw_text, suggested_ix_section, merged_at).
+3. **Skill file** — One new line in the matching skill file (THINK → self-skill-think.md, WRITE → self-skill-write.md, WORK → self-skill-work.md); line includes evidence id for linking.
+4. **Gate** — Candidate removed from recursion-gate; no other candidates modified.
+5. **Receipt** — One line appended to merge-receipts.jsonl (candidate_id, raw_text, suggested_ix_section, merged_at).
 
-An independent observer can verify by: (a) reading the candidate and the Record before merge, (b) running approve, (c) reading the Record and receipts after merge, and (d) confirming the four points above without asking the operator.
+An independent observer can verify by: (a) reading the candidate and the Record before merge, (b) running approve, (c) reading the Record and receipts after merge, and (d) confirming the five points above without asking the operator.
 
 ---
 

@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-App at **http://localhost:3000**. No env vars for demo.
+App at **http://localhost:3000**. No env vars for demo. The app runs as user **demo** by default. Optional: `?user=<id>` or header `X-User-Id` (user must be listed in `app/config/allowed-users.json`). Template ships with `["demo"]` only; instances can add users for multi-user mode.
 
 ---
 

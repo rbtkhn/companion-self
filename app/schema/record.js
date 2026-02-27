@@ -64,9 +64,9 @@ function parseBulletList(content) {
 
 /**
  * Parse self-evidence.md Activity Log section for entries with id, date, summary, skill_tag.
- * Format: "- ACT-XXXX — summary — YYYY-MM-DD — THINK|WRITE|WORK"
- * Or simpler: "- id: summary (date, skill_tag)"
- * We use: "- ACT-XXXX | summary | date | skill_tag" for machine-readable.
+ * Supported formats (both valid):
+ * - Em-dash: "- ACT-XXXX — summary — YYYY-MM-DD — THINK|WRITE|WORK"
+ * - Pipe: "- ACT-XXXX | THINK|WRITE|WORK | summary" (date optional as fourth column)
  * Fallback: treat lines as freeform if no strict format.
  */
 function parseEvidenceEntries(content) {
@@ -74,9 +74,21 @@ function parseEvidenceEntries(content) {
   const entries = [];
   const lines = content.split(/\r?\n/);
   for (const line of lines) {
-    const m = line.match(/^-\s*(ACT-\w+)\s*[—|-]\s*(.+?)\s*[—|-]\s*(\d{4}-\d{2}-\d{2})\s*[—|-]\s*(THINK|WRITE|WORK)\s*$/i);
-    if (m) {
-      entries.push({ id: m[1], summary: m[2].trim(), date: m[3], skill_tag: m[4].toUpperCase() });
+    const emDash = line.match(/^-\s*(ACT-\w+)\s*[—|-]\s*(.+?)\s*[—|-]\s*(\d{4}-\d{2}-\d{2})\s*[—|-]\s*(THINK|WRITE|WORK)\s*$/i);
+    if (emDash) {
+      entries.push({ id: emDash[1], summary: emDash[2].trim(), date: emDash[3], skill_tag: emDash[4].toUpperCase() });
+      continue;
+    }
+    const pipe = line.match(/^-\s*(ACT-[^\s|]+)\s*\|\s*(THINK|WRITE|WORK)\s*\|\s*(.+)$/i);
+    if (pipe) {
+      let summary = pipe[3].trim();
+      let date = "";
+      const dateMatch = summary.match(/^(.+?)\s*\|\s*(\d{4}-\d{2}-\d{2})\s*$/);
+      if (dateMatch) {
+        summary = dateMatch[1].trim();
+        date = dateMatch[2];
+      }
+      entries.push({ id: pipe[1], summary, date, skill_tag: pipe[2].toUpperCase() });
     }
   }
   return entries;
@@ -192,8 +204,8 @@ function saveRecursionGate(repoRoot, userId, candidates) {
 function mergeCandidate(repoRoot, userId, candidate, data) {
   const userDir = path.join(repoRoot, "users", userId);
   const today = new Date().toISOString().slice(0, 10);
-  const suffix = candidate.id.split("-").pop() || candidate.id.slice(-8).replace(/\D/g, "");
-  const evidenceId = `ACT-${suffix}`;
+  const shortSuffix = (candidate.id.slice(-9) || candidate.id).replace(/\D/g, "").slice(-8) || "0";
+  const evidenceId = `ACT-${today}-${shortSuffix}`;
 
   // 1. Append to self-evidence
   const evidencePath = path.join(userDir, "self-evidence.md");
@@ -211,6 +223,14 @@ function mergeCandidate(repoRoot, userId, candidate, data) {
     const dimPath = path.join(userDir, dimFile);
     const sectionHeader = candidate.suggested_ix_section === "IX-A" ? "Topics / Understanding" : candidate.suggested_ix_section === "IX-B" ? "Interests" : "Observed Voice / Expression";
     appendBulletToFile(dimPath, sectionHeader, `${candidate.raw_text} — ${evidenceId}`);
+  }
+
+  // 2b. Append to matching skill file (THINK/WRITE/WORK)
+  const skillFileMap = { THINK: "self-skill-think.md", WRITE: "self-skill-write.md", WORK: "self-skill-work.md" };
+  const skillFile = skillFileMap[candidate.skill_tag];
+  if (skillFile) {
+    const skillPath = path.join(userDir, skillFile);
+    appendBulletToFile(skillPath, "Activity", `${candidate.raw_text} — ${evidenceId}`);
   }
 
   // 3. Remove from gate

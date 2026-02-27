@@ -83,8 +83,10 @@ function run() {
   const evidenceCountBefore = (data.record.selfEvidence || []).length;
   const knowledgeBefore = (data.record.selfKnowledge || []).length;
   const curiosityBefore = (data.record.selfCuriosity || []).length;
+  const skillThinkBefore = (data.record.selfSkillThink || []).length;
+  const skillWorkBefore = (data.record.selfSkillWork || []).length;
 
-  // --- Approve first candidate (THINK → IX-A) ---
+  // --- Approve first candidate (THINK → IX-A + self-skill-think) ---
   mergeCandidate(REPO_ROOT, FIXTURE_USER, data.recursionGate[0], data);
 
   data = load(REPO_ROOT, FIXTURE_USER);
@@ -92,6 +94,8 @@ function run() {
   assert(data.record.selfEvidence.length === evidenceCountBefore + 1, "one new evidence entry");
   assert(data.record.selfKnowledge.length === knowledgeBefore + 1, "one new IX-A line");
   assert(data.record.selfCuriosity.length === curiosityBefore, "IX-B unchanged after first approve");
+  assert(data.record.selfSkillThink.length === skillThinkBefore + 1, "one new self-skill-think line");
+  assert(data.record.selfSkillWork.length === skillWorkBefore, "self-skill-work unchanged after THINK approve");
 
   // --- Reject second candidate ---
   const next = data.recursionGate.filter((c) => c.id !== data.recursionGate[0].id);
