@@ -92,5 +92,5 @@ The Record’s three capability containers — **THINK**, **WRITE**, **WORK** (s
 ## 5. Reference
 
 - **Source:** Moonshots #233 — *This $40M AI Company Is Using AI Tutors to Teach 2 Hours/Day* (YouTube; Alpha Schools — McKenzie Price, Joe Lamont).
-- **Companion docs:** [RECURSIVE-SELF-LEARNING-OBJECTIVES](../recursive-self-learning-objectives.md) (learning-science objectives for the Record; same source). [ALPHA-SCHOOL-REFERENCE](alpha-school-reference.md) (benchmarks and 2-hour target in this submodule).
+- **Companion docs:** [RECURSIVE-SELF-LEARNING-OBJECTIVES](../../recursive-self-learning-objectives.md) (learning-science objectives for the Record; same source). [ALPHA-SCHOOL-REFERENCE](alpha-school-reference.md) (benchmarks and 2-hour target in this submodule).
 - **Instance use:** Copy or adapt into grace-mar’s WHITE-PAPER, BUSINESS-PLAN, BUSINESS-ROADMAP, MARKET-RESEARCH-ALPHA-KHAN, or DESIGN-NOTES as needed; keep template generic.

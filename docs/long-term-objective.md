@@ -26,7 +26,7 @@ These objectives are **permanent system rules**. They exist to **prevent intenti
 **All modification of skill and self containers is gated by the companion or an explicitly delegated human.** The agent may stage; it may not merge. No silent writes to the Record; no platform or system merge without human approval.
 
 - This is the **enabler of trust and portability**. Without it, "Record as the spine" and comparable outcomes could drift into platform-controlled profiles or agent-written identity.
-- **Single exception:** An explicitly delegated human (e.g. parent/operator on behalf of the companion) may perform the merge; that is still human-approval gated.
+- **Single exception:** An explicitly delegated human (e.g. parent/operator on behalf of the companion) may perform the merge; that is still human-approval gated. When a human is in the loop, see [Human teacher objectives (skill-work-human-teacher)](skill-work/skill-work-human-teacher/human-teacher-objectives.md) for teaching/learning objectives and how they read and modulate skill-think.
 - See [IDENTITY-FORK-PROTOCOL](identity-fork-protocol.md) (Sovereign Merge Rule), [CONCEPT](concept.md) §6 invariants 2–3.
 
 **One line:** The companion (or delegated human) is sovereign over the Record; only they may merge.
@@ -59,4 +59,4 @@ If a proposal would drift the system away from any of these objectives, flag it 
 ## Reference
 
 - [CONCEPT](concept.md) — Core idea, education structure, invariants.
-- [SKILL-WORK: Alpha School reference](skill-work/alpha-school-reference.md) — Benchmarks, 2-hour screen-time target, and equivalent metrics (consolidated in the skill-work submodule).
+- [SKILL-WORK-ALPHA-SCHOOL: Alpha School reference](skill-work/skill-work-alpha-school/alpha-school-reference.md) — Benchmarks, 2-hour screen-time target, and equivalent metrics (consolidated in the skill-work submodule: skill-work-alpha-school).

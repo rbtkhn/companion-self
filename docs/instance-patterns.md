@@ -21,7 +21,7 @@ The template stays code-light and protocol-first; Grace-Mar diverges in several 
 | **Analyst** | Out of scope for 6 weeks | LLM analyst runs on conversation and "we did X"; stages candidates automatically. |
 | **Voice** | Not implemented | Telegram + WeChat bots. |
 | **Archive** | self-memory.md (ephemeral, optional) | self-archive.md (gated log, rotation when large). |
-| **Lesson delivery** | Optional: prompt generator + any LLM | **LLM-lesson method:** Record-derived prompts pasted into ChatGPT, Grok, or any LLM; 3–5 personalized lessons per day; transcript flows into skill-think for processing. No bot install; often easier for many users than a dedicated bot. Grace-Mar may offer both. See [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §4.1. |
+| **Lesson delivery** | Optional: prompt generator + any LLM | **LLM-lesson method:** Record-derived prompts pasted into ChatGPT, Grok, or any LLM; 3–5 personalized lessons per day; transcript flows into skill-think for processing. No bot install; often easier for many users than a dedicated bot. Grace-Mar may offer both. See [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §4.1. |
 
 ---
 
@@ -60,7 +60,7 @@ Optional: `priority_score` (1–5), `tension_with` or `alternative_interpretatio
 
 **Session brief** — Before or during a session, the operator (or companion) may want a short summary: what's pending at the gate, recent activity, suggested next focus. This is an **operator tool pattern**, not a template requirement.
 
-Instances that support it can expose: pending count, list of candidate summaries, recent merges, edge ("what's next"). Useful for "quick sync" before processing the gate or starting a session.
+Instances that support it can expose: pending count, list of candidate summaries, recent merges, edge ("what's next"). Useful for "quick sync" before processing the gate or starting a session. When a human teacher is present, the session brief supports **reading** skill-think and edge so they can **modulate** focus and gate; see [Human teacher objectives (skill-work-human-teacher)](skill-work/skill-work-human-teacher/human-teacher-objectives.md).
 
 ---
 

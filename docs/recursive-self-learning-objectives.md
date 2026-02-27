@@ -4,7 +4,7 @@
 
 This doc captures **objectives** for how a companion self (Record + pipeline + Voice) can improve itself over time—*recursive self-learning*. The framing is inspired by learning-science principles and by models such as **Alpha Schools** (AI tutors, mastery-based learning, 2-hour academic block, life skills, closed-loop improvement), as discussed in *Moonshots #233 — This $40M AI Company Is Using AI Tutors to Teach 2 Hours/Day* (Alpha leadership: McKenzie Price, Joe Lamont). The companion self is not a school; these objectives translate those ideas into Record-centric, evidence-grounded, companion-sovereign terms.
 
-**No human guide assumed.** These objectives must be achievable **without assuming the help of a human guide**. Where Alpha uses in-room “guides” for motivation and “learning how to learn,” companion-self embeds equivalent support in the **system**: Voice (in-character coaching), pipeline and session prompts (“Did you read the explanation?”), edge-driven suggestions, and visible progress (evidence count, “X hours away”). An operator may augment but is not required.
+**No human guide assumed.** These objectives must be achievable **without assuming the help of a human guide**. Where Alpha uses in-room “guides” for motivation and “learning how to learn,” companion-self embeds equivalent support in the **system**: Voice (in-character coaching), pipeline and session prompts (“Did you read the explanation?”), edge-driven suggestions, and visible progress (evidence count, “X hours away”). An operator may augment but is not required; when they do, see [Human teacher objectives (skill-work-human-teacher)](skill-work/skill-work-human-teacher/human-teacher-objectives.md) for teaching/learning objectives and how they read and modulate skill-think.
 
 ---
 
@@ -44,7 +44,7 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 **Objective:** Design so the companion (and operator) experience **ownership** and **visible progress**. The Record is theirs; they gate what enters. Where applicable, make progress legible (e.g. “you’re X hours away,” evidence count, edge clarity) so effort maps to growth. “Time back” and structure of the day can motivate: e.g. focused capture blocks, then free space for other things.
 
-**Inspiration:** “Give the kids their time back.” “You’re 17 hours away, you’re 5 hours away.” “Moves everything from I’m not smart enough to I’m five hours away from mastering it.” Companion-Self: the companion is the gate; the pipeline makes progress visible through the Record and staging, not through external grades. **Time calibration:** All screen-based learning is designed to fit within **2 hours per day** (equivalent metric to Alpha); see [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §3.
+**Inspiration:** “Give the kids their time back.” “You’re 17 hours away, you’re 5 hours away.” “Moves everything from I’m not smart enough to I’m five hours away from mastering it.” Companion-Self: the companion is the gate; the pipeline makes progress visible through the Record and staging, not through external grades. **Time calibration:** All screen-based learning is designed to fit within **2 hours per day** (equivalent metric to Alpha); see [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §3.
 
 ---
 

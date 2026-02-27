@@ -134,7 +134,7 @@ GET `/api/edge` returns suggested next focus per THINK, WRITE, WORK. Also includ
 
 ## Record-derived lesson prompt (minimal shape)
 
-For **Record-driven prompts** (paste into any LLM to trigger a personalized lesson), the template defines a minimal prompt shape. See [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §4.1 for context and typical flow (3–5 lessons per day, transcript → skill-think).
+For **Record-driven prompts** (paste into any LLM to trigger a personalized lesson), the template defines a minimal prompt shape. See [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §4.1 for context and typical flow (3–5 lessons per day, transcript → skill-think).
 
 **Required Record fields for the prompt:** knowledge (IX-A), curiosity (IX-B), personality (IX-C), edge (what’s next per THINK/WRITE/WORK). Optional but useful: skills (THINK, WRITE, WORK arrays) for level and recent activity.
 

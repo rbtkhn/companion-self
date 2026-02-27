@@ -1,29 +1,21 @@
-# Skill-work submodule
+# Skill-work
 
-**Companion-Self template · Alpha reference and lesson-delivery pattern**
+**Companion-Self template · Parent for work-related submodules**
 
-This submodule consolidates Alpha School reference material and the template’s **Record-driven lesson** pattern for use by WORK, the Record, and instances.
-
----
-
-## Contents
-
-| Doc | Purpose |
-|-----|---------|
-| **[alpha-school-reference.md](alpha-school-reference.md)** | Alpha’s primary deliverable (comparison target); benchmarks; 2-hour screen-time target and detailed composition (schedule, apps, mastery thresholds); use in companion-self; **Record-driven prompts** (3–5 lessons via ChatGPT/Grok, transcript → skill-think). |
-| **[insights-alpha-moonshots-233-for-business.md](insights-alpha-moonshots-233-for-business.md)** | Alpha/Moonshots #233 insights for business plan, white paper, and GTM (THINK/WRITE/WORK narrative). Optional for instances. |
+This folder holds **submodules** that support WORK, the Record, and instances: reference material (Alpha School), human-teacher objectives, and related content. Each submodule has its own README.
 
 ---
 
-## Why this submodule exists
+## Submodules
 
-- **Single place** for Alpha benchmarks, 2-hour target, and “how companion-self compares” so the template doesn’t scatter Alpha content across multiple docs.
-- **Record-driven prompts** are documented here (§4.1 of alpha-school-reference): prompt from Record → any LLM → transcript → skill-think. The schema’s minimal prompt shape is in [schema-record-api.md](../schema-record-api.md#record-derived-lesson-prompt-minimal-shape).
+| Submodule | Purpose |
+|-----------|---------|
+| **[skill-work-alpha-school](skill-work-alpha-school/)** | Alpha School reference: benchmarks (YAML), 2-hour screen-time target, Record-driven prompts. Optional comparison targets. |
+| **[skill-work-human-teacher](skill-work-human-teacher/)** | Human teaching/learning objectives: teach the human companion; read and modulate skill-think. Can be instructed for classes, seminars, ages, languages. |
 
 ---
 
 ## Cross-references
 
-- [Long-term objective](../long-term-objective.md) — Links to this submodule for Alpha reference.
-- [Schema and API contract](../schema-record-api.md) — Record shape, edge, **Record-derived lesson prompt (minimal shape)**.
-- [Market research (TimeBack/Alpha/third-party)](../market-research-timeback-alpha-thirdparty.md) — Template evaluation of 10 proposals; references this submodule.
+- [Long-term objective](../long-term-objective.md) — Links to skill-work submodules.
+- [Concept](../concept.md), [Schema and API](../schema-record-api.md), [Instance patterns](../instance-patterns.md).
