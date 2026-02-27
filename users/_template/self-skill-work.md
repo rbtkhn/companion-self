@@ -4,13 +4,15 @@
 
 **Objectives and intentions** for the user and companion are encoded in skill-work (this file and linked evidence). Evidence-linked; planning, execution, collaboration, originality per instance schema.
 
+**Module intent:** WORK serves as tutor for the companion in making, planning, execution, and creation — proposing activities at the container edge, answering questions, scaffolding next steps, aligned with work goals and life mission. Captures capability from evidence; human-gated.
+
 ---
 
 ## Objectives and intentions
 
-Generic default for typical new users. Replace or extend per instance or after seed.
+**Default objectives for new users** (standard set). Replace or extend per instance or after seed. Format: **label** — **description**.
 
-- **Learn and grow** — Steady intake (READ) at the right level; build knowledge and curiosity.
+- **Learn and grow** — Steady intake (THINK) at the right level; build knowledge and curiosity.
 - **Express and create** — Regular WRITE: journal, stories, explanations; develop voice.
 - **Build and ship** — Do projects and creations (WORK); finish and record what was made.
 - **Make progress visible** — Use "we did X" and the gate so the Record and edge stay current.
@@ -47,6 +49,26 @@ Same channels that can carry WRITE (Voice, expression) can also be **work interf
 
 ---
 
-## Planning / execution
+## WORK goals
 
-(Placeholder: projects, deliverables, financial, collaboration, originality — populated from activity.)
+Companion's own objectives for making, planning, execution, creation. Gated; evidence-linked when captured. Standard: **near_term** (list), **horizon** (list), **source** (optional evidence id).
+
+- **near_term** — (e.g. "finish X", "learn Y"; instance fills or leaves empty)
+- **horizon** — (e.g. longer-term goals; instance fills or leaves empty)
+- **source** — (evidence id when goals were captured; optional)
+
+---
+
+## Life mission ref
+
+Life mission lives in SELF (identity, values). WORK goals align with it. Instance keeps the canonical life mission in `self.md` (e.g. § VALUES or equivalent); this file and WORK flows reference it.
+
+---
+
+## Tasks (planning / execution)
+
+Concrete work items. Per [schema-record-api](../../docs/schema-record-api.md): each task has **summary**, **status** (pending | in_progress | done), optional **id**, **evidence_id**, **updated**.
+
+| id | summary | status | evidence_id |
+|----|---------|--------|-------------|
+| — | (instance adds tasks; link to evidence when done) | — | — |

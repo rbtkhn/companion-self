@@ -50,11 +50,11 @@ Every claim in the Record must reference evidence (e.g. activity id, provenance)
 | **self-knowledge** (IX-A) | What they've learned; topics, facts, understanding. **Source of truth** for IX-A. | `self-knowledge.md` |
 | **self-curiosity** (IX-B) | What they're curious about; interests, questions. **Source of truth** for IX-B. | `self-curiosity.md` |
 | **self-personality** (IX-C) | Voice, preferences, values (observed growth). **Source of truth** for IX-C. | `self-personality.md` |
-| **SKILLS** | READ, WRITE, WORK (self-skill-read, self-skill-write, self-skill-work) | What they CAN DO; education is structured around these three. **WORK utilizes self-personality (IX-C)** for what to build, how they work, voice in outputs, resilience/difficulty, ritual ("we did X"), and edge phrasing. Template: `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`. Schema tags in APIs/export: READ, WRITE, WORK. |
+| **SKILLS** | THINK, WRITE, WORK (self-skill-think, self-skill-write, self-skill-work) | What they CAN DO; education is structured around these three. **WORK utilizes self-personality (IX-C)** for what to build, how they work, voice in outputs, resilience/difficulty, ritual ("we did X"), and edge phrasing. Template: `self-skill-think.md`, `self-skill-write.md`, `self-skill-work.md`. Schema tags in APIs/export: THINK, WRITE, WORK. |
 | **self-evidence** | Activity log, writing log, creation log | Raw artifacts; immutable once captured |
 | **self-library** (optional) | Curated lookup sources (books, reference works, videos) | Bounded lookup extension; query-first for answers; does not auto-merge into Record |
 
-Post-seed growth: **IX-A** (self-knowledge), **IX-B** (self-curiosity), **IX-C** (self-personality). The **source of truth** for this content is the three dimension files; self.md holds baseline only (or an optional summary). Self-skill-read (READ) activity is **filtered and distilled** into these three files; the pipeline suggests merges, the companion gates.
+Post-seed growth: **IX-A** (self-knowledge), **IX-B** (self-curiosity), **IX-C** (self-personality). The **source of truth** for this content is the three dimension files; self.md holds baseline only (or an optional summary). self-skill-think (THINK) activity is **filtered and distilled** into these three files; the pipeline suggests merges, the companion gates.
 
 ---
 

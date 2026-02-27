@@ -13,7 +13,7 @@ The **seed phase** is the initial capture that creates the baseline of a new com
 ## What Seed Phase Produces
 
 - **Initial SELF** — Identity, preferences, narrative baseline (e.g. favorites, basic story).
-- **Initial self-skill-read, self-skill-write, self-skill-work** — Structure only; skills grow through activity after seed.
+- **Initial self-skill-think, self-skill-write, self-skill-work** — Structure only; skills grow through activity after seed.
 - **Initial self-evidence** — Any artifacts or attestations used during seeding (e.g. survey responses).
 
 Seed phase establishes *who they are* at the start. Everything else is inferred or captured through the gated pipeline after seed.

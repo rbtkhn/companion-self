@@ -48,7 +48,7 @@ app.get("/api/record", (req, res) => {
       curiosity: record.selfCuriosity,
       personality: record.selfPersonality,
       skills: {
-        READ: record.selfSkillRead,
+        THINK: record.selfSkillThink,
         WRITE: record.selfSkillWrite,
         WORK: record.selfSkillWork,
       },
@@ -63,7 +63,7 @@ app.get("/api/record", (req, res) => {
 
 /**
  * GET /api/edge
- * Returns suggested next focus per READ, WRITE, WORK.
+ * Returns suggested next focus per THINK, WRITE, WORK.
  */
 app.get("/api/edge", (req, res) => {
   try {
@@ -90,7 +90,7 @@ app.get("/api/export", (req, res) => {
 
 /**
  * POST /api/activity
- * Body: { text: string, skill_tag?: "READ" | "WRITE" | "WORK" }
+ * Body: { text: string, skill_tag?: "THINK" | "WRITE" | "WORK" }
  * Creates candidate, appends to recursion-gate.json.
  */
 app.post("/api/activity", (req, res) => {

@@ -4,6 +4,8 @@
 
 Evidence-linked; vocabulary, complexity, style per instance schema.
 
+**Module intent:** WRITE captures capability from evidence. Edge (what to write or try next) is derived from this file and self-evidence. Human-gated; evidence-linked.
+
 ---
 
 ## Channels / outputs
@@ -22,4 +24,4 @@ Places or APIs through which WRITE flows (Voice, bot, page, email, social). Inst
 
 ## Voice / style
 
-(Placeholder: vocabulary, complexity, style, expression — populated from activity and the dimensions.)
+(Placeholder: vocabulary, complexity, style, expression — populated from activity and the dimensions.) Instances may define a WRITE container (e.g. levels, edge, gaps) and link to evidence; see instance patterns.

@@ -25,7 +25,7 @@ When working on the template, use a workspace where **companion-self is primary 
 
 | # | Deliverable | Purpose |
 |---|-------------|---------|
-| 5 | **users/_template/** | Minimal scaffold: self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md (structure only, no real data). Used when creating a new user dir in an instance. |
+| 5 | **users/_template/** | Minimal scaffold: self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md (structure only, no real data). Used when creating a new user dir in an instance. |
 | 6 | **how-instances-consume-upgrades.md** | How an instance (e.g. grace-mar) pulls upgrades from this template; link to grace-mar's [MERGING-FROM-COMPANION-SELF](https://github.com/rbtkhn/grace-mar/blob/main/docs/MERGING-FROM-COMPANION-SELF.md). Optionally: list of template paths. |
 
 ### Optional later (not minimal)
@@ -88,7 +88,7 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
 ### Phase E: Optional scaffold and upgrade guide
 
 - [x] **E1. users/_template/** (optional)
-  - Create `users/_template/` with minimal self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md.
+  - Create `users/_template/` with minimal self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md.
   - Content: structure/headings only (or placeholders). No real data. Use grace-mar's docs/*-TEMPLATE.md as reference.
   - **Done when:** Copying this directory gives a valid empty user scaffold.
 
@@ -134,7 +134,7 @@ companion-self/
         ├── self-knowledge.md
         ├── self-curiosity.md
         ├── self-personality.md
-        ├── self-skill-read.md
+        ├── self-skill-think.md
         ├── self-skill-write.md
         ├── self-skill-work.md
         ├── self-evidence.md

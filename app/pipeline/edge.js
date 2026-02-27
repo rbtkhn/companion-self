@@ -1,5 +1,5 @@
 /**
- * Edge derivation: suggested next focus per READ, WRITE, WORK.
+ * Edge derivation: suggested next focus per THINK, WRITE, WORK.
  * Rule-based; no LLM. WORK uses self-personality (IX-C) for phrasing.
  *
  * See docs/schema-record-api.md and CONCEPT §4.
@@ -13,7 +13,7 @@ const DEMO_USER = "demo";
 /**
  * Derive edge (what's next) from Record.
  * @param {{ record, recursionGate }} data - from load()
- * @returns {{ READ: string, WRITE: string, WORK: string }}
+ * @returns {{ THINK: string, WRITE: string, WORK: string }}
  */
 function deriveEdge(data) {
   const { record } = data;
@@ -22,12 +22,12 @@ function deriveEdge(data) {
   const p = record.selfPersonality || [];
   const evidence = record.selfEvidence || [];
 
-  const readEvidence = evidence.filter((e) => e.skill_tag === "READ");
+  const thinkEvidence = evidence.filter((e) => e.skill_tag === "THINK");
   const writeEvidence = evidence.filter((e) => e.skill_tag === "WRITE");
   const workEvidence = evidence.filter((e) => e.skill_tag === "WORK");
 
-  // READ: last topic from IX-A or IX-B, or default
-  const READ =
+  // THINK: last topic from IX-A or IX-B, or default
+  const THINK =
     k.length > 0
       ? `Continue with: ${k[k.length - 1].replace(/ — .*$/, "").trim()}`
       : c.length > 0
@@ -49,7 +49,7 @@ function deriveEdge(data) {
         ? `Next: build on "${workEvidence[workEvidence.length - 1].summary.slice(0, 30)}…"`
         : "One small project";
 
-  return { READ, WRITE, WORK };
+  return { THINK, WRITE, WORK };
 }
 
 /**

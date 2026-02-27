@@ -36,7 +36,7 @@ We use **cognitive fork** only. The fork and the real person grow independently;
 
 ## 3. Record vs. Voice
 
-- **Record** — The documented self (e.g. self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-read.md, self-skill-write.md, self-skill-work.md, self-evidence.md). It is its own entity: it started from a snapshot but has its own trajectory. It does not "mimic" or "replicate" the person.
+- **Record** — The documented self (e.g. self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md, self-evidence.md). It is its own entity: it started from a snapshot but has its own trajectory. It does not "mimic" or "replicate" the person.
 - **Voice** — Renders the Record in conversation. When the companion queries, the system generates responses constrained by the Record. That rendering is the Voice.
 
 The Record records; the Voice speaks the Record. The Record does not command; the Voice does not speak unbidden. The Voice's **linguistic style and level** are primarily shaped by self-skill-write (WRITE): vocabulary, tone, and expression in the Record drive how the Voice sounds when queried.
@@ -45,19 +45,19 @@ The Record records; the Voice speaks the Record. The Record does not command; th
 
 ## 4. Education structure
 
-**Identity and instrument.** The Record (including self-knowledge, self-curiosity, self-personality, and evidence) is the **identity** — the unique personal representation of the companion-self; the knowledge boundary protects it. The three skill containers (READ, WRITE, WORK) are **instruments** — modules the companion-self uses to learn, express, and do, in order to satisfy the user's and companion's needs and intentions. Instruments can use any tools (including heavy AI); only human-gated results from their use update the identity.
+**Identity and instrument.** The Record (including self-knowledge, self-curiosity, self-personality, and evidence) is the **identity** — the unique personal representation of the companion-self; the knowledge boundary protects it. The three skill containers (THINK, WRITE, WORK) are **instruments** — modules the companion-self uses to learn, express, and do, in order to satisfy the user's and companion's needs and intentions. Instruments can use any tools (including heavy AI); only human-gated results from their use update the identity.
 
 Companion-Self education is **structured** around three skill containers:
 
 | Structure | Schema tag | Meaning |
 |-----------|------------|---------|
-| **self-skill-read** | READ | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. *(THINK in Grace-Mar is equivalent: intake and comprehension.)* |
+| **self-skill-think** | THINK | Intake and comprehension: what the companion has consumed and understood (reading, media, lessons). Evidence and edge drive what to read/watch next. *(THINK in Grace-Mar is equivalent: intake and comprehension.)* |
 | **self-skill-write** | WRITE | Expression and voice: what the companion produces (journal, stories, explanations). Evidence of WRITE is evidence of understanding and voice. |
 | **self-skill-work** | WORK | Making and doing: what the companion plans, builds, and ships (projects, creations). **Objectives and intentions** for the user/companion are encoded here; evidence links to self-skill-work and life skills. |
 
-In schema, APIs, and export we use the tags **READ**, **WRITE**, **WORK**; the canonical names for the **education structure** are **self-skill-read**, **self-skill-write**, **self-skill-work**. All screen-based learning and evidence capture are organized under these three.
+In schema, APIs, and export we use the tags **THINK**, **WRITE**, **WORK**; the canonical names for the **education structure** are **self-skill-think**, **self-skill-write**, **self-skill-work**. All screen-based learning and evidence capture are organized under these three.
 
-**Self-skill-read → self-knowledge, self-curiosity, self-personality.** Activity in **self-skill-read** (READ) is **filtered and distilled** into three dimensions of the Record (SELF):
+**self-skill-think → self-knowledge, self-curiosity, self-personality.** Activity in **self-skill-think** (THINK) is **filtered and distilled** into three dimensions of the Record (SELF):
 
 | Distillation target | Schema | Meaning |
 |--------------------|--------|---------|
@@ -65,11 +65,11 @@ In schema, APIs, and export we use the tags **READ**, **WRITE**, **WORK**; the c
 | **self-curiosity** | IX-B | What they are curious about, interests, questions. |
 | **self-personality** | IX-C | Voice, preferences, values, narrative—how they see themselves and express. |
 
-The pipeline stages READ activity and suggests merges into IX-A, IX-B, or IX-C; the companion gates what actually enters. **Post-seed growth lives in the three dimension files:** **self-knowledge.md** (IX-A), **self-curiosity.md** (IX-B), **self-personality.md** (IX-C). self.md holds identity and baseline (I–VIII); it may optionally point to or summarize the three files, but the **source of truth** for IX-A/B/C is the three files. Merge and Voice read from them. So READ feeds **who they are** (self.md baseline + these three) as well as **what they can do** (self-skill-read, evidence).
+The pipeline stages THINK activity and suggests merges into IX-A, IX-B, or IX-C; the companion gates what actually enters. **Post-seed growth lives in the three dimension files:** **self-knowledge.md** (IX-A), **self-curiosity.md** (IX-B), **self-personality.md** (IX-C). self.md holds identity and baseline (I–VIII); it may optionally point to or summarize the three files, but the **source of truth** for IX-A/B/C is the three files. Merge and Voice read from them. So THINK feeds **who they are** (self.md baseline + these three) as well as **what they can do** (self-skill-think, evidence).
 
 **Skill flow and the three dimensions:**
 
-- **self-skill-read (READ)** — Outputs **flow into** the three dimension files. Pipeline distills READ activity and suggests merges into self-knowledge (IX-A), self-curiosity (IX-B), self-personality (IX-C); the companion gates.
+- **self-skill-think (THINK)** — Outputs **flow into** the three dimension files. Pipeline distills THINK activity and suggests merges into self-knowledge (IX-A), self-curiosity (IX-B), self-personality (IX-C); the companion gates.
 - **self-skill-write (WRITE)** — Outputs are **shaped by** the three dimensions. What they know (self-knowledge), what they’re curious about (self-curiosity), and how they express (self-personality) inform tone, topics, and voice when they write. WRITE evidence lives in self-evidence and self-skill-write; pipeline may also suggest dimension merges from WRITE (e.g. a reflection that reveals curiosity or personality).
 - **self-skill-work (WORK)** — **Shaped by** the dimensions (what to build next, how to approach it: interests, knowledge, personality) and **feeds into** them when merged. Projects and creations are evidence in self-evidence and self-skill-work; the pipeline can suggest dimension merges from WORK (e.g. knowledge gained by doing, curiosity revealed by project choice, personality in how they plan and ship). So WORK is bidirectional: dimensions shape proposed work; approved WORK activity can add to self-knowledge, self-curiosity, or self-personality.
 
@@ -132,7 +132,7 @@ Instances should support: (1) **Reversibility** — rollback or undo of Record c
 
 | Component | In an instance |
 |-----------|----------------|
-| **Record** | `users/<id>/self.md`, `self-knowledge.md`, `self-curiosity.md`, `self-personality.md`, `self-skill-read.md`, `self-skill-write.md`, `self-skill-work.md`, self-evidence.md |
+| **Record** | `users/<id>/self.md`, `self-knowledge.md`, `self-curiosity.md`, `self-personality.md`, `self-skill-think.md`, `self-skill-write.md`, `self-skill-work.md`, self-evidence.md |
 | **Voice** | Bot or other interface (lives in the instance repo; not in this template) |
 | **Staging** | recursion-gate — candidates at the gate, before merge. To process the gate: [Identity Fork Protocol](identity-fork-protocol.md) § Process the gate. |
 | **Ephemeral context** | self-memory.md (optional; not part of the Record) |

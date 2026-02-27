@@ -14,7 +14,7 @@ const DEMO_USER = "demo";
 
 /**
  * Build curriculum profile.
- * @returns {{ knowledge: string[], curiosity: string[], personality: string[], edge: { READ: string, WRITE: string, WORK: string }, evidenceCount: number, exportDate: string, screen_time_target_minutes?: number }}
+ * @returns {{ knowledge: string[], curiosity: string[], personality: string[], edge: { THINK: string, WRITE: string, WORK: string }, evidenceCount: number, exportDate: string, screen_time_target_minutes?: number }}
  */
 function buildCurriculumProfile() {
   const { record } = load(REPO_ROOT, DEMO_USER);

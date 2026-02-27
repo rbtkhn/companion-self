@@ -12,7 +12,7 @@ const DEMO_USER = "demo";
 
 // Rule-based mapping: skill_tag -> { mind_category, suggested_ix_section }
 const SKILL_MAP = {
-  READ: { mind_category: "knowledge", suggested_ix_section: "IX-A" },
+  THINK: { mind_category: "knowledge", suggested_ix_section: "IX-A" },
   WRITE: { mind_category: "personality", suggested_ix_section: "IX-C" },
   WORK: { mind_category: "curiosity", suggested_ix_section: "IX-B" },
 };
@@ -28,8 +28,8 @@ function getRepoRoot() {
  */
 function stageActivity(input) {
   const repoRoot = getRepoRoot();
-  const skill_tag = (input.skill_tag || "READ").toUpperCase();
-  const { mind_category, suggested_ix_section } = SKILL_MAP[skill_tag] || SKILL_MAP.READ;
+  const skill_tag = (input.skill_tag || "THINK").toUpperCase();
+  const { mind_category, suggested_ix_section } = SKILL_MAP[skill_tag] || SKILL_MAP.THINK;
 
   const candidate = createCandidate({
     raw_text: String(input.text || "").trim(),

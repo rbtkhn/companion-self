@@ -43,7 +43,7 @@ Alpha squeezes **all mandatory education into ~2 hours of screen time per day**.
 | Initiative | Deliverable | Owner |
 |------------|-------------|--------|
 | **Curriculum-consumable export** | Stable schema and export (e.g. `curriculum_profile` or equivalent): IX-A, IX-B, IX-C, READ/WRITE/WORK edge, Lexile or level, evidence anchors. Document in template; instance implements. | Template: schema doc. Instance: export script, docs. |
-| **Pipeline and edge** | Pipeline produces “edge” (per skill/module) from self-skill-read, self-skill-write, self-skill-work + self-evidence; edge exposed in export. No auto-merge; stage-only. | Instance. |
+| **Pipeline and edge** | Pipeline produces “edge” (per skill/module) from self-skill-think, self-skill-write, self-skill-work + self-evidence; edge exposed in export. No auto-merge; stage-only. | Instance. |
 | **Hosted family product** | One instance (e.g. grace-mar) offers hosted Record + pipeline + Voice for families; onboarding, “we did X,” review queue, export. | Instance. |
 | **Proof architecture** | Pipeline health, gate integrity, retention (e.g. week-4, month-3), evidence-linked claim ratio. Report quarterly. | Instance + template (metrics definition). |
 | **Seed and onboarding** | Seed-phase definition and templates in template; instance has repeatable onboarding (survey, first captures, first merge). | Template: seed-phase, users/_template. Instance: flows. |

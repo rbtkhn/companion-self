@@ -14,7 +14,7 @@
     { "path": "users/_template/self-knowledge.md", "description": "IX-A: what they've learned (self-knowledge) scaffold.", "optional": false },
     { "path": "users/_template/self-curiosity.md", "description": "IX-B: what they're curious about (self-curiosity) scaffold.", "optional": false },
     { "path": "users/_template/self-personality.md", "description": "IX-C: voice, preferences, values (self-personality) scaffold.", "optional": false },
-    { "path": "users/_template/self-skill-read.md", "description": "READ (self-skill-read) scaffold.", "optional": false },
+    { "path": "users/_template/self-skill-think.md", "description": "THINK (self-skill-think) scaffold.", "optional": false },
     { "path": "users/_template/self-skill-write.md", "description": "WRITE (self-skill-write) scaffold.", "optional": false },
     { "path": "users/_template/self-skill-work.md", "description": "WORK (self-skill-work) scaffold.", "optional": false },
     { "path": "users/_template/self-evidence.md", "description": "Evidence schema/structure scaffold.", "optional": false },

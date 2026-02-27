@@ -16,7 +16,7 @@ The template stays code-light and protocol-first; Grace-Mar diverges in several 
 
 | Area | Template | Grace-Mar |
 |------|----------|-----------|
-| **Intake skill** | READ (self-skill-read) | THINK — semantically equivalent (intake, comprehension). |
+| **Intake skill** | THINK (self-skill-think) | Grace-Mar also uses THINK (semantically equivalent: intake, comprehension). |
 | **Staging format** | recursion-gate.json (JSON array) | pending-review.md (YAML/markdown blocks). |
 | **Analyst** | Out of scope for 6 weeks | LLM analyst runs on conversation and "we did X"; stages candidates automatically. |
 | **Voice** | Not implemented | Telegram + WeChat bots. |
@@ -72,6 +72,7 @@ Before merge, an instance may run a **conflict check** on a candidate: compare s
 ## Cross-references
 
 - [Concept](concept.md) — READ/WRITE/WORK, identity and instrument.
+- [Schema and API contract](schema-record-api.md) — Record schema; **WORK objectives and tasks standard** (objectives, work_goals, tasks with summary/status/evidence_id).
 - [Ingestion and sources](ingestion-and-sources.md) — Many sources → staging → gate → Record; triggers for suggested merges.
 - [Identity Fork Protocol](identity-fork-protocol.md) — Sovereign Merge Rule, schema, Process the gate.
 - [Project 6-week coding](project-6week-coding.md) — Minimal student interface (no analyst, no Voice).

@@ -32,7 +32,7 @@
 
 ## Index for companion-self utilization
 
-After downloading, run the index builder so APIs or skill-read can resolve LIB-ids and filter by maturity:
+After downloading, run the index builder so APIs or skill-think can resolve LIB-ids and filter by maturity:
 
 ```bash
 ./scripts/build-library-index.sh

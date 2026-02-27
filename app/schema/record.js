@@ -10,7 +10,7 @@ const path = require("path");
 
 // --- Types (runtime validation) ---
 
-const SKILL_TAGS = ["READ", "WRITE", "WORK"];
+const SKILL_TAGS = ["THINK", "WRITE", "WORK"];
 const IX_SECTIONS = ["IX-A", "IX-B", "IX-C"];
 const MIND_CATEGORIES = ["knowledge", "curiosity", "personality"];
 
@@ -31,14 +31,14 @@ const MIND_CATEGORIES = ["knowledge", "curiosity", "personality"];
  * @property {string} id - e.g. ACT-XXXX
  * @property {string} date - ISO date
  * @property {string} summary - Short description
- * @property {string} skill_tag - READ | WRITE | WORK
+ * @property {string} skill_tag - THINK | WRITE | WORK
  */
 
 /**
  * @typedef {Object} RecursionGateCandidate
  * @property {string} id - Unique id (uuid or timestamp)
  * @property {string} raw_text - Raw "we did X" or activity text
- * @property {string} skill_tag - READ, WRITE, or WORK
+ * @property {string} skill_tag - THINK, WRITE, or WORK
  * @property {string} mind_category - knowledge, curiosity, or personality
  * @property {string} suggested_ix_section - IX-A, IX-B, or IX-C
  * @property {string} created_at - ISO date or timestamp
@@ -64,7 +64,7 @@ function parseBulletList(content) {
 
 /**
  * Parse self-evidence.md Activity Log section for entries with id, date, summary, skill_tag.
- * Format: "- ACT-XXXX — summary — YYYY-MM-DD — READ|WRITE|WORK"
+ * Format: "- ACT-XXXX — summary — YYYY-MM-DD — THINK|WRITE|WORK"
  * Or simpler: "- id: summary (date, skill_tag)"
  * We use: "- ACT-XXXX | summary | date | skill_tag" for machine-readable.
  * Fallback: treat lines as freeform if no strict format.
@@ -74,7 +74,7 @@ function parseEvidenceEntries(content) {
   const entries = [];
   const lines = content.split(/\r?\n/);
   for (const line of lines) {
-    const m = line.match(/^-\s*(ACT-\w+)\s*[—|-]\s*(.+?)\s*[—|-]\s*(\d{4}-\d{2}-\d{2})\s*[—|-]\s*(READ|WRITE|WORK)\s*$/i);
+    const m = line.match(/^-\s*(ACT-\w+)\s*[—|-]\s*(.+?)\s*[—|-]\s*(\d{4}-\d{2}-\d{2})\s*[—|-]\s*(THINK|WRITE|WORK)\s*$/i);
     if (m) {
       entries.push({ id: m[1], summary: m[2].trim(), date: m[3], skill_tag: m[4].toUpperCase() });
     }
@@ -104,7 +104,7 @@ function load(repoRoot, userId = "demo") {
   const selfKnowledge = parseBulletList(read("self-knowledge.md"));
   const selfCuriosity = parseBulletList(read("self-curiosity.md"));
   const selfPersonality = parseBulletList(read("self-personality.md"));
-  const selfSkillRead = parseBulletList(read("self-skill-read.md"));
+  const selfSkillThink = parseBulletList(read("self-skill-think.md"));
   const selfSkillWrite = parseBulletList(read("self-skill-write.md"));
   const selfSkillWork = parseBulletList(read("self-skill-work.md"));
   const selfEvidence = parseEvidenceEntries(read("self-evidence.md"));
@@ -125,7 +125,7 @@ function load(repoRoot, userId = "demo") {
       selfKnowledge,
       selfCuriosity,
       selfPersonality,
-      selfSkillRead,
+      selfSkillThink,
       selfSkillWrite,
       selfSkillWork,
       selfEvidence,

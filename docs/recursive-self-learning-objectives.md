@@ -18,9 +18,9 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 ## 2. Activity at the edge (zone of proximal development)
 
-**Objective:** Propose and capture activity at the **container edge**—the boundary of current capability—so the companion is challenged but not overwhelmed. Too easy → no growth; too hard → disengagement. The Record (e.g. self-skill-read, self-skill-write, self-skill-work, IX-A/IX-B) defines the edge; activities and evidence at the edge extend it.
+**Objective:** Propose and capture activity at the **container edge**—the boundary of current capability—so the companion is challenged but not overwhelmed. Too easy → no growth; too hard → disengagement. The Record (e.g. self-skill-think, self-skill-write, self-skill-work, IX-A/IX-B) defines the edge; activities and evidence at the edge extend it.
 
-**Inspiration:** “80–85% accuracy… not too easy, not too hard.” “Zone of proximal development.” “Every game designer will tell you if you drop below 66, the kids disengage.” Companion-Self: the edge is derived from SELF + self-skill-read/write/build + self-evidence; the pipeline (and any curriculum or tutor integration) can use it to suggest what to do next, without the system merging on its own.
+**Inspiration:** “80–85% accuracy… not too easy, not too hard.” “Zone of proximal development.” “Every game designer will tell you if you drop below 66, the kids disengage.” Companion-Self: the edge is derived from SELF + self-skill-think/write/build + self-evidence; the pipeline (and any curriculum or tutor integration) can use it to suggest what to do next, without the system merging on its own.
 
 ---
 

@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /**
  * CLI to stage one activity for testing.
- * Usage: node scripts/stage-activity.js "We drew a dragon" [READ|WRITE|WORK]
+ * Usage: node scripts/stage-activity.js "We drew a dragon" [THINK|WRITE|WORK]
  */
 
 const path = require("path");
 const { stageActivity } = require(path.join(__dirname, "../app/pipeline/stage"));
 
 const text = process.argv[2];
-const skill_tag = process.argv[3] || "READ";
+const skill_tag = process.argv[3] || "THINK";
 
 if (!text) {
-  console.error("Usage: node scripts/stage-activity.js \"<activity text>\" [READ|WRITE|WORK]");
+  console.error("Usage: node scripts/stage-activity.js \"<activity text>\" [THINK|WRITE|WORK]");
   process.exit(1);
 }
 

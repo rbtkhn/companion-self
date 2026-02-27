@@ -33,9 +33,9 @@
 
 ---
 
-## 4. Tying insights to skill-read, skill-write, and skill-work
+## 4. Tying insights to skill-think, skill-write, and skill-work
 
-The Record’s three capability containers — **READ**, **WRITE**, **WORK** (self-skill-read, self-skill-write, self-skill-work) — map cleanly to Alpha’s model and to business/product narrative. Use these ties in white paper, sales, and integration storytelling.
+The Record’s three capability containers — **THINK**, **WRITE**, **WORK** (self-skill-think, self-skill-write, self-skill-work) — map cleanly to Alpha’s model and to business/product narrative. Use these ties in white paper, sales, and integration storytelling.
 
 ### Skill-read (intake, comprehension, what they consume)
 

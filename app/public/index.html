@@ -63,10 +63,10 @@
       document.getElementById('knowledge').innerHTML = record.knowledge?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
       document.getElementById('curiosity').innerHTML = record.curiosity?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
       document.getElementById('personality').innerHTML = record.personality?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
-      document.getElementById('skills').innerHTML = ['READ','WRITE','WORK'].map(s => 
+      document.getElementById('skills').innerHTML = ['THINK','WRITE','WORK'].map(s => 
         `<p><strong>${s}:</strong> ${(record.skills?.[s]?.length ?? 0) || 0} entries</p>`
       ).join('');
-      document.getElementById('edge').innerHTML = record.edge ? ['READ','WRITE','WORK'].map(s => 
+      document.getElementById('edge').innerHTML = record.edge ? ['THINK','WRITE','WORK'].map(s => 
         `<li><strong>${s}:</strong> ${escapeHtml(record.edge[s] || '—')}</li>`
       ).join('') : '';
       document.getElementById('pending-count').textContent = record.pendingCount ?? 0;

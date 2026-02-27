@@ -30,7 +30,7 @@ companion-self/
 │       ├── self-knowledge.md
 │       ├── self-curiosity.md
 │       ├── self-personality.md
-│       ├── self-skill-read.md
+│       ├── self-skill-think.md
 │       ├── self-skill-write.md
 │       ├── self-skill-work.md
 │       ├── self-evidence.md
@@ -71,7 +71,7 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 1.1 | Define **Record schema** in code: SELF (self.md), IX-A/IX-B/IX-C (self-knowledge, self-curiosity, self-personality), READ/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
+| 1.1 | Define **Record schema** in code: SELF (self.md), IX-A/IX-B/IX-C (self-knowledge, self-curiosity, self-personality), THINK/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
 | 1.2 | Define **recursion-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Same schema module; `users/demo/recursion-gate.json` format. |
 | 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursion-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
 | 1.4 | Implement **load** and **save** for demo: read markdown into structured objects; write back on merge. Append-only where possible; simple section/list parsing. | Load/save in schema or `pipeline/io.js`. |
@@ -93,7 +93,7 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = READ, WRITE, or WORK). Create candidate: id, raw_text, skill_tag, mind_category (keyword or "curiosity"), suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursion-gate.json. Idempotent, append-only. | POST endpoint. |
+| 2.1 | **API:** POST `/api/activity` body `{ text, skill_tag? }` (skill_tag = THINK, WRITE, or WORK). Create candidate: id, raw_text, skill_tag, mind_category (keyword or "curiosity"), suggested_ix_section (e.g. IX-B), created_at, status: "pending". Append to recursion-gate.json. Idempotent, append-only. | POST endpoint. |
 | 2.2 | **API:** GET `/api/recursion-gate` returns pending candidates. | For review UI. |
 | 2.3 | *Optional:* CLI to stage one activity for testing (e.g. `scripts/stage-activity.js`). | Script. |
 
@@ -115,7 +115,7 @@ companion-self/
 |---|------|-------------|
 | 3.1 | **API:** GET `/api/record` returns Record summary for demo user (IX-A/IX-B/IX-C, skills, optional full Record). Consumed by dashboard and later by edge/export. | Backend. |
 | 3.2 | **Dashboard** (e.g. `/` or `/dashboard`): Call GET /api/record; show Knowledge, Curiosity, Personality, Skills; pending count (from GET /api/recursion-gate or include in /api/record); link to review. | index.html + app.js. |
-| 3.3 | **"We did X" page** (e.g. `/activity`): Textarea + skill dropdown (READ/WRITE/WORK) + Submit → POST /api/activity; success state; optional redirect to dashboard or review. | activity.html + form handler. |
+| 3.3 | **"We did X" page** (e.g. `/activity`): Textarea + skill dropdown (THINK/WRITE/WORK) + Submit → POST /api/activity; success state; optional redirect to dashboard or review. | activity.html + form handler. |
 | 3.4 | **Navigation:** Dashboard, We did X, Review, Export on all pages. Static from `app/public/`; server serves HTML + API. | Nav + Express static and routes. |
 
 ### Success
@@ -149,7 +149,7 @@ companion-self/
 
 **Goal:** Compute and show "edge" (next suggested focus); export curriculum profile for tutor/curriculum.
 
-**API contract (edge / "what's next"):** GET `/api/edge` (or edge in GET `/api/record`) returns suggested next focus per READ, WRITE, WORK. Document response shape in `docs/schema-record-api.md` for UI and export consumers. **WORK and self-personality (IX-C):** When deriving WORK edge or phrasing "what's next," use self-personality (voice, preferences, values, narrative) so suggestions match how the companion works and sound like them. See [CONCEPT](concept.md) §4 "How WORK utilizes self-personality (IX-C)."
+**API contract (edge / "what's next"):** GET `/api/edge` (or edge in GET `/api/record`) returns suggested next focus per THINK, WRITE, WORK. Document response shape in `docs/schema-record-api.md` for UI and export consumers. **WORK and self-personality (IX-C):** When deriving WORK edge or phrasing "what's next," use self-personality (voice, preferences, values, narrative) so suggestions match how the companion works and sound like them. See [CONCEPT](concept.md) §4 "How WORK utilizes self-personality (IX-C)."
 
 **Prerequisite:** Weeks 1–4 (Record, merge; edge derives from current Record).
 
@@ -157,8 +157,8 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 5.1 | **Edge derivation:** From self-skill-* + self-evidence (and for WORK, self-personality / IX-C when available), compute simple edge (e.g. last topic or "next" per READ/WRITE/WORK). Phrase WORK edge in companion voice/values where possible. Rule-based; no LLM. Expose as GET `/api/edge` or in GET `/api/record`. | Backend; add edge shape to schema-record-api.md. |
-| 5.2 | **Dashboard:** Show "What's next" per skill (e.g. READ: keep reading; WRITE: try a short story; WORK: one small project). WORK line may use IX-C for phrasing. Include one line: "Designed for up to 2 hours of screen-based learning per day" (or link to two-hour-screentime-target). | UI. |
+| 5.1 | **Edge derivation:** From self-skill-* + self-evidence (and for WORK, self-personality / IX-C when available), compute simple edge (e.g. last topic or "next" per THINK/WRITE/WORK). Phrase WORK edge in companion voice/values where possible. Rule-based; no LLM. Expose as GET `/api/edge` or in GET `/api/record`. | Backend; add edge shape to schema-record-api.md. |
+| 5.2 | **Dashboard:** Show "What's next" per skill (e.g. THINK: keep reading; WRITE: try a short story; WORK: one small project). WORK line may use IX-C for phrasing. Include one line: "Designed for up to 2 hours of screen-based learning per day" (or link to two-hour-screentime-target). | UI. |
 | 5.3 | **Export:** Build `curriculum_profile` from IX-A/IX-B/IX-C, edge, evidence count, export date. GET `/api/export` returns JSON (optional `screen_time_target_minutes: 120`). Optional download response for file. | `app/export/curriculum-profile.js` + backend. |
 | 5.4 | **Export page** (e.g. `/export`): Button "Download curriculum profile" → JSON (or markdown summary) for tutor/curriculum. | export.html. |
 
@@ -235,7 +235,7 @@ The **student** (or operator) can:
 3. **Submit** "we did X" and have it staged.
 4. **Review** pending items and approve or reject.
 5. **See** their Record update after approve (self-evidence + SELF).
-6. **See** "what’s next" / edge (READ, WRITE, WORK).
+6. **See** "what’s next" / edge (THINK, WRITE, WORK).
 7. **Download** curriculum profile (JSON) to give to a tutor or curriculum.
 
 All implemented **in companion-self**, deliverable as the **product/service interface** given to the student.
