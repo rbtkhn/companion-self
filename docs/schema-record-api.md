@@ -32,7 +32,7 @@ Standard modular structure for objectives and tasks in `self-skill-work.md`. Ins
 | Element | Type | Description |
 |--------|------|--------------|
 | **module_intent** | string | One sentence: WORK as tutor; edge, scaffolding, work goals, life mission; human-gated. |
-| **default_objectives** | list of { label, description } | **Default objectives for new users** (standard set of five): Learn and grow, Express and create, Build and ship, Make progress visible, Stay within the design. Instance may replace or extend. In markdown: `- **Label** — description`. |
+| **default_objectives** | list of { label, description } | **Default objectives for new users** (standard set of six): Learn and grow, Express and create, Build and ship, Make progress visible, Stay within the design, Recursively improve. See [Evolving practice and recursive improvement](evolving-practice-recursive-improvement.md) for how this objective connects to context/intent/specification practice as technology advances. Instance may replace or extend. In markdown: `- **Label** — description`. |
 | **work_goals** | object | Companion's own goals; evidence-linked when captured. |
 | **work_goals.near_term** | string[] | Near-term goals (e.g. "finish X", "learn Y"). May be empty. |
 | **work_goals.horizon** | string[] | Longer-term goals (e.g. "SAT ≥ 1200"). May be empty. |
@@ -81,6 +81,27 @@ Array of candidates. Each candidate:
 | status | string | "pending" until approved/rejected. |
 
 **Format:** `users/<id>/recursion-gate.json` — JSON array, append-only on stage. Candidates are removed on approve (merge) or reject.
+
+---
+
+## Acceptance criteria for staging and merge
+
+**Transcript primitive:** For every task you delegate, write sentences that an independent observer could use to verify the output without asking you any questions.
+
+**Staged candidate (good):**
+
+1. **Self-contained** — `raw_text` describes what was done with enough context that a reviewer who wasn’t present can understand the activity and reason about where it belongs (dimension/skill).
+2. **Schema-valid** — Has required fields (id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status) and values are in allowed sets (THINK/WRITE/WORK; IX-A/IX-B/IX-C).
+3. **Merge-ready** — After approve, the merge logic can write exactly one evidence entry and, when applicable, one dimension line to the correct file without guessing.
+
+**Merge outcome (good):**
+
+1. **Evidence** — One new activity log entry in self-evidence with id, date, summary, skill_tag; id is stable and referenceable.
+2. **Dimension (if applicable)** — One new line in the correct dimension file (self-knowledge, self-curiosity, or self-personality) when suggested_ix_section was set; line format matches existing bullets; no duplicate or overwrite of unrelated lines.
+3. **Gate** — Candidate removed from recursion-gate; no other candidates modified.
+4. **Receipt** — One line appended to merge-receipts.jsonl (candidate_id, raw_text, suggested_ix_section, merged_at).
+
+An independent observer can verify by: (a) reading the candidate and the Record before merge, (b) running approve, (c) reading the Record and receipts after merge, and (d) confirming the four points above without asking the operator.
 
 ---
 

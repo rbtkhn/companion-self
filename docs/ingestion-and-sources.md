@@ -19,6 +19,8 @@ The **Record** is the single convergence point. Activity and evidence can come f
 
 So: **many sources → one staging pipeline → gate → one Record.**
 
+**Multiple agents:** Several staging sources (or agents) can run in parallel; they all feed the same gate. Coordination (serialized writes to the gate, unique candidate IDs) and role-specific context are described in [Multi-agent parallelism](multi-agent-parallelism.md).
+
 **Staging format:** Instances may use `recursion-gate.json` (JSON array of candidates) or `pending-review.md` (YAML/markdown blocks). The gate contract (candidates, approve/reject, merge) is what matters; format is instance choice. See [Instance patterns](instance-patterns.md) § Staging format.
 
 ---
@@ -29,6 +31,26 @@ So: **many sources → one staging pipeline → gate → one Record.**
 - **Quiz or assessment completed** — Tutor or curriculum sends "quiz Q completed: topic X, score 4/5." Pipeline stages (1) the quiz as an **evidence activity** (id, date, summary) and (2) an **optional suggested merge to self-knowledge** (e.g. "Topic X: demonstrated via quiz Q (4/5, date)"). Both are candidates at the gate. Companion approves or rejects each. On approve: evidence → self-evidence; approved knowledge candidate → one line in self-knowledge with evidence link to the quiz. No auto-merge of inferred knowledge; see [CONCEPT](concept.md) §5 Knowledge Boundary.
 - **CSV upload of past events** — User exports calendar or task history to CSV. An instance script or UI maps rows to staged activity (e.g. READ or WORK). User reviews and merges in batches. Record and evidence now reflect history without manual re-entry.
 - **Manual "we did X"** — Companion or caregiver posts activity via instance API or UI. Same pipeline: stage → gate → merge. Source is "manual," but the path is the same.
+
+---
+
+## Self-contained submissions
+
+**Transcript primitive:** State the problem with enough context that the task is plausibly solvable without the receiver having to "go fetch" missing information. Rewrite as if the person receiving it has never seen your context and has no access to any information other than what you include.
+
+**Application:** When submitting "we did X" (via UI, API, or analyst), make the submission **self-contained** so that:
+
+1. A reviewer who wasn’t there can understand **what** was done (activity, topic, artifact).
+2. They can reason about **where** it might go in the Record (which dimension or skill) without asking you.
+3. Optional but useful: a short "why it matters" or "what we’re building on" so merge decisions are informed.
+
+**Examples:**
+
+- Weak: "Did the thing."  
+- Better: "Read chapter 3 of *Dragon Guide* and summarized the migration habits. THINK."
+- Better: "Finished the dragon drawing we started yesterday; used watercolors. WORK."
+
+The activity form and API accept freeform text; the discipline is in what you put in `raw_text`. Instances that use an LLM analyst should prompt the analyst to produce self-contained `raw_text` (and suggested dimension) so the companion can gate without re-reading the original conversation. See [Actionable insights from the transcript](actionable-insights-transcript.md).
 
 ---
 

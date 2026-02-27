@@ -4,3 +4,4 @@ app/node_modules/
 *.log
 .env
 .env.local
+users/eval-fixture/

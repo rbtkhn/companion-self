@@ -120,4 +120,26 @@ If you need to extract or generalize content for companion-self, the canonical s
 
 ---
 
+## 10) New conversation: parallel tasks (~15–30 min each)
+
+When starting a **new Cursor conversation** to run one of the two parallel tasks (schema/spec consistency or student UI accessibility), bootstrap the agent as follows.
+
+**Task doc (full briefs, scope, acceptance criteria):** [docs/tasks-parallel-cursor-conversations.md](docs/tasks-parallel-cursor-conversations.md)
+
+**Conversation A — Task 1 (schema and spec consistency)**  
+Only: `app/schema/record.js`, `docs/schema-record-api.md`, `docs/project-6week-coding.md`.
+
+Say in the new chat:
+> Read companion-self-bootstrap.md §10 and docs/tasks-parallel-cursor-conversations.md Task 1. Do Task 1 only (schema and spec consistency). Touch only the files listed in the task; run the eval script when done.
+
+**Conversation B — Task 2 (student UI accessibility)**  
+Only: `app/public/*.html`, `app/public/assets/style.css` (and `app/public/assets/app.js` only if needed for ARIA).
+
+Say in the new chat:
+> Read companion-self-bootstrap.md §10 and docs/tasks-parallel-cursor-conversations.md Task 2. Do Task 2 only (student UI accessibility and focus polish). Touch only the files listed in the task.
+
+The two tasks have **zero file overlap**; run both conversations in parallel, then merge. After both: run `node scripts/run-eval-fixtures.js` and do a quick manual check of the UI (focus, announcements).
+
+---
+
 **End of bootstrap.** Use this file in the companion-self workspace to continue seamlessly.

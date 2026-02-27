@@ -17,6 +17,7 @@
 - **Build and ship** — Do projects and creations (WORK); finish and record what was made.
 - **Make progress visible** — Use "we did X" and the gate so the Record and edge stay current.
 - **Stay within the design** — Aim for up to 2 hours of screen-based learning per day when applicable.
+- **Recursively improve** — Improve the ability of companion-self and the human companion over time; this objective can evolve as technology and practice advance. See [Evolving practice and recursive improvement](../../docs/evolving-practice-recursive-improvement.md) for a framework (context, intent, specification engineering) that supports this.
 
 ---
 
