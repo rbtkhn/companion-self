@@ -1,12 +1,22 @@
 # 6-Week Coding Project: Student Product Interface
 
-**Companion-Self template · Convert 3-year roadmap into a shippable student-facing product**
+**Companion-Self template · Shippable student-facing product**
 
-This document turns the [3-year roadmap (90% Alpha value at 10% cost)](roadmap-3y-90-10.md) into a **6-week coding project**. All work is implemented **in the companion-self repo**. The deliverable is the **product/service interface given to the student**: a minimal web app the student (or operator on their behalf) uses to see their Record, submit "we did X," review and approve candidates, view progress and edge, and export for curriculum/tutor.
+This document defines a **6-week coding project** implemented **in the companion-self repo**. The deliverable is the **product/service interface given to the student**: a minimal web app the student (or operator on their behalf) uses to see their Record, submit "we did X," review and approve candidates, view progress and edge, and export for curriculum/tutor.
 
 **Audience:** Developer or team implementing in companion-self. **Student** = the end user (learner/companion) who receives this interface.
 
-**Time calibration:** Companion-Self targets **2 hours of screen time per day** for all screen-based learning (aligned with Alpha). The student interface and any curriculum/tutor use are designed to fit within that window. See [two-hour-screentime-target](two-hour-screentime-target.md).
+**Time calibration:** Companion-Self targets **2 hours of screen time per day** for all screen-based learning (aligned with Alpha). The student interface and any curriculum/tutor use are designed to fit within that window. See [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §3 Two-hour screen-time target.
+
+### Regression
+
+After **schema or pipeline changes** (Weeks 1, 2, or 4), run the eval fixtures to avoid regressions:
+
+```bash
+node scripts/run-eval-fixtures.js
+```
+
+See [Evaluation design and regression](evaluation-design-and-regression.md) for fixture design and when to add cases.
 
 ---
 
@@ -158,7 +168,7 @@ companion-self/
 | # | Task | Deliverable |
 |---|------|-------------|
 | 5.1 | **Edge derivation:** From self-skill-* + self-evidence (and for WORK, self-personality / IX-C when available), compute simple edge (e.g. last topic or "next" per THINK/WRITE/WORK). Phrase WORK edge in companion voice/values where possible. Rule-based; no LLM. Expose as GET `/api/edge` or in GET `/api/record`. | Backend; add edge shape to schema-record-api.md. |
-| 5.2 | **Dashboard:** Show "What's next" per skill (e.g. THINK: keep reading; WRITE: try a short story; WORK: one small project). WORK line may use IX-C for phrasing. Include one line: "Designed for up to 2 hours of screen-based learning per day" (or link to two-hour-screentime-target). | UI. |
+| 5.2 | **Dashboard:** Show "What's next" per skill (e.g. THINK: keep reading; WRITE: try a short story; WORK: one small project). WORK line may use IX-C for phrasing. Include one line: "Designed for up to 2 hours of screen-based learning per day" (or link to [Alpha School reference](skill-work/alpha-school-reference.md) §3). | UI. |
 | 5.3 | **Export:** Build `curriculum_profile` from IX-A/IX-B/IX-C, edge, evidence count, export date. GET `/api/export` returns JSON (optional `screen_time_target_minutes: 120`). Optional download response for file. | `app/export/curriculum-profile.js` + backend. |
 | 5.4 | **Export page** (e.g. `/export`): Button "Download curriculum profile" → JSON (or markdown summary) for tutor/curriculum. | export.html. |
 
@@ -201,7 +211,7 @@ companion-self/
 
 ---
 
-## Mapping from 3-year roadmap to 6 weeks
+## Mapping to 6 weeks
 
 | Roadmap (Year 1) | 6-week implementation |
 |------------------|------------------------|

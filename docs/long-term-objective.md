@@ -15,6 +15,8 @@ These objectives are **permanent system rules**. They exist to **prevent intenti
 - **Reduce overload and anxiety** — A single spine and a clear "what's next" (edge) give learners and caregivers one place for identity and progress instead of scattered tools, reducing overload and anxiety.
 - **Sovereignty and evidence** — Learning and identity stay under the learner’s (or explicitly delegated human’s) control. Human-approval gate for all modifications to skill and self containers; no silent writes. See [IDENTITY-FORK-PROTOCOL](identity-fork-protocol.md), [CONCEPT](concept.md) §6.
 
+**Equity:** Equity is framed as **adequacy** (every learner reaches a sufficient level to participate meaningfully) **plus growth**; the Record supports both. “Top 1%” in the Alpha reference is a **comparison target** for what’s possible, not a requirement for every learner.
+
 **One line:** Make Alpha-style learning and identity available to many more people via Record + pipeline + low-cost tools, without the school or the budget.
 
 ---
@@ -57,6 +59,4 @@ If a proposal would drift the system away from any of these objectives, flag it 
 ## Reference
 
 - [CONCEPT](concept.md) — Core idea, education structure, invariants.
-- [ROADMAP-3Y-90-10](roadmap-3y-90-10.md) — 3-year roadmap; 2-hour target; proof architecture.
-- [TWO-HOUR-SCREENTIME-TARGET](two-hour-screentime-target.md) — Equivalent metric; what counts as screen time.
-- [ALPHA-SCHOOL-BENCHMARKS](alpha-school-benchmarks.md) — What Alpha uses; reference for comparable metrics.
+- [SKILL-WORK: Alpha School reference](skill-work/alpha-school-reference.md) — Benchmarks, 2-hour screen-time target, and equivalent metrics (consolidated in the skill-work submodule).

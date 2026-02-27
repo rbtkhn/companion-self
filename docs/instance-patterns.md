@@ -21,6 +21,7 @@ The template stays code-light and protocol-first; Grace-Mar diverges in several 
 | **Analyst** | Out of scope for 6 weeks | LLM analyst runs on conversation and "we did X"; stages candidates automatically. |
 | **Voice** | Not implemented | Telegram + WeChat bots. |
 | **Archive** | self-memory.md (ephemeral, optional) | self-archive.md (gated log, rotation when large). |
+| **Lesson delivery** | Optional: prompt generator + any LLM | **LLM-lesson method:** Record-derived prompts pasted into ChatGPT, Grok, or any LLM; 3–5 personalized lessons per day; transcript flows into skill-think for processing. No bot install; often easier for many users than a dedicated bot. Grace-Mar may offer both. See [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §4.1. |
 
 ---
 

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <a href="/">Dashboard</a>
     <a href="/activity">We did X</a>
     <a href="/review">Review</a>
@@ -20,17 +20,19 @@
 
     <form id="activity-form" class="card">
       <label for="text">What did you do?</label>
-      <textarea id="text" name="text" rows="4" required placeholder="e.g. We drew a dragon — include enough context for a reviewer who wasn't there"></textarea>
+      <textarea id="text" name="text" rows="4" required placeholder="e.g. We drew a dragon — include enough context for a reviewer who wasn't there" aria-describedby="text-hint"></textarea>
+      <span id="text-hint" class="visually-hidden">Include enough context for a reviewer who wasn’t there.</span>
 
       <label for="skill_tag">Skill</label>
-      <select id="skill_tag" name="skill_tag">
+      <select id="skill_tag" name="skill_tag" aria-describedby="skill-hint">
         <option value="THINK">THINK</option>
         <option value="WRITE">WRITE</option>
         <option value="WORK">WORK</option>
       </select>
+      <span id="skill-hint" class="visually-hidden">Choose THINK, WRITE, or WORK.</span>
 
       <button type="submit">Submit</button>
-      <p id="message"></p>
+      <p id="message" aria-live="polite" aria-atomic="true"></p>
     </form>
   </main>
 

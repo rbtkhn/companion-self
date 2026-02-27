@@ -54,3 +54,9 @@ Exit code 0 if all assertions pass; non-zero and stderr if any fail. Run after c
 - **Periodic runs:** E.g. in CI or pre-commit hook; see [Project 6-week](project-6week-coding.md) for where a test step could be added.
 
 See [Actionable insights from the transcript](actionable-insights-transcript.md) for why we added this.
+
+---
+
+## Future: lesson transcript fixture
+
+When instances (or the template) add **transcript ingestion** (e.g. LLM lesson conversation → stage as THINK candidate → review → merge), consider a fixture that asserts a transcript-like candidate merges correctly into self-evidence and the intended dimension file. Add to `scripts/run-eval-fixtures.js` and this doc when that flow is implemented.

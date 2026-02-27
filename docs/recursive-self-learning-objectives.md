@@ -44,7 +44,7 @@ This doc captures **objectives** for how a companion self (Record + pipeline + V
 
 **Objective:** Design so the companion (and operator) experience **ownership** and **visible progress**. The Record is theirs; they gate what enters. Where applicable, make progress legible (e.g. “you’re X hours away,” evidence count, edge clarity) so effort maps to growth. “Time back” and structure of the day can motivate: e.g. focused capture blocks, then free space for other things.
 
-**Inspiration:** “Give the kids their time back.” “You’re 17 hours away, you’re 5 hours away.” “Moves everything from I’m not smart enough to I’m five hours away from mastering it.” Companion-Self: the companion is the gate; the pipeline makes progress visible through the Record and staging, not through external grades. **Time calibration:** All screen-based learning is designed to fit within **2 hours per day** (equivalent metric to Alpha); see [TWO-HOUR-SCREENTIME-TARGET](two-hour-screentime-target.md).
+**Inspiration:** “Give the kids their time back.” “You’re 17 hours away, you’re 5 hours away.” “Moves everything from I’m not smart enough to I’m five hours away from mastering it.” Companion-Self: the companion is the gate; the pipeline makes progress visible through the Record and staging, not through external grades. **Time calibration:** All screen-based learning is designed to fit within **2 hours per day** (equivalent metric to Alpha); see [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §3.
 
 ---
 

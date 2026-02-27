@@ -82,6 +82,18 @@ Array of candidates. Each candidate:
 
 **Format:** `users/<id>/recursion-gate.json` — JSON array, append-only on stage. Candidates are removed on approve (merge) or reject.
 
+### Default skill → dimension mapping
+
+When staging or merging, the default mapping from **skill_tag** to **suggested_ix_section** (dimension file) is:
+
+| skill_tag | suggested_ix_section | Dimension file |
+|-----------|----------------------|----------------|
+| THINK     | IX-A                 | self-knowledge.md |
+| WRITE     | IX-C                 | self-personality.md |
+| WORK      | IX-B                 | self-curiosity.md |
+
+Instances may override (e.g. per-activity or LLM-suggested section); this is the template default.
+
 ---
 
 ## Acceptance criteria for staging and merge
@@ -107,7 +119,7 @@ An independent observer can verify by: (a) reading the candidate and the Record 
 
 ## Edge response shape (Week 5)
 
-GET `/api/edge` returns suggested next focus per READ, WRITE, WORK. Also included in GET `/api/record` and `/api/export` curriculum profile.
+GET `/api/edge` returns suggested next focus per THINK, WRITE, WORK. Also included in GET `/api/record` and `/api/export` curriculum profile.
 
 | Field | Type | Description |
 |-------|------|--------------|
@@ -116,3 +128,28 @@ GET `/api/edge` returns suggested next focus per READ, WRITE, WORK. Also include
 | WORK | string | Suggested next focus for making/doing. Phrased using self-personality (IX-C) when available. See [CONCEPT](concept.md) §4 "How WORK utilizes self-personality (IX-C)". |
 
 **Example:** `{ "THINK": "Keep reading", "WRITE": "Try a short story", "WORK": "One small project" }`
+
+---
+
+## Record-derived lesson prompt (minimal shape)
+
+For **Record-driven prompts** (paste into any LLM to trigger a personalized lesson), the template defines a minimal prompt shape. See [Alpha School reference (skill-work)](skill-work/alpha-school-reference.md) §4.1 for context and typical flow (3–5 lessons per day, transcript → skill-think).
+
+**Required Record fields for the prompt:** knowledge (IX-A), curiosity (IX-B), personality (IX-C), edge (what’s next per THINK/WRITE/WORK). Optional but useful: skills (THINK, WRITE, WORK arrays) for level and recent activity.
+
+**Data source:** Use **GET `/api/record`** to build the prompt; it returns knowledge, curiosity, personality, skills, edge, and pending count. **GET `/api/export`** returns the curriculum profile (knowledge, curiosity, personality, edge, evidenceCount, exportDate, screen_time_target_minutes) for tutor/curriculum consumers; use it when a single portable payload is needed and skills are not required.
+
+**Example prompt template (minimal):**
+
+```
+You are tutoring a learner one-on-one. Use only the following about them to personalize this lesson.
+
+What they know (topics): [knowledge]
+What they're curious about: [curiosity]
+Voice/preferences: [personality]
+What to teach or do next — THINK: [edge.THINK], WRITE: [edge.WRITE], WORK: [edge.WORK]
+
+Deliver one short, focused lesson (or activity) suited to their level and interests. Do not add facts about them to your reply; the learner will capture what was done via their own system.
+```
+
+Instances may extend the template (e.g. add skills, evidence count, or screen_time_target_minutes). The prompt must draw only from Record/export content (knowledge boundary); no LLM inference is written back into the Record until the companion approves via the gate.

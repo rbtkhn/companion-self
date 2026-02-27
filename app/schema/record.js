@@ -20,7 +20,7 @@ const MIND_CATEGORIES = ["knowledge", "curiosity", "personality"];
  * @property {string[]} selfKnowledge - IX-A entries (one per line)
  * @property {string[]} selfCuriosity - IX-B entries (one per line)
  * @property {string[]} selfPersonality - IX-C entries (one per line)
- * @property {string[]} selfSkillRead - READ entries
+ * @property {string[]} selfSkillThink - THINK entries
  * @property {string[]} selfSkillWrite - WRITE entries
  * @property {string[]} selfSkillWork - WORK entries
  * @property {EvidenceEntry[]} selfEvidence - Activity log entries

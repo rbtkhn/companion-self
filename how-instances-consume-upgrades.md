@@ -50,7 +50,7 @@ When an instance (e.g. Grace-Mar) merges upgrades from companion-self, it should
 | `docs/identity-fork-protocol.md` | Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, self-evidence), evidence linking. |
 | `docs/seed-phase.md` | Definition of seed phase; what creates initial Record. |
 | `docs/long-term-objective.md` | Permanent system rules (democratize Alpha-style education; sovereignty; knowledge boundary). |
-| `docs/two-hour-screentime-target.md` | 2-hour design constraint and equivalent metric; what counts as screen time. |
+| `docs/skill-work/alpha-school-reference.md` | Alpha School reference (skill-work submodule): benchmarks, 2-hour screen-time target, equivalent metrics. |
 | `docs/instance-patterns.md` | Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format). |
 | `users/_template/self.md` | SELF schema/structure scaffold for new users only. |
 | `users/_template/self-knowledge.md` | IX-A: what they've learned (self-knowledge) scaffold. |

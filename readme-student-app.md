@@ -24,7 +24,7 @@ App at **http://localhost:3000**. No env vars for demo.
 3. **Submit** "we did X" and have it staged
 4. **Review** pending items and approve or reject
 5. **See** your Record update after approve (self-evidence + SELF)
-6. **See** "what's next" / edge (READ, WRITE, WORK)
+6. **See** "what's next" / edge (THINK, WRITE, WORK)
 7. **Download** curriculum profile (JSON) for tutor or curriculum
 
 ---

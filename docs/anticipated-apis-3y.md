@@ -10,7 +10,7 @@ This doc anticipates which **non-LLM** APIs are likely to be most useful for com
 
 **What:** APIs that consume the Record (knowledge, curiosity, edge) and return suggested lessons, skills, or practice; and/or report progress (topic mastered, score, time on task) back into the pipeline.
 
-**Why useful:** Closes the loop: Record → curriculum → activity → evidence → Record. Delivers “90% value” with free/low-cost content; 2-hour block is filled with personalized lessons at the right edge.
+**Why useful:** Closes the loop: Record → curriculum → activity → evidence → Record. Delivers “comparable value” with free/low-cost content; 2-hour block is filled with personalized lessons at the right edge.
 
 **Examples (likely to matter 2025–2028):**
 
