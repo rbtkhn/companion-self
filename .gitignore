@@ -5,3 +5,6 @@ app/node_modules/
 .env
 .env.local
 users/eval-fixture/
+
+# Derived engine artifacts (rebuildable; not canonical)
+users/*/derived/

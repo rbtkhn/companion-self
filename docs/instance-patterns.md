@@ -68,6 +68,8 @@ Instances that support it can expose: pending count, list of candidate summaries
 
 Before merge, an instance may run a **conflict check** on a candidate: compare suggested content against existing Record (e.g. IX-A, IX-B, IX-C) and flag potential contradictions or overlap. Surfaces for user resolution; does not block staging. The companion still decides at the gate; conflict check is advisory.
 
+Full governed workflow (identity-diff UI, resolution types, temporal merge, audit): [CONTRADICTION-ENGINE-SPEC](CONTRADICTION-ENGINE-SPEC.md). Resolution vocabulary: [contradiction-resolution](contradiction-resolution.md).
+
 ---
 
 ## Cross-references
