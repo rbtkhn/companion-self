@@ -99,15 +99,15 @@ All minimal docs can be **extracted and generalized** from grace-mar. Do not cop
 
 ### Phase F: Consistency and handoff
 
-- [ ] **F1. Cross-check**
+- [x] **F1. Cross-check**
   - No bot code, no Record data, no instance config (no Telegram token, no grace-mar.com paths). See bootstrap §4.
-  - **Done when:** Repo contains only template content.
+  - **Done when:** Repo contains only template content. (Template includes `app/` student UI and `users/demo/` as reference/scaffold only; no instance Record or instance-specific config.)
 
-- [ ] **F2. Bootstrap and grace-mar**
+- [x] **F2. Bootstrap and grace-mar**
   - Ensure companion-self-bootstrap.md remains at repo root and §9 (source material) still points to correct grace-mar paths.
   - **Done when:** Next agent or developer can open companion-self, read bootstrap + this plan, and continue.
 
-- [ ] **F3. When adding or renaming canonical template paths**
+- [x] **F3. When adding or renaming canonical template paths**
   - Update both the table in how-instances-consume-upgrades and **`template-manifest.json`** (paths, descriptions, optional flag, and `canonicalAsOf` date). Keeps the audit manifest in sync with the path list.
 
 ---

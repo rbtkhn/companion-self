@@ -142,4 +142,12 @@ The two tasks have **zero file overlap**; run both conversations in parallel, th
 
 ---
 
+## 11) Continue in new session
+
+**File:** [bootstrap-continue.md](bootstrap-continue.md)
+
+When resuming work in a new Cursor conversation, open that file and say: *"Read bootstrap-continue.md and continue from here."* It summarizes current project state, recent work, key paths, commands, and suggested next steps.
+
+---
+
 **End of bootstrap.** Use this file in the companion-self workspace to continue seamlessly.
