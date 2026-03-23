@@ -63,7 +63,8 @@ When an instance (e.g. Grace-Mar) merges upgrades from companion-self, it should
 | `users/_template/self-evidence.md` | Evidence schema/structure scaffold. |
 | `users/_template/recursion-gate.md` | Recursive-gate staging scaffold (candidates at the gate). |
 | `users/_template/self-memory.md` | Ephemeral context scaffold (optional). |
-| `users/_template/self-library.md` | Curated lookup sources scaffold (optional; bounded lookup extension). |
+| `users/_template/self-library.md` | SELF-LIBRARY scaffold: governance + **empty `entries:`**; add LIB rows via gate. Optional bulk example: `docs/self-library-example-corpus-grace-mar-derived.md`. |
+| `docs/self-library-example-corpus-grace-mar-derived.md` | Optional grace-mar-derived LIB list for operators who want a trimmable starting shelf (not default for new instances). |
 
 Optional (instance may keep its own and take only selected content): `README.md`, `companion-self-bootstrap.md`, other `docs/` (roadmap, recursive-self-learning-objectives, insights, etc.). **Never overwrite** `users/<id>/` for any real user id.
 

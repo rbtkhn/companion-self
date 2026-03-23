@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
-  "canonicalAsOf": "2026-03-16",
+  "canonicalAsOf": "2026-03-23",
   "templateVersion": "0.2.1",
   "paths": [
     { "path": "docs/concept.md", "description": "Concept: Record, Voice, education structure, knowledge boundary, invariants, long-term objectives.", "optional": false },
@@ -29,6 +29,7 @@
     { "path": "users/_template/self-evidence.md", "description": "Evidence schema/structure scaffold.", "optional": false },
     { "path": "users/_template/recursion-gate.md", "description": "Recursive-gate staging scaffold (candidates at the gate).", "optional": false },
     { "path": "users/_template/self-memory.md", "description": "Ephemeral context scaffold.", "optional": true },
-    { "path": "users/_template/self-library.md", "description": "Curated lookup sources scaffold (bounded lookup extension).", "optional": true }
+    { "path": "users/_template/self-library.md", "description": "SELF-LIBRARY scaffold: governance + empty entries; reference-facing shelf (not IX-A).", "optional": true },
+    { "path": "docs/self-library-example-corpus-grace-mar-derived.md", "description": "Optional legacy LIB row example (grace-mar-derived); not the default template shelf.", "optional": true }
   ]
 }
