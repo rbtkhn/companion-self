@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seed Phase — Companion-Self</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="/">Dashboard</a>
+    <a href="/activity">We did X</a>
+    <a href="/review">Review</a>
+    <a href="/export">Export</a>
+    <a href="/seed-phase" aria-current="page">Seed Phase</a>
+  </nav>
+
+  <main class="main">
+    <h1>Seed Phase (demo)</h1>
+    <p class="screentime">Pre-activation formation artifacts — not the live Record. Synthetic <code>demo</code> bundle by default.</p>
+
+    <p>
+      <label>Profile:
+        <select id="profile" aria-label="Seed profile">
+          <option value="demo" selected>demo (synthetic)</option>
+          <option value="template">template (scaffold)</option>
+        </select>
+      </label>
+      <button type="button" id="reload">Reload</button>
+    </p>
+
+    <section class="card">
+      <h2>Readiness</h2>
+      <p id="readiness-decision" aria-live="polite">—</p>
+      <p id="readiness-score">—</p>
+      <ul id="blocking-issues"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Confidence map</h2>
+      <ul id="confidence-map"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Stage progress (manifest)</h2>
+      <ul id="stages"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Dossier preview</h2>
+      <pre id="dossier" class="dossier-preview"></pre>
+    </section>
+  </main>
+
+  <script>
+    async function loadSeed() {
+      const profile = document.getElementById("profile").value;
+      const res = await fetch("/api/seed-phase?profile=" + encodeURIComponent(profile));
+      const data = await res.json();
+      if (!res.ok) {
+        document.getElementById("readiness-decision").textContent = data.error || "Error";
+        return;
+      }
+      const r = data.artifacts["seed_readiness.json"] && data.artifacts["seed_readiness.json"].readiness;
+      document.getElementById("readiness-decision").textContent = r
+        ? "Decision: " + r.decision
+        : "No readiness data";
+      document.getElementById("readiness-score").textContent = r
+        ? "Readiness score: " + r.readiness_score
+        : "";
+      const bl = document.getElementById("blocking-issues");
+      bl.innerHTML = "";
+      (r && r.blocking_issues || []).forEach(function (t) {
+        const li = document.createElement("li");
+        li.textContent = t;
+        bl.appendChild(li);
+      });
+
+      const cm = document.getElementById("confidence-map");
+      cm.innerHTML = "";
+      const cmap = data.artifacts["seed_confidence_map.json"] && data.artifacts["seed_confidence_map.json"].confidence_map;
+      if (cmap) {
+        Object.keys(cmap).forEach(function (k) {
+          const li = document.createElement("li");
+          li.textContent = k + ": " + cmap[k];
+          cm.appendChild(li);
+        });
+      }
+
+      const st = document.getElementById("stages");
+      st.innerHTML = "";
+      const man = data.artifacts["seed-phase-manifest.json"];
+      (man && man.stages || []).forEach(function (s) {
+        const li = document.createElement("li");
+        li.textContent = s.id + " — " + s.status;
+        st.appendChild(li);
+      });
+
+      document.getElementById("dossier").textContent = data.dossier_preview || "(no dossier)";
+    }
+
+    document.getElementById("reload").addEventListener("click", loadSeed);
+    document.getElementById("profile").addEventListener("change", loadSeed);
+    loadSeed();
+  </script>
+</body>
+</html>

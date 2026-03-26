@@ -26,6 +26,7 @@ App at **http://localhost:3000**. No env vars for demo. The app runs as user **d
 5. **See** your Record update after approve (self-evidence + SELF)
 6. **See** "what's next" / edge (THINK, WRITE, WORK)
 7. **Download** curriculum profile (JSON) for tutor or curriculum
+8. **Seed Phase** — Open **[/seed-phase](http://localhost:3000/seed-phase)** to view pre-activation demo (or `_template` scaffold) readiness, confidence map, stages, and dossier preview via **GET `/api/seed-phase?profile=demo`**. Does not read the live Record.
 
 ---
 

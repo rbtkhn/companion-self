@@ -54,6 +54,28 @@
 
 ---
 
+## 3a) Seed Phase artifact generation (v2)
+
+Before a new companion instance is **activated**, the following **pre-activation** seed artifacts must exist, validate against `schema-registry/seed-*.v1.json`, and pass **readiness review** (see [docs/seed-phase-readiness.md](docs/seed-phase-readiness.md)):
+
+- `seed-phase-manifest.json`
+- `seed_intake.json`
+- `seed_identity.json`
+- `seed_curiosity.json`
+- `seed_pedagogy.json`
+- `seed_expression.json`
+- `seed_memory_contract.json`
+- `seed_trial_report.json`
+- `seed_readiness.json`
+- `seed_confidence_map.json`
+- `seed_dossier.md`
+
+**Layout:** Canonical scaffold in [users/_template/seed-phase/](users/_template/seed-phase/); synthetic example in [users/demo/seed-phase/](users/demo/seed-phase/). **These are not the live Record** — activation still uses `users/<birth-name>/` and the identity fork protocol after the gate.
+
+**Validate:** `python3 scripts/validate-seed-phase.py users/demo/seed-phase` (requires `pip install jsonschema`). See [docs/seed-phase-validation.md](docs/seed-phase-validation.md).
+
+---
+
 ## 4) What Not to Put Here
 
 - No bot code (lives in instance; grace-mar has the reference implementation).

@@ -1,0 +1,34 @@
+name: Validate seed phase
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "schema-registry/**"
+      - "users/_template/seed-phase/**"
+      - "users/demo/seed-phase/**"
+      - "scripts/validate-seed-phase.py"
+      - "scripts/generate-seed-dossier.py"
+  pull_request:
+    branches: [main]
+    paths:
+      - "schema-registry/**"
+      - "users/_template/seed-phase/**"
+      - "users/demo/seed-phase/**"
+      - "scripts/validate-seed-phase.py"
+      - "scripts/generate-seed-dossier.py"
+
+jobs:
+  seed-phase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install jsonschema
+        run: pip install -r scripts/requirements-seed-phase.txt
+      - name: Strict validate demo
+        run: python3 scripts/validate-seed-phase.py users/demo/seed-phase
+      - name: Placeholder validate template scaffold
+        run: python3 scripts/validate-seed-phase.py users/_template/seed-phase --allow-placeholders

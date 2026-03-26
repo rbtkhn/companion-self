@@ -97,6 +97,20 @@ An example schema lives in **`docs/template-source.example.json`**; copy to your
 
 ---
 
+## Seed-phase upgrade compatibility
+
+Template upgrades may change **seed JSON Schemas** (`schema-registry/seed-*.v1.json`), **readiness policy** ([docs/seed-phase-readiness.md](docs/seed-phase-readiness.md)), or artifact layout under `users/_template/seed-phase/`.
+
+| Rule | Rationale |
+|------|-----------|
+| **Do not overwrite** prior seed outputs in an instance repo without operator review | Preserves provenance and guardian/companion decisions. |
+| **Re-validate or version-map** | Run `python3 scripts/validate-seed-phase.py <path>` after merge; if schemas diverge, document field mapping from old → new `seed_phase_version` instead of silent replacement. |
+| **Keep seed artifacts separate from merged Record** | Seed files are pre-activation; `users/<id>/` Record merges use the identity fork protocol only after activation. |
+
+Instance merge docs should log template `templateVersion` / `seed_phase.version` when seed-related paths change.
+
+---
+
 ## New safeguards (v2026-03)
 
 - Before large Record-affecting changes, run **`node scripts/gate-guardian.js`** (or `CI=true` / `--yes` only when you intentionally bypass the interactive prompts in automation).

@@ -72,6 +72,22 @@ Full governed workflow (identity-diff UI, resolution types, temporal merge, audi
 
 ---
 
+## Seed-visible instance (`seed-visible-instance`)
+
+**Use when:** You want formation work to be **inspectable** before activation.
+
+**Pattern:** Keep `users/<id>/seed-phase/` (or a repo-local `seed-phase/` directory) with the canonical JSON set + `seed_dossier.md` **outside** merged Record files until readiness **pass**. Point operators at [seed-phase-artifacts.md](seed-phase-artifacts.md) and validate with `scripts/validate-seed-phase.py`.
+
+---
+
+## Seed revalidation after upgrade (`seed-revalidation-after-upgrade`)
+
+**Use when:** The template bumps `seed_phase.version` or JSON Schemas.
+
+**Pattern:** Preserve existing seed JSON (git tag or copy); run strict validation; if invalid, run a documented migration or re-collect affected stages — do not silently replace files. See [how-instances-consume-upgrades.md](../how-instances-consume-upgrades.md) § Seed-phase upgrade compatibility.
+
+---
+
 ## Cross-references
 
 - [Concept](concept.md) — READ/WRITE/WORK, identity and instrument.

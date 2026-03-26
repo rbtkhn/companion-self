@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
   "canonicalAsOf": "2026-03-26",
-  "templateVersion": "0.2.3",
+  "templateVersion": "0.3.0",
   "paths": [
     {
       "path": "docs/concept.md",
@@ -17,7 +17,32 @@
     },
     {
       "path": "docs/seed-phase.md",
-      "description": "Definition of seed phase; what creates initial Record.",
+      "description": "Seed Phase v2 entrypoint: formation pipeline before activation; links to stage/readiness/confidence/artifact specs.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-stages.md",
+      "description": "Canonical seed stages 0–7 (intake through readiness gate).",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-readiness.md",
+      "description": "Readiness gate: blocking vs non-blocking, thresholds, re-run after upgrade.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-confidence-model.md",
+      "description": "Confidence categories, numeric bands, mapping to artifacts.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-artifacts.md",
+      "description": "Seed artifact file set; layout under _template and demo; validation pointers.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-validation.md",
+      "description": "How to run validate-seed-phase.py strict vs placeholder mode.",
       "optional": false
     },
     {
@@ -186,14 +211,171 @@
       "optional": true
     },
     {
+      "path": "scripts/validate-seed-phase.py",
+      "description": "Validates seed-phase artifact dirs against schema-registry (strict or --allow-placeholders).",
+      "optional": false
+    },
+    {
+      "path": "scripts/generate-seed-dossier.py",
+      "description": "Generates seed_dossier.md from seed JSON artifacts.",
+      "optional": false
+    },
+    {
+      "path": "scripts/requirements-seed-phase.txt",
+      "description": "pip deps for seed-phase validation (jsonschema).",
+      "optional": true
+    },
+    {
       "path": "schema-registry/v1-core.json",
       "description": "Starter schema registry manifest pointer.",
       "optional": true
+    },
+    {
+      "path": "users/_template/seed-phase/README.md",
+      "description": "Seed-phase artifact scaffold README (pre-activation).",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed-phase-manifest.json",
+      "description": "Seed-phase manifest placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_intake.json",
+      "description": "Seed intake placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_identity.json",
+      "description": "Seed identity placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_curiosity.json",
+      "description": "Seed curiosity placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_pedagogy.json",
+      "description": "Seed pedagogy placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_expression.json",
+      "description": "Seed expression placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_memory_contract.json",
+      "description": "Seed memory contract placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_trial_report.json",
+      "description": "Seed trial report placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_readiness.json",
+      "description": "Seed readiness placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_confidence_map.json",
+      "description": "Seed confidence map placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/seed-phase/seed_dossier.md",
+      "description": "Seed dossier placeholder.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/README.md",
+      "description": "Demo seed-phase README (synthetic).",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed-phase-manifest.json",
+      "description": "Demo seed-phase manifest.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_intake.json",
+      "description": "Demo seed intake.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_identity.json",
+      "description": "Demo seed identity.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_curiosity.json",
+      "description": "Demo seed curiosity.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_pedagogy.json",
+      "description": "Demo seed pedagogy.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_expression.json",
+      "description": "Demo seed expression.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_memory_contract.json",
+      "description": "Demo seed memory contract.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_trial_report.json",
+      "description": "Demo seed trial report.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_readiness.json",
+      "description": "Demo seed readiness.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_confidence_map.json",
+      "description": "Demo seed confidence map.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_dossier.md",
+      "description": "Demo seed dossier.",
+      "optional": false
     },
     {
       "path": "bridges/bridge-schema.json",
       "description": "Minimal bridge confidence JSON schema stub.",
       "optional": true
     }
-  ]
+  ],
+  "seed_phase": {
+    "version": "2.0.0",
+    "entrypoint": "docs/seed-phase.md",
+    "stage_spec": "docs/seed-phase-stages.md",
+    "readiness_spec": "docs/seed-phase-readiness.md",
+    "confidence_spec": "docs/seed-phase-confidence-model.md",
+    "artifacts_spec": "docs/seed-phase-artifacts.md",
+    "schemas": {
+      "seed_phase_manifest": "schema-registry/seed-phase-manifest.v1.json",
+      "seed_intake": "schema-registry/seed-intake.v1.json",
+      "seed_identity": "schema-registry/seed-identity.v1.json",
+      "seed_curiosity": "schema-registry/seed-curiosity.v1.json",
+      "seed_pedagogy": "schema-registry/seed-pedagogy.v1.json",
+      "seed_expression": "schema-registry/seed-expression.v1.json",
+      "seed_memory_contract": "schema-registry/seed-memory-contract.v1.json",
+      "seed_trial_report": "schema-registry/seed-trial-report.v1.json",
+      "seed_readiness": "schema-registry/seed-readiness.v1.json",
+      "seed_confidence_map": "schema-registry/seed-confidence-map.v1.json"
+    },
+    "validator": "scripts/validate-seed-phase.py",
+    "dossier_generator": "scripts/generate-seed-dossier.py"
+  }
 }

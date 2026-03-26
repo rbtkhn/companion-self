@@ -168,6 +168,49 @@ app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
+/**
+ * GET /api/seed-phase?profile=demo|template
+ * Returns synthetic or scaffold seed-phase JSON bundle for dashboard (not the live Record).
+ */
+app.get("/api/seed-phase", (req, res) => {
+  const profile = (req.query && req.query.profile) || "demo";
+  const allowed = new Set(["demo", "template"]);
+  if (!allowed.has(profile)) {
+    return res.status(400).json({ error: "profile must be demo or template" });
+  }
+  const base = path.join(REPO_ROOT, "users", profile === "template" ? "_template" : "demo", "seed-phase");
+  const names = [
+    "seed-phase-manifest.json",
+    "seed_intake.json",
+    "seed_identity.json",
+    "seed_curiosity.json",
+    "seed_pedagogy.json",
+    "seed_expression.json",
+    "seed_memory_contract.json",
+    "seed_trial_report.json",
+    "seed_readiness.json",
+    "seed_confidence_map.json",
+  ];
+  const out = { profile, base: path.relative(REPO_ROOT, base), artifacts: {} };
+  try {
+    for (const n of names) {
+      const fp = path.join(base, n);
+      if (!fs.existsSync(fp)) {
+        out.artifacts[n] = null;
+        continue;
+      }
+      out.artifacts[n] = JSON.parse(fs.readFileSync(fp, "utf-8"));
+    }
+    const dossierPath = path.join(base, "seed_dossier.md");
+    out.dossier_preview = fs.existsSync(dossierPath)
+      ? fs.readFileSync(dossierPath, "utf-8").split("\n").slice(0, 25).join("\n")
+      : "";
+    res.json(out);
+  } catch (err) {
+    res.status(500).json({ error: err.message || "Failed to load seed-phase bundle" });
+  }
+});
+
 // --- Static ---
 
 const publicDir = path.join(__dirname, "public");
@@ -178,6 +221,7 @@ app.get("/", (req, res) => res.sendFile(path.join(publicDir, "index.html")));
 app.get("/activity", (req, res) => res.sendFile(path.join(publicDir, "activity.html")));
 app.get("/review", (req, res) => res.sendFile(path.join(publicDir, "review.html")));
 app.get("/export", (req, res) => res.sendFile(path.join(publicDir, "export.html")));
+app.get("/seed-phase", (req, res) => res.sendFile(path.join(publicDir, "seed-phase.html")));
 
 const demoDir = path.join(REPO_ROOT, "users", "demo");
 if (!fs.existsSync(demoDir)) {

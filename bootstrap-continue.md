@@ -46,7 +46,22 @@ node scripts/run-eval-fixtures.js
 
 # Start dev server (if needed for UI check)
 node app/server.js   # or npm start — check package.json
+
+# Seed phase v2: validate demo artifacts (strict)
+pip install -r scripts/requirements-seed-phase.txt
+python3 scripts/validate-seed-phase.py users/demo/seed-phase
+python3 scripts/validate-seed-phase.py users/_template/seed-phase --allow-placeholders
 ```
+
+---
+
+## 4a) Seed phase continuation semantics
+
+When resuming bootstrap work that involves **seed phase v2**:
+
+- If seed phase is **incomplete**, resume at the **first incomplete stage** (see [docs/seed-phase-stages.md](docs/seed-phase-stages.md) and `seed-phase-manifest.json` `stages`).
+- If **blocked**, surface `seed_readiness.json` **blocking_issues** before proceeding.
+- If **ready** (`pass` or `conditional_pass` per policy), proceed to **activation handoff**: create `users/<id>/` from `_template` in the **instance** repo, not by copying seed JSON into Record files.
 
 ---
 

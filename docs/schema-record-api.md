@@ -155,3 +155,26 @@ Deliver one short, focused lesson (or activity) suited to their level and intere
 ```
 
 Instances may extend the template (e.g. add skills, evidence count, or screen_time_target_minutes). The prompt must draw only from Record/export content (knowledge boundary); no LLM inference is written back into the Record until the companion approves via the gate.
+
+---
+
+## Seed-phase artifact schemas
+
+**Seed phase** artifacts are **pre-activation** formation outputs. They are **distinct** from instance Record schemas (`self.md`, `self-evidence`, IX files). They live under `users/_template/seed-phase/` (scaffold), `users/demo/seed-phase/` (synthetic example), or an instance-managed directory **before** `users/<id>/` is activated.
+
+JSON Schemas (Draft 2020-12) in `schema-registry/`:
+
+| Schema file | Validates on-disk file |
+|-------------|-------------------------|
+| `seed-phase-manifest.v1.json` | `seed-phase-manifest.json` |
+| `seed-intake.v1.json` | `seed_intake.json` |
+| `seed-identity.v1.json` | `seed_identity.json` |
+| `seed-curiosity.v1.json` | `seed_curiosity.json` |
+| `seed-pedagogy.v1.json` | `seed_pedagogy.json` |
+| `seed-expression.v1.json` | `seed_expression.json` |
+| `seed-memory-contract.v1.json` | `seed_memory_contract.json` |
+| `seed-trial-report.v1.json` | `seed_trial_report.json` |
+| `seed-readiness.v1.json` | `seed_readiness.json` |
+| `seed-confidence-map.v1.json` | `seed_confidence_map.json` |
+
+Protocol and validation: [seed-phase.md](seed-phase.md), [seed-phase-validation.md](seed-phase-validation.md). `template-manifest.json` exposes paths under `seed_phase.schemas`.

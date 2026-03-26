@@ -1,55 +1,98 @@
 # Seed Phase
 
-**Companion-Self template · Definition of seed phase**
+**Companion-Self template · Formation protocol (v2 entrypoint)**
 
 ---
 
-## What Is Seed Phase?
+## Purpose
 
-The **seed phase** is the initial capture that creates the baseline of a new companion self. A new instance is created **only** when a new user completes seed phase. There is no other creation path: no copying another repo's `users/` and no pre-filled Record.
-
----
-
-## What Seed Phase Produces
-
-- **Initial SELF** — Identity, preferences, narrative baseline (e.g. favorites, basic story).
-- **Initial self-skill-think, self-skill-write, self-skill-work** — Structure only; skills grow through activity after seed.
-- **Initial self-evidence** — Any artifacts or attestations used during seeding (e.g. survey responses).
-
-Seed phase establishes *who they are* at the start. Everything else is inferred or captured through the gated pipeline after seed.
+**Seed phase** is the **structured formation pipeline** that runs **before** a new companion instance is **activated**. It produces **inspectable JSON artifacts**, **confidence signals**, and a **readiness decision**. It is the **only** sanctioned creation path: no copying another repo’s `users/` and no pre-filled live Record.
 
 ---
 
-## Typical Seed Artifacts
+## Why seed phase exists
 
-- **Survey** — Short set of questions (e.g. favorite movies/shows, books/stories, places, games). Duration on the order of 10–15 minutes; operator can help prompt or type if needed.
-- **Consent** — Guardian/operator consent when the companion is a minor; companion may stop at any time; deletion available on request.
-- **Storage** — Responses and any artifacts go into the instance's `users/<id>/` (SELF, self-evidence) in the instance repo. No seed data lives in the template.
-
----
-
-## Formal birth name and directory
-
-When a user completes seed phase, there is an opportunity to choose a **formal birth name** for the companion self (e.g. "grace-mar"). That name becomes the user id: the Record is then stored under `users/<birth-name>/` (e.g. `users/grace-mar/`), and the self is referred to by that name in the instance (profile, bot, pipeline). The operator or companion chooses the name; the instance creates or renames the user directory from the template scaffold to `users/<birth-name>/` and populates it with the seeded SELF, self-evidence, and skill scaffolds. No separate "rename" step is required beyond choosing the name at this point—the directory and identity are created under that name from the start.
+- **Sovereignty** — The human (and guardian when applicable) explicitly shapes identity, curiosity, pedagogy, expression, and memory rules before automation scales.
+- **Evidence-before-merge** — Formation outputs are **separate** from the gated Record merge path; activation is a deliberate handoff.
+- **Measurability** — Stages, schemas, and validation make progress visible and CI-checkable.
 
 ---
 
-## Fork Lifecycle
+## Stage model
 
-The full lifecycle is: **SEED → INTERACT → DIVERGE → MERGE → SNAPSHOT**.
+Canonical stages **0–7** are defined in **[seed-phase-stages.md](seed-phase-stages.md)**:
 
-- **SEED** — Initial capture (this phase); baseline Record only.
-- **INTERACT** — Sessions add signals; pipeline stages candidates.
-- **DIVERGE** — Fork and real person grow independently; Record grows only through the gate.
-- **MERGE** — Companion approves; changes integrate into self.md (baseline), self-knowledge / self-curiosity / self-personality (IX-A/B/C), self-evidence, skills.
-- **SNAPSHOT** — Instance preserves states (e.g. git tags) for "who they were at this point in time."
-
----
-
-## Relation to This Repo
-
-This template defines *what* seed phase is and *that* it is the only creation path. The actual surveys, scripts, and operator procedures live in instance repos (e.g. Grace-Mar's operator brief and first-session flow). Instances may copy or adapt the structure from `users/_template/` when creating a new user directory.
+0. Intake  
+1. Identity Scaffold  
+2. Curiosity Scaffold  
+3. Pedagogy Scaffold  
+4. Expression Scaffold  
+5. Memory Contract  
+6. Trial Interactions  
+7. Readiness Gate  
 
 ---
 
-*Companion-Self template · Seed phase definition*
+## Required outputs
+
+The artifact set (file names, roles, layout) is specified in **[seed-phase-artifacts.md](seed-phase-artifacts.md)**. Every artifact has a **JSON Schema** under `schema-registry/` (see [schema-record-api.md](schema-record-api.md)).
+
+---
+
+## Readiness gate
+
+**Readiness** is a **hard gate**, not advisory. Rules, thresholds, conditional pass, and re-run-after-upgrade behavior are in **[seed-phase-readiness.md](seed-phase-readiness.md)**.
+
+---
+
+## Confidence model
+
+Per-dimension and overall confidence use **0.0–1.0** scores and **low / medium / high** bands. Definitions: **[seed-phase-confidence-model.md](seed-phase-confidence-model.md)**.
+
+---
+
+## Activation rule
+
+An instance is **activated** only when:
+
+1. Required seed artifacts exist and validate (see [seed-phase-validation.md](seed-phase-validation.md)).  
+2. `seed_readiness.json` records an allowed decision (`pass` or `conditional_pass` per policy).  
+3. `seed_dossier.md` is reviewed and operator (and guardian if applicable) sign off.  
+
+Only **then** may `users/<birth-name>/` be created or promoted with the live pipeline. Merging into SELF / IX / evidence follows the **[identity-fork-protocol.md](identity-fork-protocol.md)** after activation.
+
+---
+
+## Relationship to template vs instance
+
+| Location | Role |
+|----------|------|
+| **This template repo** | Defines protocol, schemas, `_template` scaffold, `demo` example, validation scripts. |
+| **Instance repo** (e.g. Grace-Mar) | Holds real `users/<id>/`; may run operator wizards; must align with template schema versions when syncing upgrades. |
+
+---
+
+## Implementation references
+
+| Resource | Path |
+|----------|------|
+| Stage spec | [seed-phase-stages.md](seed-phase-stages.md) |
+| Readiness | [seed-phase-readiness.md](seed-phase-readiness.md) |
+| Confidence | [seed-phase-confidence-model.md](seed-phase-confidence-model.md) |
+| Artifacts | [seed-phase-artifacts.md](seed-phase-artifacts.md) |
+| Validation | [seed-phase-validation.md](seed-phase-validation.md) |
+| Schemas | `schema-registry/seed-*.v1.json` |
+| Validator | `scripts/validate-seed-phase.py` |
+| Dossier generator | `scripts/generate-seed-dossier.py` |
+| Template scaffold | `users/_template/seed-phase/` |
+| Demo example | `users/demo/seed-phase/` |
+
+---
+
+## Historical note (v1 prose)
+
+Early seed phase focused on surveys and initial SELF/self-evidence capture **inside** the instance. **v2** keeps that *outcome* as a goal of activation but **requires** the artifact pipeline above **before** activation so formation is **visible, versioned, and validatable**.
+
+---
+
+*Companion-Self template · Seed phase v2*
