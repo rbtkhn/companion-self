@@ -16,6 +16,7 @@ This pack is optional and review-first.
 - `SYNC-LOG.template.md` - append-only sync check ledger
 - `SYNC-DAILY.template.md` - optional single-page daily sync surface (training mode)
 - `ENABLE-SYNC-PACK.md` - step-by-step enablement runbook
+- `INITIAL-GOOD-MORNING.md` - template sequence for first daily sync routine
 
 ---
 

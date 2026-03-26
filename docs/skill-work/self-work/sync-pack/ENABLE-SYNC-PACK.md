@@ -47,6 +47,7 @@ Update local interface docs (typically):
 - instance `INDEX.md`
 - any seed-context link page
 - optional `GOOD-MORNING.md` routine
+- if needed, copy/adapt `INITIAL-GOOD-MORNING.md` sequence
 
 ---
 

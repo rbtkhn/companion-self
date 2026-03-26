@@ -58,6 +58,8 @@ Companion's own objectives for making, planning, execution, creation. Gated; evi
 - **horizon** — (e.g. longer-term goals; instance fills or leaves empty)
 - **source** — (evidence id when goals were captured; optional)
 
+Template note: instances may initialize WORK lane docs in `docs/skill-work/work-business/` and `docs/skill-work/work-dev/` from seed survey outputs, then use them during daily good-morning planning.
+
 ---
 
 ## Life mission ref
