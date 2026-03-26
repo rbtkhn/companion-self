@@ -22,9 +22,10 @@ Typical first docs:
 
 Use in `good morning` to:
 
-- run daily relevance/sync checks
+- run daily relevance/sync checks (**only if work-dev sync is established for the instance**)
 - review reliability guardrails
 - select one process-improvement action for the day
+- produce 1-3 concrete next-step suggestions
 
 Keep all edits in WORK surfaces; stage identity implications through gate flow.
 

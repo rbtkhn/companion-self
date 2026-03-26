@@ -22,7 +22,9 @@ Recommended first files per instance:
 
 Use in `good morning` to:
 
+- run business sync checks (**only if work-business sync is established for the instance**)
 - review active business priorities
 - identify one top execution action for the day
+- produce 1-3 concrete next-step suggestions
 - route identity-relevant insights to gate flow (no direct Record writes)
 

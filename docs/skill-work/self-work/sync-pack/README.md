@@ -18,6 +18,11 @@ This pack is optional and review-first.
 - `ENABLE-SYNC-PACK.md` - step-by-step enablement runbook
 - `INITIAL-GOOD-MORNING.md` - template sequence for first daily sync routine
 
+Default initial good-morning order:
+1) template alignment (optional),
+2) work-dev sync (optional, if established) + next-step suggestions,
+3) work-business sync (optional, if established) + next-step suggestions.
+
 ---
 
 ## Core invariants
