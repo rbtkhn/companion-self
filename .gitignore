@@ -8,3 +8,6 @@ users/eval-fixture/
 
 # Derived engine artifacts (rebuildable; not canonical)
 users/*/derived/
+
+# Local provenance output (optional)
+state/provenance/

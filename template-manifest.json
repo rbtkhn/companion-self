@@ -2,36 +2,198 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
-  "canonicalAsOf": "2026-03-23",
-  "templateVersion": "0.2.2",
+  "canonicalAsOf": "2026-03-26",
+  "templateVersion": "0.2.3",
   "paths": [
-    { "path": "docs/concept.md", "description": "Concept: Record, Voice, education structure, knowledge boundary, invariants, long-term objectives.", "optional": false },
-    { "path": "docs/identity-fork-protocol.md", "description": "Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, self-evidence), evidence linking.", "optional": false },
-    { "path": "docs/seed-phase.md", "description": "Definition of seed phase; what creates initial Record.", "optional": false },
-    { "path": "docs/long-term-objective.md", "description": "Permanent system rules (democratize Alpha-style education; sovereignty; knowledge boundary).", "optional": false },
-    { "path": "docs/skill-work/README.md", "description": "Skill-work parent index (submodules: skill-work-alpha-school, skill-work-human-teacher).", "optional": true },
-    { "path": "docs/skill-work/skill-work-alpha-school/alpha-school-reference.md", "description": "Alpha School reference (skill-work-alpha-school submodule): benchmarks, 2-hour screen-time target, equivalent metrics.", "optional": false },
-    { "path": "docs/skill-work/skill-work-alpha-school/alpha-school-benchmarks.yaml", "description": "Structured Alpha benchmarks (YAML) with evidence IDs; optional comparison targets.", "optional": true },
-    { "path": "docs/skill-work/skill-work-alpha-school/insights-alpha-moonshots-233-for-business.md", "description": "Alpha/Moonshots #233 insights for business plan and white paper (skill-work-alpha-school submodule).", "optional": true },
-    { "path": "docs/skill-work/skill-work-human-teacher/human-teacher-objectives.md", "description": "Human teaching/learning objectives (skill-work-human-teacher submodule): read and modulate skill-think.", "optional": true },
-    { "path": "docs/skill-work/skill-work-human-teacher/README.md", "description": "Skill-work-human-teacher submodule index.", "optional": true },
-    { "path": "docs/instance-patterns.md", "description": "Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format).", "optional": false },
-    { "path": "docs/contradiction-resolution.md", "description": "Conflict resolution types; preserve history; advisory conflict check; links to engine spec.", "optional": false },
-    { "path": "docs/approval-inbox-spec.md", "description": "Review surface for recursion-gate; derived UI; contradiction escalation; reference Grace-Mar inbox.", "optional": false },
-    { "path": "docs/CONTRADICTION-ENGINE-SPEC.md", "description": "Contradiction engine: identity-diff object, classification, API shape, temporal validity, audit.", "optional": false },
-    { "path": "users/_template/self.md", "description": "SELF schema/structure scaffold for new users only.", "optional": false },
-    { "path": "users/_template/self-knowledge.md", "description": "IX-A: what they've learned (self-knowledge) scaffold.", "optional": false },
-    { "path": "users/_template/self-identity.md", "description": "Durable identity commitments scaffold (identity, boundaries, role commitments).", "optional": false },
-    { "path": "users/_template/self-curiosity.md", "description": "IX-B: what they're curious about (self-curiosity) scaffold.", "optional": false },
-    { "path": "users/_template/self-personality.md", "description": "IX-C: voice, preferences, values (self-personality) scaffold.", "optional": false },
-    { "path": "users/_template/self-skill-think.md", "description": "THINK (self-skill-think) scaffold.", "optional": false },
-    { "path": "users/_template/self-skill-write.md", "description": "WRITE (self-skill-write) scaffold.", "optional": false },
-    { "path": "users/_template/self-skill-work.md", "description": "WORK (self-skill-work) scaffold.", "optional": false },
-    { "path": "users/_template/self-work.md", "description": "Cross-lane self-work control-plane scaffold.", "optional": false },
-    { "path": "users/_template/self-evidence.md", "description": "Evidence schema/structure scaffold.", "optional": false },
-    { "path": "users/_template/recursion-gate.md", "description": "Recursive-gate staging scaffold (candidates at the gate).", "optional": false },
-    { "path": "users/_template/self-memory.md", "description": "Ephemeral context scaffold.", "optional": true },
-    { "path": "users/_template/self-library.md", "description": "SELF-LIBRARY scaffold: governance + empty entries; reference-facing shelf (not IX-A).", "optional": true },
-    { "path": "docs/self-library-example-corpus-grace-mar-derived.md", "description": "Optional legacy LIB row example (grace-mar-derived); not the default template shelf.", "optional": true }
+    {
+      "path": "docs/concept.md",
+      "description": "Concept: Record, Voice, education structure, knowledge boundary, invariants, long-term objectives.",
+      "optional": false
+    },
+    {
+      "path": "docs/identity-fork-protocol.md",
+      "description": "Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, self-evidence), evidence linking.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase.md",
+      "description": "Definition of seed phase; what creates initial Record.",
+      "optional": false
+    },
+    {
+      "path": "docs/long-term-objective.md",
+      "description": "Permanent system rules (democratize Alpha-style education; sovereignty; knowledge boundary).",
+      "optional": false
+    },
+    {
+      "path": "docs/skill-work/README.md",
+      "description": "Skill-work parent index (submodules: skill-work-alpha-school, skill-work-human-teacher).",
+      "optional": true
+    },
+    {
+      "path": "docs/skill-work/skill-work-alpha-school/alpha-school-reference.md",
+      "description": "Alpha School reference (skill-work-alpha-school submodule): benchmarks, 2-hour screen-time target, equivalent metrics.",
+      "optional": false
+    },
+    {
+      "path": "docs/skill-work/skill-work-alpha-school/alpha-school-benchmarks.yaml",
+      "description": "Structured Alpha benchmarks (YAML) with evidence IDs; optional comparison targets.",
+      "optional": true
+    },
+    {
+      "path": "docs/skill-work/skill-work-alpha-school/insights-alpha-moonshots-233-for-business.md",
+      "description": "Alpha/Moonshots #233 insights for business plan and white paper (skill-work-alpha-school submodule).",
+      "optional": true
+    },
+    {
+      "path": "docs/skill-work/skill-work-human-teacher/human-teacher-objectives.md",
+      "description": "Human teaching/learning objectives (skill-work-human-teacher submodule): read and modulate skill-think.",
+      "optional": true
+    },
+    {
+      "path": "docs/skill-work/skill-work-human-teacher/README.md",
+      "description": "Skill-work-human-teacher submodule index.",
+      "optional": true
+    },
+    {
+      "path": "docs/instance-patterns.md",
+      "description": "Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format).",
+      "optional": false
+    },
+    {
+      "path": "docs/contradiction-resolution.md",
+      "description": "Conflict resolution types; preserve history; advisory conflict check; links to engine spec.",
+      "optional": false
+    },
+    {
+      "path": "docs/approval-inbox-spec.md",
+      "description": "Review surface for recursion-gate; derived UI; contradiction escalation; reference Grace-Mar inbox.",
+      "optional": false
+    },
+    {
+      "path": "docs/CONTRADICTION-ENGINE-SPEC.md",
+      "description": "Contradiction engine: identity-diff object, classification, API shape, temporal validity, audit.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self.md",
+      "description": "SELF schema/structure scaffold for new users only.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-knowledge.md",
+      "description": "IX-A: what they've learned (self-knowledge) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-identity.md",
+      "description": "Durable identity commitments scaffold (identity, boundaries, role commitments).",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-curiosity.md",
+      "description": "IX-B: what they're curious about (self-curiosity) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-personality.md",
+      "description": "IX-C: voice, preferences, values (self-personality) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-skill-think.md",
+      "description": "THINK (self-skill-think) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-skill-write.md",
+      "description": "WRITE (self-skill-write) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-skill-work.md",
+      "description": "WORK (self-skill-work) scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-work.md",
+      "description": "Cross-lane self-work control-plane scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-evidence.md",
+      "description": "Evidence schema/structure scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/recursion-gate.md",
+      "description": "Recursive-gate staging scaffold (candidates at the gate).",
+      "optional": false
+    },
+    {
+      "path": "users/_template/self-memory.md",
+      "description": "Ephemeral context scaffold.",
+      "optional": true
+    },
+    {
+      "path": "users/_template/self-library.md",
+      "description": "SELF-LIBRARY scaffold: governance + empty entries; reference-facing shelf (not IX-A).",
+      "optional": true
+    },
+    {
+      "path": "docs/self-library-example-corpus-grace-mar-derived.md",
+      "description": "Optional legacy LIB row example (grace-mar-derived); not the default template shelf.",
+      "optional": true
+    },
+    {
+      "path": "docs/system-tensions-and-mysteries.md",
+      "description": "Canonical 10 challenges + 5 open mysteries; evolution rules for template and instances.",
+      "optional": false
+    },
+    {
+      "path": "docs/layer-map.json",
+      "description": "Layer labels, forbidden crossing globs for mechanical checks.",
+      "optional": false
+    },
+    {
+      "path": "docs/self-identity/intent-coherence-checklist.md",
+      "description": "Checklist: durable identity vs operational self-work vs ephemeral memory.",
+      "optional": true
+    },
+    {
+      "path": "scripts/validate-record-boundaries.py",
+      "description": "Validates optional YAML frontmatter on users/**/*.md when present.",
+      "optional": false
+    },
+    {
+      "path": "scripts/layer-enforcer.py",
+      "description": "Enforces docs/layer-map.json forbiddenCrossings globs.",
+      "optional": false
+    },
+    {
+      "path": "scripts/gate-guardian.js",
+      "description": "Interactive human gate; skipped when CI=true or --yes.",
+      "optional": true
+    },
+    {
+      "path": "scripts/generate-provenance.js",
+      "description": "Writes state/provenance/record-docs-summary.json for users/ and docs/ (output gitignored).",
+      "optional": true
+    },
+    {
+      "path": "scripts/truth-density-score.py",
+      "description": "Heuristic must-persist token density under users/.",
+      "optional": true
+    },
+    {
+      "path": "schema-registry/v1-core.json",
+      "description": "Starter schema registry manifest pointer.",
+      "optional": true
+    },
+    {
+      "path": "bridges/bridge-schema.json",
+      "description": "Minimal bridge confidence JSON schema stub.",
+      "optional": true
+    }
   ]
 }

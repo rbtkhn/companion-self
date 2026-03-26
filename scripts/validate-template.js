@@ -50,6 +50,22 @@ function main() {
 
   if (failed) process.exit(1);
   console.log("validate-template: all manifest paths exist; no forbidden files tracked.");
+
+  try {
+    execSync("python3 scripts/validate-record-boundaries.py", {
+      cwd: REPO_ROOT,
+      stdio: "inherit",
+    });
+  } catch (_) {
+    failed = true;
+  }
+  try {
+    execSync("python3 scripts/layer-enforcer.py", { cwd: REPO_ROOT, stdio: "inherit" });
+  } catch (_) {
+    failed = true;
+  }
+
+  if (failed) process.exit(1);
 }
 
 main();

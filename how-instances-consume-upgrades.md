@@ -94,3 +94,13 @@ An example schema lives in **`docs/template-source.example.json`**; copy to your
 ---
 
 *Companion-Self template · Upgrade consumption*
+
+---
+
+## New safeguards (v2026-03)
+
+- Before large Record-affecting changes, run **`node scripts/gate-guardian.js`** (or `CI=true` / `--yes` only when you intentionally bypass the interactive prompts in automation).
+- Run **`node scripts/validate-template.js`** after merges; it chains **`python3 scripts/validate-record-boundaries.py`** (opt-in frontmatter on `users/**/*.md`) and **`python3 scripts/layer-enforcer.py`** (forbidden paths from **`docs/layer-map.json`**).
+- **Protected surfaces (conceptual):** durable truth lives under **`users/<id>/`** as files such as **`self.md`**, **`self-evidence.md`**, **`self-identity.md`**, **`self-knowledge.md`**, **`self-personality.md`** — not as a generic `Record/` directory inside `users/`. Personality in scaffold terms maps to **`self-personality.md`** / IX-C in the instance protocol; do not invent parallel directory trees that duplicate those files.
+- Optional: **`python3 scripts/truth-density-score.py`** (heuristic; documents **`must-persist`** convention in tension doc) and **`node scripts/generate-provenance.js`** (writes gitignored **`state/provenance/record-docs-summary.json`**).
+

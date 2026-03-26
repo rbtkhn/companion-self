@@ -1,0 +1,6 @@
+{
+  "schemaVersion": "1.0.0",
+  "name": "companion-self-core",
+  "description": "Starter registry entry for template validation and future tooling.",
+  "layersRef": "docs/layer-map.json"
+}
