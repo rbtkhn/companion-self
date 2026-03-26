@@ -11,7 +11,8 @@ This document defines the Record schema, recursion-gate shape, and API contracts
 | Component | File | Fields / structure |
 |-----------|------|--------------------|
 | **SELF** | self.md | Identity baseline (I–VIII); optional pointer to IX. |
-| **IX-A** | self-knowledge.md | Topics, facts; one line per entry; optional evidence id. |
+| **KNOWLEDGE** | self-knowledge.md | Topics, facts, understanding; one line per entry; optional evidence id. |
+| **IDENTITY** | self-identity.md | Durable identity commitments, boundaries, role commitments, long-horizon identity direction. |
 | **IX-B** | self-curiosity.md | Interests, questions; one line per entry; optional evidence id. |
 | **IX-C** | self-personality.md | Voice, preferences, values, narrative; one line per entry; optional evidence id. |
 | **THINK** | self-skill-think.md | Intake and comprehension; evidence links. |
@@ -19,7 +20,7 @@ This document defines the Record schema, recursion-gate shape, and API contracts
 | **WORK** | self-skill-work.md | Making and doing; evidence links. See **WORK objectives and tasks** below. |
 | **self-evidence** | self-evidence.md | Activity log entries: `id`, `date`, `summary`, `skill_tag` (THINK \| WRITE \| WORK). |
 
-All Record files live under `users/<id>/`. Dimension files (IX-A, IX-B, IX-C) are the source of truth for post-seed growth.
+All Record files live under `users/<id>/`. Split growth files (`self-knowledge`, `self-identity`, `self-curiosity`, `self-personality`) are the source of truth for post-seed growth.
 
 ---
 
@@ -109,7 +110,7 @@ Instances may override (e.g. per-activity or LLM-suggested section); this is the
 **Merge outcome (good):**
 
 1. **Evidence** — One new activity log entry in self-evidence with id, date, summary, skill_tag; id is stable and referenceable (format e.g. ACT-YYYY-MM-DD-&lt;suffix&gt;).
-2. **Dimension (if applicable)** — One new line in the correct dimension file (self-knowledge, self-curiosity, or self-personality) when suggested_ix_section was set; line format matches existing bullets; no duplicate or overwrite of unrelated lines.
+2. **Dimension (if applicable)** — One new line in the correct growth file (`self-knowledge`, `self-identity`, `self-curiosity`, or `self-personality`) when target section was set; line format matches existing bullets; no duplicate or overwrite of unrelated lines.
 3. **Skill file** — One new line in the matching skill file (THINK → self-skill-think.md, WRITE → self-skill-write.md, WORK → self-skill-work.md); line includes evidence id for linking.
 4. **Gate** — Candidate removed from recursion-gate; no other candidates modified.
 5. **Receipt** — One line appended to merge-receipts.jsonl (candidate_id, raw_text, suggested_ix_section, merged_at).

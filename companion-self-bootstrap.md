@@ -41,7 +41,7 @@
    - **Seed phase:** Definition of seed phases (what surveys, what artifacts, what creates initial SELF, self-skill-*, self-evidence). "New instance = new user + seed phase" as the only creation path. Can be derived from grace-mar's ARCHITECTURE (Fork Lifecycle, Seeding) and OPERATOR-BRIEF.
 
 3. **Optional: users/_template/**
-   - Empty or minimal structure: self.md (template only), self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md (templates), self-evidence.md (template), recursion-gate.md (template), self-memory.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
+   - Empty or minimal structure: self.md (template only), self-knowledge.md, self-identity.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md (templates), self-evidence.md (template), recursion-gate.md (template), self-memory.md (template). No real data. Used as the scaffold when creating a new user directory in an instance repo. Can be copied from grace-mar's `docs/SELF-TEMPLATE.md`, `docs/EVIDENCE-TEMPLATE.md`, etc., rendered as minimal files.
 
 4. **Optional: how-instances-consume-upgrades.md** (or section in README)
    - Describe how an instance (e.g. grace-mar) merges upgrades from this template: compare and update docs (CONCEPTUAL-FRAMEWORK, IDENTITY-FORK-PROTOCOL, SELF-TEMPLATE, seed description, AGENTS governance); never overwrite the instance's `users/<id>/` Record. Optionally: list of template paths safe to copy into instances; or a small sync script idea.
@@ -115,7 +115,7 @@ If you need to extract or generalize content for companion-self, the canonical s
 - Protocol: `docs/identity-fork-protocol.md`
 - Governance: `AGENTS.md` (template-level rules: pipeline, knowledge boundary, operating modes)
 - Seed / lifecycle: `docs/ARCHITECTURE.md` (Fork Lifecycle, Seeding), `docs/OPERATOR-BRIEF.md`
-- Schema templates: self.md, self-knowledge.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md in users/_template/
+- Schema templates: self.md, self-knowledge.md, self-identity.md, self-curiosity.md, self-personality.md, self-skill-think.md, self-skill-write.md, self-skill-work.md, self-evidence.md, recursion-gate.md, self-memory.md in users/_template/
 - Merge process (instance side): described in §5 above; can be documented in grace-mar as `docs/MERGING-FROM-COMPANION-SELF.md` when needed.
 
 ---

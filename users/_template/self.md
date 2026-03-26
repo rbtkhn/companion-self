@@ -56,13 +56,14 @@ Governed by the instance's SELF template / CONCEPT. Schema: identity, personalit
 
 ## IX. Post-Seed Growth (Source of Truth Elsewhere)
 
-Post-seed growth is stored in the three dimension files. Merge and Voice read from them for IX-A, IX-B, IX-C.
+Post-seed growth is stored in the split growth files. Merge and Voice read from them as the source of truth.
 
-- **IX-A (knowledge)** → `self-knowledge.md`
-- **IX-B (curiosity)** → `self-curiosity.md`
-- **IX-C (personality)** → `self-personality.md`
+- **Knowledge** → `self-knowledge.md`
+- **Identity commitments** → `self-identity.md`
+- **Curiosity** → `self-curiosity.md`
+- **Personality** → `self-personality.md`
 
-Optionally, keep a one-line summary here (e.g. "3 topics, 5 interests, 2 observed traits") for at-a-glance; the canonical content is in the three files.
+Optionally, keep a one-line summary here for at-a-glance; canonical content is in the split files above.
 
 ---
 

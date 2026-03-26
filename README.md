@@ -18,7 +18,7 @@ Optional: [companion-self.com](https://companion-self.com) when the concept site
 ## Contents
 
 - **docs/** — **Long-term objective** ([LONG-TERM-OBJECTIVE](docs/long-term-objective.md) — permanent system rule: democratize Alpha-style education; prevents intention drift). Concept, protocol, seed phase; education structure (self-skill-think, self-skill-write, self-skill-work); recursive self-learning objectives; business/white-paper insights; 6-week coding project; Alpha School reference (benchmarks, 2-hour screen-time target) in [skill-work-alpha-school submodule](docs/skill-work/skill-work-alpha-school/alpha-school-reference.md); no human guide assumed.
-- **users/_template/** — Minimal scaffold (self, self-knowledge, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo. No real data.
+- **users/_template/** — Minimal scaffold (self, self-knowledge, self-identity, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo. No real data.
 - **how-instances-consume-upgrades.md** — How an instance merges upgrades from this template without overwriting its Record.
 - **readme-student-app.md** — Student interface: how to run the app (clone, `cd app`, `npm install`, `npm start`; app at localhost:3000).
 - **companion-self-and-grace-mar.code-workspace** — Recommended workspace: companion-self (writable) + grace-mar (read-only). Template work here; instance modifications only in a separate grace-mar workspace. See companion-self-bootstrap §7.

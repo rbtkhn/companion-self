@@ -47,7 +47,7 @@ Companion-self’s **Identity Fork** (agent may stage, may not merge) and **sing
 
 ### 3.2 Record (identity + evidence)
 
-- **Role:** Single source of truth for the companion. Only the **merge** path writes to Record files (self-evidence, self-knowledge, self-curiosity, self-personality, etc.).
+- **Role:** Single source of truth for the companion. Only the **merge** path writes to Record files (self-evidence, self-knowledge, self-identity, self-curiosity, self-personality, etc.).
 - **Concurrency:** Merge is **exclusive**: one approve at a time; no parallel merge. Read-only agents may read Record at any time (during or between merges).
 - **No staging agent** may write to Record; Identity Fork is strict.
 

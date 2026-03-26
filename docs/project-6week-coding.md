@@ -81,9 +81,9 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 1.1 | Define **Record schema** in code: SELF (self.md), IX-A/IX-B/IX-C (self-knowledge, self-curiosity, self-personality), THINK/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
+| 1.1 | Define **Record schema** in code: SELF (self.md), split growth files (self-knowledge, self-identity, self-curiosity, self-personality), THINK/WRITE/WORK (self-skill-*), self-evidence (id, type, summary, date, skill_tag). | `app/schema/record.js` (or .py) with types and validation. |
 | 1.2 | Define **recursion-gate** structure: array of `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. | Same schema module; `users/demo/recursion-gate.json` format. |
-| 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursion-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
+| 1.3 | Create **users/demo/** from `users/_template/` (all Record + recursion-gate.json empty array). Populate minimal seed (one line each in self-knowledge, self-identity, self-curiosity, self-personality). | Demo user on disk; parsable by app. |
 | 1.4 | Implement **load** and **save** for demo: read markdown into structured objects; write back on merge. Append-only where possible; simple section/list parsing. | Load/save in schema or `pipeline/io.js`. |
 | 1.5 | Add and maintain `docs/schema-record-api.md`: ensure it exists with Record field list and recursion-gate shape. Week 5 adds edge response shape. | Doc for API contract and extensions. |
 

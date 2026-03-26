@@ -77,7 +77,7 @@ This spec formalizes that distinction.
 
 A **contradiction** becomes a **first-class identity-diff object** when:
 
-- there is an active existing claim in SELF (unified or split: self-knowledge, self-curiosity, self-personality) or skill containers
+- there is an active existing claim in SELF (unified or split: self-knowledge, self-identity, self-curiosity, self-personality) or skill containers
 - a staged candidate materially overlaps the same domain, topic, or trait
 - the relationship is not best explained as simple reinforcement or duplication
 - a human reviewer would reasonably need to decide how the active model should change
@@ -101,7 +101,7 @@ Classify each staged candidate against relevant active entries:
 Per instance layout (see [instance-patterns.md](instance-patterns.md)):
 
 - `users/<id>/recursion-gate.md` **or** `users/<id>/recursion-gate.json`
-- SELF: `self.md` and/or `self-knowledge.md`, `self-curiosity.md`, `self-personality.md`
+- SELF: `self.md` and/or `self-knowledge.md`, `self-identity.md`, `self-curiosity.md`, `self-personality.md`
 - `self-evidence.md`
 - skill files as used (`self-skill-think.md`, etc.)
 - `pipeline-events.jsonl` (or instance audit log)

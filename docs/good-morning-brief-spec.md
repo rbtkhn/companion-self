@@ -65,9 +65,12 @@ All instance data should be read from `users/<id>/` first.
 3. `users/<id>/recursion-gate.md` (pending candidates)
 4. `users/<id>/self-curiosity.md`
 5. `users/<id>/self-personality.md`
-6. `users/<id>/self-skill-think.md`
-7. `users/<id>/self-skill-write.md`
-8. `users/<id>/self-skill-work.md`
+6. `users/<id>/self-knowledge.md` (knowledge edge extraction; read-only)
+7. `users/<id>/self-work.md` (cross-lane coordination surface)
+8. `users/<id>/self-skill-think.md`
+9. `users/<id>/self-skill-write.md`
+10. `users/<id>/self-skill-work.md`
+11. `users/<id>/self-library.md` (reference shelf advisory; read-only)
 
 ### Optional sync surfaces
 
@@ -145,6 +148,40 @@ Script must produce:
       "reason": "string"
     }
   ],
+  "selfWorkBridge": {
+    "topSkillFocus": "THINK|WRITE|WORK",
+    "skillObjectiveId": "string",
+    "nextEvidenceTarget": "string"
+  },
+  "knowledgeBridge": {
+    "knowledgeEdge": "string",
+    "knowledgeObjectiveId": "string",
+    "parseConfidence": "none|low|medium|high"
+  },
+  "curiosityBridge": {
+    "curiosityEdge": "string",
+    "curiosityObjectiveId": "string",
+    "parseConfidence": "none|low|medium|high"
+  },
+  "personalityBridge": {
+    "workStyle": "neutral|analytical|playful",
+    "pacePreference": "standard|short_bursts|deep_focus",
+    "tonePreference": "direct|calm|playful",
+    "parseConfidence": "none|medium|high"
+  },
+  "libraryBridge": {
+    "activeShelfTopic": "string",
+    "staleReferenceAlert": "string",
+    "suggestedLookupAction": "string",
+    "parseConfidence": "none|low|medium|high"
+  },
+  "writeBridge": {
+    "knowledgeSeed": "string",
+    "curiositySeed": "string",
+    "voiceStyle": "string",
+    "suggestedWriteAction": "string",
+    "parseConfidence": "none|low|medium|high"
+  },
   "dailyOpsHandoff": {
     "topSyncAction": "string",
     "topExecutionAction": "string",
@@ -167,6 +204,7 @@ Writes are opt-in and bounded.
 - Daily intention note only when `--write-intention` is set.
   - Recommended path: `users/<id>/daily-intentions/YYYY-MM-DD.md`
   - If path does not exist, create directory safely.
+- No automatic write to `self-work.md` from this script. The script may read it to infer `selfWorkBridge` suggestions.
 - Optional sync summary handoff block in a non-identity operational file if explicitly enabled in future flags (not default).
 
 ### Disallowed writes
@@ -189,6 +227,21 @@ Any persisted output should include a short marker, e.g.:
 
 - If `users/<id>/` missing -> exit code `2`.
 - If optional file missing -> continue; add warning and fallback phrasing.
+- If `self-knowledge.md` parse confidence is low:
+  - keep existing `topExecutionAction` fallback behavior,
+  - emit warning and continue.
+- If `self-curiosity.md` parse confidence is high:
+  - allow advisory "curiosity edge" execution suggestion when no stronger handoff/knowledge edge is available.
+  - do not write curiosity suggestions back to identity files.
+- If `self-personality.md` is present:
+  - derive advisory pacing/tone preferences (`personalityBridge`) and use them to rank session options.
+  - do not write these preferences back to identity files.
+- If `self-library.md` exists:
+  - derive advisory `libraryBridge` hints for lookup anchoring only (no identity writes).
+  - allow `topSyncAction` to include a shelf anchor when parse confidence is high.
+- Build `writeBridge` from `knowledgeBridge + curiosityBridge + personalityBridge`:
+  - advisory-only synthesis for WRITE planning,
+  - if `topSkillFocus == WRITE`, `topExecutionAction` may use `writeBridge.suggestedWriteAction`.
 - If sync lanes not established -> set status to `not_established`.
 - If upstream unavailable during template alignment:
   - set `templateAlignment.status = unavailable`

@@ -13,7 +13,7 @@ When companion-self (this repo) is updated, an instance (e.g. [Grace-Mar](https:
 - **Concept docs** — e.g. concept.md, generalized framework
 - **Protocol docs** — e.g. identity-fork-protocol (short form or full spec if maintained here)
 - **Seed-phase definition** — what seed is, what it produces, that it is the only creation path
-- **SELF / self-knowledge, self-curiosity, self-personality / self-skill-think / self-skill-write / self-skill-work / self-evidence / recursion-gate / self-memory templates** — schema and structure only; instance keeps its own copies and updates them to match the template when upgrading
+- **SELF / self-knowledge, self-identity, self-curiosity, self-personality / self-skill-think / self-skill-write / self-skill-work / self-evidence / recursion-gate / self-memory templates** — schema and structure only; instance keeps its own copies and updates them to match the template when upgrading
 - **Template-level governance** — pipeline rule, knowledge boundary, operating modes (e.g. in AGENTS.md or equivalent in the instance, derived from template guidance)
 
 The instance **compares** template docs and templates with its own, **merges** changes into its files, and runs any validation (e.g. governance checker, validate-integrity). There is **no** automated overwrite of `users/<id>/`.
@@ -55,6 +55,7 @@ When an instance (e.g. Grace-Mar) merges upgrades from companion-self, it should
 | `docs/instance-patterns.md` | Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format). |
 | `users/_template/self.md` | SELF schema/structure scaffold for new users only. |
 | `users/_template/self-knowledge.md` | IX-A: what they've learned (self-knowledge) scaffold. |
+| `users/_template/self-identity.md` | Durable identity commitments scaffold (identity, boundaries, role commitments). |
 | `users/_template/self-curiosity.md` | IX-B: what they're curious about (self-curiosity) scaffold. |
 | `users/_template/self-personality.md` | IX-C: voice, preferences, values (self-personality) scaffold. |
 | `users/_template/self-skill-think.md` | THINK (self-skill-think) scaffold. |
