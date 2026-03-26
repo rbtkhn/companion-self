@@ -12,6 +12,7 @@ This folder holds **submodules** that support WORK, the Record, and instances: r
 |-----------|---------|
 | **[skill-work-alpha-school](skill-work-alpha-school/)** | Alpha School reference: benchmarks (YAML), 2-hour screen-time target, Record-driven prompts. Optional comparison targets. |
 | **[skill-work-human-teacher](skill-work-human-teacher/)** | Human teaching/learning objectives: teach the human companion; read and modulate skill-think. Can be instructed for classes, seminars, ages, languages. |
+| **[self-work/sync-pack](self-work/sync-pack/README.md)** | Optional template utility: manual, review-first territory sync module (contract + log + optional daily surface). |
 
 ---
 
