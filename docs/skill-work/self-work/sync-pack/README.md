@@ -23,6 +23,11 @@ Default initial good-morning order:
 2) work-dev sync (optional, if established) + next-step suggestions,
 3) work-business sync (optional, if established) + next-step suggestions.
 
+Companion closeout pair:
+- [Good Morning Brief Spec](../../../good-morning-brief-spec.md)
+- [Good Night Template](../../../good-night-template.md)
+- [Good Night Brief Spec](../../../good-night-brief-spec.md)
+
 ---
 
 ## Core invariants

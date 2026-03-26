@@ -22,3 +22,4 @@ This folder holds **submodules** that support WORK, the Record, and instances: r
 
 - [Long-term objective](../long-term-objective.md) — Links to skill-work submodules.
 - [Concept](../concept.md), [Schema and API](../schema-record-api.md), [Instance patterns](../instance-patterns.md).
+- [Good Morning Brief Spec](../good-morning-brief-spec.md), [Good Night Template](../good-night-template.md), [Good Night Brief Spec](../good-night-brief-spec.md).
