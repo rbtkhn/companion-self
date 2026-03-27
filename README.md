@@ -2,6 +2,8 @@
 
 **Companion-Self** is the **template** repo. **Grace-Mar** is the **instance** repo (the first and currently only instance).
 
+**Release + compatibility metadata:** [`template-version.json`](template-version.json) — semver, release date, git tag, and `compatibilityContract` pointers (single source; no separate `template-contract.json`).
+
 A new companion self is created **only when a new user completes seed phase** — not by copying another repo's `users/` or pre-filling a Record. **Seed Phase v2** is a visible artifact pipeline with JSON Schemas, confidence signals, and **readiness gating** before activation ([docs/seed-phase.md](docs/seed-phase.md)).
 
 ## Governed change
@@ -18,6 +20,7 @@ See:
 
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
+- **Compatibility:** Canonical template/instance rules — [docs/template-instance-contract.md](docs/template-instance-contract.md).
 
 **Reference implementation:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) — [grace-mar.com](https://grace-mar.com) (profile, bot, PRP). See [Instance patterns](docs/instance-patterns.md) for Grace-Mar variations and advanced patterns (analyst, staging format, session brief).
 

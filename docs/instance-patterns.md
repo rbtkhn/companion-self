@@ -10,29 +10,43 @@
 
 The template stays code-light and protocol-first; Grace-Mar diverges in several ways (see below). These divergences are documented so the template remains minimal while instances know what extensions are possible.
 
+**Current alignment note:** Grace-Mar’s canonical staging file is **`recursion-gate.md`**. Older references to **`pending-review.md`** should be treated as **legacy documentation**, not current implementation.
+
 ---
 
 ## Instance variations
 
 | Area | Template | Grace-Mar |
 |------|----------|-----------|
-| **Intake skill** | THINK (self-skill-think) | Grace-Mar also uses THINK (semantically equivalent: intake, comprehension). |
-| **Staging format** | recursion-gate.json (JSON array) | pending-review.md (YAML/markdown blocks). |
-| **Analyst** | Out of scope for 6 weeks | LLM analyst runs on conversation and "we did X"; stages candidates automatically. |
-| **Voice** | Not implemented | Telegram + WeChat bots. |
-| **Archive** | self-memory.md (ephemeral, optional) | self-archive.md (gated log, rotation when large). |
-| **Lesson delivery** | Optional: prompt generator + any LLM | **LLM-lesson method:** Record-derived prompts pasted into ChatGPT, Grok, or any LLM; 3–5 personalized lessons per day; transcript flows into skill-think for processing. No bot install; often easier for many users than a dedicated bot. Grace-Mar may offer both. See [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §4.1. |
+| Intake | skill THINK (`self-skill-think`) | Grace-Mar also uses THINK (semantically equivalent: intake, comprehension). |
+| Staging contract | Gate queue abstraction; instance may choose file encoding | `recursion-gate.md` under canonical instance paths. |
+| Analyst | Out of scope for 6 weeks | LLM analyst runs on conversation and “we did X”; stages candidates automatically. |
+| Voice | Not implemented | Telegram + WeChat bots. |
+| Archive | `self-memory.md` (ephemeral, optional) | `self-archive.md` (gated log, rotation when large). |
+| Lesson delivery | Optional: prompt generator + any LLM | **LLM-lesson method:** Record-derived prompts pasted into ChatGPT, Grok, or any LLM; 3–5 personalized lessons per day; transcript flows into skill-think for processing. No bot install; often easier for many users than a dedicated bot. Grace-Mar may offer both. See [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §4.1. |
 
----
+* * *
 
-## Staging format
+## Staging contract
 
-Instances may use either:
+The template defines a single canonical abstraction: the **gate queue**.
 
-- **recursion-gate.json** — JSON array of candidates: `{ id, raw_text, skill_tag, mind_category, suggested_ix_section, created_at, status }`. Suits API-driven staging (POST activity).
-- **pending-review.md** — YAML/markdown blocks per candidate. Suits analyst output and manual review workflows. Candidate fields may include `mind_category`, `signal_type`, `summary`, `profile_target`, `suggested_entry`, `prompt_section`, `prompt_addition`.
+Required invariants:
 
-The gate contract (candidates, approve/reject, merge) is identical; format is instance choice.
+- candidates can be staged without merge
+- the user reviews, rejects, modifies, or approves
+- no governed state changes without explicit approval
+- merge logic consumes approved candidates only
+
+Instance file format is implementation-specific. Supported examples include:
+
+- `recursion-gate.json` — structured JSON queue
+- `recursion-gate.md` — Markdown gate file
+- legacy queue documents such as `pending-review.md` only when an instance explicitly adopts them
+
+Grace-Mar’s current canonical staging file is **`recursion-gate.md`**, not **`pending-review.md`**.
+
+The contract is about lifecycle and authority, not filename.
 
 ---
 

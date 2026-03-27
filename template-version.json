@@ -1,5 +1,13 @@
 {
   "templateVersion": "0.4.0",
   "releasedAt": "2026-03-27",
-  "gitTag": "template-v0.4.0"
+  "gitTag": "template-v0.4.0",
+  "compatibilityContract": {
+    "schemaVersion": "1.0.0",
+    "seedPhaseProtocol": "v2",
+    "identityForkProtocolDoc": "docs/identity-fork-protocol.md",
+    "templateInstanceContractDoc": "docs/template-instance-contract.md",
+    "gateVsChangeReviewDoc": "docs/gate-vs-change-review.md",
+    "notes": "Single file for release semver and instance sync metadata; do not add a second template-contract.json."
+  }
 }
