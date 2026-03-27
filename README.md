@@ -29,6 +29,8 @@ See:
 - [docs/regime-classification.md](docs/regime-classification.md)
 - [docs/constitutional-continuity.md](docs/constitutional-continuity.md)
 
+This layer extends the existing change-review doctrine. It does not replace seed phase, change-review, or contradiction policy; it adds a higher-order question for structural continuity across time.
+
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
 - **Compatibility:** Canonical template/instance rules — [docs/template-instance-contract.md](docs/template-instance-contract.md).
