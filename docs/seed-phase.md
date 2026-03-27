@@ -84,6 +84,7 @@ Only **then** may `users/<birth-name>/` be created or promoted with the live pip
 | Schemas | `schema-registry/seed-*.v1.json` |
 | Validator | `scripts/validate-seed-phase.py` |
 | Dossier generator | `scripts/generate-seed-dossier.py` |
+| Cursor pack from intake | Optional `cursor_operator_profile` on `seed_intake.json` — [cursor-pack-from-seed.md](cursor-pack-from-seed.md) |
 | Template scaffold | `users/_template/seed-phase/` |
 | Demo example | `users/demo/seed-phase/` |
 

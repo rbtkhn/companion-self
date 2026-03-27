@@ -12,5 +12,12 @@
   "completion": {
     "coverage_score": 0.92,
     "contradictions": []
+  },
+  "cursor_operator_profile": {
+    "ide_primary": "cursor",
+    "rules_pack_preset": "instance_light",
+    "work_surface_hints": ["work-dev"],
+    "generate_cursor_pack_on_activation": true,
+    "operator_notes": "Gate-first Cursor rules only at launch; expand toward reference instance later."
   }
 }

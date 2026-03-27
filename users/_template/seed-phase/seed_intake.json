@@ -12,5 +12,12 @@
   "completion": {
     "coverage_score": 0.0,
     "contradictions": []
+  },
+  "cursor_operator_profile": {
+    "ide_primary": "unspecified",
+    "rules_pack_preset": "unspecified",
+    "work_surface_hints": [],
+    "generate_cursor_pack_on_activation": false,
+    "operator_notes": ""
   }
 }

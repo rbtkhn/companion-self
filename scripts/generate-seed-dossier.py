@@ -65,6 +65,29 @@ def main() -> None:
     ]
     for s in man.get("stages", []):
         lines.append(f"- **{s.get('id')}**: {s.get('status')}")
+    intake = data["seed_intake.json"]
+    cop = intake.get("cursor_operator_profile")
+    lines.extend(["", "## Intake — Cursor / operator workspace", ""])
+    if cop:
+        lines.append(
+            f"- **IDE:** {cop.get('ide_primary', '—')} · **Rules preset:** `{cop.get('rules_pack_preset', '—')}`"
+        )
+        hints = cop.get("work_surface_hints") or []
+        lines.append(f"- **WORK hints:** {', '.join(hints) if hints else '—'}")
+        gen = cop.get("generate_cursor_pack_on_activation")
+        if gen is True:
+            gen_s = "yes"
+        elif gen is False:
+            gen_s = "no"
+        else:
+            gen_s = "—"
+        lines.append(f"- **Generate `.cursor/` on activation (intent):** {gen_s}")
+        notes = (cop.get("operator_notes") or "").strip()
+        lines.append(f"- **Operator notes:** {notes or '—'}")
+    else:
+        lines.append(
+            "- *No `cursor_operator_profile` on intake — optional; see docs/cursor-pack-from-seed.md.*"
+        )
     lines.extend(
         [
             "",

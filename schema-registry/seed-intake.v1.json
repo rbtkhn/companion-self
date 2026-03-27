@@ -40,6 +40,40 @@
         "coverage_score": { "type": "number", "minimum": 0, "maximum": 1 },
         "contradictions": { "type": "array", "items": { "type": "string" } }
       }
+    },
+    "cursor_operator_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Collected during intake (Stage 0). Informs which Cursor rules/skills preset to generate for the instance repo after activation. Does not auto-write .cursor/; operator reviews generated files. See docs/cursor-pack-from-seed.md.",
+      "properties": {
+        "ide_primary": {
+          "type": "string",
+          "enum": ["cursor", "vscode", "jetbrains", "other", "unspecified"]
+        },
+        "rules_pack_preset": {
+          "type": "string",
+          "enum": [
+            "unspecified",
+            "template_steward",
+            "instance_light",
+            "instance_operator"
+          ],
+          "description": "Preset bucket for .cursor generation. template_steward = upstream template contributors; instance_* = forked instance repos."
+        },
+        "work_surface_hints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Optional WORK territory hints (e.g. work-politics, work-dev) to include in operator-focused presets."
+        },
+        "generate_cursor_pack_on_activation": {
+          "type": "boolean",
+          "description": "Operator plans to run the repo cursor-pack generator after activation (script TBD; intake records intent)."
+        },
+        "operator_notes": {
+          "type": "string",
+          "description": "Free text for human review only; must not be copied verbatim into rules as companion facts without gate."
+        }
+      }
     }
   }
 }
