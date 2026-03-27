@@ -1,0 +1,15 @@
+---
+description: Generalize from grace-mar (read-only); strip instance ids and private Record paths
+globs: docs/**
+alwaysApply: false
+---
+
+# Generalize from reference (Grace-Mar)
+
+When **adapting** content from the **grace-mar** reference repo (read-only in this workspace per `workspace-boundary.mdc`):
+
+- **Strip** instance-specific ids (e.g. `grace-mar` as user id), **PII**, deployment secrets, and **`users/grace-mar/**`** paths from anything proposed for **this** template.
+- **Prefer** linking to [Grace-Mar](https://github.com/rbtkhn/grace-mar) for “how the first instance does it” instead of pasting private Record prose.
+- **Align** structural changes with `template-manifest.json` and `docs/instance-patterns.md` when touching paths those files govern.
+
+**Same discipline** when editing **`scripts/`**, **`bridges/`**, or **`library/`**: generalize; no instance Record leakage into the template.

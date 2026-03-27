@@ -1,0 +1,19 @@
+---
+description: users/ in template repo — only _template and demo unless human explicitly wants more
+globs: users/**
+alwaysApply: false
+---
+
+# users/ tree — template repo
+
+In **this** (template) repository, the expected top-level entries under `users/` are:
+
+- **`_template/`** — scaffold for new instance repos  
+- **`demo/`** — synthetic validation / UI demos  
+
+If the user asks to add **`users/<something-else>/`** (a third top-level tree) in **companion-self** upstream:
+
+- **Default:** Flag as **unusual** for the template repo. Real companion identity trees normally live in a **forked instance repo**, not in the public template.
+- **Exception:** Proceed only when the human **explicitly** wants an in-repo sample (e.g. documented teaching fixture) and accepts maintenance cost.
+
+**Related:** `how-instances-consume-upgrades.md` (how instances merge template upgrades without overwriting their Record).

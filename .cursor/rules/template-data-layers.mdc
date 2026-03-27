@@ -1,0 +1,14 @@
+---
+description: Template vs _template vs demo — no real Record in this repo
+alwaysApply: true
+---
+
+# Template data layers
+
+This repository is the **companion-self template**. Treat data in three layers:
+
+1. **Product / docs surface** — Concept, protocol, seed-phase specs, manifests. **No one’s live Record** lives here as truth.
+2. **`users/_template/`** — **Scaffold only** for creating `users/<id>/` in an **instance** repo. Empty structure and placeholders; not a person.
+3. **`users/demo/`** — **Synthetic** trees for validation, student app, and demos. **Never** treat demo artifacts as a real companion’s identity or canonical Record.
+
+**Do not** merge demo or template scaffold into “truth” for a human. For seed-phase meaning and readiness, see `docs/seed-phase.md` and root `README.md` (Contents).
