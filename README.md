@@ -18,6 +18,17 @@ See:
 - [docs/change-types.md](docs/change-types.md)
 - [docs/change-review-lifecycle.md](docs/change-review-lifecycle.md)
 
+## Lawful Succession Engine
+
+Companion-Self treats major post-seed changes not merely as profile updates, but as possible succession events that must preserve intelligible continuity.
+
+The Lawful Succession Engine introduces a constitutional interpretation layer for materially important governed change. It asks not only whether a proposal is supported, but whether the proposed future state remains a lawful successor to the prior one.
+
+See:
+- [docs/lawful-succession.md](docs/lawful-succession.md)
+- [docs/regime-classification.md](docs/regime-classification.md)
+- [docs/constitutional-continuity.md](docs/constitutional-continuity.md)
+
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
 - **Compatibility:** Canonical template/instance rules — [docs/template-instance-contract.md](docs/template-instance-contract.md).
