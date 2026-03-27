@@ -194,3 +194,5 @@ These schemas govern proposed changes, decisions, visible diffs, review queues, 
 - change-event-log.v1.json
 
 Doctrine and lifecycle: [change-review.md](change-review.md), [change-review-lifecycle.md](change-review-lifecycle.md). `template-manifest.json` lists these under `change_review.schemas`.
+
+**Validation:** `python3 scripts/validate-change-review.py users/demo/change-review` — uses Draft 2020-12 validators via `jsonschema` (install from `scripts/requirements-seed-phase.txt`). Demo artifacts live under `users/demo/change-review/`.

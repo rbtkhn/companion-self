@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
   "canonicalAsOf": "2026-03-26",
-  "templateVersion": "0.3.2",
+  "templateVersion": "0.3.3",
   "paths": [
     {
       "path": "docs/concept.md",
@@ -261,6 +261,11 @@
       "optional": false
     },
     {
+      "path": "scripts/validate-change-review.py",
+      "description": "Validates change-review artifact dirs against change-review schemas (strict or --allow-placeholders).",
+      "optional": false
+    },
+    {
       "path": "scripts/generate-seed-dossier.py",
       "description": "Generates seed_dossier.md from seed JSON artifacts.",
       "optional": false
@@ -396,6 +401,36 @@
       "optional": false
     },
     {
+      "path": "users/demo/change-review/README.md",
+      "description": "Demo change-review README (synthetic).",
+      "optional": false
+    },
+    {
+      "path": "users/demo/change-review/change_proposal.json",
+      "description": "Demo change proposal JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/change-review/change_decision.json",
+      "description": "Demo change decision JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/change-review/identity_diff.json",
+      "description": "Demo identity diff JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/change-review/change_review_queue.json",
+      "description": "Demo change-review queue JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/change-review/change_event_log.json",
+      "description": "Demo change event log JSON.",
+      "optional": false
+    },
+    {
       "path": "bridges/bridge-schema.json",
       "description": "Minimal bridge confidence JSON schema stub.",
       "optional": true
@@ -435,6 +470,7 @@
       "identity_diff": "schema-registry/identity-diff.v1.json",
       "change_review_queue": "schema-registry/change-review-queue.v1.json",
       "change_event_log": "schema-registry/change-event-log.v1.json"
-    }
+    },
+    "validator": "scripts/validate-change-review.py"
   }
 }
