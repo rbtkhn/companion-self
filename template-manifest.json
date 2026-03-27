@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
   "canonicalAsOf": "2026-03-26",
-  "templateVersion": "0.3.3",
+  "templateVersion": "0.3.4",
   "paths": [
     {
       "path": "docs/concept.md",

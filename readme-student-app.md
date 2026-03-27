@@ -27,6 +27,7 @@ App at **http://localhost:3000**. No env vars for demo. The app runs as user **d
 6. **See** "what's next" / edge (THINK, WRITE, WORK)
 7. **Download** curriculum profile (JSON) for tutor or curriculum
 8. **Seed Phase** — Open **[/seed-phase](http://localhost:3000/seed-phase)** to view pre-activation demo (or `_template` scaffold) readiness, confidence map, stages, and dossier preview via **GET `/api/seed-phase?profile=demo`**. Does not read the live Record.
+9. **Change review (demo)** — Open **[/change-review](http://localhost:3000/change-review)** for post-seed governed-change JSON (proposal, decision, queue, events, identity diff) via **GET `/api/change-review?profile=demo`**. `profile=template` returns 404 until a `_template/change-review` scaffold exists. Not the live Record.
 
 ---
 

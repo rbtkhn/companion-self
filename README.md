@@ -56,7 +56,7 @@ pip install -r scripts/requirements-seed-phase.txt
 python3 scripts/validate-change-review.py users/demo/change-review
 ```
 
-**Student app:** Seed Phase status (demo data) is visible at **[/seed-phase](http://localhost:3000/seed-phase)** when running the app. See [readme-student-app.md](readme-student-app.md).
+**Student app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo bundle at **[/change-review](http://localhost:3000/change-review)** (`GET /api/change-review?profile=demo`). See [readme-student-app.md](readme-student-app.md).
 
 ---
 

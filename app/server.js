@@ -211,6 +211,50 @@ app.get("/api/seed-phase", (req, res) => {
   }
 });
 
+/**
+ * GET /api/change-review?profile=demo|template
+ * Demo synthetic change-review JSON bundle (post-seed governance). Template profile: not scaffolded yet.
+ */
+app.get("/api/change-review", (req, res) => {
+  const profile = (req.query && req.query.profile) || "demo";
+  const allowed = new Set(["demo", "template"]);
+  if (!allowed.has(profile)) {
+    return res.status(400).json({ error: "profile must be demo or template" });
+  }
+  if (profile === "template") {
+    return res.status(404).json({
+      error:
+        "No change-review scaffold under users/_template/ yet; use profile=demo for the synthetic bundle.",
+    });
+  }
+  const base = path.join(REPO_ROOT, "users", "demo", "change-review");
+  const names = [
+    "change_proposal.json",
+    "change_decision.json",
+    "identity_diff.json",
+    "change_review_queue.json",
+    "change_event_log.json",
+  ];
+  const out = { profile, base: path.relative(REPO_ROOT, base), artifacts: {} };
+  try {
+    for (const n of names) {
+      const fp = path.join(base, n);
+      if (!fs.existsSync(fp)) {
+        out.artifacts[n] = null;
+        continue;
+      }
+      out.artifacts[n] = JSON.parse(fs.readFileSync(fp, "utf-8"));
+    }
+    const readmePath = path.join(base, "README.md");
+    out.readme_preview = fs.existsSync(readmePath)
+      ? fs.readFileSync(readmePath, "utf-8").split("\n").slice(0, 15).join("\n")
+      : "";
+    res.json(out);
+  } catch (err) {
+    res.status(500).json({ error: err.message || "Failed to load change-review bundle" });
+  }
+});
+
 // --- Static ---
 
 const publicDir = path.join(__dirname, "public");
@@ -222,6 +266,7 @@ app.get("/activity", (req, res) => res.sendFile(path.join(publicDir, "activity.h
 app.get("/review", (req, res) => res.sendFile(path.join(publicDir, "review.html")));
 app.get("/export", (req, res) => res.sendFile(path.join(publicDir, "export.html")));
 app.get("/seed-phase", (req, res) => res.sendFile(path.join(publicDir, "seed-phase.html")));
+app.get("/change-review", (req, res) => res.sendFile(path.join(publicDir, "change-review.html")));
 
 const demoDir = path.join(REPO_ROOT, "users", "demo");
 if (!fs.existsSync(demoDir)) {
