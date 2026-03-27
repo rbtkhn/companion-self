@@ -144,6 +144,8 @@ Same field model as Grace-Mar reference. Example:
 **Required:** `conflict_id`, `candidate_id`, `status`, `existing_entry_id`, `incoming_summary`, `relationship_type`, `conflict_strength`, `recommended_resolution`.  
 **Optional:** `prompt_impact`, `confidence_delta`, `incoming_excerpt`, `operator_note`, `resolved_by`.
 
+**Alignment with change-review:** [`identity-diff.v1.json`](../schema-registry/identity-diff.v1.json) is the governed **before/after** envelope for proposals. Map conceptually: existing vs incoming narrative → `before` / `after` objects; `conflict_id` / `candidate_id` / evidence ids → `evidenceRefs` and linkage from a parent [change proposal](../schema-registry/change-proposal.v1.json). Instances may keep **CONFLICT-*** sidecars for detection/triage while rendering or exporting an `identity-diff` for the operator-facing diff step.
+
 ---
 
 ## 8. Scoring Model
