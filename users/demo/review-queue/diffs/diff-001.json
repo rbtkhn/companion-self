@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "diffId": "diff-demo-001",
+  "diffId": "diff-001",
   "userSlug": "demo",
   "category": "pedagogy",
   "before": {
@@ -16,6 +16,6 @@
     "after": 0.81
   },
   "evidenceRefs": [
-    "ACT-DEMO-0001"
+    "session-demo-activation-01"
   ]
 }

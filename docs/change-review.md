@@ -2,6 +2,8 @@
 
 Companion-Self template · Governed self-revision doctrine (v1 entrypoint)
 
+**Machine validation:** [change-review-validation.md](change-review-validation.md) — schema checks, reference integrity, and Markdown diff generation for `users/<id>/review-queue/`.
+
 ---
 
 ## Purpose

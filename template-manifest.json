@@ -262,7 +262,12 @@
     },
     {
       "path": "scripts/validate-change-review.py",
-      "description": "Validates change-review artifact dirs against change-review schemas (strict or --allow-placeholders).",
+      "description": "Validates users/<id>/review-queue trees against change-review schemas (strict or --allow-empty for template scaffold).",
+      "optional": false
+    },
+    {
+      "path": "scripts/generate-identity-diff.py",
+      "description": "Renders a human-readable Markdown file from one identity-diff JSON artifact.",
       "optional": false
     },
     {
@@ -401,33 +406,73 @@
       "optional": false
     },
     {
-      "path": "users/demo/change-review/README.md",
-      "description": "Demo change-review README (synthetic).",
+      "path": "docs/change-review-validation.md",
+      "description": "How to validate review-queue artifacts and generate Markdown diffs.",
       "optional": false
     },
     {
-      "path": "users/demo/change-review/change_proposal.json",
-      "description": "Demo change proposal JSON.",
+      "path": "users/_template/review-queue/README.md",
+      "description": "Template review-queue scaffold README.",
       "optional": false
     },
     {
-      "path": "users/demo/change-review/change_decision.json",
-      "description": "Demo change decision JSON.",
+      "path": "users/_template/review-queue/change_review_queue.json",
+      "description": "Template change-review queue placeholder.",
       "optional": false
     },
     {
-      "path": "users/demo/change-review/identity_diff.json",
-      "description": "Demo identity diff JSON.",
+      "path": "users/_template/review-queue/change_event_log.json",
+      "description": "Template change event log placeholder.",
       "optional": false
     },
     {
-      "path": "users/demo/change-review/change_review_queue.json",
+      "path": "users/_template/review-queue/proposals/.gitkeep",
+      "description": "Tracks empty proposals directory in template scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/review-queue/decisions/.gitkeep",
+      "description": "Tracks empty decisions directory in template scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/_template/review-queue/diffs/.gitkeep",
+      "description": "Tracks empty diffs directory in template scaffold.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/README.md",
+      "description": "Demo review-queue README (synthetic).",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/change_review_queue.json",
       "description": "Demo change-review queue JSON.",
       "optional": false
     },
     {
-      "path": "users/demo/change-review/change_event_log.json",
+      "path": "users/demo/review-queue/change_event_log.json",
       "description": "Demo change event log JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/proposals/proposal-demo-001.json",
+      "description": "Demo change proposal JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/decisions/decision-demo-001.json",
+      "description": "Demo change decision JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/diffs/diff-001.json",
+      "description": "Demo identity diff JSON.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/derived/pedagogy-draft-v2.json",
+      "description": "Demo proposed-state stub referenced by proposal.",
       "optional": false
     },
     {
@@ -471,6 +516,7 @@
       "change_review_queue": "schema-registry/change-review-queue.v1.json",
       "change_event_log": "schema-registry/change-event-log.v1.json"
     },
-    "validator": "scripts/validate-change-review.py"
+    "validator": "scripts/validate-change-review.py",
+    "diff_generator": "scripts/generate-identity-diff.py"
   }
 }

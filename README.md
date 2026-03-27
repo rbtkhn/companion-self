@@ -49,22 +49,33 @@ python3 scripts/generate-seed-dossier.py users/demo/seed-phase
 
 Full instructions: [docs/seed-phase-validation.md](docs/seed-phase-validation.md).
 
-### Change-review validation (demo)
+### Change-review validation
+
+Change-review artifacts live under **`users/<id>/review-queue/`** (queue + event log + `proposals/`, `decisions/`, `diffs/`).
 
 ```bash
 pip install -r scripts/requirements-seed-phase.txt
-python3 scripts/validate-change-review.py users/demo/change-review
+python3 scripts/validate-change-review.py users/demo/review-queue
+python3 scripts/validate-change-review.py users/_template/review-queue --allow-empty
 ```
 
-**Student app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo bundle at **[/change-review](http://localhost:3000/change-review)** (`GET /api/change-review?profile=demo`). See [readme-student-app.md](readme-student-app.md).
+Readable Markdown from a structured diff:
+
+```bash
+python3 scripts/generate-identity-diff.py users/demo/review-queue/diffs/diff-001.json --output users/demo/review-queue/identity_diff.md
+```
+
+Full instructions: [docs/change-review-validation.md](docs/change-review-validation.md).
+
+**Student app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo bundle at **[/change-review](http://localhost:3000/change-review)** (`GET /api/change-review?profile=demo`) should read **`users/<profile>/review-queue/`** when the app is updated. See [readme-student-app.md](readme-student-app.md).
 
 ---
 
 ## Contents
 
 - **docs/** — **Long-term objective** ([LONG-TERM-OBJECTIVE](docs/long-term-objective.md) — permanent system rule: democratize Alpha-style education; prevents intention drift). Concept, protocol, seed phase; education structure (self-skill-think, self-skill-write, self-skill-work); recursive self-learning objectives; business/white-paper insights; 6-week coding project; Alpha School reference (benchmarks, 2-hour screen-time target) in [skill-work-alpha-school submodule](docs/skill-work/skill-work-alpha-school/alpha-school-reference.md); no human guide assumed.
-- **users/_template/** — Minimal scaffold (self, self-knowledge, self-identity, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo; plus **`users/_template/seed-phase/`** — canonical **pre-activation** seed artifact placeholders (not the live Record). No real data.
-- **users/demo/** — Demo user for the student app; **`users/demo/seed-phase/`** — synthetic filled seed artifacts and dossier for validation and UI demos (not a live person). **`users/demo/change-review/`** — synthetic change-review JSON for schema validation (post-seed governance demos).
+- **users/_template/** — Minimal scaffold (self, self-knowledge, self-identity, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo; plus **`users/_template/seed-phase/`** — canonical **pre-activation** seed artifact placeholders (not the live Record); **`users/_template/review-queue/`** — empty change-review scaffold (validate with `--allow-empty`). No real data.
+- **users/demo/** — Demo user for the student app; **`users/demo/seed-phase/`** — synthetic filled seed artifacts and dossier for validation and UI demos (not a live person). **`users/demo/review-queue/`** — synthetic post-seed change-review tree (queue, proposals, decisions, diffs) for validation and demos.
 - **how-instances-consume-upgrades.md** — How an instance merges upgrades from this template without overwriting its Record.
 - **[docs/system-tensions-and-mysteries.md](docs/system-tensions-and-mysteries.md)** — Canonical challenges and open mysteries the template carries; instances may add local annotations.
 - **readme-student-app.md** — Student interface: how to run the app (clone, `cd app`, `npm install`, `npm start`; app at localhost:3000).

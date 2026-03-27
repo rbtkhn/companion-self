@@ -62,8 +62,11 @@ When an instance (e.g. Grace-Mar) merges upgrades from companion-self, it should
 | `schema-registry/identity-diff.v1.json` | Change-review JSON Schema: before/after diff payload. |
 | `schema-registry/change-review-queue.v1.json` | Change-review JSON Schema: queue summary. |
 | `schema-registry/change-event-log.v1.json` | Change-review JSON Schema: audit event log. |
-| `scripts/validate-change-review.py` | Validates a change-review artifact directory against change-review schemas. |
-| `users/demo/change-review/*` | Demo JSON + README for change-review validation (not a live Record). |
+| `scripts/validate-change-review.py` | Validates `users/<id>/review-queue/` trees against change-review schemas (`--allow-empty` for template scaffold). |
+| `scripts/generate-identity-diff.py` | Renders Markdown from one `identity-diff` JSON file. |
+| `docs/change-review-validation.md` | Operator doc: validation rules and commands. |
+| `users/demo/review-queue/*` | Demo review-queue tree + README for change-review validation (not a live Record). |
+| `users/_template/review-queue/*` | Template review-queue scaffold (empty proposal/decision/diff dirs allowed). |
 | `users/_template/self.md` | SELF schema/structure scaffold for new users only. |
 | `users/_template/self-knowledge.md` | IX-A: what they've learned (self-knowledge) scaffold. |
 | `users/_template/self-identity.md` | Durable identity commitments scaffold (identity, boundaries, role commitments). |

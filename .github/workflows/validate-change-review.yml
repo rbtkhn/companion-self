@@ -1,0 +1,52 @@
+name: Validate Change Review
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "schema-registry/**"
+      - "users/_template/review-queue/**"
+      - "users/demo/review-queue/**"
+      - "scripts/validate-change-review.py"
+      - "scripts/generate-identity-diff.py"
+      - ".github/workflows/validate-change-review.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "schema-registry/**"
+      - "users/_template/review-queue/**"
+      - "users/demo/review-queue/**"
+      - "scripts/validate-change-review.py"
+      - "scripts/generate-identity-diff.py"
+      - ".github/workflows/validate-change-review.yml"
+
+jobs:
+  validate-change-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements-seed-phase.txt
+
+      - name: Validate template review scaffold
+        run: python3 scripts/validate-change-review.py users/_template/review-queue --allow-empty
+
+      - name: Validate demo review queue
+        run: python3 scripts/validate-change-review.py users/demo/review-queue
+
+      - name: Generate demo identity diff
+        run: |
+          python3 scripts/generate-identity-diff.py \
+            users/demo/review-queue/diffs/diff-001.json \
+            --output /tmp/identity_diff.md
+
+      - name: Check generated diff is non-empty
+        run: test -s /tmp/identity_diff.md

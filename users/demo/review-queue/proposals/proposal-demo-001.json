@@ -13,7 +13,7 @@
   "supportingEvidence": [
     {
       "type": "interaction",
-      "ref": "ACT-DEMO-0001",
+      "ref": "session-demo-activation-01",
       "summary": "Post-activation sessions show preference for shorter worked examples before drills."
     }
   ],

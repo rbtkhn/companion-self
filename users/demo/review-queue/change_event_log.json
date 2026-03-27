@@ -6,14 +6,14 @@
       "eventId": "event-demo-001",
       "timestamp": "2026-03-26T12:00:00Z",
       "eventType": "proposal_created",
-      "ref": "proposal-demo-001",
+      "ref": "proposals/proposal-demo-001.json",
       "summary": "Demo proposal opened."
     },
     {
       "eventId": "event-demo-002",
       "timestamp": "2026-03-26T14:00:00Z",
       "eventType": "decision_made",
-      "ref": "decision-demo-001",
+      "ref": "decisions/decision-demo-001.json",
       "summary": "Demo decision: approved."
     }
   ]
