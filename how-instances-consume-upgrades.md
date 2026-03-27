@@ -53,6 +53,15 @@ When an instance (e.g. Grace-Mar) merges upgrades from companion-self, it should
 | `docs/skill-work/skill-work-alpha-school/alpha-school-reference.md` | Alpha School reference (skill-work-alpha-school submodule): benchmarks, 2-hour screen-time target, equivalent metrics. |
 | `docs/skill-work/skill-work-human-teacher/human-teacher-objectives.md` | Human teaching/learning objectives (skill-work-human-teacher submodule): read and modulate skill-think; operator/parent augment path. |
 | `docs/instance-patterns.md` | Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format). |
+| `docs/change-review.md` | Change review v1 entrypoint: governed post-seed self-revision doctrine (separate from seed phase). |
+| `docs/contradiction-policy.md` | Contradiction classification and resolution policy during change review. |
+| `docs/change-types.md` | Canonical change scopes for proposals (identity, pedagogy, upgrade_collision, etc.). |
+| `docs/change-review-lifecycle.md` | Proposal-to-decision lifecycle (detect → decide → merge or preserve). |
+| `schema-registry/change-proposal.v1.json` | Change-review JSON Schema: governed change proposal. |
+| `schema-registry/change-decision.v1.json` | Change-review JSON Schema: decision record. |
+| `schema-registry/identity-diff.v1.json` | Change-review JSON Schema: before/after diff payload. |
+| `schema-registry/change-review-queue.v1.json` | Change-review JSON Schema: queue summary. |
+| `schema-registry/change-event-log.v1.json` | Change-review JSON Schema: audit event log. |
 | `users/_template/self.md` | SELF schema/structure scaffold for new users only. |
 | `users/_template/self-knowledge.md` | IX-A: what they've learned (self-knowledge) scaffold. |
 | `users/_template/self-identity.md` | Durable identity commitments scaffold (identity, boundaries, role commitments). |
@@ -108,6 +117,34 @@ Template upgrades may change **seed JSON Schemas** (`schema-registry/seed-*.v1.j
 | **Keep seed artifacts separate from merged Record** | Seed files are pre-activation; `users/<id>/` Record merges use the identity fork protocol only after activation. |
 
 Instance merge docs should log template `templateVersion` / `seed_phase.version` when seed-related paths change.
+
+---
+
+## Change-review and upgrade collisions
+
+Template upgrades must not silently override instance-governed state.
+
+If a template upgrade conflicts with:
+- durable identity commitments
+- pedagogy rules
+- memory-governance policy
+- safety or boundary rules
+- prior seed outputs
+- other reviewed instance commitments
+
+the instance should open a governed change proposal rather than auto-merge the new template logic into active state.
+
+Recommended rule set:
+
+| Rule | Rationale |
+|------|-----------|
+| **Do not overwrite reviewed instance truth with template defaults** | Template doctrine is upstream guidance, not authority to erase instance history. |
+| **Open a change proposal when upgrades materially affect governed state** | Makes collisions visible and reviewable. |
+| **Preserve prior state refs and evidence refs** | Keeps the instance auditable. |
+| **Record the decision before merge** | Prevents silent drift. |
+| **Keep derived review artifacts separate from the live Record** | Avoids confusing review objects with durable truth surfaces. |
+
+A template may evolve faster than an instance should merge. Change review is the buffer that protects coherence.
 
 ---
 

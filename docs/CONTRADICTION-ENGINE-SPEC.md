@@ -7,6 +7,10 @@
 
 **Primary sources:**  
 - [README.md](../README.md)
+- [change-review.md](change-review.md) — governed self-revision doctrine (v1); this spec **operationalizes** that doctrine (queue-integrated objects, UI, merge, audit)
+- [contradiction-policy.md](contradiction-policy.md) — contradiction classes and resolution policy under change review
+- [change-types.md](change-types.md) — canonical proposal scopes
+- [change-review-lifecycle.md](change-review-lifecycle.md) — proposal-to-decision lifecycle
 - [approval-inbox-spec.md](approval-inbox-spec.md)
 - [contradiction-resolution.md](contradiction-resolution.md)
 - [identity-fork-protocol.md](identity-fork-protocol.md)

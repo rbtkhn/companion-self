@@ -4,6 +4,18 @@
 
 A new companion self is created **only when a new user completes seed phase** — not by copying another repo's `users/` or pre-filling a Record. **Seed Phase v2** is a visible artifact pipeline with JSON Schemas, confidence signals, and **readiness gating** before activation ([docs/seed-phase.md](docs/seed-phase.md)).
 
+## Governed change
+
+Companion-Self does not treat meaningful post-seed revision as silent memory drift.
+
+When new evidence materially affects identity, curiosity, pedagogy, expression, memory governance, safety rules, or other durable operating commitments, the change should enter a change-review pipeline that preserves prior state, supporting evidence, contradiction type, confidence delta when available, and an explicit decision before governed state is updated.
+
+See:
+- [docs/change-review.md](docs/change-review.md)
+- [docs/contradiction-policy.md](docs/contradiction-policy.md)
+- [docs/change-types.md](docs/change-types.md)
+- [docs/change-review-lifecycle.md](docs/change-review-lifecycle.md)
+
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
 

@@ -178,3 +178,19 @@ JSON Schemas (Draft 2020-12) in `schema-registry/`:
 | `seed-confidence-map.v1.json` | `seed_confidence_map.json` |
 
 Protocol and validation: [seed-phase.md](seed-phase.md), [seed-phase-validation.md](seed-phase-validation.md). `template-manifest.json` exposes paths under `seed_phase.schemas`.
+
+---
+
+## Change-review schemas
+
+The change-review subsystem uses separate schemas from the live Record and from seed-phase artifacts.
+
+These schemas govern proposed changes, decisions, visible diffs, review queues, and event history.
+
+- change-proposal.v1.json
+- change-decision.v1.json
+- identity-diff.v1.json
+- change-review-queue.v1.json
+- change-event-log.v1.json
+
+Doctrine and lifecycle: [change-review.md](change-review.md), [change-review-lifecycle.md](change-review-lifecycle.md). `template-manifest.json` lists these under `change_review.schemas`.

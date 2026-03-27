@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "description": "Canonical list of template paths instances may sync. Single source of truth for audit; update when adding or renaming paths.",
   "canonicalAsOf": "2026-03-26",
-  "templateVersion": "0.3.0",
+  "templateVersion": "0.3.2",
   "paths": [
     {
       "path": "docs/concept.md",
@@ -98,6 +98,51 @@
     {
       "path": "docs/CONTRADICTION-ENGINE-SPEC.md",
       "description": "Contradiction engine: identity-diff object, classification, API shape, temporal validity, audit.",
+      "optional": false
+    },
+    {
+      "path": "docs/change-review.md",
+      "description": "Change review v1 doctrine entrypoint: post-seed governed self-revision (provenance, states, gate).",
+      "optional": false
+    },
+    {
+      "path": "docs/contradiction-policy.md",
+      "description": "Contradiction classes, resolution semantics, blocking vs non-blocking, policy priority during change review.",
+      "optional": false
+    },
+    {
+      "path": "docs/change-types.md",
+      "description": "Canonical change scopes for proposals (identity, pedagogy, upgrade_collision, etc.).",
+      "optional": false
+    },
+    {
+      "path": "docs/change-review-lifecycle.md",
+      "description": "Change-review lifecycle: detect through log; non-goals vs canonical queue and human gate.",
+      "optional": false
+    },
+    {
+      "path": "schema-registry/change-proposal.v1.json",
+      "description": "Change-review: structured proposal for governed post-seed change.",
+      "optional": false
+    },
+    {
+      "path": "schema-registry/change-decision.v1.json",
+      "description": "Change-review: decision record for a proposal.",
+      "optional": false
+    },
+    {
+      "path": "schema-registry/identity-diff.v1.json",
+      "description": "Change-review: before/after diff payload (generic object shapes in v1).",
+      "optional": false
+    },
+    {
+      "path": "schema-registry/change-review-queue.v1.json",
+      "description": "Change-review: queue summary of proposals.",
+      "optional": false
+    },
+    {
+      "path": "schema-registry/change-event-log.v1.json",
+      "description": "Change-review: audit event log entries.",
       "optional": false
     },
     {
@@ -377,5 +422,19 @@
     },
     "validator": "scripts/validate-seed-phase.py",
     "dossier_generator": "scripts/generate-seed-dossier.py"
+  },
+  "change_review": {
+    "version": "1.0.0",
+    "entrypoint": "docs/change-review.md",
+    "contradiction_policy": "docs/contradiction-policy.md",
+    "change_types": "docs/change-types.md",
+    "lifecycle": "docs/change-review-lifecycle.md",
+    "schemas": {
+      "change_proposal": "schema-registry/change-proposal.v1.json",
+      "change_decision": "schema-registry/change-decision.v1.json",
+      "identity_diff": "schema-registry/identity-diff.v1.json",
+      "change_review_queue": "schema-registry/change-review-queue.v1.json",
+      "change_event_log": "schema-registry/change-event-log.v1.json"
+    }
   }
 }
