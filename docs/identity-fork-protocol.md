@@ -2,7 +2,7 @@
 
 **Companion-Self template · Protocol summary**
 
-*Full specification: see the reference implementation's [IDENTITY-FORK-PROTOCOL](https://github.com/rbtkhn/grace-mar/blob/main/docs/IDENTITY-FORK-PROTOCOL.md).*
+*Full specification (IFP v1.0): see the reference implementation’s [identity-fork-protocol.md](https://github.com/rbtkhn/grace-mar/blob/main/docs/identity-fork-protocol.md).*
 
 ---
 

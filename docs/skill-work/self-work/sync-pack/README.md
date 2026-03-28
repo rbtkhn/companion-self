@@ -8,6 +8,8 @@ This pack is optional and review-first.
 
 **Canonical public upstream:** [companion-self](https://github.com/rbtkhn/companion-self) (instances should sync from upstream repo + pinned ref when needed).
 
+**Diff discipline:** When this pack or an instance copy changes, reconcile with `python3 scripts/template_diff.py --use-manifest` (from a reference instance such as [grace-mar](https://github.com/rbtkhn/grace-mar) that ships the script) or your instance’s documented diff workflow.
+
 ---
 
 ## What this includes
@@ -30,10 +32,22 @@ Companion closeout pair:
 
 ---
 
+## Deterministic upgrade path (instance-side)
+
+Reference instances (for example [grace-mar](https://github.com/rbtkhn/grace-mar)) ship `scripts/upgrade-from-template.py`. From the **instance** repository root, with a checkout of companion-self at `companion-self/` (or a path your script expects):
+
+```bash
+python3 scripts/upgrade-from-template.py --dry-run
+python3 scripts/upgrade-from-template.py
+```
+
+That refreshes sync-pack files from the pinned template tree and updates `template-source.json` when the script is present. If your instance has no such script, merge manually per [how-instances-consume-upgrades.md](../../../../how-instances-consume-upgrades.md).
+
+---
+
 ## Core invariants
 
 - Manual and review-first (no automatic write-through)
 - No direct Record writes during sync
 - If identity implications are discovered, stage via gate (`recursion-gate.md`)
 - Human approval remains required for consequential/public changes
-
