@@ -102,10 +102,59 @@ Full governed workflow (identity-diff UI, resolution types, temporal merge, audi
 
 ---
 
+## Review-gated instance
+
+A review-gated instance does not apply materially important governed changes directly.
+
+Instead, it routes significant post-seed changes through:
+
+- proposal
+- classification
+- visible diff
+- decision
+- event log
+
+Use this pattern when:
+
+- the instance is intended to be stable across long periods
+- pedagogy and identity coherence matter
+- auditability matters more than convenience
+
+See [change-review.md](change-review.md) and [change-review-lifecycle.md](change-review-lifecycle.md).
+
+---
+
+## Upgrade-collision review
+
+An upgrade-collision review pattern treats template-instance collisions as governance events rather than silent merges.
+
+Use this pattern when:
+
+- template evolution is expected to be frequent
+- the instance has already accumulated reviewed local commitments
+- the cost of silent drift is high
+
+See [how-instances-consume-upgrades.md](../how-instances-consume-upgrades.md) (section **Template upgrade collisions**).
+
+---
+
+## High-trust governed instance
+
+A high-trust governed instance combines:
+
+- formal [seed phase](seed-phase.md)
+- readiness gate
+- review-gated post-seed revision
+- upgrade-collision review
+
+Use this pattern when identity coherence, boundary clarity, auditability, and controlled evolution matter more than convenience.
+
+---
+
 ## Cross-references
 
 - [Concept](concept.md) — READ/WRITE/WORK, identity and instrument.
 - [Schema and API contract](schema-record-api.md) — Record schema; **WORK objectives and tasks standard** (objectives, work_goals, tasks with summary/status/evidence_id).
 - [Ingestion and sources](ingestion-and-sources.md) — Many sources → staging → gate → Record; triggers for suggested merges.
 - [Identity Fork Protocol](identity-fork-protocol.md) — Sovereign Merge Rule, schema, Process the gate.
-- [Project 6-week coding](project-6week-coding.md) — Minimal student interface (no analyst, no Voice).
+- [Project 6-week coding](project-6week-coding.md) — Minimal companion app (no analyst, no Voice).

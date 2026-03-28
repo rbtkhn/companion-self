@@ -19,7 +19,7 @@
 | Phase A–E (docs, template) | Done | README, concept, protocol, seed-phase, users/_template, how-instances-consume-upgrades |
 | Phase F (consistency, handoff) | Pending | F1 cross-check, F2 bootstrap, F3 template-manifest |
 | **Task 1** (schema/spec consistency) | **Pending** | `app/schema/record.js`, `docs/schema-record-api.md`, `docs/project-6week-coding.md` |
-| **Task 2** (student UI accessibility) | **Done** | ARIA, live regions, focus visibility in `app/public/*.html` and `style.css` |
+| **Task 2** (companion app UI accessibility) | **Done** | ARIA, live regions, focus visibility in `app/public/*.html` and `style.css` |
 | Market research | Done | `docs/market-research-timeback-alpha-thirdparty.md` — 10 implementable proposals |
 
 ---
@@ -33,7 +33,7 @@
 | `docs/tasks-parallel-cursor-conversations.md` | Task 1 & 2 briefs, scope, acceptance criteria |
 | `docs/long-term-objective.md` | Permanent system rules; check alignment |
 | `docs/market-research-timeback-alpha-thirdparty.md` | Market research; 10 proposals with pros/cons |
-| `app/public/` | Student UI (dashboard, activity, review, export) |
+| `app/public/` | Companion app UI (dashboard, activity, review, export) |
 | `app/schema/record.js` | Record schema (Task 1 scope) |
 
 ---
@@ -65,6 +65,22 @@ When resuming bootstrap work that involves **seed phase v2**:
 
 ---
 
+## 4b) Continuing with unresolved review items
+
+When resuming work on an activated instance:
+
+- if there are unresolved high-priority review items, surface them before applying further governed updates
+- if a proposal is `deferred`, preserve current governed state until new evidence or human review resolves it
+- if a proposal is `rejected`, keep the prior governed state active and preserve the rejected proposal in history
+- if a proposal is `approved`, record the decision before merging the governed change
+- if a proposal is `superseded`, preserve both the old proposal and the superseding decision path
+
+Continuation should favor coherence over silent convenience.
+
+Status vocabulary and lifecycle: [docs/change-review-lifecycle.md](docs/change-review-lifecycle.md), [docs/change-review.md](docs/change-review.md).
+
+---
+
 ## 5) Suggested next steps
 
 1. **Task 1 (schema/spec):** Read `docs/tasks-parallel-cursor-conversations.md` Task 1. Edit `record.js`, `schema-record-api.md`, `project-6week-coding.md`. Run eval fixtures.
@@ -75,7 +91,7 @@ When resuming bootstrap work that involves **seed phase v2**:
 
 ## 6) What was done recently (prior session)
 
-- **Student UI accessibility (Task 2):** ARIA labels on nav, activity textarea/skill dropdown, Approve/Reject; `aria-live="polite"` on form feedback; `:focus-visible` for links/buttons/inputs; `.visually-hidden` for hints.
+- **Companion app UI accessibility (Task 2):** ARIA labels on nav, activity textarea/skill dropdown, Approve/Reject; `aria-live="polite"` on form feedback; `:focus-visible` for links/buttons/inputs; `.visually-hidden` for hints.
 - **Market research:** Deep research on TimeBack, Alpha apps, third-party edtech; 10 proposals with pros/cons written to `docs/market-research-timeback-alpha-thirdparty.md`.
 
 ---

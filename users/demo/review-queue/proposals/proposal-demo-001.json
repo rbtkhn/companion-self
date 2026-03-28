@@ -14,7 +14,7 @@
     {
       "type": "interaction",
       "ref": "session-demo-activation-01",
-      "summary": "Post-activation sessions show preference for shorter worked examples before drills."
+      "summary": "Interaction quality improved when the companion used guided questioning instead of short declarative correction."
     }
   ],
   "riskLevel": "low",

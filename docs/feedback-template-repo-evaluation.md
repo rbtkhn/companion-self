@@ -88,7 +88,7 @@ This doc evaluates external feedback on the template repo and turns it into **sp
 
 - [ ] **Action E1:** Add `app/config/allowed-users.json` with content `["demo"]`. In `app/server.js` (and any code that resolves userId), read userId from `req.query.user` or `req.headers['x-user-id']`, default to `"demo"`. If userId is not in allowed-users.json, respond 403 or 400 with a clear message (“User not in allowed list; template supports demo only.”). Load allowed list once at startup.
 - [ ] **Action E2:** In `app/pipeline/stage.js`, `merge.js`, `edge.js`, `curriculum-profile.js`, pass through a userId argument (from server) instead of hardcoding DEMO_USER. Server resolves userId and passes it into the pipeline/export.
-- [ ] **Action E3:** Document in readme-student-app.md that the app runs as demo only unless allowed-users is changed (and that instances can add users and use query/header for multi-user).
+- [ ] **Action E3:** Document in readme-app.md that the app runs as demo only unless allowed-users is changed (and that instances can add users and use query/header for multi-user).
 
 **Scope:** `app/server.js`, `app/config/allowed-users.json`, pipeline and export call sites, readme.
 

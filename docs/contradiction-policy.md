@@ -152,7 +152,7 @@ The system may defer, annotate, or constrain the active state, but should not pr
 
 Human review is strongly recommended when:
 
-- the change affects a child-facing educational mode
+- the change affects a high-trust interaction mode (e.g. sensitive or policy-bound contexts)
 - the change alters boundaries or safety posture
 - the change materially affects identity or pedagogy
 - the confidence delta is large

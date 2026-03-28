@@ -87,7 +87,7 @@ Review may:
 - reject
 - supersede an earlier proposal
 
-High-impact child-facing or policy-colliding changes should not bypass this step.
+High-impact user-facing or policy-colliding changes should not bypass this step.
 
 ---
 

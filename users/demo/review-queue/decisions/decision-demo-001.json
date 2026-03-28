@@ -4,7 +4,7 @@
   "proposalId": "proposal-demo-001",
   "decidedAt": "2026-03-26T14:00:00Z",
   "decision": "approved",
-  "decisionReason": "Demo approval path; evidence sufficient for low-risk refinement.",
+  "decisionReason": "The new evidence is consistent across multiple interactions and improves guided problem-solving performance without conflicting with seed-phase safety or memory-governance constraints.",
   "blockingContradictions": [],
   "requiredFollowups": [],
   "appliesTo": [

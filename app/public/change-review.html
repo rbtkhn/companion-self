@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
   <title>Change Review — Companion-Self</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/change-review.css" />
 </head>
 <body>
-  <nav class="nav" aria-label="Main navigation">
+  <nav class="nav">
     <a href="/">Dashboard</a>
     <a href="/activity">We did X</a>
     <a href="/review">Review</a>
@@ -16,107 +16,63 @@
     <a href="/change-review" aria-current="page">Change Review</a>
   </nav>
 
-  <main class="main">
-    <h1>Change review (demo)</h1>
-    <p class="screentime">Post-seed governed-change artifacts — not the live Record. Synthetic <code>demo</code> bundle; <code>template</code> scaffold not bundled yet.</p>
+  <main class="page">
+    <header class="hero">
+      <h1>Change Review (demo)</h1>
+      <p>
+        Post-seed governed revision artifacts — proposals, decisions, visible diffs,
+        and event history. Synthetic <code>demo</code> bundle by default.
+      </p>
+      <div class="toolbar">
+        <label>
+          Profile:
+          <select id="profileSelect">
+            <option value="demo" selected>demo (synthetic)</option>
+            <option value="_template">template (scaffold)</option>
+          </select>
+        </label>
+        <button id="reloadBtn" type="button">Reload</button>
+      </div>
+    </header>
 
-    <p>
-      <label>Profile:
-        <select id="profile" aria-label="Change-review profile">
-          <option value="demo" selected>demo (synthetic)</option>
-          <option value="template">template (not available)</option>
-        </select>
-      </label>
-      <button type="button" id="reload">Reload</button>
-    </p>
+    <section class="grid">
+      <article class="card">
+        <h2>Summary</h2>
+        <div id="summaryBox">—</div>
+      </article>
 
-    <section class="card">
-      <h2>Proposal</h2>
-      <p id="proposal-summary" aria-live="polite">—</p>
-      <p id="proposal-status">—</p>
+      <article class="card">
+        <h2>Queue</h2>
+        <div id="queueBox">—</div>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Latest Decision</h2>
+        <div id="decisionBox">—</div>
+      </article>
+
+      <article class="card">
+        <h2>Visible Diff</h2>
+        <div id="diffBox">—</div>
+      </article>
     </section>
 
     <section class="card">
-      <h2>Decision</h2>
-      <p id="decision-text" aria-live="polite">—</p>
+      <h2>Event Log</h2>
+      <div id="eventLogBox">—</div>
     </section>
 
     <section class="card">
-      <h2>Queue</h2>
-      <ul id="queue-items"></ul>
-    </section>
-
-    <section class="card">
-      <h2>Events</h2>
-      <ul id="events"></ul>
-    </section>
-
-    <section class="card">
-      <h2>Identity diff (summary)</h2>
-      <pre id="diff-summary" class="dossier-preview"></pre>
-    </section>
-
-    <section class="card">
-      <h2>README preview</h2>
-      <pre id="readme" class="dossier-preview"></pre>
+      <h2>Why this exists</h2>
+      <p>
+        Companion-Self does not treat meaningful post-seed revision as silent memory drift.
+        Significant changes should become visible review objects before governed state is updated.
+      </p>
     </section>
   </main>
 
-  <script>
-    async function loadBundle() {
-      const profile = document.getElementById("profile").value;
-      const res = await fetch("/api/change-review?profile=" + encodeURIComponent(profile));
-      const data = await res.json();
-      if (!res.ok) {
-        document.getElementById("proposal-summary").textContent = data.error || "Error";
-        document.getElementById("proposal-status").textContent = "";
-        document.getElementById("decision-text").textContent = "";
-        document.getElementById("queue-items").innerHTML = "";
-        document.getElementById("events").innerHTML = "";
-        document.getElementById("diff-summary").textContent = "";
-        document.getElementById("readme").textContent = "";
-        return;
-      }
-      const p = data.artifacts["change_proposal.json"];
-      document.getElementById("proposal-summary").textContent = p
-        ? "Scope: " + p.primaryScope + " · Type: " + p.changeType + " · Risk: " + p.riskLevel
-        : "No proposal";
-      document.getElementById("proposal-status").textContent = p ? "Status: " + p.status : "";
-
-      const d = data.artifacts["change_decision.json"];
-      document.getElementById("decision-text").textContent = d
-        ? d.decision + " — " + d.decisionReason
-        : "No decision";
-
-      const q = document.getElementById("queue-items");
-      q.innerHTML = "";
-      const qi = data.artifacts["change_review_queue.json"];
-      (qi && qi.items || []).forEach(function (it) {
-        const li = document.createElement("li");
-        li.textContent = it.proposalId + " [" + it.status + "] " + it.summary;
-        q.appendChild(li);
-      });
-
-      const ev = document.getElementById("events");
-      ev.innerHTML = "";
-      const log = data.artifacts["change_event_log.json"];
-      (log && log.events || []).forEach(function (e) {
-        const li = document.createElement("li");
-        li.textContent = e.eventType + " @ " + e.timestamp + " — " + e.summary;
-        ev.appendChild(li);
-      });
-
-      const idiff = data.artifacts["identity_diff.json"];
-      document.getElementById("diff-summary").textContent = idiff
-        ? idiff.changeSummary + "\n\nbefore: " + JSON.stringify(idiff.before, null, 2) + "\nafter: " + JSON.stringify(idiff.after, null, 2)
-        : "(no diff)";
-
-      document.getElementById("readme").textContent = data.readme_preview || "";
-    }
-
-    document.getElementById("reload").addEventListener("click", loadBundle);
-    document.getElementById("profile").addEventListener("change", loadBundle);
-    loadBundle();
-  </script>
+  <script src="/js/change-review.js"></script>
 </body>
 </html>

@@ -125,11 +125,12 @@ Instance merge docs should log template `templateVersion` / `seed_phase.version`
 
 ---
 
-## Change-review and upgrade collisions
+## Template upgrade collisions
 
 Template upgrades must not silently override instance-governed state.
 
 If a template upgrade conflicts with:
+
 - durable identity commitments
 - pedagogy rules
 - memory-governance policy
@@ -139,17 +140,34 @@ If a template upgrade conflicts with:
 
 the instance should open a governed change proposal rather than auto-merge the new template logic into active state.
 
-Recommended rule set:
+### Required behavior
 
-| Rule | Rationale |
-|------|-----------|
-| **Do not overwrite reviewed instance truth with template defaults** | Template doctrine is upstream guidance, not authority to erase instance history. |
-| **Open a change proposal when upgrades materially affect governed state** | Makes collisions visible and reviewable. |
-| **Preserve prior state refs and evidence refs** | Keeps the instance auditable. |
-| **Record the decision before merge** | Prevents silent drift. |
-| **Keep derived review artifacts separate from the live Record** | Avoids confusing review objects with durable truth surfaces. |
+1. **Do not overwrite reviewed instance truth with template defaults**  
+   Template doctrine is upstream guidance, not authority to erase instance history.
 
-A template may evolve faster than an instance should merge. Change review is the buffer that protects coherence.
+2. **Open a change proposal when upgrades materially affect governed state**  
+   Upgrade collisions should become visible review objects.
+
+3. **Preserve prior state refs and evidence refs**  
+   The instance should remain auditable across upgrades.
+
+4. **Record a decision before merge**  
+   No collision should merge into governed state without an explicit decision.
+
+5. **Keep review artifacts separate from the live Record**  
+   Proposals, decisions, and diffs are governance objects, not replacements for durable truth surfaces.
+
+### Examples of upgrade collisions
+
+- a template upgrade changes default pedagogy, but the instance has already reviewed and approved a different pedagogy profile
+- a template upgrade changes memory-governance expectations, but the instance has existing reviewed retention constraints
+- a template upgrade introduces a stronger safety boundary that should be staged, reviewed, and then merged according to local doctrine
+
+### Buffer rule
+
+A template may evolve faster than an instance should merge.
+
+Change review is the buffer that protects instance coherence.
 
 ---
 

@@ -4,7 +4,7 @@
 
 This document defines a **6-week coding project** implemented **in the companion-self repo**. The deliverable is the **product/service interface given to the student**: a minimal web app the student (or operator on their behalf) uses to see their Record, submit "we did X," review and approve candidates, view progress and edge, and export for curriculum/tutor.
 
-**Audience:** Developer or team implementing in companion-self. **Student** = the end user (learner/companion) who receives this interface.
+**Audience:** Developer or team implementing in companion-self. **User** = the end user (companion) who receives this interface.
 
 **Time calibration:** Companion-Self targets **2 hours of screen time per day** for all screen-based learning (aligned with Alpha). The student interface and any curriculum/tutor use are designed to fit within that window. See [Alpha School reference (skill-work-alpha-school)](skill-work/skill-work-alpha-school/alpha-school-reference.md) §3 Two-hour screen-time target.
 
@@ -66,7 +66,7 @@ companion-self/
 ├── scripts/                # optional CLI entrypoints
 │   ├── run-seed.js         # first-time survey → populate demo SELF
 │   └── export-profile.js   # CLI export
-└── readme-student-app.md    # how to run and use (for student/operator)
+└── readme-app.md    # how to run and use (for operators and integrators)
 ```
 
 ---
@@ -151,7 +151,7 @@ companion-self/
 
 ### Success
 
-- Student approves one candidate; self-evidence.md and the appropriate dimension file (self-knowledge, self-curiosity, or self-personality) update; candidate removed from queue. Reject removes from queue only.
+- User approves one candidate; self-evidence.md and the appropriate dimension file (self-knowledge, self-curiosity, or self-personality) update; candidate removed from queue. Reject removes from queue only.
 
 ---
 
@@ -188,7 +188,7 @@ companion-self/
 
 | # | Task | Deliverable |
 |---|------|-------------|
-| 6.1 | **Run instructions:** Add `readme-student-app.md` (clone, `cd app`, `npm install`, `npm run dev` or `python app.py`; app at e.g. localhost:3000; no env vars for demo). Link from main README: "Student interface: see readme-student-app.md." | Doc + README link. |
+| 6.1 | **Run instructions:** Add `readme-app.md` (clone, `cd app`, `npm install`, `npm run dev` or `python app.py`; app at e.g. localhost:3000; no env vars for demo). Link from main README: "Companion app: see readme-app.md." | Doc + README link. |
 | 6.2 | **Error handling:** Graceful message if `users/demo/` missing or malformed; empty state for empty recursion-gate. | UX. |
 | 6.3 | *Optional:* Seed flow (e.g. `/seed` or first-run): short survey → write into demo self.md, self-curiosity.md, self-personality.md. | Script or /seed page. |
 | 6.4 | **Definition of done:** Verify student can open app, see Record, submit "we did X", review and approve/reject, see Record update, see edge, download export. See checklist below. | Verification. |

@@ -93,7 +93,7 @@ So: **read** skill-think and edge → **shape** focus and gate decisions → THI
 
 ## Integration points
 
-- **Student app / operator UI:** Show edge and pending gate; optional session brief (pending count, recent activity, suggested next). Human uses these to read and then modulate.
+- **Companion app / operator UI:** Show edge and pending gate; optional session brief (pending count, recent activity, suggested next). Human uses these to read and then modulate.
 - **Gate workflow:** Process the gate ([identity-fork-protocol](../../identity-fork-protocol.md)); human (or delegated) approves/rejects. THINK candidates merge into self-skill-think and optionally IX.
 - **Seed phase:** Operator may assist with surveys and first Record population; after that, ongoing teaching objectives are read/modulate/gate as above.
 - **Ingestion:** Caregiver or operator can POST activity (e.g. “we did X” with THINK); pipeline stages; human gates; merge updates skill-think.

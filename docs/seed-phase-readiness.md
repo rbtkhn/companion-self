@@ -73,4 +73,23 @@ When the template bumps **seed phase version** or **schema version**:
 
 ---
 
+## Readiness and later revision
+
+A readiness pass authorizes activation.
+It does not authorize silent post-seed drift.
+
+After activation, materially important changes should be handled through change review rather than by silently rewriting seed-derived governed state.
+
+This is especially important when a later proposal would alter:
+
+- identity commitments
+- pedagogy
+- memory governance
+- safety posture
+- durable preferences with downstream behavioral impact
+
+This keeps readiness from being misread as “the self is finished.” It says: activation is a gate, not the end of governance.
+
+---
+
 *See also: [seed-phase.md](seed-phase.md), [seed-phase-stages.md](seed-phase-stages.md).*
