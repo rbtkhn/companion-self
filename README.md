@@ -4,7 +4,11 @@
 
 **Release + compatibility metadata:** [`template-version.json`](template-version.json) — semver, release date, git tag, and `compatibilityContract` pointers (single source; no separate `template-contract.json`).
 
+**Companion-Self** is a general-purpose system for companion formation, activation, memory governance, and post-seed revision. Education, coaching, personal knowledge work, and guided interaction are downstream use cases, not the category definition.
+
 A new companion self is created **only when a new user completes seed phase** — not by copying another repo's `users/` or pre-filling a Record. **Seed Phase v2** is a visible artifact pipeline with JSON Schemas, confidence signals, and **readiness gating** before activation ([docs/seed-phase.md](docs/seed-phase.md)).
+
+Companion-Self now treats major post-seed self-revision as governed change, not silent Record drift.
 
 ## Governed change
 
@@ -17,6 +21,15 @@ See:
 - [docs/contradiction-policy.md](docs/contradiction-policy.md)
 - [docs/change-types.md](docs/change-types.md)
 - [docs/change-review-lifecycle.md](docs/change-review-lifecycle.md)
+
+## Governed lifecycle
+
+Companion-Self uses a two-part governance model:
+
+- **Seed Phase** forms the initial companion before activation.
+- **Change review** governs materially important post-seed revision after activation.
+
+The project does not treat meaningful change as silent memory accumulation or silent overwrite. When new evidence materially affects identity, pedagogy, memory governance, safety, or other durable commitments, the change should become a visible review object before governed state is updated. That positioning is not just persistent memory, but a governed lifecycle. Doctrine links for change review are under **Governed change** above; formation and readiness are in [docs/seed-phase.md](docs/seed-phase.md), [docs/seed-phase-readiness.md](docs/seed-phase-readiness.md), [how-instances-consume-upgrades.md](how-instances-consume-upgrades.md) (template upgrade collisions), and [docs/instance-patterns.md](docs/instance-patterns.md).
 
 - **Template (this repo):** Concept, protocol, seed-phase definition, and structure for creating a new companion self. No one's Record; no pilot data.
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
@@ -71,17 +84,18 @@ python3 scripts/generate-identity-diff.py users/demo/review-queue/diffs/diff-001
 
 Full instructions: [docs/change-review-validation.md](docs/change-review-validation.md).
 
-**Student app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo bundle at **[/change-review](http://localhost:3000/change-review)** (`GET /api/change-review?profile=demo`) should read **`users/<profile>/review-queue/`** when the app is updated. See [readme-student-app.md](readme-student-app.md).
+**Companion app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo at **[/change-review](http://localhost:3000/change-review)** via **`GET /api/change-review?profile=demo`** (reads **`users/<profile>/review-queue/`**). See [readme-app.md](readme-app.md).
 
 ---
 
 ## Contents
 
 - **docs/** — **Long-term objective** ([LONG-TERM-OBJECTIVE](docs/long-term-objective.md) — permanent system rule: democratize Alpha-style education; prevents intention drift). Concept, protocol, seed phase; education structure (self-skill-think, self-skill-write, self-skill-work); recursive self-learning objectives; business/white-paper insights; 6-week coding project; Alpha School reference (benchmarks, 2-hour screen-time target) in [skill-work-alpha-school submodule](docs/skill-work/skill-work-alpha-school/alpha-school-reference.md); no human guide assumed.
-- **users/_template/** — Minimal scaffold (self, self-knowledge, self-identity, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, recursion-gate, self-memory) for creating a new user directory in an instance repo; plus **`users/_template/seed-phase/`** — canonical **pre-activation** seed artifact placeholders (not the live Record); **`users/_template/review-queue/`** — empty change-review scaffold (validate with `--allow-empty`). No real data.
-- **users/demo/** — Demo user for the student app; **`users/demo/seed-phase/`** — synthetic filled seed artifacts and dossier for validation and UI demos (not a live person). **`users/demo/review-queue/`** — synthetic post-seed change-review tree (queue, proposals, decisions, diffs) for validation and demos.
+- **users/_template/** — Minimal scaffold (self, self-knowledge, self-identity, self-curiosity, self-personality, self-skill-think, self-skill-write, self-skill-work, self-evidence, work-business, recursion-gate, self-memory) for creating a new user directory in an instance repo; plus **`users/_template/seed-phase/`** — canonical **pre-activation** seed artifact placeholders (not the live Record); **`users/_template/review-queue/`** — empty change-review scaffold (validate with `--allow-empty`). No real data.
+  - **`work-business.md`** starts blank; it is filled only from seed survey / explicit input / governed updates (see `seed-phase/work_business_seed.json`). It is **not** the same as **`docs/skill-work/work-business/`** (operator research territory). Distinct from **`self-skill-work`** (capability claims).
+- **users/demo/** — Demo user for the companion app; **`users/demo/seed-phase/`** — synthetic filled seed artifacts and dossier for validation and UI demos (not a live person). **`users/demo/review-queue/`** — synthetic post-seed change-review tree (queue, proposals, decisions, diffs) for validation and demos.
 - **how-instances-consume-upgrades.md** — How an instance merges upgrades from this template without overwriting its Record.
 - **[docs/system-tensions-and-mysteries.md](docs/system-tensions-and-mysteries.md)** — Canonical challenges and open mysteries the template carries; instances may add local annotations.
-- **readme-student-app.md** — Student interface: how to run the app (clone, `cd app`, `npm install`, `npm start`; app at localhost:3000).
+- **readme-app.md** — Companion app / local demo: how to run (clone, `cd app`, `npm install`, `npm start`; localhost:3000). [readme-student-app.md](readme-student-app.md) is a legacy pointer to the same doc.
 - **companion-self-and-grace-mar.code-workspace** — Recommended workspace: companion-self (writable) + grace-mar (read-only). Template work here; instance modifications only in a separate grace-mar workspace. See companion-self-bootstrap §7.
 - **`.cursor/`** — Cursor **rules** and **skills** for **template contributors**: template vs `_template` vs `demo`, `users/` guard, generalizing from Grace-Mar (read-only); skills **companion-self-first-hour** (orient + optional demo validation / app) and **promote-from-grace-mar** (checklist + proposal). Say e.g. “run the first-hour skill” or “help me promote this from grace-mar” in chat.

@@ -68,11 +68,34 @@ Before a new companion instance is **activated**, the following **pre-activation
 - `seed_trial_report.json`
 - `seed_readiness.json`
 - `seed_confidence_map.json`
+- `work_business_seed.json` (business / commercial context; promotes to `work-business.md` on activation — see [docs/seed-phase-artifacts.md](docs/seed-phase-artifacts.md))
 - `seed_dossier.md`
 
 **Layout:** Canonical scaffold in [users/_template/seed-phase/](users/_template/seed-phase/); synthetic example in [users/demo/seed-phase/](users/demo/seed-phase/). **These are not the live Record** — activation still uses `users/<birth-name>/` and the identity fork protocol after the gate.
 
 **Validate:** `python3 scripts/validate-seed-phase.py users/demo/seed-phase` (requires `pip install jsonschema`). See [docs/seed-phase-validation.md](docs/seed-phase-validation.md).
+
+---
+
+## Change review after activation
+
+Activation does not authorize silent identity drift.
+
+Once a companion has been activated, materially important post-seed changes should be proposed, classified, and reviewed through the change-review pipeline before governed state is updated.
+
+At minimum, the review path should preserve:
+
+- prior state reference
+- proposed state reference
+- supporting evidence
+- contradiction or change type
+- explicit decision
+- event history
+
+Bootstrap creates the initial baseline.
+Change review governs meaningful revision after that baseline exists.
+
+For template upgrades that collide with instance-governed commitments, see [how-instances-consume-upgrades.md](how-instances-consume-upgrades.md) (section on template upgrade collisions).
 
 ---
 
@@ -144,7 +167,7 @@ If you need to extract or generalize content for companion-self, the canonical s
 
 ## 10) New conversation: parallel tasks (~15–30 min each)
 
-When starting a **new Cursor conversation** to run one of the two parallel tasks (schema/spec consistency or student UI accessibility), bootstrap the agent as follows.
+When starting a **new Cursor conversation** to run one of the two parallel tasks (schema/spec consistency or companion app UI accessibility), bootstrap the agent as follows.
 
 **Task doc (full briefs, scope, acceptance criteria):** [docs/tasks-parallel-cursor-conversations.md](docs/tasks-parallel-cursor-conversations.md)
 
@@ -154,11 +177,11 @@ Only: `app/schema/record.js`, `docs/schema-record-api.md`, `docs/project-6week-c
 Say in the new chat:
 > Read companion-self-bootstrap.md §10 and docs/tasks-parallel-cursor-conversations.md Task 1. Do Task 1 only (schema and spec consistency). Touch only the files listed in the task; run the eval script when done.
 
-**Conversation B — Task 2 (student UI accessibility)**  
+**Conversation B — Task 2 (companion app UI accessibility)**  
 Only: `app/public/*.html`, `app/public/assets/style.css` (and `app/public/assets/app.js` only if needed for ARIA).
 
 Say in the new chat:
-> Read companion-self-bootstrap.md §10 and docs/tasks-parallel-cursor-conversations.md Task 2. Do Task 2 only (student UI accessibility and focus polish). Touch only the files listed in the task.
+> Read companion-self-bootstrap.md §10 and docs/tasks-parallel-cursor-conversations.md Task 2. Do Task 2 only (companion app UI accessibility and focus polish). Touch only the files listed in the task.
 
 The two tasks have **zero file overlap**; run both conversations in parallel, then merge. After both: run `node scripts/run-eval-fixtures.js` and do a quick manual check of the UI (focus, announcements).
 

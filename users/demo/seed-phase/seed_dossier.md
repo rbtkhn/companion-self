@@ -48,6 +48,14 @@ identity, preferences, learning_progress, projects, constraints
 
 Overall **0.88**.
 
+## Work business context
+
+Status **initialized**; involvement **light**; evidence_basis **seed_survey**.
+
+Focuses: launch checklist; pricing experiments
+
+Synthetic demo values for validation and docs.
+
 ## Blocking Issues
 
 - None

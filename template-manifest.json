@@ -211,6 +211,11 @@
       "optional": true
     },
     {
+      "path": "users/_template/work-business.md",
+      "description": "WORK user module: business/commercial context; seeded via work_business_seed.json (not docs/skill-work/work-business/).",
+      "optional": false
+    },
+    {
       "path": "docs/self-library-example-corpus-grace-mar-derived.md",
       "description": "Optional legacy LIB row example (grace-mar-derived); not the default template shelf.",
       "optional": true
@@ -401,6 +406,11 @@
       "optional": false
     },
     {
+      "path": "users/demo/seed-phase/work_business_seed.json",
+      "description": "Demo work-business seed (synthetic).",
+      "optional": false
+    },
+    {
       "path": "users/demo/seed-phase/seed_dossier.md",
       "description": "Demo seed dossier.",
       "optional": false
@@ -498,7 +508,8 @@
       "seed_memory_contract": "schema-registry/seed-memory-contract.v1.json",
       "seed_trial_report": "schema-registry/seed-trial-report.v1.json",
       "seed_readiness": "schema-registry/seed-readiness.v1.json",
-      "seed_confidence_map": "schema-registry/seed-confidence-map.v1.json"
+      "seed_confidence_map": "schema-registry/seed-confidence-map.v1.json",
+      "work_business_seed": "schema-registry/work-business-seed.v1.json"
     },
     "validator": "scripts/validate-seed-phase.py",
     "dossier_generator": "scripts/generate-seed-dossier.py"
@@ -509,6 +520,14 @@
     "contradiction_policy": "docs/contradiction-policy.md",
     "change_types": "docs/change-types.md",
     "lifecycle": "docs/change-review-lifecycle.md",
+    "lifecycle_integration": {
+      "seed_phase": "docs/seed-phase.md",
+      "seed_readiness": "docs/seed-phase-readiness.md",
+      "bootstrap": "companion-self-bootstrap.md",
+      "bootstrap_continue": "bootstrap-continue.md",
+      "upgrade_doctrine": "how-instances-consume-upgrades.md",
+      "instance_patterns": "docs/instance-patterns.md"
+    },
     "schemas": {
       "change_proposal": "schema-registry/change-proposal.v1.json",
       "change_decision": "schema-registry/change-decision.v1.json",

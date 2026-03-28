@@ -1,6 +1,6 @@
 /**
- * Companion-Self student interface server.
- * Minimal Express API for Week 2 pipeline.
+ * Companion-Self companion app server (local demo).
+ * Minimal Express API for pipeline + seed-phase / change-review views.
  *
  * Run: node server.js  (or npm start from app/)
  * App at http://localhost:3000
@@ -46,10 +46,10 @@ function resolveUserId(req) {
 // Graceful error message for missing/malformed user dir
 function friendlyError(err) {
   if (err.message && err.message.includes("not found")) {
-    return "User directory not found. Run from companion-self repo root and ensure users/<id>/ exists. See readme-student-app.md.";
+    return "User directory not found. Run from companion-self repo root and ensure users/<id>/ exists. See readme-app.md (companion app how-to).";
   }
   if (err.message && /parse|JSON|malformed/i.test(err.message)) {
-    return "User data is malformed. Check users/<id>/ files. See readme-student-app.md.";
+    return "User data is malformed. Check users/<id>/ files. See readme-app.md (companion app how-to).";
   }
   return err.message || "Something went wrong.";
 }
@@ -190,6 +190,7 @@ app.get("/api/seed-phase", (req, res) => {
     "seed_trial_report.json",
     "seed_readiness.json",
     "seed_confidence_map.json",
+    "work_business_seed.json",
   ];
   const out = { profile, base: path.relative(REPO_ROOT, base), artifacts: {} };
   try {
@@ -213,45 +214,107 @@ app.get("/api/seed-phase", (req, res) => {
 
 /**
  * GET /api/change-review?profile=demo|template
- * Demo synthetic change-review JSON bundle (post-seed governance). Template profile: not scaffolded yet.
+ * Loads users/<demo|_template>/review-queue/ (queue, event log, proposals/, decisions/, diffs/).
  */
+function loadReviewQueueBundle(profile) {
+  const userDir = profile === "template" ? "_template" : "demo";
+  const base = path.join(REPO_ROOT, "users", userDir, "review-queue");
+  if (!fs.existsSync(base)) {
+    return { error: "review-queue not found: " + path.relative(REPO_ROOT, base) };
+  }
+  const readJson = (rel) => {
+    const fp = path.join(base, rel);
+    if (!fs.existsSync(fp)) return null;
+    return JSON.parse(fs.readFileSync(fp, "utf-8"));
+  };
+  const readDirObjects = (sub) => {
+    const dir = path.join(base, sub);
+    if (!fs.existsSync(dir)) return [];
+    return fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => {
+        const fp = path.join(dir, f);
+        return { file: f, ...JSON.parse(fs.readFileSync(fp, "utf-8")) };
+      });
+  };
+  const readmePath = path.join(base, "README.md");
+  const readme_preview = fs.existsSync(readmePath)
+    ? fs.readFileSync(readmePath, "utf-8").split("\n").slice(0, 15).join("\n")
+    : "";
+  return {
+    profile,
+    base: path.relative(REPO_ROOT, base),
+    queue: readJson("change_review_queue.json"),
+    eventLog: readJson("change_event_log.json"),
+    proposals: readDirObjects("proposals"),
+    decisions: readDirObjects("decisions"),
+    diffs: readDirObjects("diffs"),
+    readme_preview,
+  };
+}
+
 app.get("/api/change-review", (req, res) => {
   const profile = (req.query && req.query.profile) || "demo";
   const allowed = new Set(["demo", "template"]);
   if (!allowed.has(profile)) {
     return res.status(400).json({ error: "profile must be demo or template" });
   }
-  if (profile === "template") {
-    return res.status(404).json({
-      error:
-        "No change-review scaffold under users/_template/ yet; use profile=demo for the synthetic bundle.",
-    });
-  }
-  const base = path.join(REPO_ROOT, "users", "demo", "change-review");
-  const names = [
-    "change_proposal.json",
-    "change_decision.json",
-    "identity_diff.json",
-    "change_review_queue.json",
-    "change_event_log.json",
-  ];
-  const out = { profile, base: path.relative(REPO_ROOT, base), artifacts: {} };
   try {
-    for (const n of names) {
-      const fp = path.join(base, n);
-      if (!fs.existsSync(fp)) {
-        out.artifacts[n] = null;
-        continue;
-      }
-      out.artifacts[n] = JSON.parse(fs.readFileSync(fp, "utf-8"));
+    const out = loadReviewQueueBundle(profile);
+    if (out.error) {
+      return res.status(404).json({ error: out.error });
     }
-    const readmePath = path.join(base, "README.md");
-    out.readme_preview = fs.existsSync(readmePath)
-      ? fs.readFileSync(readmePath, "utf-8").split("\n").slice(0, 15).join("\n")
-      : "";
     res.json(out);
   } catch (err) {
     res.status(500).json({ error: err.message || "Failed to load change-review bundle" });
+  }
+});
+
+/**
+ * GET /api/change-review/summary?profile=demo|template
+ * Compact counts + latest decision / diff for dashboard widgets.
+ */
+app.get("/api/change-review/summary", (req, res) => {
+  const profile = (req.query && req.query.profile) || "demo";
+  const allowed = new Set(["demo", "template"]);
+  if (!allowed.has(profile)) {
+    return res.status(400).json({ error: "profile must be demo or template" });
+  }
+  try {
+    const bundle = loadReviewQueueBundle(profile);
+    if (bundle.error) {
+      return res.status(404).json({ error: bundle.error });
+    }
+    const decisions = bundle.decisions || [];
+    const latestDecision =
+      decisions.length === 0
+        ? null
+        : decisions.reduce((best, d) => {
+            const t = d.decidedAt || "";
+            const bt = best.decidedAt || "";
+            return t >= bt ? d : best;
+          });
+    const diffs = bundle.diffs || [];
+    const latestDiff = diffs.length === 0 ? null : diffs[0];
+    const queueItems = (bundle.queue && bundle.queue.items) || [];
+    const events = (bundle.eventLog && bundle.eventLog.events) || [];
+    res.json({
+      profile,
+      base: bundle.base,
+      counts: {
+        proposals: bundle.proposals.length,
+        decisions: decisions.length,
+        diffs: diffs.length,
+        queueItems: queueItems.length,
+        events: events.length,
+      },
+      latestDecision,
+      latestDiff,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "Failed to load change-review summary" });
   }
 });
 
@@ -270,7 +333,7 @@ app.get("/change-review", (req, res) => res.sendFile(path.join(publicDir, "chang
 
 const demoDir = path.join(REPO_ROOT, "users", "demo");
 if (!fs.existsSync(demoDir)) {
-  console.warn("Warning: users/demo/ not found. API will return errors until demo user exists. See readme-student-app.md.");
+  console.warn("Warning: users/demo/ not found. API will return errors until demo user exists. See readme-app.md (companion app how-to).");
 }
 // User resolution: ?user=<id> or X-User-Id header; must be in app/config/allowed-users.json (default ["demo"]).
 

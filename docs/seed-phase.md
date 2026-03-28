@@ -63,6 +63,43 @@ Only **then** may `users/<birth-name>/` be created or promoted with the live pip
 
 ---
 
+## Post-seed governed revision
+
+Seed Phase establishes the initial baseline for a new companion instance before activation.
+
+After activation, materially important change should not be treated as silent memory drift or silent overwrite of governed state. The **[change-review](change-review.md)** pipeline (see also [change-review-lifecycle.md](change-review-lifecycle.md)) is where those revisions become visible and reviewable.
+
+When new evidence materially affects:
+
+- identity
+- curiosity
+- pedagogy
+- expression
+- memory governance
+- safety or boundary posture
+- other durable operating commitments
+
+the instance should route that change through the change-review subsystem.
+
+This preserves:
+
+- prior state visibility
+- supporting evidence
+- contradiction classification
+- confidence delta when available
+- explicit decision before governed state is updated
+
+Seed Phase and change review serve different roles:
+
+- **Seed Phase** forms the initial companion.
+- **Change review** governs materially important post-seed revision.
+
+The two systems should remain separate.
+
+Why this matters: the repo already treats seed phase as a defined artifact pipeline before activation, so this addition cleanly answers what happens after that baseline exists.
+
+---
+
 ## Relationship to template vs instance
 
 | Location | Role |
@@ -80,6 +117,7 @@ Only **then** may `users/<birth-name>/` be created or promoted with the live pip
 | Readiness | [seed-phase-readiness.md](seed-phase-readiness.md) |
 | Confidence | [seed-phase-confidence-model.md](seed-phase-confidence-model.md) |
 | Artifacts | [seed-phase-artifacts.md](seed-phase-artifacts.md) |
+| Survey prompts | [seed-phase-survey.md](seed-phase-survey.md) |
 | Validation | [seed-phase-validation.md](seed-phase-validation.md) |
 | Schemas | `schema-registry/seed-*.v1.json` |
 | Validator | `scripts/validate-seed-phase.py` |
