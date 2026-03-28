@@ -31,10 +31,47 @@ Two reference trees in this repo:
 | `seed_trial_report.json` | 6 | Trial results, stability and safety scores. |
 | `seed_readiness.json` | 7 | Gate decision, stage_completion, blocking/non-blocking issues. |
 | `seed_confidence_map.json` | 7 | Aggregated confidence_map + band constants. |
+| `work_dev_seed.json` | (parallel) | Development / technical-systems context seed; governs promotion into `users/<id>/work-dev.md`. |
 | `work_business_seed.json` | (parallel) | Business / commercial / venture context seed; governs promotion into `users/<id>/work-business.md`. |
 | `seed_dossier.md` | 7 | Human-readable summary for sign-off. |
 
-**Naming:** JSON files use **snake_case** on disk. JSON Schemas in `schema-registry/` use **kebab-case** with `.v1.json` suffix (e.g. `seed-intake.v1.json` validates `seed_intake.json`; `work-business-seed.v1.json` validates `work_business_seed.json`).
+**Naming:** JSON files use **snake_case** on disk. JSON Schemas in `schema-registry/` use **kebab-case** with `.v1.json` suffix (e.g. `seed-intake.v1.json` validates `seed_intake.json`; `work-dev-seed.v1.json` validates `work_dev_seed.json`; `work-business-seed.v1.json` validates `work_business_seed.json`).
+
+---
+
+## work-dev seed artifact
+
+`work-dev` (the user module `work-dev.md`) is a **seeded work-layer module**, not a preloaded doctrine file.
+
+It begins **blank** in the template and is populated only when seed-survey evidence (or explicit input / governed updates) indicates that development or technical systems work is relevant to the user.
+
+**Status semantics**
+
+- `uninitialized` — no approved seed content has been promoted into `work-dev.md` yet.
+- `initialized` — approved seed outputs have been promoted into `work-dev.md`.
+
+**Evidence semantics** (`evidence_basis`)
+
+- `none` — no seed evidence recorded yet.
+- `seed_survey` — populated from seed survey responses.
+- `explicit_user_input` — populated directly from explicit user statements.
+- `mixed` — both channels contributed.
+
+**Promotion path**
+
+1. Collect seed survey responses into `seed-phase/work_dev_seed.json`.
+2. Validate against `schema-registry/work-dev-seed.v1.json`.
+3. Approve during seed readiness / activation workflow.
+4. Promote approved content into `work-dev.md`.
+5. Set `status` to `initialized` in the seed artifact and reflect the same in the markdown module.
+
+**Boundary notes**
+
+- `work-dev.md` is a **user module** under `users/<id>/`.
+- It is **not** the operator-facing `docs/skill-work/work-dev/` tree (integration, OpenClaw, exports).
+- It is **not** `self-skill-work`, which tracks **skill claims** rather than development-context preferences.
+
+**Schema note:** `work_dev_seed.json` uses `additionalProperties: false`; new keys require a schema version bump.
 
 ---
 

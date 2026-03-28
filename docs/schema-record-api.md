@@ -177,6 +177,7 @@ JSON Schemas (Draft 2020-12) in `schema-registry/`:
 | `seed-readiness.v1.json` | `seed_readiness.json` |
 | `seed-confidence-map.v1.json` | `seed_confidence_map.json` |
 | `work-business-seed.v1.json` | `work_business_seed.json` |
+| `work-dev-seed.v1.json` | `work_dev_seed.json` |
 
 Protocol and validation: [seed-phase.md](seed-phase.md), [seed-phase-validation.md](seed-phase-validation.md). `template-manifest.json` exposes paths under `seed_phase.schemas`.
 

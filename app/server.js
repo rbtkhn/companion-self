@@ -191,6 +191,7 @@ app.get("/api/seed-phase", (req, res) => {
     "seed_readiness.json",
     "seed_confidence_map.json",
     "work_business_seed.json",
+    "work_dev_seed.json",
   ];
   const out = { profile, base: path.relative(REPO_ROOT, base), artifacts: {} };
   try {

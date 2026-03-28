@@ -48,6 +48,14 @@ identity, preferences, learning_progress, projects, constraints
 
 Overall **0.88**.
 
+## Work dev context
+
+Status **initialized**; involvement **regular**; evidence_basis **seed_survey**.
+
+Focuses: seed artifacts; instance sync
+
+Synthetic demo values for validation and docs.
+
 ## Work business context
 
 Status **initialized**; involvement **light**; evidence_basis **seed_survey**.

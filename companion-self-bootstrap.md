@@ -69,6 +69,7 @@ Before a new companion instance is **activated**, the following **pre-activation
 - `seed_readiness.json`
 - `seed_confidence_map.json`
 - `work_business_seed.json` (business / commercial context; promotes to `work-business.md` on activation — see [docs/seed-phase-artifacts.md](docs/seed-phase-artifacts.md))
+- `work_dev_seed.json` (development / technical-systems context; promotes to `work-dev.md` on activation — see [docs/seed-phase-artifacts.md](docs/seed-phase-artifacts.md))
 - `seed_dossier.md`
 
 **Layout:** Canonical scaffold in [users/_template/seed-phase/](users/_template/seed-phase/); synthetic example in [users/demo/seed-phase/](users/demo/seed-phase/). **These are not the live Record** — activation still uses `users/<birth-name>/` and the identity fork protocol after the gate.
