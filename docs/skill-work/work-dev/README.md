@@ -15,6 +15,7 @@ Typical first docs:
 - `operating-principles.md`
 - `reliability-checklist.md`
 - `sync-notes.md`
+- [`git-branch-hygiene.md`](git-branch-hygiene.md) — triage local branches without confusing git merge with Record gate merge; pairs with [date/time conventions](../../date-time-conventions.md) for dated artifacts
 
 ---
 
