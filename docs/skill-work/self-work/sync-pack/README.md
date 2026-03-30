@@ -8,7 +8,9 @@ This pack is optional and review-first.
 
 **Canonical public upstream:** [companion-self](https://github.com/rbtkhn/companion-self) (instances should sync from upstream repo + pinned ref when needed).
 
-**Diff discipline:** When this pack or an instance copy changes, reconcile with `python3 scripts/template_diff.py --use-manifest` (from a reference instance such as [grace-mar](https://github.com/rbtkhn/grace-mar) that ships the script) or your instance’s documented diff workflow.
+**Canonical template copy:** [sync-pack README on `main`](https://github.com/rbtkhn/companion-self/blob/main/docs/skill-work/self-work/sync-pack/README.md) — source of truth for pack text in the template repo.
+
+**Diff discipline:** When this pack or an instance mirror changes, run `python3 scripts/template_diff.py --use-manifest` from a repository that ships the script (for example [grace-mar](https://github.com/rbtkhn/grace-mar)), or follow your instance’s documented diff workflow.
 
 ---
 
