@@ -1,6 +1,6 @@
 # Git branch hygiene (operator)
 
-**Purpose:** A **small, repeatable** check so you do not lose track of branches or confuse **“merge into `main`”** with **Record gate merge** (identity pipeline). Use this during operator **startup / closeout** rhythms ([Good morning brief spec](../../good-morning-brief-spec.md), [Good night brief spec](../../good-night-brief-spec.md)) when you want a quick **branch snapshot** (read-only triage). Instances may use different trigger words or a local Cursor skill for the same step — the **git** rules here stay the same.
+**Purpose:** A **small, repeatable** check so you do not lose track of branches or confuse **“merge into `main`”** with **Record gate merge** (identity pipeline). Use it during **hey** (startup) and **hey night** (closeout) rhythms when you want a quick **branch snapshot** (read-only triage). Contract detail lives in the existing specs (paths still named `good-morning-brief-spec.md` / `good-night-brief-spec.md` on disk until renamed): [startup / hey rhythm](../../good-morning-brief-spec.md), [closeout / hey night](../../good-night-brief-spec.md). The **git** rules here stay the same across instances.
 
 **Not the same as template vs instance alignment.** Audits that compare **template and instance** (or fork isolation, reconciliation code) answer a different question than **local git** branches. **Branch hygiene** = **`main` vs feature branches** only.
 
@@ -42,8 +42,8 @@ If you are unsure, the **prescription** is: **one sentence** — “No action,�
 
 ## Fit in operator rhythm
 
-- **Startup:** After your brief or checklist (see [Good morning brief spec](../../good-morning-brief-spec.md)), run the snapshot and capture **one short paragraph** unless only `main` exists and the tree is clean.
-- **Closeout:** Same snapshot when ending a work block if it helps the next session ([Good night brief spec](../../good-night-brief-spec.md)).
+- **Hey (startup):** After your brief or checklist (see [startup / hey rhythm spec](../../good-morning-brief-spec.md)), run the snapshot and capture **one short paragraph** unless only `main` exists and the tree is clean.
+- **Hey night (closeout):** Same snapshot when ending a work block if it helps the next session ([closeout / hey night spec](../../good-night-brief-spec.md)).
 
 **Guardrail:** The snapshot is **read-only** during triage. **Merging or deleting** branches is **ship** work — run git deliberately when you are ready (or your instance’s hygiene menu / lane when you choose to execute).
 
@@ -52,5 +52,5 @@ If you are unsure, the **prescription** is: **one sentence** — “No action,�
 ## See also
 
 - [Identity Fork Protocol](../../identity-fork-protocol.md) — gated Record merge vs git history.
-- [Good morning brief spec](../../good-morning-brief-spec.md) — startup rhythm and CLI contract.
+- [Startup / hey rhythm spec](../../good-morning-brief-spec.md) — operator startup contract (legacy filename on disk).
 - [Template–instance contract](../../template-instance-contract.md) — what the template promises vs instance-owned surfaces.
