@@ -27,6 +27,7 @@ Use:
 pip install -r scripts/requirements-seed-phase.txt
 python3 scripts/validate-change-review.py users/demo/review-queue
 python3 scripts/validate-change-review.py users/_template/review-queue --allow-empty
+python3 scripts/validate-change-review.py users/<fork_id>/review-queue --allow-missing-decisions
 ```
 
 ### What the validator checks
@@ -50,6 +51,8 @@ The validator checks:
 - proposal files against `schema-registry/change-proposal.v1.json`
 - decision files against `schema-registry/change-decision.v1.json`
 - diff files against `schema-registry/identity-diff.v1.json`
+
+**Queue items** must include `proposalClass`, `targetSurface`, `materiality`, `reviewType`, `riskLevel`, and `requiresReclassification` when present (non-empty queue). **Proposals** must include `targetSurface`, `materiality`, `reviewType`, and `queueSummary` among required fields. Surface tokens use snake_case values such as `self`, `self_library`, `civ_mem`, `work_layer` (see schemas).
 
 #### 3. Queue references are coherent
 
@@ -79,6 +82,15 @@ These are allowed for demo or runtime-generated evidence handles.
 The `_template` scaffold is intentionally minimal.
 
 Use `--allow-empty` when validating the template review queue so that empty proposal, decision, and diff directories are treated as valid placeholders.
+
+### Pre-decision bundle
+
+Use `--allow-missing-decisions` when:
+
+- `proposals/` and `diffs/` each contain at least one valid JSON file, and
+- `decisions/` is still empty (no human decision recorded yet).
+
+Strict mode without flags requires at least one file in all three directories. `--allow-missing-decisions` relaxes only the decision count; proposals and diffs are still required and fully schema-checked. Combine with `--allow-empty` only for the minimal template scaffold case.
 
 ### Demo mode
 
