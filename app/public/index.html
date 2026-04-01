@@ -61,27 +61,41 @@
   <script src="assets/app.js"></script>
   <script>
     (async () => {
+      const knowledgeEl = document.getElementById('knowledge');
+      const curiosityEl = document.getElementById('curiosity');
+      const personalityEl = document.getElementById('personality');
+      const skillsEl = document.getElementById('skills');
+      const edgeEl = document.getElementById('edge');
+      const pendingEl = document.getElementById('pending-count');
+      const loading = escapeHtml(CompanionStatusMicrocopy.phrase('grounded_record', 'loading', 'Checking the Record...'));
+      knowledgeEl.innerHTML = `<li class="empty">${loading}</li>`;
+      curiosityEl.innerHTML = `<li class="empty">${loading}</li>`;
+      personalityEl.innerHTML = `<li class="empty">${loading}</li>`;
+      skillsEl.innerHTML = `<p class="empty">${loading}</p>`;
+      edgeEl.innerHTML = `<li class="empty">${loading}</li>`;
+      pendingEl.textContent = loading;
       const res = await fetch('/api/record');
       const record = await res.json().catch(() => ({}));
       if (!res.ok) {
         document.getElementById('knowledge').innerHTML = '';
-        document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(record.error || 'Failed to load Record')}</p>`);
+        pendingEl.textContent = '—';
+        document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(record.error || CompanionStatusMicrocopy.phrase('grounded_record', 'error', 'Failed to load Record'))}</p>`);
         return;
       }
-      document.getElementById('knowledge').innerHTML = record.knowledge?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
-      document.getElementById('curiosity').innerHTML = record.curiosity?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
-      document.getElementById('personality').innerHTML = record.personality?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
-      document.getElementById('skills').innerHTML = ['THINK','WRITE','WORK'].map(s => 
+      knowledgeEl.innerHTML = record.knowledge?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      curiosityEl.innerHTML = record.curiosity?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      personalityEl.innerHTML = record.personality?.map(x => `<li>${escapeHtml(x)}</li>`).join('') || '<li class="empty">—</li>';
+      skillsEl.innerHTML = ['THINK','WRITE','WORK'].map(s => 
         `<p><strong>${s}:</strong> ${(record.skills?.[s]?.length ?? 0) || 0} entries</p>`
       ).join('');
-      document.getElementById('edge').innerHTML = record.edge ? ['THINK','WRITE','WORK'].map(s => 
+      edgeEl.innerHTML = record.edge ? ['THINK','WRITE','WORK'].map(s => 
         `<li><strong>${s}:</strong> ${escapeHtml(record.edge[s] || '—')}</li>`
       ).join('') : '';
-      document.getElementById('pending-count').textContent = record.pendingCount ?? 0;
+      pendingEl.textContent = record.pendingCount ?? 0;
       if (record.pendingCount > 0) {
         document.querySelector('.pending p:last-of-type').innerHTML = `<a href="/review">${record.pendingCount} item(s) in review queue</a>`;
       }
-    })().catch(e => document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(e.message)}</p>`));
+    })().catch(e => document.body.insertAdjacentHTML('beforeend', `<p class="error">${escapeHtml(e.message || CompanionStatusMicrocopy.phrase('grounded_record', 'error', 'Failed to load Record'))}</p>`));
 
     function escapeHtml(s) {
       const div = document.createElement('div');

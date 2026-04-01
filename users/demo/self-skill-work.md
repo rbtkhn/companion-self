@@ -36,3 +36,8 @@ Life mission in `self.md`; WORK goals align with it.
 | id | summary | status | evidence_id |
 |----|---------|--------|-------------|
 | (none yet) | — | — | — |
+
+
+## Activity
+
+- • We tested status wording from the local browser pass. — ACT-2026-04-01-40

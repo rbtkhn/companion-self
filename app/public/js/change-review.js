@@ -26,6 +26,14 @@ function setHtml(id, html) {
 async function loadChangeReview() {
   const select = document.getElementById("profileSelect");
   const profile = apiProfile(select ? select.value : "demo");
+  setText(
+    "summaryBox",
+    CompanionStatusMicrocopy.phrase("maintenance", "loading", "Checking governed changes...")
+  );
+  setText("queueBox", "—");
+  setText("decisionBox", "—");
+  setText("diffBox", "—");
+  setText("eventLogBox", "—");
 
   const [bundleRes, summaryRes] = await Promise.all([
     fetch("/api/change-review?profile=" + encodeURIComponent(profile)),
@@ -36,7 +44,10 @@ async function loadChangeReview() {
   const summary = await summaryRes.json().catch(() => ({}));
 
   if (!bundleRes.ok) {
-    setText("summaryBox", bundle.error || "Failed to load bundle");
+    setText(
+      "summaryBox",
+      bundle.error || CompanionStatusMicrocopy.phrase("maintenance", "error", "Failed to load bundle")
+    );
     setText("queueBox", "—");
     setText("decisionBox", "—");
     setText("diffBox", "—");
