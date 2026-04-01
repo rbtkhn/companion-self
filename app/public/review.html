@@ -23,6 +23,7 @@
     <p id="message" aria-live="polite" aria-atomic="true"></p>
   </main>
 
+  <script src="assets/app.js"></script>
   <script>
     function escapeHtml(s) {
       const div = document.createElement('div');
@@ -31,11 +32,14 @@
     }
 
     async function refresh() {
+      const msg = document.getElementById('message');
+      const el = document.getElementById('candidates');
+      el.innerHTML = `<p class="empty">${escapeHtml(CompanionStatusMicrocopy.phrase('gate_review', 'reviewing', 'Reviewing pending changes...'))}</p>`;
+      msg.textContent = '';
       const res = await fetch('/api/recursion-gate');
       const data = await res.json().catch(() => ({}));
-      const el = document.getElementById('candidates');
       if (!res.ok) {
-        el.innerHTML = `<p class="error">${escapeHtml(data.error || 'Failed to load review queue')}</p>`;
+        el.innerHTML = `<p class="error">${escapeHtml(data.error || CompanionStatusMicrocopy.phrase('gate_review', 'error', 'Failed to load review queue'))}</p>`;
         return;
       }
       const candidates = Array.isArray(data) ? data : [];
@@ -68,12 +72,14 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed');
-        msg.textContent = action === 'approve' ? 'Merged.' : 'Rejected.';
+        msg.textContent = action === 'approve'
+          ? CompanionStatusMicrocopy.phrase('gate_review', 'approved', 'Approved. Review queue refreshed.')
+          : CompanionStatusMicrocopy.phrase('gate_review', 'rejected', 'Rejected. Review queue refreshed.');
         msg.className = 'success';
         await refresh();
         setTimeout(() => { msg.textContent = ''; msg.className = ''; }, 2000);
       } catch (err) {
-        msg.textContent = err.message;
+        msg.textContent = err.message || CompanionStatusMicrocopy.phrase('gate_review', 'error', 'Review action failed.');
         msg.className = 'error';
       }
     }

@@ -38,13 +38,17 @@
     </form>
   </main>
 
+  <script src="assets/app.js"></script>
   <script>
     document.getElementById('activity-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const text = document.getElementById('text').value.trim();
       const skill_tag = document.getElementById('skill_tag').value;
       const msg = document.getElementById('message');
+      const submit = document.querySelector('#activity-form button[type="submit"]');
       msg.textContent = '';
+      if (submit) submit.disabled = true;
+      CompanionStatusMicrocopy.setStatus(msg, 'gate_review', 'staging', 'Staging for review...');
       try {
         const res = await fetch('/api/activity', {
           method: 'POST',
@@ -53,13 +57,15 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed');
-        msg.textContent = 'Submitted. Go to review to approve.';
+        msg.textContent = 'Staged for review. Go to review to approve.';
         msg.className = 'success';
         document.getElementById('text').value = '';
         setTimeout(() => { msg.textContent = ''; msg.className = ''; }, 3000);
       } catch (err) {
-        msg.textContent = err.message;
+        msg.textContent = err.message || CompanionStatusMicrocopy.phrase('gate_review', 'error', 'Review action failed.');
         msg.className = 'error';
+      } finally {
+        if (submit) submit.disabled = false;
       }
     });
   </script>

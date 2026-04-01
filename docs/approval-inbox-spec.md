@@ -6,7 +6,7 @@
 
 **Primary sources:** [identity-fork-protocol.md](identity-fork-protocol.md), [schema-record-api.md](schema-record-api.md), [instance-patterns.md](instance-patterns.md), [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md)
 
-**Reference implementation:** Grace-Mar — `docs/approval-inbox-spec.md`, `gate-review-app.py`, `recursion-gate.md`, `pipeline-events.jsonl`.
+**Reference implementation:** instance-specific — approval inbox surfaces may sit over the canonical queue, merge tooling, and audit log for a given repo layout.
 
 ---
 
@@ -31,6 +31,8 @@ This is a **review surface**, not a new memory system.
 
 The inbox may add **derived UI fields** and **helper endpoints**; it must not create a second source of truth.
 
+Where the canonical queue provides richer metadata (for example `proposalClass`, `targetSurface`, `materiality`, `reviewType`, `riskLevel`, and `requiresReclassification`), the inbox should use those fields directly rather than infer them ad hoc in the UI layer.
+
 **Contradiction workflow:** Identity-diff decisions follow [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md) — escalation, before/proposed/after, resolution types, no quick-merge on active contradictions.
 
 ---
@@ -51,7 +53,7 @@ The inbox may add **derived UI fields** and **helper endpoints**; it must not cr
 | Approve action | Merge into SELF / self-evidence / skill files + audit event |
 | Contradiction | CONFLICT sidecars + resolution types before merge |
 
-Full inbox UX (batch, dedup hints, saved views) may match Grace-Mar approval-inbox-spec as instances mature.
+Full inbox UX (batch, dedup hints, saved views) may expand as instances mature.
 
 ---
 

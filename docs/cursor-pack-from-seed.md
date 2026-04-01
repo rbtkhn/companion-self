@@ -26,7 +26,7 @@ Stage 0 **`seed_intake.json`** may include **`cursor_operator_profile`**: answer
 |---------------------|----------------------------------------|
 | `template_steward` | Current companion-self defaults: long-term objective, workspace boundary, template layers, users-tree guard, generalize-from-reference, first-hour + promote skills. |
 | `instance_light` | Steward subset + **instance fork** rules (see grace-mar work-companion-self **Phase 2** spec): `users/<id>/` boundary, no cross-instance copy, optional gate-before-merge. |
-| `instance_operator` | Instance light + optional copy/adapt of reference **daily-warmup / handoff** skills **only if** instance ships matching scripts and `user_slug` substitution. |
+| `instance_operator` | Instance light + optional copy/adapt of reference **operator-cadence / handoff** skills **only if** instance ships matching scripts and `user_slug` substitution. |
 
 ## Validation
 
