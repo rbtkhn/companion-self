@@ -81,6 +81,21 @@
       "optional": true
     },
     {
+      "path": "docs/skill-work/work-cadence/README.md",
+      "description": "Daily cadence architecture: morning orientation + night consolidation, handoff contract, runner modes, extension points.",
+      "optional": true
+    },
+    {
+      "path": "scripts/cadence-coffee.py",
+      "description": "Coffee — consolidated morning cadence runner: mode dispatch over good-morning-brief.py with branch snapshot.",
+      "optional": true
+    },
+    {
+      "path": "scripts/cadence-dream.py",
+      "description": "Dream — consolidated night cadence runner: good-night-brief.py with closeout + git summary.",
+      "optional": true
+    },
+    {
       "path": "docs/instance-patterns.md",
       "description": "Instance patterns and reference implementation (Grace-Mar variations, analyst contract, staging format).",
       "optional": false
