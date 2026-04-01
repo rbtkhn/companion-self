@@ -121,6 +121,10 @@ Usually one `dream` session per day is normal.
 | `standard` | ~2-4 min | Most nights |
 | `reflective` | ~4-6 min | End of sprint/week |
 
+## Cadence audit
+
+Each successful dream run may append one line to `docs/skill-work/work-cadence/work-cadence-events.md` via `scripts/log_cadence_event.py`. Instances wire this into their consolidated runners.
+
 ## Related files
 
 - `scripts/cadence-dream.py` — consolidated runner
@@ -128,4 +132,5 @@ Usually one `dream` session per day is normal.
 - `docs/good-night-brief-spec.md` — full spec
 - `docs/good-night-template.md` — recommended night sequence
 - `docs/skill-work/work-cadence/README.md` — cadence territory
+- `docs/skill-work/work-cadence/work-cadence-events.md` — per-run cadence telemetry
 - `.cursor/skills/coffee/SKILL.md` — morning-side counterpart

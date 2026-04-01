@@ -70,6 +70,16 @@ If push fails (e.g. remote has new commits), pull-rebase first, then push. If th
 
 **After push, run `git status -sb` to confirm clean state.**
 
+### Cadence audit
+
+After confirming clean state, log the bridge event:
+
+```bash
+python3 scripts/log_cadence_event.py --kind bridge -u <id> --ok --kv refs=<SHA>
+```
+
+Replace `<SHA>` with the HEAD commit just pushed (from `git rev-parse --short HEAD`).
+
 ---
 
 ## Step 3 — Generate the transfer prompt

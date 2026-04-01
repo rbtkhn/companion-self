@@ -12,6 +12,7 @@
 |------|-------------|
 | **Cadence architecture** | Defines the shape of daily rhythm: coffee (orientation, repeated), dream (consolidation, once). |
 | **Night-to-morning handoff** | Documents the `daily-handoff/night-handoff.json` data contract that bridges dream output to coffee Step 1. |
+| **Cadence event audit** | Append-only telemetry of each run via `work-cadence-events.md` and `scripts/log_cadence_event.py`. |
 | **Boundary surface** | Explains what belongs in operational/ephemeral surfaces versus what must escalate to the gate. |
 | **Script topology** | Maps how consolidated runners delegate to underlying brief generators. |
 
@@ -129,6 +130,16 @@ These extensions belong in instance-local skills and territories, not in this te
 
 ---
 
+## Cadence event audit
+
+Each coffee, dream, and bridge run appends one line to [work-cadence-events.md](work-cadence-events.md) via `scripts/log_cadence_event.py`. This is operator-facing telemetry — not the Record, not self-memory.
+
+**Leaf-only rule:** Orchestrator scripts (wrappers that chain multiple steps) do not emit their own events. Only the leaf ritual logs.
+
+**Split threshold:** If cadence events exceed ~200 lines/month, consider adding a JSONL sibling and keeping monthly rollup bullets in the markdown file.
+
+---
+
 ## Continuity and trail
 
 `work-cadence` does **not** replace any existing continuity surface.
@@ -145,6 +156,9 @@ These extensions belong in instance-local skills and territories, not in this te
 
 - [.cursor/skills/coffee/SKILL.md](../../../.cursor/skills/coffee/SKILL.md) — coffee trigger
 - [.cursor/skills/dream/SKILL.md](../../../.cursor/skills/dream/SKILL.md) — dream trigger
+- [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) — bridge trigger
+- [work-cadence-events.md](work-cadence-events.md) — per-run cadence telemetry
+- [scripts/log_cadence_event.py](../../../scripts/log_cadence_event.py) — cadence event append helper
 - [scripts/cadence-coffee.py](../../../scripts/cadence-coffee.py) — coffee runner
 - [scripts/cadence-dream.py](../../../scripts/cadence-dream.py) — dream runner
 - [scripts/good-morning-brief.py](../../../scripts/good-morning-brief.py) — morning brief generator
@@ -159,8 +173,9 @@ These extensions belong in instance-local skills and territories, not in this te
 
 In scope:
 
-- daily cadence architecture (coffee/dream pair)
+- daily cadence architecture (coffee/dream/bridge triad)
 - handoff contract design and schema
+- cadence event audit (per-run telemetry)
 - runner mode definitions and dispatch
 - script topology and extension points
 - boundary rules for operational vs gated content

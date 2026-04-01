@@ -90,10 +90,15 @@ Instances may customize these options (e.g. add work-lane picks, gate review, te
 
 Sessions begin when the operator says **`coffee`**. To keep a trail: use `users/<id>/self-memory.md` (ephemeral) or a daily note surface per instance conventions. **Not** the gated Record.
 
+## Cadence audit
+
+Each successful coffee run may append one line to `docs/skill-work/work-cadence/work-cadence-events.md` via `scripts/log_cadence_event.py`. Instances wire this into their consolidated runners.
+
 ## Related files
 
 - `scripts/cadence-coffee.py` — consolidated runner
 - `scripts/good-morning-brief.py` — underlying brief generator
 - `docs/good-morning-brief-spec.md` — full spec
 - `docs/skill-work/work-cadence/README.md` — cadence territory
+- `docs/skill-work/work-cadence/work-cadence-events.md` — per-run cadence telemetry
 - `.cursor/skills/dream/SKILL.md` — night-side counterpart
