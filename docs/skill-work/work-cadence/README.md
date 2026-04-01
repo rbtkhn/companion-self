@@ -140,6 +140,63 @@ Each coffee, dream, and bridge run appends one line to [work-cadence-events.md](
 
 ---
 
+## Write authority map
+
+Which on-disk surfaces each ritual reads, writes, and whether companion approval is required.
+
+| Ritual | Reads | Writes | Gate required? |
+|--------|-------|--------|---------------|
+| **coffee** | self-memory, gate, dream handoff, git status | nothing (read-only planning) | No |
+| **dream** | self-memory, SELF, EVIDENCE, gate | self-memory, night handoff JSON, cadence events | No (Maintenance mode) |
+| **bridge** | self-memory, gate, dream handoff, territories, git | git commits, cadence events | No (operational) |
+| **gate merge** | gate candidates, SELF, EVIDENCE, prompt | SELF, EVIDENCE, prompt, session-log, gate, pipeline events | **Yes — companion approval required** |
+
+**Key boundary:** coffee and bridge never write to identity surfaces. Dream writes to ephemeral/operational surfaces only. Only the gated merge path touches the Record.
+
+---
+
+## End-of-session decision tree
+
+| Scenario | Path | Why |
+|----------|------|-----|
+| **End of day + closing session** | `dream` then `bridge` | Dream settles continuity; bridge seals and generates transfer prompt |
+| **End of day, keeping session** | `dream` alone | Maintenance pass; same thread continues tomorrow |
+| **Mid-day, closing session** | `bridge` alone | Seal repo, carry context forward; no maintenance needed |
+| **Quick check before stepping away** | coffee closeout (instance-defined) | Lightweight status; no commit/push, no transfer prompt |
+
+**Default:** If in doubt, `bridge`. It commits, pushes, and produces a transfer prompt. If it's also end of day, run `dream` first.
+
+---
+
+## Cadence troubleshooting
+
+When a cadence run produces unexpected output, check these in order:
+
+### Coffee output looks wrong
+
+1. **Dream handoff missing?** Check the night handoff JSON — if absent or stale, dream didn't run or didn't complete.
+2. **Wrong mode?** Check which mode was passed to the coffee runner. Run with the intended mode explicitly.
+3. **Script failed silently?** Consolidated runners chain sub-scripts and stop on first failure. Check exit codes.
+
+### Dream output looks wrong
+
+1. **Integrity or governance failed?** Check the dream summary for failure flags. In strict mode, dream halts — no memory update, no handoff written.
+2. **Handoff not written?** Dream only writes the handoff artifact when `apply=True` and maintenance is not halted.
+3. **Cadence event not logged?** Gated on successful completion. Dry-run and halted dreams produce no cadence line by design.
+
+### Bridge output looks wrong
+
+1. **Commit failed?** Bridge commits are agent-driven. Check `git status -sb` in all relevant repos.
+2. **Push rejected?** Usually means remote has new commits. Pull-rebase and retry.
+3. **Transfer prompt thin?** Bridge synthesizes from on-disk state. Sparse sections mean those surfaces had nothing to report.
+
+### General
+
+- **Which cadence events actually ran?** Check `work-cadence-events.md` — one line per run.
+- **Agent reading stale skill file?** Long sessions can cache file contents. Ask the agent to re-read.
+
+---
+
 ## Continuity and trail
 
 `work-cadence` does **not** replace any existing continuity surface.

@@ -101,17 +101,26 @@ Usually one `dream` session per day is normal.
 
 ## Cadence choreography
 
-`coffee` and `dream` form the daily cognitive rhythm:
+`coffee`, `dream`, and `bridge` form the cadence triad:
 
 | Time | Ritual | What it does |
 |------|--------|-------------|
 | **Morning** | `coffee` (work-start) | Read dream handoff, context snapshot, session options |
 | **During day** | `coffee` (reorientation) | Re-sip as needed — many per day is normal |
 | **End of day** | `dream` | Capture signal, set carry-forward, write handoff JSON |
+| **Session close** | `bridge` | Seal repo (commit/push), synthesize transfer prompt for next session |
 
-**Typical end-of-day sequence:** `dream` (consolidation), then optionally a git commit/push pass.
+**Dream's role is maintenance, not session closure.** Dream settles continuity and writes the handoff artifact. It does not commit, push, or produce a transfer prompt. If the operator is also closing the session, `bridge` follows dream.
+
+| Scenario | Path |
+|----------|------|
+| End of day + closing session | `dream` then `bridge` |
+| End of day, keeping session | `dream` alone |
+| Mid-day, closing session | `bridge` alone (no dream needed) |
 
 **Morning pickup:** `good-morning-brief.py` reads `daily-handoff/night-handoff.json` and displays the carry-forward action and last-night signal.
+
+For the full decision tree, see [bridge SKILL.md](../bridge/SKILL.md).
 
 ## Modes
 
