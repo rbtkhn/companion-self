@@ -26,9 +26,10 @@ Multiple `coffee` sessions per day are normal. That is not redundancy; it is the
 
 ## Relation to dream
 
-`coffee` and `dream` form a cognitive pair:
+`coffee`, `dream`, and `bridge` form the cadence triad:
 - **`coffee`** = repeated framing dose (many per day)
 - **`dream`** = end-of-day consolidation pass (usually once)
+- **`bridge`** = session-scale handoff (once per session close)
 
 `coffee` should feel like a sip. `dream` should feel like sleep. See `.cursor/skills/dream/SKILL.md` § *Cadence choreography* for the full day sequence and data handoff.
 

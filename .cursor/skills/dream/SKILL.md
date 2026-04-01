@@ -85,10 +85,11 @@ If nothing important changed, say so plainly. A quiet run is success.
 
 ## Relation to coffee
 
-`coffee` and `dream` form a cognitive pair.
+`coffee`, `dream`, and `bridge` form the cadence triad.
 
 - **`coffee`** = repeated framing dose
 - **`dream`** = end-of-day consolidation pass
+- **`bridge`** = session-scale handoff (seal, push, carry forward)
 
 `coffee` restores orientation, clarity, and agency.
 `dream` settles continuity, captures the day's signal, and prepares tomorrow's state.

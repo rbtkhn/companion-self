@@ -1,6 +1,6 @@
 # work-cadence
 
-**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence pair — `coffee` (morning orientation) and `dream` (night consolidation). The executable trigger surfaces live in `.cursor/skills/coffee/SKILL.md` and `.cursor/skills/dream/SKILL.md`.
+**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence triad — `coffee` (orientation), `dream` (consolidation), and `bridge` (session handoff). The executable trigger surfaces live in `.cursor/skills/coffee/SKILL.md`, `.cursor/skills/dream/SKILL.md`, and `.cursor/skills/bridge/SKILL.md`.
 
 **Not** Record truth. **Not** a merge path. **Not** identity-relevant unless gated.
 
@@ -20,17 +20,32 @@
 
 ## Daily rhythm
 
-`coffee` and `dream` form a cognitive pair:
+`coffee`, `dream`, and `bridge` form the cadence triad:
 
 | Time | Ritual | What it does |
 |------|--------|-------------|
 | **Morning** | `coffee` (standard) | Read dream handoff, context snapshot, skill focus, session options |
 | **During day** | `coffee` (reorientation) | Re-sip as needed — many per day is normal |
 | **End of day** | `dream` | Capture signal, set carry-forward, write handoff JSON |
+| **Session close** | `bridge` | Seal (commit/push), synthesize transfer prompt for next session |
 
-**Many coffees, one dream.** `coffee` is designed for repetition (each run restores orientation). `dream` is designed for closure (one per day is the norm).
+**Many coffees, one dream, one bridge.** `coffee` is for repetition. `dream` is for closure. `bridge` is for carry-forward.
 
-`coffee` should feel like a sip. `dream` should feel like sleep.
+`coffee` should feel like a sip. `dream` should feel like sleep. `bridge` should feel like sealing an envelope.
+
+---
+
+## Why three rituals
+
+Work fails on three clocks:
+
+**The framing clock (hours).** During the day, orientation degrades under context load. Not lack of information — degraded framing. `coffee` restores it. Many sips per day.
+
+**The residue clock (day).** By evening, unresolved threads, integrity drift, and unprocessed signals accumulate. `dream` settles them without dramatic mutation.
+
+**The context clock (session).** At session boundaries, agent memory goes to zero. Everything not on disk is lost. `bridge` seals the session and produces a transfer prompt so the next thread starts oriented instead of blank.
+
+Each clock needs its own ritual because the failure modes are different. Reorientation is not consolidation. Consolidation is not transfer. Merging them into one ritual would either make it too heavy for frequent use or too shallow for end-of-day closure.
 
 ---
 
