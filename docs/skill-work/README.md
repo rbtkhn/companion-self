@@ -21,6 +21,9 @@ This folder holds **submodules** that support WORK, the Record, and instances: r
 
 ## Cross-references
 
+- **New WORK territory checklist:** [work-template.md](work-template.md) — scaffold `work-<id>/` (README, history, optional LANE-CI, sources).
+- **Work modules — authorized sources:** [work-modules-sources-principle.md](work-modules-sources-principle.md).
+- **Work modules — territory history logs:** [work-modules-history-principle.md](work-modules-history-principle.md).
 - [Long-term objective](../long-term-objective.md) — Links to skill-work submodules.
 - [Concept](../concept.md), [Schema and API](../schema-record-api.md), [Instance patterns](../instance-patterns.md).
 - [Good Morning Brief Spec](../good-morning-brief-spec.md), [Good Night Template](../good-night-template.md), [Good Night Brief Spec](../good-night-brief-spec.md).
