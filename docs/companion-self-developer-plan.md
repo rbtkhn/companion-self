@@ -8,6 +8,8 @@
 
 When working on the template, use a workspace where **companion-self is primary and grace-mar is read-only** (e.g. open `companion-self-and-grace-mar.code-workspace`). Read grace-mar for reference; **do not modify grace-mar from this workspace**. All instance changes (Record, bot, config, and merging upgrades) happen in a **separate grace-mar workspace**. See [companion-self-bootstrap](../companion-self-bootstrap.md) §7.
 
+**North star (template product):** Optimize for **easy handoff**—new operators fork companion-self, complete seed phase, and stand up **their** instance without inheriting another companion’s Record. README § *North star* and [how-instances-consume-upgrades.md](../how-instances-consume-upgrades.md) state this explicitly for readers and contributors.
+
 ---
 
 ## Part 1: Minimal docs companion-self needs

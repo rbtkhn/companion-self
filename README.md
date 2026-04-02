@@ -10,6 +10,16 @@ A new companion self is created **only when a new user completes seed phase** �
 
 Companion-Self now treats major post-seed self-revision as governed change, not silent Record drift.
 
+## North star: hand off the template for new instances
+
+**Product goal:** Make it **easy for new people** to take **this repo**, run **seed phase**, and spin up **their own** companion instance—same **governance and structure**, **their** Record and Voice, **not** a copy of another family’s live fork.
+
+- **This repository** is the **portable constitution**: concept, protocol, seed-phase definitions, `users/_template/` scaffolds, validators, `docs/skill-work/` patterns, and upgrade contracts. It does **not** contain a real companion’s merged identity data.
+- **A new companion self** is created **only** when a **new user completes seed phase** ([docs/seed-phase.md](docs/seed-phase.md))—not by duplicating someone else’s `users/<id>/`.
+- **After you fork:** use [how-instances-consume-upgrades.md](how-instances-consume-upgrades.md) to pull template improvements safely; [docs/template-instance-contract.md](docs/template-instance-contract.md) and [docs/instance-patterns.md](docs/instance-patterns.md) spell out compatibility and reference patterns.
+
+**First reference instance:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) (fully lived example to compare against, not something to paste into your Record).
+
 ## Governed change
 
 Companion-Self does not treat meaningful post-seed revision as silent memory drift.

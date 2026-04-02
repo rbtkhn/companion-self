@@ -6,6 +6,8 @@ When companion-self (this repo) is updated, an instance (e.g. [Grace-Mar](https:
 
 **Workspace boundary:** When working on the template, use a workspace where grace-mar is read-only (e.g. `companion-self-and-grace-mar.code-workspace`). Do not modify the instance from this workspace; all instance changes and template merges happen in the instance's own workspace. See [companion-self-bootstrap](companion-self-bootstrap.md) §7.
 
+**Why this doc exists:** Companion-self is meant to be **handed off** so others can **fork** and run their **own** instance. This page is the **safe-merge contract**: what may flow from template → instance without touching the live Record, and what must **never** be overwritten from upstream.
+
 ---
 
 ## Safe to Sync from Template
