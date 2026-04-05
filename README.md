@@ -1,5 +1,7 @@
 # companion-self
 
+**Coming from Open Brain / Nate Jones?** If you use **capture + embeddings + MCP search**, read [docs/companion-self-for-open-brain-users.md](docs/companion-self-for-open-brain-users.md) first — **retrieval** is not the same as the **gated Record**.
+
 **Companion-Self** is the **template** repo. **Grace-Mar** is the **instance** repo (the first and currently only instance).
 
 **Release + compatibility metadata:** [`template-version.json`](template-version.json) — semver, release date, git tag, and `compatibilityContract` pointers (single source; no separate `template-contract.json`).
