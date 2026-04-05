@@ -49,15 +49,21 @@ Run the consolidated cadence runner:
 
 ```bash
 python3 scripts/cadence-coffee.py --user <id>                   # standard (default)
-python3 scripts/cadence-coffee.py --user <id> --mode light      # lighter pass
+python3 scripts/cadence-coffee.py --user <id> --mode light      # quieter sip (minimal brief + compact branch)
 python3 scripts/cadence-coffee.py --user <id> --mode deep       # deep with sync checks
+python3 scripts/cadence-coffee.py --user <id> --lane write      # optional session-shaping hook (pass-through)
+python3 scripts/cadence-coffee.py --user <id> --max-lines 120   # cap human lines (forwarded to the brief)
+python3 scripts/cadence-coffee.py --user <id> --no-log-cadence  # skip optional coffee line in work-cadence-events
+python3 scripts/cadence-coffee.py --user <id> --coffee-helpful partial  # optional kv on that line
 ```
 
-Add `--write-intention` for a daily intention note. The underlying `good-morning-brief.py` is still callable directly for finer control.
+Add `--write-intention` for a daily intention note. **Intention quality review** (yesterday’s intention) is intentionally **not** in the default coffee path; use a separate end-of-day or ad-hoc pass if you want that audit.
 
-**Dream handoff:** If `dream` ran yesterday, the morning brief automatically includes context from `users/<id>/daily-handoff/night-handoff.json` — the carry-forward action and last signal from the night closeout.
+The underlying `good-morning-brief.py` is still callable directly for finer control (omit `--coffee-context-file` if you bypass the runner).
 
-**Step 1 deliverables:** Greeting, context snapshot (recent evidence, curiosity spark, night handoff), skill focus, knowledge/curiosity edges, session options, top actions (sync, execution, gate). No identity writes.
+**Dream handoff:** If `dream` ran yesterday, the morning brief automatically includes context from `users/<id>/daily-handoff/night-handoff.json` — carry-forward action, **topActionReason** (schema v2), residue/worktree hints when present, and last signal. Optional **morning checkback:** `good-morning-brief.py --write-checkback --checkback-helpful yes|no|partial` writes `morning-checkback-<date>.json` (operational only).
+
+**Step 1 deliverables:** Greeting, context snapshot (recent evidence, curiosity spark, night handoff; optional “since last coffee” delta when state exists), capped **coffee orientation** hints (diagnosis, best next move, friction, do-not-start), skill focus, knowledge/curiosity edges, session options (optionally residue- or lane-shaped), top actions (sync, execution, gate), optional suggested next mode line from the runner. No identity writes.
 
 **Step 1 guardrail:** Stay read-only — no merge/stage unless the operator uses a pipeline phrase.
 
@@ -81,7 +87,7 @@ Instances may customize these options (e.g. add work-lane picks, gate review, te
 | Mode | What it runs | When to use |
 |------|-------------|-------------|
 | `standard` | Full morning brief + branch snapshot | Most mornings |
-| `light` | Minimal brief + compact branch line | Quick reorientation |
+| `light` | **Quiet sip:** minimal brief + compact branch line + lower noise | Quick reorientation; pair with `--max-lines` for chat surfaces |
 | `deep` | Deep brief + sync checks + full branch snapshot | Start of week, after template updates |
 | `closeout` | Night brief via `good-night-brief.py` | End of day (prefer `dream` skill) |
 

@@ -101,6 +101,13 @@ def _session_options(mode: str, personality_bridge: Dict[str, str]) -> List[Dict
     return base
 
 
+def _format_gate_suggestion_entry(entry: Any) -> str:
+    if isinstance(entry, dict):
+        parts = [str(entry.get("item", "")), str(entry.get("reason", ""))]
+        return " — ".join(p for p in parts if p)
+    return str(entry)
+
+
 def _build_snapshot(
     night_handoff: Dict[str, Any],
     evidence_tail: List[str],
@@ -108,19 +115,257 @@ def _build_snapshot(
 ) -> List[str]:
     snapshot: List[str] = []
     if night_handoff:
+        if night_handoff.get("quietRun"):
+            snapshot.append(
+                "Last night was a quiet dream closeout — keep today's scope small unless something urgent surfaced."
+            )
         action = night_handoff.get("tomorrowTopAction", "")
+        reason = night_handoff.get("topActionReason", "")
         signal = night_handoff.get("oneSignal", "")
         if action:
             snapshot.append(f"Carry-forward action from last night: {action}")
+        if reason:
+            snapshot.append(f"Why that action: {reason}")
         if signal:
             snapshot.append(f"Last-night signal: {signal}")
+        wt_state = night_handoff.get("worktreeState")
+        wt_adv = night_handoff.get("worktreeAdvice")
+        if wt_state:
+            snapshot.append(f"Worktree ({wt_state}): {wt_adv}")
+        ignore = night_handoff.get("ignoreTomorrow", "")
+        if ignore:
+            snapshot.append(f"Ignore tomorrow: {ignore}")
+        lane = night_handoff.get("activeLaneHint")
+        if lane and str(lane).upper() != "NONE":
+            snapshot.append(f"Lane hint: foreground {lane} after the top action.")
+        ledger = night_handoff.get("residueLedger") or {}
+        if isinstance(ledger, dict):
+            non_empty = {k: v for k, v in ledger.items() if v}
+            if non_empty:
+                parts = [f"{k}: {str(v)[:80]}" for k, v in list(non_empty.items())[:4]]
+                snapshot.append("Residue (capped): " + "; ".join(parts))
+        gs = night_handoff.get("gateSuggestions") or []
+        if gs:
+            snapshot.append(f"Gate hint: {_format_gate_suggestion_entry(gs[0])[:220]}")
     if evidence_tail:
         snapshot.append(f"Recent evidence: {evidence_tail[-1][:180]}")
     if curiosity_tail:
         snapshot.append(f"Curiosity spark: {curiosity_tail[-1][:180]}")
     if not snapshot:
         snapshot.append("No recent context found; start with one small, high-confidence action.")
-    return snapshot[:4]
+    return snapshot[:8]
+
+
+def _git_quick_context(repo_root: Path) -> Dict[str, Any]:
+    """Single-pass git snapshot for coffee orientation (read-only)."""
+    st = subprocess.run(
+        ["git", "status", "-sb"],
+        cwd=str(repo_root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    br = subprocess.run(
+        ["git", "branch", "-vv"],
+        cwd=str(repo_root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    hd = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"],
+        cwd=str(repo_root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    status_out = (st.stdout or "").strip()
+    branch_out = br.stdout or ""
+    head = (hd.stdout or "").strip() or "unknown"
+    body = [ln for ln in status_out.splitlines() if ln.strip() and not ln.startswith("## ")]
+    dirty = len(body) > 0
+    non_main = [
+        line.strip()
+        for line in branch_out.splitlines()
+        if line.strip()
+        and not line.strip().startswith("* main")
+        and not line.strip().startswith("main ")
+    ]
+    return {
+        "gitHeadShort": head,
+        "worktreeDirty": dirty,
+        "nonMainBranchCount": len(non_main),
+        "statusLine": status_out.splitlines()[0] if status_out else "",
+    }
+
+
+def _read_coffee_runner_context(path: Path | None) -> Dict[str, Any]:
+    if path is None or not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _coffee_orientation_hints(
+    *,
+    handoff: Dict[str, Any],
+    gate_text: str,
+    check_sync: bool,
+    git_ctx: Dict[str, Any],
+    runner_ctx: Dict[str, Any],
+    top_execution_action: str,
+) -> Dict[str, str]:
+    """Bounded orientation block for coffee (not dream/bridge)."""
+    gtl = gate_text.lower()
+    has_candidates = "candidate" in gtl or "## candidates" in gtl
+    non_main = int(git_ctx.get("nonMainBranchCount") or 0)
+    dirty = bool(git_ctx.get("worktreeDirty"))
+    branch_class = str(
+        runner_ctx.get("branchHygieneClass") or git_ctx.get("branchHygieneClass") or ""
+    ).strip()
+    if not branch_class:
+        if non_main > 4 or (dirty and len(str(git_ctx.get("statusLine", ""))) > 120):
+            branch_class = "risky"
+        elif non_main > 0 or dirty:
+            branch_class = "watch"
+        else:
+            branch_class = "clean"
+
+    strong_handoff = bool(
+        handoff.get("tomorrowTopAction")
+        and handoff.get("topActionReason")
+        and not handoff.get("quietRun")
+    )
+    has_handoff = bool(handoff.get("tomorrowTopAction") or handoff.get("oneSignal"))
+
+    if has_handoff and handoff.get("tomorrowTopAction"):
+        diagnosis = "handoff_pickup"
+    elif has_candidates:
+        diagnosis = "gate_uncertainty"
+    elif branch_class == "risky" or non_main > 2:
+        diagnosis = "branch_drift"
+    elif dirty:
+        diagnosis = "execution_restart"
+    else:
+        diagnosis = "routine_sip"
+
+    best = (top_execution_action or "").strip()
+    if len(best) > 220:
+        best = best[:217] + "…"
+
+    friction_parts: List[str] = []
+    wt = str(handoff.get("worktreeState") or "").lower()
+    if "risky" in wt:
+        friction_parts.append("risky worktree residue from dream")
+    if has_candidates:
+        friction_parts.append("unresolved gate surface")
+    if non_main > 3:
+        friction_parts.append("many open branches")
+    if strong_handoff:
+        friction_parts.append("strong carry-forward — ambiguity if you skip it")
+    if check_sync and not friction_parts:
+        friction_parts.append("sync checks ran — watch template drift if you pull")
+    likely_friction = (
+        "; ".join(friction_parts)
+        if friction_parts
+        else "low if you hold one lane until the top action is done"
+    )[:240]
+
+    do_not: List[str] = [
+        "Do not stage or merge from this brief — gate stays companion-controlled.",
+    ]
+    if strong_handoff:
+        do_not.append("Do not open a second lane before addressing last night's carry-forward.")
+    if has_candidates:
+        do_not.append("Do not add new gate candidates during orientation unless the signal is clearly identity-relevant.")
+    if not has_handoff and has_candidates:
+        do_not.append("Do not start deep execution before scanning pending candidates.")
+    do_not_s = " ".join(do_not)[:320]
+
+    return {
+        "sipDiagnosis": diagnosis,
+        "bestNextMove": best or "Pick one small execution step from your self-work plan.",
+        "likelyFriction": likely_friction,
+        "doNotStartWith": do_not_s,
+        "branchHygieneClass": branch_class,
+    }
+
+
+def _apply_residue_session_options(
+    options: List[Dict[str, str]],
+    handoff: Dict[str, Any],
+    mode: str,
+) -> List[Dict[str, str]]:
+    """When carry-forward is strong, de-emphasize light review (template default)."""
+    if mode == "minimal":
+        return options
+    strong = bool(
+        handoff.get("tomorrowTopAction")
+        and handoff.get("topActionReason")
+        and not handoff.get("quietRun")
+    )
+    if not strong:
+        return options
+    out: List[Dict[str, str]] = []
+    rest: List[Dict[str, str]] = []
+    for opt in options:
+        label = opt.get("label", "")
+        if label == "Light Review + Capture":
+            rest.append(opt)
+        else:
+            out.append(opt)
+    return out + rest
+
+
+def _apply_coffee_lane(
+    options: List[Dict[str, str]],
+    lane: str,
+) -> List[Dict[str, str]]:
+    lane_l = (lane or "").strip().lower()
+    if not lane_l or lane_l in ("none", "default"):
+        return options
+    priority = {
+        "write": ("Deep Work", "WRITE"),
+        "gate": ("Analyst Mode", "GATE"),
+        "build": ("Deep Work", "BUILD"),
+        "research": ("Analyst Mode", "RESEARCH"),
+    }
+    if lane_l not in priority:
+        return options
+    prefer_label, tag = priority[lane_l]
+    front = [o for o in options if o.get("label") == prefer_label]
+    others = [o for o in options if o.get("label") != prefer_label]
+    tagged = list(front + others)
+    if tagged:
+        tagged[0] = {
+            **tagged[0],
+            "reason": f"{tagged[0].get('reason', '')} (lane={tag})".strip(),
+        }
+    return tagged
+
+
+def _write_morning_checkback(
+    handoff_dir: Path,
+    *,
+    morning_date: str,
+    handoff_date: str,
+    helpful: str,
+    outcome: str,
+) -> Path:
+    handoff_dir.mkdir(parents=True, exist_ok=True)
+    path = handoff_dir / f"morning-checkback-{morning_date}.json"
+    payload = {
+        "morningDate": morning_date,
+        "referencesHandoffDate": handoff_date,
+        "handoffWasHelpful": helpful,
+        "yesterdayTopActionOutcome": outcome or "unknown",
+        "generated_by": "good-morning-brief.py",
+    }
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return path
 
 
 def _extract_objective_id(text: str) -> str:
@@ -368,6 +613,32 @@ def main() -> int:
     ap.add_argument("--upstream-repo", default="https://github.com/rbtkhn/companion-self")
     ap.add_argument("--upstream-ref", default="main")
     ap.add_argument("--max-lines", type=int, default=160)
+    ap.add_argument(
+        "--write-checkback",
+        action="store_true",
+        help="Write morning-checkback-<today>.json (requires --checkback-helpful).",
+    )
+    ap.add_argument(
+        "--checkback-helpful",
+        choices=["yes", "no", "partial"],
+        default=None,
+        help="Whether last night's handoff was helpful (used with --write-checkback).",
+    )
+    ap.add_argument(
+        "--checkback-outcome",
+        default="",
+        help="One line: outcome of yesterday's top action (optional).",
+    )
+    ap.add_argument(
+        "--coffee-context-file",
+        default="",
+        help="JSON from cadence-coffee: deltaLines, branchHygieneClass, suggestedCoffeeMode, etc.",
+    )
+    ap.add_argument(
+        "--coffee-lane",
+        default="",
+        help="Optional lane focus: write|gate|build|research|none",
+    )
     args = ap.parse_args()
 
     repo_root = Path.cwd()
@@ -388,6 +659,29 @@ def main() -> int:
     work_text = _read_text(user_dir / "self-skill-work.md")
     gate_text = _read_text(user_dir / "recursion-gate.md")
     handoff = _read_json(user_dir / "daily-handoff" / "night-handoff.json")
+    coffee_ctx_path = (
+        Path(args.coffee_context_file).expanduser()
+        if (args.coffee_context_file or "").strip()
+        else None
+    )
+    runner_ctx = _read_coffee_runner_context(coffee_ctx_path)
+    git_ctx = _git_quick_context(repo_root)
+    if runner_ctx.get("branchHygieneClass"):
+        git_ctx["branchHygieneClass"] = runner_ctx["branchHygieneClass"]
+    if runner_ctx.get("nonMainBranchCount") is not None:
+        try:
+            git_ctx["nonMainBranchCount"] = int(runner_ctx["nonMainBranchCount"])
+        except (TypeError, ValueError):
+            pass
+    if runner_ctx.get("worktreeDirty") is not None:
+        git_ctx["worktreeDirty"] = bool(runner_ctx["worktreeDirty"])
+
+    if args.write_checkback and not args.checkback_helpful:
+        print(
+            "--write-checkback requires --checkback-helpful yes|no|partial",
+            file=sys.stderr,
+        )
+        return 1
 
     # Boundary guard: self-memory is ephemeral continuity only.
     # Do not derive identity truth or write Record updates from memory content.
@@ -415,6 +709,7 @@ def main() -> int:
     top_sync_action = "Run sync checks and select one update action." if args.check_sync else "Sync checks skipped; choose one execution action."
     if sync_summary["workDev"]["status"] == "no_relevant_updates" and sync_summary["workBusiness"]["status"] == "no_relevant_updates":
         top_sync_action = "No relevant sync updates; keep mirrors unchanged today."
+    top_action_reason = handoff.get("topActionReason", "") if handoff else ""
     top_execution_action = handoff.get(
         "tomorrowTopAction",
         f"Execute one scoped {self_work_bridge['topSkillFocus']} action from self-work plan.",
@@ -438,8 +733,48 @@ def main() -> int:
         top_sync_action = (
             f"{top_sync_action} Reference shelf anchor: {library_bridge['activeShelfTopic']}."
         )
+    pre_write_execution = top_execution_action
+    write_bridge_overrode = False
     if self_work_bridge["topSkillFocus"] == "WRITE" and write_bridge["parseConfidence"] in {"medium", "high"}:
+        write_bridge_overrode = True
         top_execution_action = write_bridge["suggestedWriteAction"]
+
+    context_snapshot = list(context_snapshot)
+    if write_bridge_overrode and handoff.get("tomorrowTopAction"):
+        context_snapshot.append(
+            "Note: WRITE bridge replaced last night's carry-forward action; "
+            "the handoff reason above still reflects dream's judgment."
+        )
+    context_snapshot = context_snapshot[:9]
+
+    delta_lines = runner_ctx.get("deltaLines")
+    if isinstance(delta_lines, list) and delta_lines:
+        prefixed = [f"Since last coffee: {str(x)[:200]}" for x in delta_lines[:4]]
+        context_snapshot = prefixed + list(context_snapshot)
+        context_snapshot = context_snapshot[:12]
+
+    coffee_hints = _coffee_orientation_hints(
+        handoff=handoff,
+        gate_text=gate_text,
+        check_sync=bool(args.check_sync),
+        git_ctx=git_ctx,
+        runner_ctx=runner_ctx,
+        top_execution_action=top_execution_action,
+    )
+    if runner_ctx.get("branchHygieneClass"):
+        coffee_hints["branchHygieneClass"] = str(runner_ctx["branchHygieneClass"])
+    if runner_ctx.get("recommendedBranchAction"):
+        coffee_hints["recommendedBranchAction"] = str(runner_ctx["recommendedBranchAction"])
+    brc = coffee_hints.get("branchHygieneClass", "")
+    if brc and brc != "clean":
+        coffee_hints["likelyFriction"] = (
+            f"{coffee_hints['likelyFriction']} (branch hygiene: {brc})"
+        )[:260]
+
+    session_opts = _session_options(args.mode, personality_bridge)
+    session_opts = _apply_residue_session_options(session_opts, handoff, args.mode)
+    session_opts = _apply_coffee_lane(session_opts, args.coffee_lane)
+
     top_gate_action = "Review recursion-gate candidates before adding new identity-relevant claims." if "candidate" in gate_text.lower() else "Stage only if identity-relevant signal appears."
 
     payload: Dict[str, Any] = {
@@ -450,7 +785,7 @@ def main() -> int:
         "contextSnapshot": context_snapshot,
         "intentionPrompt": {"enabled": args.mode != "minimal", "prompt": intention_prompt},
         "syncSummary": sync_summary,
-        "sessionOptions": _session_options(args.mode, personality_bridge),
+        "sessionOptions": session_opts,
         "selfWorkBridge": self_work_bridge,
         "knowledgeBridge": {
             "knowledgeEdge": knowledge_edge["knowledgeEdge"],
@@ -469,6 +804,20 @@ def main() -> int:
             "topSyncAction": top_sync_action,
             "topExecutionAction": top_execution_action,
             "topGateAction": top_gate_action,
+            "topActionReasonFromHandoff": top_action_reason,
+            "writeBridgeOverrodeHandoff": write_bridge_overrode,
+            "handoffExecutionBeforeWriteBridge": pre_write_execution if write_bridge_overrode else None,
+        },
+        "coffeeOrientationHints": coffee_hints,
+        "coffeeRunnerMeta": {
+            k: runner_ctx[k]
+            for k in (
+                "suggestedCoffeeMode",
+                "recommendedBranchAction",
+                "branchHygieneClass",
+                "deltaLines",
+            )
+            if runner_ctx.get(k) is not None
         },
         "warnings": [],
     }
@@ -502,6 +851,17 @@ def main() -> int:
         )
         payload["warnings"].append("Daily intention note written (generated_by: good-morning-brief.py).")
 
+    if args.write_checkback and args.checkback_helpful:
+        hdate = str(handoff.get("date", "")) if handoff else ""
+        ck_path = _write_morning_checkback(
+            user_dir / "daily-handoff",
+            morning_date=date.today().isoformat(),
+            handoff_date=hdate or "unknown",
+            helpful=args.checkback_helpful,
+            outcome=args.checkback_outcome.strip(),
+        )
+        payload["warnings"].append(f"Morning checkback written: {ck_path.name} (not Record; operational telemetry).")
+
     if args.emit_json:
         print(json.dumps(payload, indent=2))
         return 0
@@ -509,6 +869,15 @@ def main() -> int:
     lines: List[str] = []
     lines.append("### Good morning brief")
     lines.append(f"- Greeting: {warm_greeting}")
+    if runner_ctx.get("suggestedCoffeeMode"):
+        lines.append(
+            f"- Suggested next mode (optional): {runner_ctx['suggestedCoffeeMode']} — you chose {args.mode}."
+        )
+    lines.append("### Coffee orientation (capped)")
+    lines.append(f"- Why this sip: {coffee_hints['sipDiagnosis']}")
+    lines.append(f"- Best next move now: {coffee_hints['bestNextMove']}")
+    lines.append(f"- Likely friction: {coffee_hints['likelyFriction']}")
+    lines.append(f"- Do not start with: {coffee_hints['doNotStartWith']}")
     for item in context_snapshot:
         lines.append(f"- Context: {item}")
     if args.mode != "minimal":
@@ -538,6 +907,12 @@ def main() -> int:
     lines.append(f"- Write bridge style: {write_bridge['voiceStyle']}")
     lines.append(f"- Write suggestion: {write_bridge['suggestedWriteAction']}")
     lines.append(f"- Top sync action: {top_sync_action}")
+    if top_action_reason:
+        lines.append(f"- Handoff top-action reason: {top_action_reason}")
+    if write_bridge_overrode:
+        lines.append(
+            f"- WRITE bridge overrode handoff action (was: {pre_write_execution[:160]}{'…' if len(pre_write_execution) > 160 else ''})"
+        )
     lines.append(f"- Top execution action: {top_execution_action}")
     lines.append(f"- Top gate action: {top_gate_action}")
     for option in payload["sessionOptions"]:

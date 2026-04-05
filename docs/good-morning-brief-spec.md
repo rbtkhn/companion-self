@@ -41,6 +41,22 @@ python3 scripts/good-morning-brief.py --user <id> [options]
   - Default: `main`.
 - `--max-lines <n>`
   - Cap human-readable output length for chat/UI surfaces.
+- `--write-checkback`
+  - Write `users/<id>/daily-handoff/morning-checkback-<today>.json` (requires `--checkback-helpful`). Operational telemetry only; not Record.
+- `--checkback-helpful yes|no|partial`
+  - Whether last night’s `night-handoff.json` was helpful (paired with `--write-checkback`).
+- `--checkback-outcome "text"`
+  - Optional one-line outcome for yesterday’s top action.
+- `--coffee-context-file <path>`
+  - JSON written by `cadence-coffee.py` (operational only). Supplies delta lines, branch triage, suggested next mode, and optional lane hook inputs. When absent, orientation hints still run from on-disk context only.
+- `--coffee-lane <id>`
+  - Optional session-shaping hook: `write`, `gate`, `build`, `research`, or `none`. Passed through from `cadence-coffee.py --lane`. Instance overrides may extend mapping in a forked `good-morning-brief.py`.
+
+### Handoff schema v2 pickup
+
+When `night-handoff.json` includes `handoffSchemaVersion: 2`, the morning brief surfaces `topActionReason`, `residueLedger`, `worktreeState` / `worktreeAdvice`, `quietRun`, `ignoreTomorrow`, `activeLaneHint`, and structured `gateSuggestions` in the context snapshot (capped lines).
+
+If the WRITE bridge overrides `tomorrowTopAction`, the payload includes `writeBridgeOverrodeHandoff` and `handoffExecutionBeforeWriteBridge`, and the human-readable output notes the override so `topActionReason` does not look contradictory.
 
 ### Exit codes
 
@@ -98,11 +114,13 @@ Script must produce:
 ### Human-readable sections
 
 1. `warmGreeting`
-2. `contextSnapshot` (2-4 high-signal bullets)
-3. `intentionPrompt` (optional; mode-dependent)
-4. `syncSummary` (optional; if `--check-sync`)
-5. `sessionOptions` (2-3 realistic options)
-6. `dailyOpsHandoff` (top sync/execution/gate action suggestions)
+2. `contextSnapshot` (2-4 high-signal bullets; may prefix “Since last coffee” when runner supplies delta)
+3. Optional **Coffee orientation** block (capped bullets from `coffeeOrientationHints`)
+4. `intentionPrompt` (optional; mode-dependent)
+5. `syncSummary` (optional; if `--check-sync`)
+6. `sessionOptions` (2-3 realistic options; may be lane- or residue-tweaked)
+7. `dailyOpsHandoff` (top sync/execution/gate action suggestions)
+8. Optional **Suggested next mode** line when runner passes `suggestedCoffeeMode` via context file
 
 ### JSON schema (target shape)
 
@@ -187,11 +205,31 @@ Script must produce:
     "topExecutionAction": "string",
     "topGateAction": "string"
   },
+  "coffeeOrientationHints": {
+    "sipDiagnosis": "string",
+    "bestNextMove": "string",
+    "likelyFriction": "string",
+    "doNotStartWith": "string",
+    "branchHygieneClass": "string",
+    "recommendedBranchAction": "string"
+  },
+  "coffeeRunnerMeta": {
+    "branchHygieneClass": "clean|watch|risky",
+    "recommendedBranchAction": "none|inspect|reconcile",
+    "suggestedCoffeeMode": "light|standard|deep",
+    "deltaLines": ["string"]
+  },
   "warnings": [
     "string"
   ]
 }
 ```
+
+**Coffee orientation (human output):** After the greeting and before session options, the script may print a capped `### Coffee orientation` block (up to four bullets) derived from `coffeeOrientationHints`. It is heuristic and read-only.
+
+**Residue-aware options:** When night handoff v2 signals strong carry-forward (`tomorrowTopAction` + `topActionReason`, not `quietRun`), `sessionOptions` may be trimmed or reordered conservatively.
+
+**Lane hook:** `--coffee-lane` may promote a matching option or add one lane-specific line; default mapping is a small stub suitable for instance override.
 
 ---
 

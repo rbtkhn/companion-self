@@ -41,11 +41,13 @@ The ritual:
 
 1. Assesses the day's status (finished well / partial / blocked)
 2. Captures one high-value signal
-3. Sets one carry-forward action for tomorrow
-4. Sets a stop condition (what not to overdo)
+3. Sets one carry-forward action for tomorrow plus a short **topActionReason** (why that action)
+4. Sets a stop condition (what not to overdo), optionally shaped by **tomorrowEnergyFit** (low / normal / high)
 5. Optional reset cue (what to let go of tonight)
-6. Writes `daily-handoff/night-handoff.json` (handoff for tomorrow's coffee)
-7. Reports uncommitted work (git status)
+6. Writes `daily-handoff/night-handoff.json` (handoff for tomorrow's coffee) with **handoffSchemaVersion** 2 fields: **residueLedger** (capped buckets), **quietRun**, **activeLaneHint**, **ignoreTomorrow**, structured **gateSuggestions** when `--suggest-gate`
+7. **cadence-dream.py** merges **worktreeState** / **worktreeAdvice** from git triage into the same JSON (read-only; still no commit/push)
+8. Reports uncommitted work (git status to stdout)
+9. **Reflective mode** also writes `daily-handoff/weekly-reflection.json` (rolling weekly artifact)
 
 **Morning handoff:** When `--write-closeout` is active (the default via the runner), the night brief writes `users/<id>/daily-handoff/night-handoff.json` — a compact summary that tomorrow's `coffee` Step 1 automatically picks up and displays. This closes the choreography gap: coffee knows what dream captured without the operator carrying it across threads.
 
@@ -70,8 +72,12 @@ If nothing important changed, say so plainly. A quiet run is success.
 - Day status: partial
 - One signal: WORK signal: completed cadence upstream
 - Tomorrow top action: Review pending gate candidates first.
+- Why this action: Gate surface shows pending candidates; address or defer before opening new execution lanes.
 - Stop condition: Stop after top action is complete; avoid adding new maintenance tasks.
 - Optional reset cue: Release unfinished loops; begin with the top action tomorrow.
+- Energy fit (tomorrow): normal
+- Quiet run: false
+- Lane hint: GATE
 ```
 
 ## Guardrails

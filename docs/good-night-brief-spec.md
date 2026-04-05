@@ -65,30 +65,51 @@ Precedence:
 
 1. `dayStatus`
 2. `oneSignal`
-3. `tomorrowTopAction`
-4. `stopCondition`
+3. `tomorrowTopAction` + `topActionReason`
+4. `stopCondition` (may reflect `tomorrowEnergyFit`)
 5. `optionalResetCue`
+6. Optional lines: `quietRun`, `activeLaneHint`, `ignoreTomorrow`, `residueLedger`, gate hints, `worktreeState` / `worktreeAdvice` (after runner merge)
 
 ### JSON shape
 
+`handoffSchemaVersion` **2** (current template) adds judgment and residue fields while keeping the core keys stable. Readers should tolerate missing optional keys (older handoffs).
+
 ```json
 {
+  "handoffSchemaVersion": 2,
   "user": "string",
   "date": "YYYY-MM-DD",
   "mode": "minimal|standard|reflective",
   "dayStatus": "finished_well|partial|blocked",
   "oneSignal": "string",
   "tomorrowTopAction": "string",
+  "topActionReason": "string",
   "stopCondition": "string",
   "optionalResetCue": "string",
+  "tomorrowEnergyFit": "low|normal|high",
+  "quietRun": true,
+  "activeLaneHint": "GATE|WORK|SEED|NONE",
+  "ignoreTomorrow": "string",
+  "residueLedger": {
+    "must_resume": "string",
+    "safe_to_drop": "string",
+    "blocked": "string",
+    "watch_later": "string"
+  },
+  "worktreeState": "clean|light residue|risky residue",
+  "worktreeAdvice": "string",
   "gateSuggestions": [
-    "string"
+    "string | { \"item\": \"string\", \"reason\": \"string\", \"urgency\": \"string\" }"
   ],
   "warnings": [
     "string"
   ]
 }
 ```
+
+`worktreeState` / `worktreeAdvice` are written by `cadence-dream.py` after `good-night-brief.py` completes (git triage only; no commits).
+
+**Reflective mode:** also writes `users/<id>/daily-handoff/weekly-reflection.json` (rolling artifact for end-of-sprint/week).
 
 ---
 

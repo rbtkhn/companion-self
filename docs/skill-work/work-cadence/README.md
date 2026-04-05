@@ -65,12 +65,15 @@ Each clock needs its own ritual because the failure modes are different. Reorien
 
 ```
 cadence-coffee.py
-  └─ good-morning-brief.py        context, bridges, session options, handoff pickup
+  ├─ reads/writes users/<id>/daily-handoff/last-coffee-state.json   (delta since last coffee; operational)
+  ├─ writes users/<id>/daily-handoff/.coffee-run-context.json         (runner → brief; operational; gitignored in instance policy if desired)
+  └─ good-morning-brief.py        context, bridges, session options, handoff pickup, coffeeOrientationHints
        └─ write_style_bridge.py   optional WRITE synthesis
 
 cadence-dream.py
   └─ good-night-brief.py          signal capture, handoff write, gate suggestion
   └─ git status summary           uncommitted-work awareness
+  └─ merge worktree triage        writes worktreeState / worktreeAdvice into night-handoff.json
 ```
 
 **Runners** are lightweight dispatch wrappers. **Briefs** hold all the parsing, bridge-building, and output logic. Instances may extend or replace the runners while keeping the briefs stable.
@@ -95,8 +98,21 @@ cadence-dream.py
 | `tomorrowTopAction` | string | Carry-forward action for morning |
 | `stopCondition` | string | What not to overdo tomorrow |
 | `optionalResetCue` | string | What to let go of tonight |
-| `gateSuggestions` | string[] | Advisory gate staging hints |
+| `handoffSchemaVersion` | int | **2** = extended handoff (optional on legacy files) |
+| `topActionReason` | string | Why `tomorrowTopAction` was chosen (heuristic; not identity truth) |
+| `tomorrowEnergyFit` | string | `low` / `normal` / `high` — shapes stop-condition copy |
+| `quietRun` | bool | When true, morning coffee may use softer framing |
+| `activeLaneHint` | string | `GATE` / `WORK` / `SEED` / `NONE` — light lane foregrounding |
+| `ignoreTomorrow` | string | Noise to deprioritize (complements stop condition) |
+| `residueLedger` | object | At most one short string per bucket: `must_resume`, `safe_to_drop`, `blocked`, `watch_later` |
+| `worktreeState` | string | `clean` / `light residue` / `risky residue` (from `cadence-dream.py`) |
+| `worktreeAdvice` | string | Read-only triage line (still no commit/push in dream) |
+| `gateSuggestions` | array | Strings or `{item, reason, urgency}` objects — advisory only |
 | `warnings` | string[] | Parse/fallback warnings |
+
+**Morning checkback (optional):** `good-morning-brief.py --write-checkback --checkback-helpful yes|no|partial` writes `morning-checkback-<YYYY-MM-DD>.json` under `daily-handoff/` (operational telemetry; not Record).
+
+**Weekly reflection:** `weekly-reflection.json` in `daily-handoff/` is updated when dream runs in **reflective** mode.
 
 The handoff artifact is an operational file, not identity truth. It should not be committed to the Record or treated as evidence.
 
