@@ -180,6 +180,14 @@ Bridge is complete. The repo is pushed, the transfer prompt is generated, `bridg
 
 **Optional receipt:** Save the transfer block under `docs/skill-work/work-cadence/bridge-packets/YYYY-MM-DD-session.md` if a durable copy is needed.
 
+---
+
+## After the new session opens — doc-only loop
+
+**Optional operator habit:** In the **fresh** thread, confirm **coffee** (or instance morning ritual) ran on the pasted block, the **`coffee` tail** is still a lone line, and length was tolerable. If the same failure repeats **twice**, patch **this skill** or [bridge-packet-contract.md](../../../docs/skill-work/work-cadence/bridge-packet-contract.md).
+
+---
+
 ## Guardrails
 
 - **Commits only to the current branch.** Never switch branches, force-push, or commit to a branch the operator didn't intend.
@@ -224,3 +232,9 @@ The template provides the structural pattern; instances customize for their need
 - `scripts/bridge_last_state.py` — `last-bridge-state.json` + `--print-delta`
 - `scripts/cadence-coffee.py` — morning runner
 - `scripts/cadence-dream.py` — night runner
+
+## Revision log
+
+| Date | Change |
+|------|--------|
+| 2026-04-06 | Doc-only cold-thread loop § *After the new session opens*. |

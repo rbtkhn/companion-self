@@ -53,8 +53,15 @@ Default: packet exists **only in chat**. If the operator asks to save: e.g. `doc
 
 ---
 
+## Improving harvest over time (operator habit)
+
+No scripts required. After pasting the packet into the target session, note **Load**, **Accuracy**, **Action** (see [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md) § *After the paste*). If the same gap appears twice, update the skill or this contract.
+
+---
+
 ## Revision log
 
 | Date | Change |
 |------|--------|
 | 2026-04-05 | Initial contract in template (harvest as bridge sibling). |
+| 2026-04-06 | Pointer to doc-only post-paste review loop (skill § After the paste). |

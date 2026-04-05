@@ -48,6 +48,12 @@ For **Since last bridge**, instances may persist a small operational snapshot (n
 
 ---
 
+## Improving bridge over time (operator habit)
+
+No scripts required. After a **cold-thread** open, check: **coffee** ran on the paste, **`coffee` tail** intact, packet **length** acceptable. If the same mistake repeats twice, update [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) or this contract. See instance bridge skill § *After the new session opens*.
+
+---
+
 ## Design rationale: I-PASS mapping
 
 The section list is informed by the I-PASS clinical handoff protocol (Illness severity, Patient summary, Action list, Situation awareness, Synthesis). Bridge is not medical, but the structural discipline of I-PASS — particularly its insistence on an explicit synthesis step — strengthens the handoff.
@@ -68,3 +74,12 @@ The section list is informed by the I-PASS clinical handoff protocol (Illness se
 - It is **not** Record truth, not self-memory, and not a pipeline artifact.
 - It complements `last-dream.json` / `night-handoff.json` (which carries dream state) and `self-memory.md` (which carries long-horizon continuity). Bridge synthesizes across all of these for the specific purpose of session restart.
 - The canonical skill file is `.cursor/skills/bridge/SKILL.md` (instance path). This contract documents the output format; the skill file documents the full ritual (read, commit, generate, done).
+
+---
+
+## Revision log (contract)
+
+| Date | Change |
+|------|--------|
+| *(prior)* | Template bridge extensions (delta, transfer quality, posture, etc.). |
+| 2026-04-06 | Doc-only cold-thread improvement loop (pointer + § Improving bridge over time). |

@@ -251,6 +251,13 @@ When a cadence run produces unexpected output, check these in order:
 
 - **Which cadence events actually ran?** Check `work-cadence-events.md` — one line per run.
 - **Agent reading stale skill file?** Long sessions can cache file contents. Ask the agent to re-read.
+- **Runner vs skill mismatch?** If `cadence-coffee.py` / brief output disagrees with `.cursor/skills/coffee/SKILL.md`, update the **spec or skill** so the next run does not guess.
+
+---
+
+## Closing the troubleshooting loop (doc-only)
+
+If the **same** troubleshooting bullet applies **twice in a short window**, add **one line** to the relevant **SKILL** or **packet contract** and optionally a **pointer** back into the subsection above. Instances that mirror grace-mar may align prose with grace-mar `docs/skill-work/work-cadence/README.md` § *Closing the troubleshooting loop*.
 
 ---
 

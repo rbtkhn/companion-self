@@ -91,6 +91,20 @@ Output **one** markdown block following **[harvest-packet-contract](../../../doc
 
 ---
 
+## After the paste — improve the ritual (no extra tooling)
+
+**Optional operator habit** (scratch or mental note is enough): once the packet is in the **receiving** session, briefly score:
+
+1. **Load** — Did the receiver skip re-discovery? (yes / partial / no)
+2. **Accuracy** — Any wrong `{fact}` or missing caveat?
+3. **Action** — Did **Suggested asks** produce useful work without scope creep?
+
+**Recursive tightening:** If the **same friction** shows up **twice**, patch **[harvest-packet-contract](../../../docs/skill-work/work-cadence/harvest-packet-contract.md)** or **this skill** — not governed identity surfaces. Optional: save a strong packet under `harvest-packets/` as an informal quality bar.
+
+**Cadence telemetry** (`log_cadence_event.py --kind harvest`) stays **optional**; this loop does not require it.
+
+---
+
 ## Optional persistence
 
 Default: packet **only in chat**. If the operator says **save:** suggest `docs/skill-work/work-cadence/harvest-packets/YYYY-MM-DD-harvest.md` or a rolling `last-harvest.md` — **operator-owned**, not Record.
@@ -112,3 +126,4 @@ Default: packet **only in chat**. If the operator says **save:** suggest `docs/s
 | Date | Change |
 |------|--------|
 | 2026-04-05 | Template skill (bridge sibling; gate + night-handoff + instance variants). |
+| 2026-04-06 | Doc-only post-paste review loop (load / accuracy / action); recursive tighten contract or skill. |
