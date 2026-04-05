@@ -32,6 +32,18 @@ See:
 - [docs/change-types.md](docs/change-types.md)
 - [docs/change-review-lifecycle.md](docs/change-review-lifecycle.md)
 
+**Proposal-first workflow (reference path):**
+
+- [docs/state-proposals.md](docs/state-proposals.md) — state proposal = Change Proposal v1 JSON
+- [docs/pipeline/evidence-to-proposal.md](docs/pipeline/evidence-to-proposal.md)
+- [docs/pipeline/proposal-to-review.md](docs/pipeline/proposal-to-review.md)
+- [docs/pipeline/review-to-merge.md](docs/pipeline/review-to-merge.md)
+
+**Conflict governance:**
+
+- [docs/source-of-truth.md](docs/source-of-truth.md)
+- [docs/conflict-resolution-order.md](docs/conflict-resolution-order.md)
+
 ## Governed lifecycle
 
 Companion-Self uses a two-part governance model:
@@ -103,6 +115,15 @@ Readable Markdown from a structured diff:
 
 ```bash
 python3 scripts/generate-identity-diff.py users/demo/review-queue/diffs/diff-001.json --output users/demo/review-queue/identity_diff.md
+```
+
+Starter Change Proposal v1 (replace placeholder state refs before merge):
+
+```bash
+python3 scripts/generate-change-proposal.py --primary-scope pedagogy --change-type refinement \
+  --queue-summary "Short description of the proposed governed change." \
+  --source path/or/id/to/evidence
+python3 scripts/render-change-proposal-summary.py users/demo/review-queue/proposals/<proposal-id>.json
 ```
 
 Full instructions: [docs/change-review-validation.md](docs/change-review-validation.md).

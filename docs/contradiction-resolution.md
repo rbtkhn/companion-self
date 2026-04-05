@@ -4,7 +4,7 @@
 
 **Status:** Template specification. Instances may implement advisory conflict checks before merge (see [instance-patterns.md](instance-patterns.md) § conflict check).
 
-**See also:** [change-review.md](change-review.md) (governed self-revision doctrine entrypoint), [contradiction-policy.md](contradiction-policy.md) (classification during change review), [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md) (governed identity-diff workflow, UI, merge, audit), [identity-fork-protocol.md](identity-fork-protocol.md)
+**See also:** [change-review.md](change-review.md) (governed self-revision doctrine entrypoint), [contradiction-policy.md](contradiction-policy.md) (classification during change review), [source-of-truth.md](source-of-truth.md), [conflict-resolution-order.md](conflict-resolution-order.md), [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md) (governed identity-diff workflow, UI, merge, audit), [identity-fork-protocol.md](identity-fork-protocol.md)
 
 ---
 

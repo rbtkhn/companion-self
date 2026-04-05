@@ -8,6 +8,8 @@ Companion-Self template — validation rules for contradiction and change-review
 
 This document explains how to validate the change-review subsystem artifacts.
 
+**Dependencies:** `validate-change-review.py` uses **`jsonschema`** (same stack as `validate-seed-phase.py`). Install with `pip install -r scripts/requirements-seed-phase.txt` unless your environment already provides `jsonschema`.
+
 Validation exists to ensure that:
 
 - review artifacts conform to their JSON Schemas
