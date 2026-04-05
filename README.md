@@ -74,6 +74,7 @@ See:
 - [docs/seed-phase-readiness.md](docs/seed-phase-readiness.md)
 - [docs/seed-phase-confidence-model.md](docs/seed-phase-confidence-model.md)
 - [docs/seed-phase-artifacts.md](docs/seed-phase-artifacts.md)
+- [docs/seed-phase-intent.md](docs/seed-phase-intent.md) — **`seed_intent.json`** (purpose, workflows, governance zones)
 - [docs/cursor-pack-from-seed.md](docs/cursor-pack-from-seed.md) — optional **`cursor_operator_profile`** on `seed_intake.json` for Cursor rules preset intent
 
 ### Seed Phase validation

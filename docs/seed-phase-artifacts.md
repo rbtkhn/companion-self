@@ -23,6 +23,7 @@ Two reference trees in this repo:
 |------|----------|------|
 | `seed-phase-manifest.json` | All | Index: versions, status, artifact paths, optional changelog. |
 | `seed_intake.json` | 0 | Intake, constraints, education focus, completion metrics; optional **`cursor_operator_profile`** (IDE + Cursor rules preset intent for the instance — see [cursor-pack-from-seed.md](cursor-pack-from-seed.md)). |
+| `seed_intent.json` | 0 (parallel) | Operating purpose, supported/unsupported workflows, review-required and human-only zones, activation success criteria — see [seed-phase-intent.md](seed-phase-intent.md). |
 | `seed_identity.json` | 1 | Identity scaffold + confidence. |
 | `seed_curiosity.json` | 2 | Curiosity scaffold + confidence. |
 | `seed_pedagogy.json` | 3 | Pedagogy scaffold + confidence. |
@@ -35,7 +36,7 @@ Two reference trees in this repo:
 | `work_business_seed.json` | (parallel) | Business / commercial / venture context seed; governs promotion into `users/<id>/work-business.md`. |
 | `seed_dossier.md` | 7 | Human-readable summary for sign-off. |
 
-**Naming:** JSON files use **snake_case** on disk. JSON Schemas in `schema-registry/` use **kebab-case** with `.v1.json` suffix (e.g. `seed-intake.v1.json` validates `seed_intake.json`; `work-dev-seed.v1.json` validates `work_dev_seed.json`; `work-business-seed.v1.json` validates `work_business_seed.json`).
+**Naming:** JSON files use **snake_case** on disk. JSON Schemas in `schema-registry/` use **kebab-case** with `.v1.json` suffix (e.g. `seed-intake.v1.json` validates `seed_intake.json`; `seed-intent.v1.json` validates `seed_intent.json`; `work-dev-seed.v1.json` validates `work_dev_seed.json`; `work-business-seed.v1.json` validates `work_business_seed.json`).
 
 ---
 

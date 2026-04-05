@@ -39,6 +39,14 @@ The artifact set (file names, roles, layout) is specified in **[seed-phase-artif
 
 ---
 
+## Intent as a seed artifact
+
+Seed Phase includes **`seed_intent.json`**: explicit purpose, boundaries, supported and unsupported workflows, and review-sensitive zones for the future instance. It complements intake and identity artifacts; it does not replace them.
+
+See **[seed-phase-intent.md](seed-phase-intent.md)** and **`schema-registry/seed-intent.v1.json`**.
+
+---
+
 ## Readiness gate
 
 **Readiness** is a **hard gate**, not advisory. Rules, thresholds, conditional pass, and re-run-after-upgrade behavior are in **[seed-phase-readiness.md](seed-phase-readiness.md)**.

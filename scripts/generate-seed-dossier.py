@@ -18,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_FILES = [
     "seed-phase-manifest.json",
     "seed_intake.json",
+    "seed_intent.json",
     "seed_identity.json",
     "seed_curiosity.json",
     "seed_pedagogy.json",
@@ -67,6 +68,22 @@ def main() -> None:
     ]
     for s in man.get("stages", []):
         lines.append(f"- **{s.get('id')}**: {s.get('status')}")
+    intent = data["seed_intent.json"]
+    lines.extend(
+        [
+            "",
+            "## Seed intent",
+            "",
+            intent.get("companion_purpose", "—"),
+            "",
+            "**Supported:** " + "; ".join(intent.get("supported_workflows") or []) + ".",
+            "",
+            "**Unsupported:** " + "; ".join(intent.get("unsupported_workflows") or []) + ".",
+            "",
+            "**Review-required:** " + "; ".join(intent.get("review_required_zones") or []) + ".",
+            "",
+        ]
+    )
     intake = data["seed_intake.json"]
     cop = intake.get("cursor_operator_profile")
     lines.extend(["", "## Intake — Cursor / operator workspace", ""])

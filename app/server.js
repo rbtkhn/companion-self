@@ -182,6 +182,7 @@ app.get("/api/seed-phase", (req, res) => {
   const names = [
     "seed-phase-manifest.json",
     "seed_intake.json",
+    "seed_intent.json",
     "seed_identity.json",
     "seed_curiosity.json",
     "seed_pedagogy.json",

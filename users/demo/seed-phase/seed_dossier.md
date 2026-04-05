@@ -17,6 +17,17 @@ Manifest status: **ready**. Readiness decision: **pass** (score 0.88).
 - **trials**: complete
 - **readiness**: complete
 
+## Seed intent
+
+This companion is intended to support durable personal reasoning, guided knowledge work, and governed post-seed evolution without silently mutating important identity or operating commitments.
+
+**Supported:** guided reflection; structured learning support; project continuity; governed memory revision.
+
+**Unsupported:** silent autonomous identity rewriting; unguarded authority escalation; unguarded external action.
+
+**Review-required:** identity shifts; pedagogy changes; memory governance changes; safety rule changes.
+
+
 ## Intake — Cursor / operator workspace
 
 - **IDE:** cursor · **Rules preset:** `instance_light`

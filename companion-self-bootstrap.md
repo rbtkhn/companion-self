@@ -60,6 +60,7 @@ Before a new companion instance is **activated**, the following **pre-activation
 
 - `seed-phase-manifest.json`
 - `seed_intake.json`
+- `seed_intent.json` (operating purpose and boundaries — [docs/seed-phase-intent.md](docs/seed-phase-intent.md))
 - `seed_identity.json`
 - `seed_curiosity.json`
 - `seed_pedagogy.json`

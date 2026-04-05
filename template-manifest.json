@@ -22,7 +22,7 @@
     },
     {
       "path": "docs/seed-phase-stages.md",
-      "description": "Canonical seed stages 0–7 (intake through readiness gate).",
+      "description": "Canonical seed stages 0\u20137 (intake through readiness gate).",
       "optional": false
     },
     {
@@ -38,6 +38,11 @@
     {
       "path": "docs/seed-phase-artifacts.md",
       "description": "Seed artifact file set; layout under _template and demo; validation pointers.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-intent.md",
+      "description": "Seed intent artifact doctrine (seed_intent.json).",
       "optional": false
     },
     {
@@ -92,27 +97,27 @@
     },
     {
       "path": "docs/skill-work/work-cadence/harvest-packet-contract.md",
-      "description": "Session Harvest Packet contract — section headings and rules; midstream import (no coffee tail); sibling to bridge packet.",
+      "description": "Session Harvest Packet contract \u2014 section headings and rules; midstream import (no coffee tail); sibling to bridge packet.",
       "optional": true
     },
     {
       "path": "scripts/log_cadence_event.py",
-      "description": "Cadence event append helper — CLI + importable function for logging coffee/dream/bridge/harvest runs to work-cadence-events.md.",
+      "description": "Cadence event append helper \u2014 CLI + importable function for logging coffee/dream/bridge/harvest runs to work-cadence-events.md.",
       "optional": true
     },
     {
       "path": "scripts/session_harvest.py",
-      "description": "Harvest ritual helper — on-disk checklist, optional markdown template, optional cadence log (--kind harvest).",
+      "description": "Harvest ritual helper \u2014 on-disk checklist, optional markdown template, optional cadence log (--kind harvest).",
       "optional": true
     },
     {
       "path": "scripts/cadence-coffee.py",
-      "description": "Coffee — consolidated morning cadence runner: mode dispatch over good-morning-brief.py with branch snapshot.",
+      "description": "Coffee \u2014 consolidated morning cadence runner: mode dispatch over good-morning-brief.py with branch snapshot.",
       "optional": true
     },
     {
       "path": "scripts/cadence-dream.py",
-      "description": "Dream — consolidated night cadence runner: good-night-brief.py with closeout + git summary.",
+      "description": "Dream \u2014 consolidated night cadence runner: good-night-brief.py with closeout + git summary.",
       "optional": true
     },
     {
@@ -346,6 +351,11 @@
       "optional": false
     },
     {
+      "path": "users/_template/seed-phase/seed_intent.json",
+      "description": "Seed intent placeholder (purpose, workflows, review zones).",
+      "optional": false
+    },
+    {
       "path": "users/_template/seed-phase/seed_identity.json",
       "description": "Seed identity placeholder.",
       "optional": false
@@ -413,6 +423,11 @@
     {
       "path": "users/demo/seed-phase/seed_intake.json",
       "description": "Demo seed intake.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-phase/seed_intent.json",
+      "description": "Demo seed intent.",
       "optional": false
     },
     {
@@ -556,6 +571,7 @@
     "schemas": {
       "seed_phase_manifest": "schema-registry/seed-phase-manifest.v1.json",
       "seed_intake": "schema-registry/seed-intake.v1.json",
+      "seed_intent": "schema-registry/seed-intent.v1.json",
       "seed_identity": "schema-registry/seed-identity.v1.json",
       "seed_curiosity": "schema-registry/seed-curiosity.v1.json",
       "seed_pedagogy": "schema-registry/seed-pedagogy.v1.json",

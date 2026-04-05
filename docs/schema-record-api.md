@@ -168,6 +168,7 @@ JSON Schemas (Draft 2020-12) in `schema-registry/`:
 |-------------|-------------------------|
 | `seed-phase-manifest.v1.json` | `seed-phase-manifest.json` |
 | `seed-intake.v1.json` | `seed_intake.json` |
+| `seed-intent.v1.json` | `seed_intent.json` |
 | `seed-identity.v1.json` | `seed_identity.json` |
 | `seed-curiosity.v1.json` | `seed_curiosity.json` |
 | `seed-pedagogy.v1.json` | `seed_pedagogy.json` |
