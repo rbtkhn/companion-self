@@ -1,6 +1,6 @@
 # Cadence events
 
-> Append-only audit of **coffee**, **dream**, and **bridge** runs.
+> Append-only audit of **coffee**, **dream**, **bridge**, and optional **harvest** runs.
 > **Not** Record truth. **Not** self-memory. **Not** a replacement for
 > handoff artifacts or `session-transcript.md`.
 >

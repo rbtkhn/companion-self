@@ -1,6 +1,6 @@
 # work-cadence
 
-**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence triad — `coffee` (orientation), `dream` (consolidation), and `bridge` (session handoff). The executable trigger surfaces live in `.cursor/skills/coffee/SKILL.md`, `.cursor/skills/dream/SKILL.md`, and `.cursor/skills/bridge/SKILL.md`.
+**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence triad — `coffee` (orientation), `dream` (consolidation), and `bridge` (session handoff) — plus **`harvest`** as a **fourth operator tool on a different axis** (cross-agent extraction; on demand, not a fourth clock). Executable triggers live in `.cursor/skills/coffee/SKILL.md`, `.cursor/skills/dream/SKILL.md`, `.cursor/skills/bridge/SKILL.md`, and `.cursor/skills/harvest/SKILL.md`.
 
 **Not** Record truth. **Not** a merge path. **Not** identity-relevant unless gated.
 
@@ -10,9 +10,9 @@
 
 | Role | Description |
 |------|-------------|
-| **Cadence architecture** | Defines the shape of daily rhythm: coffee (orientation, repeated), dream (consolidation, once). |
+| **Cadence architecture** | Defines the shape of daily rhythm: coffee (orientation, repeated), dream (consolidation, once), bridge (session carry-forward), harvest (cross-agent packet; midstream import). |
 | **Night-to-morning handoff** | Documents the `daily-handoff/night-handoff.json` data contract that bridges dream output to coffee Step 1. |
-| **Cadence event audit** | Append-only telemetry of each run via `work-cadence-events.md` and `scripts/log_cadence_event.py`. |
+| **Cadence event audit** | Append-only telemetry via `work-cadence-events.md` and `scripts/log_cadence_event.py` (optional **`harvest`** kind for consistency). |
 | **Boundary surface** | Explains what belongs in operational/ephemeral surfaces versus what must escalate to the gate. |
 | **Script topology** | Maps how consolidated runners delegate to underlying brief generators. |
 
@@ -46,6 +46,18 @@ Work fails on three clocks:
 **The context clock (session).** At session boundaries, agent memory goes to zero. Everything not on disk is lost. `bridge` seals the session and produces a transfer prompt so the next thread starts oriented instead of blank.
 
 Each clock needs its own ritual because the failure modes are different. Reorientation is not consolidation. Consolidation is not transfer. Merging them into one ritual would either make it too heavy for frequent use or too shallow for end-of-day closure.
+
+---
+
+## Fourth operator tool: cross-agent extraction (`harvest`)
+
+**Not a fourth clock.** `coffee`, `dream`, and `bridge` answer **when** the operator needs framing, day-close residue, or session-boundary transfer. **`harvest`** answers **how** to ship dense session substance to **another agent or thread that is already running** (parallel review, tooling handoff, second Cursor session without a cold start).
+
+- **Skill:** [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md)
+- **Packet contract:** [harvest-packet-contract.md](harvest-packet-contract.md) (section headings; **no** trailing `coffee` — contrast [bridge-packet-contract.md](bridge-packet-contract.md))
+- **Optional script:** `scripts/session_harvest.py` — checklist + template + optional `--log` → `log_cadence_event.py --kind harvest`
+
+**Instances:** Built-from-template repos (e.g. grace-mar) reconcile cadence doc drift via their own upgrade workflow; the template remains the structural home for the skill and contract.
 
 ---
 
@@ -147,7 +159,11 @@ These extensions belong in instance-local skills and territories, not in this te
 
 ## Cadence event audit
 
-Each coffee, dream, and bridge run appends one line to [work-cadence-events.md](work-cadence-events.md) via `scripts/log_cadence_event.py`. This is operator-facing telemetry — not the Record, not self-memory.
+Each coffee, dream, bridge, and optional **harvest** run appends one line to [work-cadence-events.md](work-cadence-events.md) via `scripts/log_cadence_event.py`. This is operator-facing telemetry — not the Record, not self-memory.
+
+**Emitters (typical):**
+- **coffee** / **dream** / **bridge** — runner or agent logs after successful completion (see instance template)
+- **harvest** — optional; operator or agent runs `session_harvest.py --log` or `log_cadence_event.py --kind harvest` after emitting a packet
 
 **Leaf-only rule:** Orchestrator scripts (wrappers that chain multiple steps) do not emit their own events. Only the leaf ritual logs.
 
@@ -164,6 +180,7 @@ Which on-disk surfaces each ritual reads, writes, and whether companion approval
 | **coffee** | self-memory, gate, dream handoff, git status | nothing (read-only planning) | No |
 | **dream** | self-memory, SELF, EVIDENCE, gate | self-memory, night handoff JSON, cadence events | No (Maintenance mode) |
 | **bridge** | self-memory, gate, dream handoff, territories, git | git commits, cadence events | No (operational) |
+| **harvest** | same class as coffee (self-memory, gate, dream handoff, territories, git; optional session-transcript) | **default none**; optional operator-requested save under `work-cadence/harvest-packets/` or `last-harvest.md`; optional cadence event line | No |
 | **gate merge** | gate candidates, SELF, EVIDENCE, prompt | SELF, EVIDENCE, prompt, session-log, gate, pipeline events | **Yes — companion approval required** |
 
 **Key boundary:** coffee and bridge never write to identity surfaces. Dream writes to ephemeral/operational surfaces only. Only the gated merge path touches the Record.
@@ -204,6 +221,12 @@ When a cadence run produces unexpected output, check these in order:
 1. **Commit failed?** Bridge commits are agent-driven. Check `git status -sb` in all relevant repos.
 2. **Push rejected?** Usually means remote has new commits. Pull-rebase and retry.
 3. **Transfer prompt thin?** Bridge synthesizes from on-disk state. Sparse sections mean those surfaces had nothing to report.
+4. **Coffee didn’t run after paste?** The bridge transfer block should end with a lone line `coffee` per [bridge-packet-contract.md](bridge-packet-contract.md). If that line was dropped when copying, append `coffee` or re-copy from the bridge output.
+
+### Harvest packet confusion
+
+1. **Wrong ritual?** If the target session needs a **cold start**, use **`bridge`** (ends with `coffee`). **`harvest`** packets **must not** end with `coffee`; see [harvest-packet-contract.md](harvest-packet-contract.md).
+2. **Thin narrative sections?** The script only prints paths and git; the agent fills outcomes from the **visible thread** (no full Cursor export API). Add a one-line operator steer or read `session-transcript.md` if the instance uses it.
 
 ### General
 
@@ -229,8 +252,11 @@ When a cadence run produces unexpected output, check these in order:
 - [.cursor/skills/coffee/SKILL.md](../../../.cursor/skills/coffee/SKILL.md) — coffee trigger
 - [.cursor/skills/dream/SKILL.md](../../../.cursor/skills/dream/SKILL.md) — dream trigger
 - [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) — bridge trigger
+- [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md) — harvest trigger
+- [harvest-packet-contract.md](harvest-packet-contract.md) — Session Harvest Packet contract
 - [work-cadence-events.md](work-cadence-events.md) — per-run cadence telemetry
 - [scripts/log_cadence_event.py](../../../scripts/log_cadence_event.py) — cadence event append helper
+- [scripts/session_harvest.py](../../../scripts/session_harvest.py) — harvest checklist + optional template + `--log`
 - [scripts/cadence-coffee.py](../../../scripts/cadence-coffee.py) — coffee runner
 - [scripts/cadence-dream.py](../../../scripts/cadence-dream.py) — dream runner
 - [scripts/good-morning-brief.py](../../../scripts/good-morning-brief.py) — morning brief generator
@@ -245,7 +271,7 @@ When a cadence run produces unexpected output, check these in order:
 
 In scope:
 
-- daily cadence architecture (coffee/dream/bridge triad)
+- daily cadence architecture (coffee/dream/bridge triad + harvest on a separate cross-agent axis)
 - handoff contract design and schema
 - cadence event audit (per-run telemetry)
 - runner mode definitions and dispatch
