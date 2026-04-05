@@ -42,10 +42,25 @@ Also run:
 
 5. **`git status -sb`** — uncommitted work
 6. **`git log --oneline -10`** — recent commits (what moved)
+7. **`users/<id>/daily-handoff/last-bridge-state.json`** (if present) — prior bridge snapshot for **Since last bridge** in Step 3
 
 ---
 
-## Step 2 — Commit and push
+## Step 2 — Worktree risk preflight and commit/push
+
+### Worktree risk preflight (read-only)
+
+From `git status -sb` and `git diff --stat`, classify:
+
+| Class | Meaning |
+|-------|---------|
+| **safe** | Clean worktree. |
+| **inspect** | Light residue. |
+| **conflict-prone** | Unmerged paths, conflicts, or very large/wide diff. |
+
+Emit one line, e.g. `Worktree risk: inspect — review diff before sealing.` **Pause and ask** before committing if **conflict-prone**.
+
+### Commit and push
 
 Seal the session by committing and pushing. Use a **two-bucket** approach:
 
@@ -87,6 +102,14 @@ python3 scripts/log_cadence_event.py --kind bridge -u <id> --ok --kv refs=<SHA>
 
 Replace `<SHA>` with the HEAD commit just pushed (from `git rev-parse --short HEAD`).
 
+After a successful bridge, update session delta state:
+
+```bash
+python3 scripts/bridge_last_state.py -u <id> --write
+```
+
+Optional: `python3 scripts/bridge_last_state.py -u <id> --print-delta` for **Since last bridge** bullets while composing the packet.
+
 ---
 
 ## Step 3 — Generate the transfer prompt
@@ -113,23 +136,38 @@ If none pending, say "Gate clear."]
 Skip lanes with no recent activity.]
 
 ## Priority lanes for next session
-1. [Top priority — derived from gate state, territory momentum, and arc]
-2. [Second priority]
-3. [Third if warranted]
+1. [Lane or theme — one short reason why this rank]
+2. [Lane or theme — one short reason]
+3. [Third if warranted — lane or theme — reason]
 
 ## Watch this
-[One sentence: the single most important thing the next session should be alert to.
-Synthesize from arc + gate + territories — what could go wrong or slip if unattended.]
+**Risk kind:** continuity | git | governance | focus | context — [one sentence: the single most important alert.]
+
+## Since last bridge
+[Max 3-4 bullets: delta vs last-bridge-state or `bridge_last_state.py --print-delta`. If no prior file, say first bridge / no prior delta.]
+
+## Bridge transfer quality
+- **Confidence:** high | medium | low
+- **Signals:** [2-4 short phrases]
+- **Gaps:** [one line]
+- **Seal:** [post-push `git status -sb` + short HEAD]
+
+## Next session posture
+**Posture:** reorient | execute | inspect | resolve | write — [brief justification]
+
+## Not transferred on purpose
+[Optional; max 2 bullets, or omit section.]
 
 ## Commits sealed in this bridge
-[List the commit(s) made in Step 2, or "Worktree was already clean."]
+[List commit(s) from Step 2. One line: `Residue commit: … / Substantive commit: …` (or none). Or "Worktree was already clean."]
 
 ## Recent commits
 [Last 5-10 commits from git log, verbatim — includes the bridge commits]
 
 ## Instructions for next session
-Paste this entire block as the first message in a fresh Cursor session,
-then say `coffee` to reorient.
+Paste this entire block as the first message in a fresh Cursor session, then say `coffee` to reorient.
+
+**Parallel import:** For an already-running session, run **harvest** separately — do not append a second packet here.
 ```
 
 Output the entire block so the operator can copy it.
@@ -138,7 +176,9 @@ Output the entire block so the operator can copy it.
 
 ## Step 4 — Done
 
-Bridge is complete. The repo is pushed, the transfer prompt is generated. The operator copies the prompt and closes the session.
+Bridge is complete. The repo is pushed, the transfer prompt is generated, `bridge_last_state.py --write` ran after seal. The operator copies the prompt and closes the session.
+
+**Optional receipt:** Save the transfer block under `docs/skill-work/work-cadence/bridge-packets/YYYY-MM-DD-session.md` if a durable copy is needed.
 
 ## Guardrails
 
@@ -148,7 +188,7 @@ Bridge is complete. The repo is pushed, the transfer prompt is generated. The op
 - **Signal over volume.** The transfer prompt should be concise. Aim for one screen of text, not a wall. Omit sections that have nothing to report.
 - **Narrative arc matters.** The "Arc" section is the most valuable part — it's the thing no script can produce. Synthesize, don't just list.
 - **Stop on conflict.** If push fails after pull-rebase due to conflicts, stop and report. Do not force-push or resolve conflicts silently.
-- **Ephemeral output.** The transfer prompt exists only in the chat. It persists only if the operator chooses to save it.
+- **Ephemeral output.** The transfer prompt exists only in the chat unless the operator saves it (optional `bridge-packets/` path).
 
 ## Relation to coffee and dream
 
@@ -178,6 +218,9 @@ The template provides the structural pattern; instances customize for their need
 
 - `.cursor/skills/coffee/SKILL.md` — morning cadence (run after pasting bridge)
 - `.cursor/skills/dream/SKILL.md` — nightly cadence (run before bridge if end of day)
+- `.cursor/skills/harvest/SKILL.md` — parallel-session import (separate paste)
 - `docs/skill-work/work-cadence/README.md` — cadence territory
+- `docs/skill-work/work-cadence/bridge-packet-contract.md` — section contract
+- `scripts/bridge_last_state.py` — `last-bridge-state.json` + `--print-delta`
 - `scripts/cadence-coffee.py` — morning runner
 - `scripts/cadence-dream.py` — night runner

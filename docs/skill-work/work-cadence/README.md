@@ -74,6 +74,9 @@ cadence-dream.py
   └─ good-night-brief.py          signal capture, handoff write, gate suggestion
   └─ git status summary           uncommitted-work awareness
   └─ merge worktree triage        writes worktreeState / worktreeAdvice into night-handoff.json
+
+bridge_last_state.py              (after successful bridge push; agent-run ritual)
+  └─ users/<id>/daily-handoff/last-bridge-state.json   session-to-session delta for bridge packet; operational; gitignored
 ```
 
 **Runners** are lightweight dispatch wrappers. **Briefs** hold all the parsing, bridge-building, and output logic. Instances may extend or replace the runners while keeping the briefs stable.
