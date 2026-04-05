@@ -50,6 +50,12 @@ The contract is about lifecycle and authority, not filename.
 
 ---
 
+## Evidence and prepared context (extensions)
+
+Instances may add their own **evidence ingestion** and **staging** machinery (directories, ETL, vendor connectors). They should **preserve provenance**, keep [prepared context](prepared-context-layer.md) traceable to sources, and **not** treat staging outputs as durable **Record** or governed state without the gate or change-review path. Template reference: [prepared-context-doctrine.md](prepared-context-doctrine.md), [evidence-to-context-pipeline.md](evidence-to-context-pipeline.md).
+
+---
+
 ## Analyst output contract (optional)
 
 When an instance adds an **LLM analyst** that stages candidates from conversation or activity, the analyst output should conform to a contract so merge logic can consume it. Grace-Mar uses flat YAML with these required fields:

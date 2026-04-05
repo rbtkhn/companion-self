@@ -21,4 +21,4 @@ The **Prepared Context Layer** holds **cleaned or transformed** representations 
 
 Governed updates to identity, pedagogy, or memory rules still require **change review** or the **gate**, not “context refresh” alone.
 
-See [state-model.md](state-model.md).
+See [state-model.md](state-model.md) and [prepared-context-doctrine.md](prepared-context-doctrine.md).

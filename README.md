@@ -55,6 +55,8 @@ Companion-Self distinguishes **three layers** of system state:
 
 See [docs/state-model.md](docs/state-model.md), [docs/evidence-layer.md](docs/evidence-layer.md), [docs/prepared-context-layer.md](docs/prepared-context-layer.md), [docs/governed-state-layer.md](docs/governed-state-layer.md).
 
+Companion-Self treats **raw evidence**, **prepared context**, and **governed state** as distinct layers for operator and tooling discipline — [docs/prepared-context-doctrine.md](docs/prepared-context-doctrine.md), [docs/evidence-to-context-pipeline.md](docs/evidence-to-context-pipeline.md). Optional starter dirs: `evidence/`, `prepared-context/`; optional script: `scripts/stage-evidence.py`.
+
 **Reference implementation:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) — [grace-mar.com](https://grace-mar.com) (profile, bot, PRP). See [Instance patterns](docs/instance-patterns.md) for Grace-Mar variations and advanced patterns (analyst, staging format, session brief).
 
 **Instance-specific boundary narrative** (grace-mar · companion-self · companion-xavier — what may cross, hard lines) lives in Grace-Mar: [docs/audit-boundary-grace-mar-companion-xavier-companion-self.md](https://github.com/rbtkhn/grace-mar/blob/main/docs/audit-boundary-grace-mar-companion-xavier-companion-self.md).

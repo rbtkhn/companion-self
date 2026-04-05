@@ -11,6 +11,36 @@
       "optional": false
     },
     {
+      "path": "docs/state-model.md",
+      "description": "Three-layer state model (evidence, prepared context, governed).",
+      "optional": false
+    },
+    {
+      "path": "docs/evidence-layer.md",
+      "description": "Evidence layer doctrine.",
+      "optional": false
+    },
+    {
+      "path": "docs/prepared-context-layer.md",
+      "description": "Prepared context layer doctrine.",
+      "optional": false
+    },
+    {
+      "path": "docs/governed-state-layer.md",
+      "description": "Governed state layer doctrine.",
+      "optional": false
+    },
+    {
+      "path": "docs/prepared-context-doctrine.md",
+      "description": "Prepared context principles.",
+      "optional": false
+    },
+    {
+      "path": "docs/evidence-to-context-pipeline.md",
+      "description": "Evidence to context reference pipeline.",
+      "optional": false
+    },
+    {
       "path": "docs/identity-fork-protocol.md",
       "description": "Protocol: Sovereign Merge Rule, schema (SELF, self-skill-*, self-evidence), evidence linking.",
       "optional": false
@@ -324,6 +354,11 @@
       "path": "scripts/generate-seed-dossier.py",
       "description": "Generates seed_dossier.md from seed JSON artifacts.",
       "optional": false
+    },
+    {
+      "path": "scripts/stage-evidence.py",
+      "description": "Starter: text file to prepared-context JSON stub.",
+      "optional": true
     },
     {
       "path": "scripts/requirements-seed-phase.txt",

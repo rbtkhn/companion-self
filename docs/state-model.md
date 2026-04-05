@@ -68,4 +68,4 @@ This template also uses **Record** and **Voice** in [concept.md](concept.md):
 
 **Voice** renders the Record when queried; it is not a fourth layer — it reflects **governed state** under the knowledge boundary.
 
-See also: [evidence-layer.md](evidence-layer.md), [prepared-context-layer.md](prepared-context-layer.md), [governed-state-layer.md](governed-state-layer.md).
+See also: [evidence-layer.md](evidence-layer.md), [prepared-context-layer.md](prepared-context-layer.md), [governed-state-layer.md](governed-state-layer.md), [prepared-context-doctrine.md](prepared-context-doctrine.md), [evidence-to-context-pipeline.md](evidence-to-context-pipeline.md).
