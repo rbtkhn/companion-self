@@ -114,7 +114,7 @@ Optional: `python3 scripts/bridge_last_state.py -u <id> --print-delta` for **Sin
 
 ## Step 3 — Generate the transfer prompt
 
-Now that the repo is sealed and pushed, synthesize the readings from Step 1 into a single markdown block following this format. For the canonical section list and per-section rules, see [bridge-packet-contract.md](../../../docs/skill-work/work-cadence/bridge-packet-contract.md).
+Now that the repo is sealed and pushed, synthesize the readings from Step 1 into a single markdown block following this format. For the canonical section list and per-section rules, see [bridge-packet-contract.md](../../../docs/skill-work/work-cadence/bridge-packet-contract.md). Include **`## Agent surface`** with **Cursor model:** from the **Cursor UI** (model picker); use `unknown` only if it is not visible.
 
 ```markdown
 # Session Bridge — [YYYY-MM-DD]
@@ -163,6 +163,9 @@ Skip lanes with no recent activity.]
 
 ## Recent commits
 [Last 5-10 commits from git log, verbatim — includes the bridge commits]
+
+## Agent surface
+- **Cursor model:** [Model name from the Cursor chat UI / model picker. `unknown` only if not visible.]
 
 ## Instructions for next session
 Paste this entire block as the first message in a fresh Cursor session, then say `coffee` to reorient.

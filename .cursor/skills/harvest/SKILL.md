@@ -87,7 +87,7 @@ From **this thread** (plus operator steer / optional session-transcript), compre
 
 ## Step 3 — Emit packet
 
-Output **one** markdown block following **[harvest-packet-contract](../../../docs/skill-work/work-cadence/harvest-packet-contract.md)** — section order, **no** trailing **`coffee`**, **required final line** per contract.
+Output **one** markdown block following **[harvest-packet-contract](../../../docs/skill-work/work-cadence/harvest-packet-contract.md)** — section order, **`## Agent surface`** with **Cursor model:** from the Cursor UI (see contract), **no** trailing **`coffee`**, **required final line** last per contract.
 
 ---
 

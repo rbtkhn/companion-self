@@ -24,6 +24,7 @@ Every bridge packet must include these sections in **this order**. Omit a sectio
 | **Not transferred on purpose** | Optional. Max **2** bullets: what the packet deliberately did not carry (e.g. noisy branches, speculative notes). Omit if nothing honest to say. | Excuses; more than two bullets. |
 | **Commits sealed in this bridge** | Per repo: which commits (messages). One **composite line**: `Residue commit: … / Substantive commit: …` (or `none` for each). If worktree was already clean, say so. | Full diffs. File-level detail beyond the commit message. |
 | **Recent commits** | Last 5-10 commits from `git log --oneline`, verbatim. | Older history unless specifically relevant. |
+| **Agent surface** | **Always include** (Cursor). One line: **Cursor model:** plus the **model name from the Cursor chat UI** (model picker for this composer). Operational provenance; **not** Record. Use `unknown` only if unavailable. | Long system prompts or guessed API ids. |
 | **Instructions for next session** | Paste as first message; assistant runs **coffee** Step 1. **Harvest:** if the operator needs a **parallel warm-session import**, run the **harvest** skill separately — do not append a second packet to this block (avoids confusion with the required `coffee` tail). | Instance-specific automation in the template contract. |
 
 **Coffee tail (required):** After Instructions, the copyable block must end with a **final line that is exactly `coffee`** (lowercase, alone on its line, not inside a code fence) when the instance uses the grace-mar bridge + coffee chain.
@@ -83,3 +84,4 @@ The section list is informed by the I-PASS clinical handoff protocol (Illness se
 |------|--------|
 | *(prior)* | Template bridge extensions (delta, transfer quality, posture, etc.). |
 | 2026-04-06 | Doc-only cold-thread improvement loop (pointer + § Improving bridge over time). |
+| 2026-04-07 | **Agent surface** — Cursor UI model label after Recent commits, before Instructions. |

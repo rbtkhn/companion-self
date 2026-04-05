@@ -112,6 +112,9 @@ _(mode: {mode})_
 
 ## Executive compression
 
+## Agent surface
+- **Cursor model:** (fill from Cursor model picker / chat header)
+
 Paste this into the target agent session as context for analysis; do not treat it as a fresh-session initializer.
 """
     )
