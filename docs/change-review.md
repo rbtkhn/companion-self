@@ -6,6 +6,8 @@ Companion-Self template · Governed self-revision doctrine (v1 entrypoint)
 
 **Gate vs change-review:** [gate-vs-change-review.md](gate-vs-change-review.md) — when to use the recursion gate vs the review queue.
 
+**State model:** Change review governs transitions **into** the [Governed State Layer](governed-state-layer.md). Raw [evidence](evidence-layer.md) and [prepared context](prepared-context-layer.md) are inputs to review — not durable governed state by themselves. See [state-model.md](state-model.md).
+
 ---
 
 ## Purpose

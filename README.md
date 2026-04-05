@@ -45,6 +45,16 @@ The project does not treat meaningful change as silent memory accumulation or si
 - **Instance (e.g. [Grace-Mar](https://github.com/rbtkhn/grace-mar)):** One live companion self — Record, bot, pipeline. Created from the template when a new user completes seed phase.
 - **Compatibility:** Canonical template/instance rules — [docs/template-instance-contract.md](docs/template-instance-contract.md).
 
+## State model
+
+Companion-Self distinguishes **three layers** of system state:
+
+- **Evidence Layer** — raw source material  
+- **Prepared Context Layer** — normalized or staged material for agent use  
+- **Governed State Layer** — durable companion state (Record, approved seed outputs, change-review outcomes)  
+
+See [docs/state-model.md](docs/state-model.md), [docs/evidence-layer.md](docs/evidence-layer.md), [docs/prepared-context-layer.md](docs/prepared-context-layer.md), [docs/governed-state-layer.md](docs/governed-state-layer.md).
+
 **Reference implementation:** [Grace-Mar](https://github.com/rbtkhn/grace-mar) — [grace-mar.com](https://grace-mar.com) (profile, bot, PRP). See [Instance patterns](docs/instance-patterns.md) for Grace-Mar variations and advanced patterns (analyst, staging format, session brief).
 
 **Instance-specific boundary narrative** (grace-mar · companion-self · companion-xavier — what may cross, hard lines) lives in Grace-Mar: [docs/audit-boundary-grace-mar-companion-xavier-companion-self.md](https://github.com/rbtkhn/grace-mar/blob/main/docs/audit-boundary-grace-mar-companion-xavier-companion-self.md).

@@ -22,6 +22,7 @@
 2. **Gate before merge:** Candidates may be staged; merging into SELF / EVIDENCE / prompt follows the instance’s gated pipeline.
 3. **Template clarity:** The template may ship demos (`users/demo/`) and `_template` scaffolds; it does not ship production secrets or a live companion identity.
 4. **Naming:** Prefer **companion self** (concept) vs **companion-self** (template repo name); see [concept](concept.md) for terminology.
+5. **State layers:** The template preserves the distinction between **Evidence**, **Prepared Context**, and **Governed State** ([state-model.md](state-model.md)). Instances may customize staging or evidence tooling but should **not** collapse these layers into one undifferentiated memory surface.
 
 ---
 
