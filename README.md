@@ -44,6 +44,18 @@ See:
 - [docs/source-of-truth.md](docs/source-of-truth.md)
 - [docs/conflict-resolution-order.md](docs/conflict-resolution-order.md)
 
+## Authority model
+
+Companion-Self treats **who may write what** as an explicit design surface. See [docs/authority-map.md](docs/authority-map.md), [`config/authority-map.json`](config/authority-map.json), and `scripts/check-authority.py --surface <key>`.
+
+## Observability
+
+The template should be **inspectable** without relying on agent self-report alone. See [docs/observability.md](docs/observability.md) and `scripts/build-observability-report.py` (demo default: `users/demo/review-queue` → `users/demo/observability/observability-report.json`).
+
+## Legible action receipts
+
+Meaningful operations should leave a **legible trace** (distinct from gate merge receipts). See [docs/legible-surfaces.md](docs/legible-surfaces.md) and [docs/action-receipts.md](docs/action-receipts.md).
+
 ## Governed lifecycle
 
 Companion-Self uses a two-part governance model:
