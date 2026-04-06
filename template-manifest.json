@@ -797,7 +797,22 @@
     },
     {
       "path": "users/demo/review-queue/diffs/diff-001.json",
-      "description": "Demo identity diff JSON.",
+      "description": "Demo identity diff JSON (extended with recommendedAction and whyItMatters).",
+      "optional": false
+    },
+    {
+      "path": "users/demo/review-queue/diffs/diff-002.json",
+      "description": "Demo identity diff JSON with conflict note (curiosity upgrade scenario).",
+      "optional": false
+    },
+    {
+      "path": "scripts/render_record_diff_queue.py",
+      "description": "Render a unified Record Diff Queue from identity-diff JSON files.",
+      "optional": false
+    },
+    {
+      "path": "docs/record-diff-queue.md",
+      "description": "Record Diff Queue spec: unified review surface for pending governed-state changes.",
       "optional": false
     },
     {
@@ -853,7 +868,7 @@
     "confidence_report_generator": "scripts/generate-confidence-report.py",
     "instance_factory_cli": "scripts/companion_factory.py"
   },
-  "change_review": {
+    "change_review": {
     "version": "1.0.0",
     "entrypoint": "docs/change-review.md",
     "contradiction_policy": "docs/contradiction-policy.md",
@@ -879,5 +894,15 @@
     },
     "validator": "scripts/validate-change-review.py",
     "diff_generator": "scripts/generate-identity-diff.py"
+  },
+  "record_diff_queue": {
+    "version": "1.0.0",
+    "entrypoint": "docs/record-diff-queue.md",
+    "renderer": "scripts/render_record_diff_queue.py",
+    "schema": "schema-registry/identity-diff.v1.json",
+    "demo_diffs": [
+      "users/demo/review-queue/diffs/diff-001.json",
+      "users/demo/review-queue/diffs/diff-002.json"
+    ]
   }
 }
