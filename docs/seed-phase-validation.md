@@ -51,6 +51,12 @@ python3 scripts/generate-seed-dossier.py users/demo/seed-phase
 
 ---
 
+## Voice runtime (optional)
+
+Repo-root **`runtime_config.json`** may include nested **`voice_avatar`** (STT/TTS placeholders, avatar, **`latency_mode`**). See [voice-runtime-config.md](voice-runtime-config.md). Optional constitutional critique and metrics wiring are instance-specific (e.g. grace-mar `bot/`).
+
+---
+
 ## Reuse in instance repos
 
 Copy `scripts/validate-seed-phase.py`, `schema-registry/seed-*.v1.json`, and point the script at your instance’s seed directory (same filenames). Keep **seed artifacts outside** merged Record paths until activation policy is met.
