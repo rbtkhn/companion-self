@@ -140,6 +140,8 @@ python3 scripts/render-change-proposal-summary.py users/demo/review-queue/propos
 
 Full instructions: [docs/change-review-validation.md](docs/change-review-validation.md).
 
+**Seed Phase automated tests:** `pip install -r scripts/requirements-seed-phase.txt` then `pytest -q` from the repo root (uses `tests/fixtures/seed-phase/` and subprocesses `validate-seed-phase.py`, `generate-seed-dossier.py`, `check-seed-consistency.py`). Strict validation requires `jsonschema`.
+
 **Companion app:** Seed Phase (demo) at **[/seed-phase](http://localhost:3000/seed-phase)**; change-review demo at **[/change-review](http://localhost:3000/change-review)** via **`GET /api/change-review?profile=demo`** (reads **`users/<profile>/review-queue/`**). See [readme-app.md](readme-app.md).
 
 ---
