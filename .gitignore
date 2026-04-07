@@ -20,3 +20,6 @@ users/*/derived/
 
 # Local provenance output (optional)
 state/provenance/
+
+# Operator-local runtime (optional constitutional critique)
+/runtime_config.json

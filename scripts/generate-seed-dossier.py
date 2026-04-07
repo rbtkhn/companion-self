@@ -9,9 +9,10 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
+
+from cache import load_json_file
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -24,11 +25,13 @@ JSON_FILES = [
     "seed_pedagogy.json",
     "seed_expression.json",
     "seed_memory_contract.json",
+    "memory_ops_contract.json",
     "seed_trial_report.json",
     "seed_readiness.json",
     "seed_confidence_map.json",
     "work_business_seed.json",
     "work_dev_seed.json",
+    "seed_constitution.json",
 ]
 
 
@@ -38,7 +41,10 @@ def load_dir(d: Path) -> dict[str, dict]:
         p = d / name
         if not p.is_file():
             raise FileNotFoundError(p)
-        out[name] = json.loads(p.read_text(encoding="utf-8"))
+        raw = load_json_file(p)
+        if not isinstance(raw, dict):
+            raise TypeError(f"expected JSON object in {p}, got {type(raw).__name__}")
+        out[name] = raw
     return out
 
 
@@ -129,6 +135,30 @@ def main() -> None:
     lines.extend(["", "## Memory Governance Summary", ""])
     mem = data["seed_memory_contract.json"].get("memory_contract", {})
     lines.append(", ".join(mem.get("memory_classes", [])) or "—")
+    mo = data["memory_ops_contract.json"]
+    tax = mo.get("taxonomy") or {}
+    lines.extend(
+        [
+            "",
+            "## MemoryOps (taxonomy / retention / drift)",
+            "",
+            f"Episodic **{tax.get('episodic', '')}** · semantic **{tax.get('semantic', '')}** · "
+            f"procedural **{tax.get('procedural', '')}** · relational **{tax.get('relational', '')}**.",
+            f"Default TTL (days): **{mo.get('retention_policies', {}).get('default_ttl_days', '—')}**; "
+            f"change review on drift: **{mo.get('drift_protection', {}).get('requires_change_review', '—')}**.",
+        ]
+    )
+    sc = data["seed_constitution.json"]
+    hier = sc.get("hierarchy") or []
+    lines.extend(
+        [
+            "",
+            "## Constitution (hierarchy)",
+            "",
+            "Order (highest first): **" + " → ".join(hier) + "**.",
+            f"Principles: **{len(sc.get('principles') or [])}** listed; critique format **{sc.get('self_critique_protocol', {}).get('output_format', '—')}**.",
+        ]
+    )
     lines.extend(
         [
             "",
