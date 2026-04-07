@@ -834,6 +834,76 @@
       "path": "bridges/bridge-schema.json",
       "description": "Minimal bridge confidence JSON schema stub.",
       "optional": true
+    },
+    {
+      "path": "schema-registry/seed-claim.v1.json",
+      "description": "Seed claim v1: per-claim lifecycle tracking during companion formation.",
+      "optional": false
+    },
+    {
+      "path": "config/seed-promotion-rules.json",
+      "description": "Pluggable promotion rules for seed claims (observation, session, time span thresholds).",
+      "optional": false
+    },
+    {
+      "path": "scripts/emit_seed_claim.py",
+      "description": "Create or update a seed claim in the registry (CLI + importable).",
+      "optional": false
+    },
+    {
+      "path": "scripts/seed_registry_summary.py",
+      "description": "List, filter, group seed claims by status/category/readiness.",
+      "optional": false
+    },
+    {
+      "path": "scripts/evaluate_seed_promotion.py",
+      "description": "Evaluate seed claims against promotion thresholds and report readiness.",
+      "optional": false
+    },
+    {
+      "path": "scripts/seed_nursery_report.py",
+      "description": "Weak Signal Nursery report: why still a seed, what would mature this.",
+      "optional": false
+    },
+    {
+      "path": "scripts/emit_seed_diff.py",
+      "description": "Emit identity-diff JSON on seed claim status transition.",
+      "optional": false
+    },
+    {
+      "path": "scripts/seed_timeline.py",
+      "description": "Reconstruct formation timeline from seed registry history.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-registry.md",
+      "description": "Seed Registry spec: per-claim lifecycle tracking during formation.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-promotion-thresholds.md",
+      "description": "Promotion threshold rules for seed claims.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-nursery.md",
+      "description": "Weak Signal Nursery: holding space for immature observations.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-timeline.md",
+      "description": "Seed Timeline: formation chronology for seed claims.",
+      "optional": false
+    },
+    {
+      "path": "docs/seed-phase-doctrine.md",
+      "description": "Seed Phase Doctrine: seven constitutional principles for identity formation.",
+      "optional": false
+    },
+    {
+      "path": "users/demo/seed-registry.jsonl",
+      "description": "Demo seed registry data (synthetic).",
+      "optional": false
     }
   ],
   "seed_phase": {
@@ -904,5 +974,32 @@
       "users/demo/review-queue/diffs/diff-001.json",
       "users/demo/review-queue/diffs/diff-002.json"
     ]
+  },
+  "seed_registry": {
+    "version": "1.0.0",
+    "entrypoint": "docs/seed-registry.md",
+    "doctrine": "docs/seed-phase-doctrine.md",
+    "schemas": {
+      "seed_claim": "schema-registry/seed-claim.v1.json"
+    },
+    "scripts": {
+      "emit": "scripts/emit_seed_claim.py",
+      "summary": "scripts/seed_registry_summary.py",
+      "evaluate_promotion": "scripts/evaluate_seed_promotion.py",
+      "nursery_report": "scripts/seed_nursery_report.py",
+      "emit_diff": "scripts/emit_seed_diff.py",
+      "timeline": "scripts/seed_timeline.py"
+    },
+    "config": {
+      "promotion_rules": "config/seed-promotion-rules.json"
+    },
+    "docs": [
+      "docs/seed-registry.md",
+      "docs/seed-promotion-thresholds.md",
+      "docs/seed-nursery.md",
+      "docs/seed-timeline.md",
+      "docs/seed-phase-doctrine.md"
+    ],
+    "demo_data": "users/demo/seed-registry.jsonl"
   }
 }
