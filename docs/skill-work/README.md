@@ -21,7 +21,8 @@ This folder holds **submodules** that support WORK, the Record, and instances: r
 
 ## Cross-references
 
-- **New WORK territory checklist:** [work-template.md](work-template.md) — scaffold `work-<id>/` (README, history, optional LANE-CI, sources).
+- **New WORK territory checklist:** [work-template.md](work-template.md) — scaffold `work-<id>/` (README, history, optional LANE-CI, sources). **Composition recipe:** [recipes/onboard-new-lane.md](recipes/onboard-new-lane.md).
+- **Skill validation:** `python3 scripts/validate_skills.py` — checks frontmatter, dependencies, and portable manifest consistency.
 - **Work modules — authorized sources:** [work-modules-sources-principle.md](work-modules-sources-principle.md).
 - **Work modules — territory history logs:** [work-modules-history-principle.md](work-modules-history-principle.md).
 - [Long-term objective](../long-term-objective.md) — Links to skill-work submodules.

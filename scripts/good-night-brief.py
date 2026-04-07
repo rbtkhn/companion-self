@@ -237,6 +237,14 @@ def main() -> int:
     residue_ledger = _build_residue_ledger(day_status, gate, skill_work_tail, evidence_tail)
     gate_suggestions = _gate_suggestions_structured(args.suggest_gate)
 
+    capture_gap_result: Dict[str, Any] = {}
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from detect_capture_gap import detect_gap
+        capture_gap_result = detect_gap(args.user)
+    except Exception:
+        pass
+
     payload: Dict[str, Any] = {
         "handoffSchemaVersion": HANDOFF_SCHEMA_VERSION,
         "user": args.user,
@@ -254,6 +262,7 @@ def main() -> int:
         "ignoreTomorrow": ignore_tomorrow,
         "residueLedger": residue_ledger,
         "gateSuggestions": gate_suggestions,
+        "capture_gap": capture_gap_result,
         "warnings": [],
     }
 
@@ -314,6 +323,11 @@ def main() -> int:
         f"- Quiet run: {quiet_run}",
         f"- Lane hint: {active_lane}",
     ]
+    if capture_gap_result:
+        cg_level = capture_gap_result.get("level", "unknown")
+        cg_msg = capture_gap_result.get("message", "")
+        if cg_level not in ("ok", "unknown"):
+            lines.append(f"- Capture gap: {cg_level.upper()} — {cg_msg}")
     if ignore_tomorrow:
         lines.append(f"- Ignore tomorrow: {ignore_tomorrow}")
     if any(residue_ledger.values()):

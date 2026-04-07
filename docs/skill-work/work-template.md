@@ -11,6 +11,7 @@
 1. **Pick a stable folder name:** `work-<short-id>/` (lowercase, hyphenated). Avoid colliding with existing [skill-work README](README.md) rows.
 2. **Decide lane scope:** one primary objective; what is in / out of bounds; whether content ever crosses into **SELF / EVIDENCE / prompt** (then **RECURSION-GATE** + companion approval only in the instance).
 3. **Read once:** [concept.md](../concept.md), [identity-fork-protocol.md](../identity-fork-protocol.md), [instance-patterns.md](../instance-patterns.md). In a live instance, also read that repo’s **AGENTS.md** (gate, knowledge boundary) and any **work-menu** conventions the instance maintains.
+4. **Run a lane survey** (recommended): `.cursor/skills/lane-survey/SKILL.md` — scan existing tools and approaches before building. Don’t build what already exists.
 
 ---
 

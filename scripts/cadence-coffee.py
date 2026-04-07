@@ -359,6 +359,18 @@ def main() -> int:
         compact = args.mode == "light"
         print(f"\n{'=' * 60}\n$ git branch snapshot\n{'=' * 60}\n", flush=True)
         print(_branch_snapshot_text(compact=compact, triage=triage))
+
+        try:
+            _scripts = str(Path(__file__).resolve().parent)
+            if _scripts not in sys.path:
+                sys.path.insert(0, _scripts)
+            from assess_session_load import assess_load, format_load_one_liner
+            load_result = assess_load(user)
+            print(f"\n{'=' * 60}\n$ session load assessment\n{'=' * 60}\n", flush=True)
+            print(format_load_one_liner(load_result))
+        except Exception:
+            pass
+
         if not args.no_log_cadence:
             _log_coffee(user, args.mode, ok=True, helpful=args.coffee_helpful)
 

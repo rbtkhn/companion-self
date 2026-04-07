@@ -822,6 +822,27 @@ def main() -> int:
         "warnings": [],
     }
 
+    capture_gap_result: Dict[str, Any] = {}
+    try:
+        _scripts = str(Path(__file__).resolve().parent)
+        if _scripts not in sys.path:
+            sys.path.insert(0, _scripts)
+        from detect_capture_gap import detect_gap, format_gap_one_liner
+        capture_gap_result = detect_gap(args.user)
+    except Exception:
+        pass
+    if capture_gap_result:
+        payload["capture_gap"] = capture_gap_result
+
+    session_load_result: Dict[str, Any] = {}
+    try:
+        from assess_session_load import assess_load, format_load_one_liner
+        session_load_result = assess_load(args.user)
+    except Exception:
+        pass
+    if session_load_result:
+        payload["session_load"] = session_load_result
+
     if not memory_text:
         payload["warnings"].append("self-memory.md missing or empty.")
     else:
@@ -915,6 +936,10 @@ def main() -> int:
         )
     lines.append(f"- Top execution action: {top_execution_action}")
     lines.append(f"- Top gate action: {top_gate_action}")
+    if capture_gap_result and capture_gap_result.get("level", "ok") not in ("ok", "unknown"):
+        lines.append(f"- Capture gap: {format_gap_one_liner(capture_gap_result)}")
+    if session_load_result:
+        lines.append(f"- Session load: {format_load_one_liner(session_load_result)}")
     for option in payload["sessionOptions"]:
         lines.append(f"- Session option: {option['label']} — {option['reason']}")
     for warning in payload["warnings"]:
