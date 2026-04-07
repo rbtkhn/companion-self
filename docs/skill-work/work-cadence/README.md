@@ -1,6 +1,6 @@
 # work-cadence
 
-**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence triad — `coffee` (orientation), `dream` (consolidation), and `bridge` (session handoff) — plus **`harvest`** as a **fourth operator tool on a different axis** (cross-agent extraction; on demand, not a fourth clock). Executable triggers live in `.cursor/skills/coffee/SKILL.md`, `.cursor/skills/dream/SKILL.md`, `.cursor/skills/bridge/SKILL.md`, and `.cursor/skills/harvest/SKILL.md`.
+**Purpose:** Template-level doctrine, boundaries, and architecture for the daily cadence triad — `coffee` (orientation), `dream` (consolidation), and `bridge` (session handoff) — plus **`thanks`** (micro-pause telemetry) and **`harvest`** as **operator tools on other axes** (harvest: cross-agent extraction; on demand, not a fourth clock). Executable triggers live in `.cursor/skills/coffee/SKILL.md`, `.cursor/skills/thanks/SKILL.md`, `.cursor/skills/dream/SKILL.md`, `.cursor/skills/bridge/SKILL.md`, and `.cursor/skills/harvest/SKILL.md`.
 
 **Not** Record truth. **Not** a merge path. **Not** identity-relevant unless gated.
 
@@ -10,7 +10,7 @@
 
 | Role | Description |
 |------|-------------|
-| **Cadence architecture** | Defines the shape of daily rhythm: coffee (orientation, repeated), dream (consolidation, once), bridge (session carry-forward), harvest (cross-agent packet; midstream import). |
+| **Cadence architecture** | Defines the shape of daily rhythm: coffee (orientation, repeated), thanks (micro-pause), dream (consolidation, once), bridge (session carry-forward), harvest (cross-agent packet; midstream import). |
 | **Night-to-morning handoff** | Documents the `daily-handoff/night-handoff.json` data contract that bridges dream output to coffee Step 1. |
 | **Cadence event audit** | Append-only telemetry via `work-cadence-events.md` and `scripts/log_cadence_event.py` (optional **`harvest`** kind for consistency). |
 | **Boundary surface** | Explains what belongs in operational/ephemeral surfaces versus what must escalate to the gate. |
@@ -35,6 +35,70 @@
 
 ---
 
+## Cadence choreography
+
+**Choreography** means *who runs when*, *what each beat hands to the next*, and *how the operator stays oriented* without collapsing distinct jobs into one overweight ritual. It is not a moral schedule — it is a **failure-mode map**: each ritual answers a different kind of slip (framing decay, day residue, session amnesia, mid-day pause, cross-agent handoff).
+
+### The beats (roles, not personalities)
+
+| Beat | Clock | Primary job | Typical frequency |
+|------|--------|-------------|-------------------|
+| **coffee** | Hours (framing) | Reorientation: grounding, priorities, menu of next forks | Many per day |
+| **thanks** | Minutes (pause) | Bookmark: optional park line + one telemetry line; **no** maintenance stack | As needed |
+| **dream** | Day (residue) | Consolidation: memory normalize, integrity/governance, contradiction digest, night handoff | Usually once |
+| **bridge** | Session (context) | Seal: commit/push where appropriate, transfer prompt for the **next** Cursor thread | Per session close |
+| **harvest** | Cross-thread (import) | Ship dense substance **into** a session that is already running — not a clock | On demand |
+
+**harvest** is **not** a fifth daily clock. It answers a different question: *how* to feed another agent or parallel session, not *when* to frame, settle, or seal.
+
+### Order and pairing (common paths)
+
+- **Morning after a dream:** `coffee` picks up `last-dream.json` / night-handoff context (see **Handoff contract** below). Dream already ran; coffee does not re-run dream.
+- **Mid-day drift:** `coffee` again — a new sip, new Step 1 + menu. The cadence log shows the rhythm; it is normal to see several `coffee` lines in one day.
+- **Stepping away briefly:** `thanks` — light telemetry + optional park text. It does **not** replace `coffee` for reorientation or `dream` for consolidation.
+- **End of day, session continues:** `dream` alone — writes handoff artifacts; no commit/push requirement from dream itself.
+- **End of day + closing Cursor:** `dream` then `bridge` — settle first, then seal and generate the transfer prompt.
+- **Mid-day session end:** `bridge` alone — no obligation to run `dream` if the day is not closing.
+- **End-of-day bundle:** `operator_end_of_day.py` chains dream-weight maintenance with handoff-check; if the operator is also **closing the session**, they still say **`bridge`** afterward for seal + transfer prompt.
+
+Signing-off **`coffee`** (closeout mode) is a **lighter** alternative to `bridge` when the operator wants handoff-weighted text without full bridge mechanics — see [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) for the full decision tree.
+
+### Data flow between beats (what crosses the boundary)
+
+1. **Dream → morning coffee:** `users/<id>/daily-handoff/night-handoff.json` and, in grace-mar-style instances, `users/<id>/last-dream.json` — collapsed “Last dream” in warmup unless verbose flags are used.
+2. **Bridge → next thread:** Transfer prompt (packet contract) — ends with a lone **`coffee`** line for cold start when that contract applies.
+3. **All beats → audit trail:** [work-cadence-events.md](work-cadence-events.md) — one append-only line per successful leaf run (`scripts/log_cadence_event.py`). This file is **operator ephemera**: rhythm telemetry, not Record.
+
+### Step 0 recent rhythm (companion-facing)
+
+Skills may ask the agent to **read** `work-cadence-events.md` **before** running scripts that **append** a new line at the end of the run, then **synthesize** recent events into the reply so the companion sees **recent rhythm** without opening the log.
+
+**Companion-facing UX (new users):** In chat, label this block **Recent rhythm** (or lead with prose only). **Do not** use internal jargon **cadence tail** in replies. **Do not** put **dates, UTC, or clock times** in the synthesized prose—use sequence and plain language (“after bridge,” “then a thanks pause”). The log file still stores machine-readable timestamps; the synthesis is for humans.
+
+| Ritual | Prior events synthesized | Rationale |
+|--------|----------------------------|-----------|
+| **thanks** | **2** | Minimal pause — just enough “what just happened” to anchor the bookmark |
+| **coffee** | **4** | Reorientation — roughly half a day of mixed beats at typical spacing |
+| **bridge** | **4** | Same depth as **coffee** — the next session almost always pastes the bridge packet and ends with **`coffee`** on its own line; matching window length keeps seal → sip symmetric |
+| **dream** | **8** | Day-close — wider window to see coffee/bridge/thanks/dream mix before consolidation |
+| **harvest** | **none** | The **Harvest Packet** is already dense context for a midstream receiver; prepending the same rhythm strip would duplicate info without clear load-bearing value. Optional **`harvest`** cadence **telemetry** (`--log`) does not require synthesis in the reply |
+
+Synthesis should be **plain prose** with **specific anchors** from the log (which rituals, commit refs on bridge, coffee modes, thanks park lines, dream outcomes)—**not** generic process commentary that could apply without reading the file. Still **avoid** opening with a wall of raw `key=value`; weave facts into sentences. Technical detail also lives in Step 1 script output. If the log is empty or short, skills specify fallbacks.
+
+### Choreography vs governance
+
+Choreography operates in **Maintenance / operational** territory. It does **not** approve gate candidates or merge the Record. The **integration moment** for identity remains the instance gate. Cadence can **surface** gate pressure (e.g. steward tracks in coffee); it does not **substitute** for companion approval.
+
+### Where to read the executable spec
+
+- [.cursor/skills/coffee/SKILL.md](../../../.cursor/skills/coffee/SKILL.md) — Step 0 recent rhythm, Step 1 scripts, A–E menu
+- [.cursor/skills/thanks/SKILL.md](../../../.cursor/skills/thanks/SKILL.md) — pause beat + recent rhythm (2 lines)
+- [.cursor/skills/dream/SKILL.md](../../../.cursor/skills/dream/SKILL.md) — Step 0 recent rhythm (8), `auto_dream.py`, handoff
+- [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) — Step 0 recent rhythm (4), seal + transfer prompt
+- [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md) — packet contract (no trailing `coffee`; no Step 0 rhythm synthesis in reply)
+
+---
+
 ## Why three rituals
 
 Work fails on three clocks:
@@ -51,7 +115,7 @@ Each clock needs its own ritual because the failure modes are different. Reorien
 
 ## Fourth operator tool: cross-agent extraction (`harvest`)
 
-**Not a fourth clock.** `coffee`, `dream`, and `bridge` answer **when** the operator needs framing, day-close residue, or session-boundary transfer. **`harvest`** answers **how** to ship dense session substance to **another agent or thread that is already running** (parallel review, tooling handoff, second Cursor session without a cold start).
+**Not a fourth clock.** `coffee`, `dream`, and `bridge` answer **when** the operator needs framing, day-close residue, or session-boundary transfer. **`harvest`** answers **how** to ship dense session substance to **another agent or thread that is already running** (parallel review, tooling handoff, second Cursor session without a cold start). Thread narrative uses **soft** depth limits and explicit **truncation honesty** (skill § *Thread depth and honesty*).
 
 - **Skill:** [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md)
 - **Packet contract:** [harvest-packet-contract.md](harvest-packet-contract.md) (section headings; **no** trailing `coffee` — contrast [bridge-packet-contract.md](bridge-packet-contract.md))
@@ -276,6 +340,7 @@ If the **same** troubleshooting bullet applies **twice in a short window**, add 
 ## Adjacent surfaces
 
 - [.cursor/skills/coffee/SKILL.md](../../../.cursor/skills/coffee/SKILL.md) — coffee trigger
+- [.cursor/skills/thanks/SKILL.md](../../../.cursor/skills/thanks/SKILL.md) — thanks micro-pause (recent rhythm ×2)
 - [.cursor/skills/dream/SKILL.md](../../../.cursor/skills/dream/SKILL.md) — dream trigger
 - [.cursor/skills/bridge/SKILL.md](../../../.cursor/skills/bridge/SKILL.md) — bridge trigger
 - [.cursor/skills/harvest/SKILL.md](../../../.cursor/skills/harvest/SKILL.md) — harvest trigger
@@ -297,7 +362,7 @@ If the **same** troubleshooting bullet applies **twice in a short window**, add 
 
 In scope:
 
-- daily cadence architecture (coffee/dream/bridge triad + harvest on a separate cross-agent axis)
+- daily cadence architecture (coffee/dream/bridge triad + thanks micro-pause + harvest on a separate cross-agent axis)
 - handoff contract design and schema
 - cadence event audit (per-run telemetry)
 - runner mode definitions and dispatch
