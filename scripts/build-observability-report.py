@@ -212,10 +212,20 @@ def main() -> int:
         "detail": seed_err[:2000] if seed_err else "",
     }
 
+    inference_mode = "cloud"
+    runtime_cfg = ROOT / "runtime_config.json"
+    if runtime_cfg.exists():
+        try:
+            rc = json.loads(runtime_cfg.read_text())
+            inference_mode = rc.get("inference", {}).get("mode", "cloud")
+        except (json.JSONDecodeError, KeyError):
+            pass
+
     report: Dict[str, Any] = {
         "schemaVersion": "1.0.0",
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "reviewRoot": str(Path(args.review_root).as_posix()),
+        "inferenceMode": inference_mode,
         "proposalCounts": proposal_counts_report,
         "changeTypeCounts": dict(change_type_counts),
         "targetSurfaceCounts": dict(target_surface_counts),

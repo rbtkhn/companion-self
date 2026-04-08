@@ -58,5 +58,23 @@
     "avatar_type": "none",
     "avatar_model_path": null,
     "renderer_url": null
+  },
+  "inference": {
+    "mode": "cloud",
+    "local": {
+      "provider": "google_ai_edge",
+      "model": "gemini-nano-4b",
+      "fallback": "gemini-nano-2b",
+      "context_budget_tokens": 32000
+    },
+    "cloud": {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "analyst_model": "gpt-4o-mini"
+    },
+    "hybrid_escalation": {
+      "require_user_approval": true,
+      "escalation_triggers": ["web_search", "large_context", "low_confidence"]
+    }
   }
 }

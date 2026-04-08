@@ -16,6 +16,18 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PREPARED_DIR = REPO_ROOT / "prepared-context"
 
 
+def _detect_inference_mode() -> str:
+    """Read inference.mode from runtime_config.json, fall back to 'cloud'."""
+    config_path = REPO_ROOT / "runtime_config.json"
+    if config_path.exists():
+        try:
+            cfg = json.loads(config_path.read_text())
+            return cfg.get("inference", {}).get("mode", "cloud")
+        except (json.JSONDecodeError, KeyError):
+            pass
+    return "cloud"
+
+
 def stage_text_file(source: Path) -> Path:
     PREPARED_DIR.mkdir(parents=True, exist_ok=True)
     out = PREPARED_DIR / f"{source.stem}.prepared.json"
@@ -24,9 +36,11 @@ def stage_text_file(source: Path) -> Path:
         rel_src = str(source.resolve().relative_to(REPO_ROOT))
     except ValueError:
         rel_src = str(source.resolve())
+    inference_mode = _detect_inference_mode()
     payload = {
         "source_path": rel_src,
         "prepared_type": "plain_text",
+        "execution_mode": inference_mode,
         "content": text,
         "notes": [
             "Starter staging artifact",

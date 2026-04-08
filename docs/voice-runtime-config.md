@@ -64,3 +64,18 @@ Root **`monitoring`** is unchanged by this helper.
 ## Parser
 
 **`scripts/voice_runtime_config.py`** is shared between **companion-self** and **grace-mar** (same file). **`parse_voice_avatar_block()`** returns structured defaults; **`merge_critique_for_latency_mode()`** implements the latency table above.
+
+---
+
+## Inference block
+
+The **`inference`** block (sibling of `voice_avatar` and `constitutional_critique`) controls where LLM inference runs. See **[inference-modes.md](inference-modes.md)** for the full schema, env-var overrides, and the hybrid escalation protocol.
+
+| Field | Purpose |
+|-------|---------|
+| **`inference.mode`** | `"cloud"` \| `"local-first"` \| `"hybrid"`. Default `"cloud"`. |
+| **`inference.local`** | Local provider/model/fallback/context budget. |
+| **`inference.cloud`** | Cloud provider/model/analyst model. |
+| **`inference.hybrid_escalation`** | User-approval requirement and escalation triggers. |
+
+This axis is orthogonal to `voice_avatar.latency_mode` (which controls critique thresholds, not where inference runs).

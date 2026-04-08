@@ -209,10 +209,20 @@ def gather_metrics(user_id: str, since: datetime) -> dict[str, Any]:
     human_only_count = sum(1 for v in authority.values() if v == "human_only")
     review_required_count = sum(1 for v in authority.values() if v == "review_required")
 
+    inference_mode = "cloud"
+    runtime_cfg = REPO_ROOT / "runtime_config.json"
+    if runtime_cfg.exists():
+        try:
+            rc = json.loads(runtime_cfg.read_text())
+            inference_mode = rc.get("inference", {}).get("mode", "cloud")
+        except (json.JSONDecodeError, KeyError):
+            pass
+
     return {
         **seed_activity,
         "claims_approaching_promotion": approaching,
         "gate_candidates_pending": gate_pending,
+        "inference_mode": inference_mode,
         "authority_summary": {
             "human_only": human_only_count,
             "review_required": review_required_count,
