@@ -46,7 +46,7 @@ See:
 
 ## Authority model
 
-Companion-Self treats **who may write what** as an explicit design surface. See [docs/authority-map.md](docs/authority-map.md), [`config/authority-map.json`](config/authority-map.json), and `scripts/check-authority.py --surface <key>`.
+Companion-Self treats **who may write what** as an explicit design surface. See [docs/authority-map.md](docs/authority-map.md), [`config/authority-map.json`](config/authority-map.json), and `scripts/check-authority.py --surface <key>`. The named risk these defenses protect against — unreviewed content entering canonical state through convenience paths — is documented as the **forced absorption** pattern ([docs/forced-absorption.md](docs/forced-absorption.md)).
 
 ## Observability
 

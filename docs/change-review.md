@@ -27,6 +27,12 @@ Material **source** conflicts between evidence, prepared context, and governed s
 
 ---
 
+## Forced absorption risk
+
+Change review is the structural defense against **forced absorption** — the risk that unreviewed content enters canonical state through convenience paths (passive indexing, retrieval-as-authorization, synthesis-as-incorporation, or infrastructure defaults that widen write surfaces). See [forced-absorption.md](forced-absorption.md) for the named risk pattern and how existing defenses map to it.
+
+---
+
 ## Purpose
 
 Change review is the governed pipeline for materially important post-seed changes to a companion instance.
