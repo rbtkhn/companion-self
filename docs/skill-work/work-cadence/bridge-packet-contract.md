@@ -12,7 +12,8 @@ Every bridge packet must include these sections in **this order**. Omit a sectio
 
 | Section | What to include | What to omit |
 |---------|----------------|-------------|
-| **Arc** | 2-4 sentence narrative of what the session accomplished, what shifted, current posture. Synthesize — do not list. | Bullet-point summaries, file-by-file changelogs. |
+| **Session Arc** | Episodic: 2-4 sentence narrative of what happened, in what order — initial intent, pivots, current state. Synthesize — do not list. | Bullet-point summaries, file-by-file changelogs, semantic content (that belongs in Session Output). |
+| **Session Output** | Semantic: what was figured out or produced — decisions (with warrant if available), patterns identified, artifacts created/modified, open questions. Bullet list, 2-5 items. | Narrative rehash of the arc; chronological event list (that belongs in Session Arc). |
 | **Carry-forward from last dream** | Condensed dream handoff: day status, strongest signal, carry-forward action, integrity/governance flags. If no dream ran, say so. | Raw JSON dump. Speculative interpretation of dream output. |
 | **Gate snapshot** | Pending candidate count. Top 1-3 candidate ids with one-line summaries. If none pending, "Gate clear." | Full candidate YAML. Approval recommendations (bridge does not process the gate). |
 | **Active territories** | One line per territory with recent motion. Name the territory and what moved. | Territories with no recent activity. Full history excerpts. |
@@ -39,7 +40,7 @@ Instances may extend the bridge packet:
 - **Additional instance sections** may be added in the same gap (after **Not transferred**, before **Commits sealed**) when needed.
 - **Add fields** within existing sections when grounded in on-disk state (e.g. contradiction counts inside Carry-forward).
 - **Do not drop** any canonical section. The contract guarantees that every bridge packet is parseable by the same reader regardless of instance.
-- **Do not reorder** the core narrative block: Arc through Watch this stays fixed; then template extensions; then Commits sealed through Instructions.
+- **Do not reorder** the core narrative block: Session Arc through Watch this stays fixed; then template extensions; then Commits sealed through Instructions.
 
 ---
 
@@ -61,7 +62,7 @@ The section list is informed by the I-PASS clinical handoff protocol (Illness se
 
 | I-PASS element | Bridge equivalent | Notes |
 |---------------|-------------------|-------|
-| Illness severity | **Arc** | Narrative posture of the session — how things stand, not just what happened. |
+| Illness severity | **Session Arc** + **Session Output** | Arc = episodic posture (what happened); Output = semantic deliverables (what was figured out). |
 | Patient summary | **Carry-forward** + **Gate snapshot** | State carried from prior rituals plus the pipeline queue. |
 | Action list | **Priority lanes** + **Commits sealed** | What to do next and what was just done. |
 | Situation awareness | **Active territories** + **Since last bridge** | Where motion is happening; what changed across sessions. |
@@ -85,3 +86,4 @@ The section list is informed by the I-PASS clinical handoff protocol (Illness se
 | *(prior)* | Template bridge extensions (delta, transfer quality, posture, etc.). |
 | 2026-04-06 | Doc-only cold-thread improvement loop (pointer + § Improving bridge over time). |
 | 2026-04-07 | **Agent surface** — Cursor UI model label after Recent commits, before Instructions. |
+| 2026-04-07 | Split **Arc** into **Session Arc** (episodic) + **Session Output** (semantic) — LoreSpec-derived episodic/semantic layer. |

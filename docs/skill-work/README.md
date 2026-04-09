@@ -19,6 +19,8 @@ This folder holds **submodules** that support WORK, the Record, and instances: r
 
 ---
 
+**Discipline as a capability surface.** The companion's value in WORK execution includes superhuman consistency — maintaining runbooks, mirrors, and protocol adherence without fatigue or emotional drift. The transcript evidence: bots on Polymarket won not with better strategies but with flawless execution (no fatigue at 3 a.m., no oversized positions on confident bets, no missed trades during lunch). When auditing skill-work patterns, track not just what the system can do but how reliably it does it. Execution discipline gaps are a primary leverage point.
+
 ## Cross-references
 
 - **New WORK territory checklist:** [work-template.md](work-template.md) — scaffold `work-<id>/` (README, history, optional LANE-CI, sources).

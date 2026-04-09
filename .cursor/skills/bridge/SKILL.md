@@ -119,9 +119,20 @@ Now that the repo is sealed and pushed, synthesize the readings from Step 1 into
 ```markdown
 # Session Bridge — [YYYY-MM-DD]
 
-## Arc
-[2-4 sentences: what the session accomplished, what shifted, current posture.
-This is narrative, not a list. Write it from what you observed in the readings.]
+## Session Arc
+[Episodic — what happened, in what order:
+- Started: initial intent or task
+- Pivots: where direction changed and why
+- Ended: current state, what's unfinished
+2-4 sentences. This is narrative, not a list. Write from what you observed.]
+
+## Session Output
+[Semantic — what was figured out or produced:
+- Decisions made (with warrant if available — the assumption that would invalidate them)
+- Patterns identified
+- Artifacts created or modified
+- Open questions surfaced
+Bullet list, 2-5 items. Facts and deliverables, not narrative.]
 
 ## Carry-forward from last dream
 [Condensed from night-handoff.json: day status, signal, tomorrow action.
@@ -197,7 +208,7 @@ Bridge is complete. The repo is pushed, the transfer prompt is generated, `bridg
 - **No gate action.** Report gate state; do not process, approve, or defer candidates.
 - **No merges into Record.** Committing files to git is not the same as merging into identity truth. The gated pipeline is untouched.
 - **Signal over volume.** The transfer prompt should be concise. Aim for one screen of text, not a wall. Omit sections that have nothing to report.
-- **Narrative arc matters.** The "Arc" section is the most valuable part — it's the thing no script can produce. Synthesize, don't just list.
+- **Narrative arc matters.** The "Session Arc" section is the most valuable part — it's the thing no script can produce. Synthesize, don't just list. "Session Output" is the semantic complement — facts and deliverables.
 - **Stop on conflict.** If push fails after pull-rebase due to conflicts, stop and report. Do not force-push or resolve conflicts silently.
 - **Ephemeral output.** The transfer prompt exists only in the chat unless the operator saves it (optional `bridge-packets/` path).
 
@@ -241,3 +252,4 @@ The template provides the structural pattern; instances customize for their need
 | Date | Change |
 |------|--------|
 | 2026-04-06 | Doc-only cold-thread loop § *After the new session opens*. |
+| 2026-04-06 | Split Arc into Session Arc (episodic) + Session Output (semantic) — LoreSpec-derived. |
