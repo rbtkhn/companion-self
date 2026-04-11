@@ -8,6 +8,8 @@
 
 **Reference implementation:** instance-specific — approval inbox surfaces may sit over the canonical queue, merge tooling, and audit log for a given repo layout.
 
+**User-facing onboarding (OB1-flavored):** [start-here-ob1-users.md](start-here-ob1-users.md) — “Approval Inbox” as entry grammar; canonical file name remains `recursion-gate.md`.
+
 ---
 
 ## 1. Goal
