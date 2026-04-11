@@ -4,6 +4,8 @@
 
 **Release + compatibility metadata:** [`template-version.json`](template-version.json) — semver, release date, git tag, and `compatibilityContract` pointers (single source; no separate `template-contract.json`).
 
+**New here?** Plain-language start: [docs/start-here.md](docs/start-here.md). If you come from **OB1-style** systems (dashboard, recipes, imports, review queue), the quickest mental model is: a future instance has **Library**, **Skills**, **Evidence**, **workflow** lanes, and an **Approval Inbox** (`recursion-gate.md`). Durable Record changes are **gated**, not auto-merged. **[Coming from OB1? Start here →](docs/start-here-ob1-users.md)**
+
 **Companion-Self** is a general-purpose system for companion formation, activation, memory governance, and post-seed revision. Education, coaching, personal knowledge work, and guided interaction are downstream use cases, not the category definition.
 
 A new companion self is created **only when a new user completes seed phase** — not by copying another repo's `users/` or pre-filling a Record. **Seed Phase v2** is a visible artifact pipeline with JSON Schemas, confidence signals, and **readiness gating** before activation ([docs/seed-phase.md](docs/seed-phase.md)).
