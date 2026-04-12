@@ -15,6 +15,7 @@ Load these in order so constraints and intent come before detail. Instances may 
 | Order | Document | Role |
 |-------|----------|------|
 | 1 | [Identity Fork Protocol](identity-fork-protocol.md) | Constraints: agent may stage, may not merge; evidence linking; process-the-gate. |
+| 1b | [Governance unbundling](governance-unbundling.md) | Optional: routing vs sensemaking vs accountability; what assistants may automate. |
 | 2 | [Constraint architecture and failure modes](constraint-architecture-and-failure-modes.md) | What we must prevent (batch merge, inference into Record, etc.). |
 | 3 | [Schema and API contract](schema-record-api.md) | Record shape, recursion-gate shape, acceptance criteria, edge shape, WORK objectives/tasks. |
 | 4 | [CONCEPT](concept.md) | What a companion self is; Record vs Voice; education structure (THINK/WRITE/WORK); invariants; knowledge boundary. |

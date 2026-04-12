@@ -4,7 +4,7 @@
 
 **Purpose:** define a browser-first **review surface** for the recursion-gate queue that reduces operator fatigue without weakening the Sovereign Merge Rule.
 
-**Primary sources:** [identity-fork-protocol.md](identity-fork-protocol.md), [schema-record-api.md](schema-record-api.md), [instance-patterns.md](instance-patterns.md), [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md)
+**Primary sources:** [identity-fork-protocol.md](identity-fork-protocol.md), [governance-unbundling.md](governance-unbundling.md) (Approval Inbox = sensemaking layer), [schema-record-api.md](schema-record-api.md), [instance-patterns.md](instance-patterns.md), [CONTRADICTION-ENGINE-SPEC.md](CONTRADICTION-ENGINE-SPEC.md)
 
 **Reference implementation:** instance-specific — approval inbox surfaces may sit over the canonical queue, merge tooling, and audit log for a given repo layout.
 

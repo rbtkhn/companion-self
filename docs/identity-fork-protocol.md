@@ -4,6 +4,8 @@
 
 *Full specification (IFP v1.0): see the reference implementation’s [identity-fork-protocol.md](https://github.com/rbtkhn/grace-mar/blob/main/docs/identity-fork-protocol.md).*
 
+**Routing vs sensemaking vs accountability:** [governance-unbundling.md](governance-unbundling.md).
+
 ---
 
 ## Sovereign Merge Rule

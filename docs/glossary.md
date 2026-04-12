@@ -4,6 +4,7 @@
 
 | Term | Definition |
 |------|------------|
+| **Governance unbundling** | Splitting **routing** (staging / analyst), **sensemaking** (human Approval Inbox review), and **accountability** (sovereign merge). See [governance-unbundling.md](governance-unbundling.md). |
 | **Approval Inbox** (user-facing) | Plain-language name for **pending candidates** in `users/<id>/recursion-gate.md` before merge — same queue as **recursion-gate** ([approval-inbox-spec.md](approval-inbox-spec.md)). |
 | **recursion-gate** (gate) | Staging surface: candidates until companion (or delegated human) approves; then merge tooling applies. |
 | **OB1** (informal) | Shorthand for **Open Brain**–style personal knowledge / gateway mental models; onboarding bridge only. |

@@ -8,6 +8,8 @@
 
 Companion-Self has **three** long-term objectives of equal importance: (1) **Democratize Alpha-style education** — comparable outcomes at a fraction of the cost, without a school or in-room guides, via Record as spine. (2) **Companion sovereignty** — all modification of skill and self containers is human-approval gated; agent may stage, may not merge. (3) **Knowledge boundary** — the Record contains only what the companion has provided and approved; no LLM inference in. These are permanent system rules to prevent intention drift and optimize alignment. Full statement and use: [LONG-TERM-OBJECTIVE](long-term-objective.md).
 
+**Governance unbundling** (routing vs sensemaking vs accountability): [governance-unbundling.md](governance-unbundling.md).
+
 ---
 
 ## 1. Core Idea

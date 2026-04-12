@@ -18,6 +18,9 @@ users/*/daily-handoff/last-bridge-state.json
 # Derived engine artifacts (rebuildable; not canonical)
 users/*/derived/
 
+# Rejection routing feedback (rebuildable; scripts/analyze_rejection_feedback.py)
+artifacts/rejection_analysis.json
+
 # Local provenance output (optional)
 state/provenance/
 
