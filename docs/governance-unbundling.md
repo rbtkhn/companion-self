@@ -2,7 +2,7 @@
 
 **Purpose:** Name how **routing**, **sensemaking**, and **accountability** split in companion-self style systems so agents and contributors know what may be automated versus what stays human-gated.
 
-**Related:** [concept.md](concept.md), [identity-fork-protocol.md](identity-fork-protocol.md) (Sovereign Merge Rule), [glossary.md](glossary.md) (Approval Inbox), [approval-inbox-spec.md](approval-inbox-spec.md).
+**Related:** [concept.md](concept.md), [identity-fork-protocol.md](identity-fork-protocol.md) (Sovereign Merge Rule), [glossary.md](glossary.md) (Approval Inbox), [approval-inbox-spec.md](approval-inbox-spec.md). Numeric series forecasting (WORK lane): [docs/skill-work/work-forecast/README.md](skill-work/work-forecast/README.md).
 
 **Reference implementation:** Instance repos (for example [Grace-Mar](https://github.com/rbtkhn/grace-mar)) ship merge tooling, harnesses, and extended operator docs. This template document stays portable; instance-specific paths live under `users/<id>/`.
 
